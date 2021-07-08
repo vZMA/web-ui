@@ -1,46 +1,27 @@
-# Albuquerque ARTCC 2020  - UI
-A Vue SPA for the Albuquerque ARTCC Website. This communicates with the ZAB API in order to deliver content to users.
+# Vue 3 + Typescript + Vite
 
-# License
+This template should help get you started developing with Vue 3 and Typescript in Vite.
 
-The Albuquerque ARTCC website is hereby released under the Creative Commons CC BY-NC-SA 4.0 license. Please ensure you are familiar with the license before contributing to this project. A couple of key takeaways:
+## Recommended IDE Setup
 
-1. If you choose to share or alter this project, you **MUST** give credit to the contributors of this project.
-2. You may **NOT** use any of this project for commercial purposes.
-3. If you create a derivitive of this project, that project **MUST** be released under the same license.
+[VSCode](https://code.visualstudio.com/) + [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur). Make sure to enable `vetur.experimental.templateInterpolationService` in settings!
 
-https://creativecommons.org/licenses/by-nc-sa/4.0/
+### If Using `<script setup>`
 
-# Contributors
-The following people have contributed to this project. If you have contributed, but your name is not listed here, or if you are on this list and would like to be removed, please email atm@zabartcc.org.
+[`<script setup>`](https://github.com/vuejs/rfcs/pull/227) is a feature that is currently in RFC stage. To get proper IDE support for the syntax, use [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) instead of Vetur (and disable Vetur).
 
-Daan Janssen  
-Austin Robison  
-Robby Maura  
+## Type Support For `.vue` Imports in TS
 
-Thank you to all contributors, past and present.
+Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can use the following:
 
-# Contributing
+### If Using Volar
 
-Prerequisites:
-- Most recent LTS of Node.js (v14), with the corresponding version of npm.
-- Have the ZAB API running locally at `http://localhost:3000`.
-- A basic understanding of Git (branches, merge requests).
+Run `Volar: Switch TS Plugin on/off` from VSCode command palette.
 
-If you wish to contribute, please do the following:
+### If Using Vetur
 
-1. Clone down the repository to your local machine. 
-2. Run `npm install`
-3. Run `npm run serve`
-
-This will compile all of the Vue JS, and start a hot-reloading live server. Visit `http://localhost:8080` to view the app.
-
-
-## Contributing Guidelines and Style
-
-In order to maintain consistent code, please adhere to the following guidelines:
-
-- The `master` branch is protected, therefore you should always be working in a branch. Please name the branch `OI-feature_name` where `OI` is your operating initials and `feature_name` is a brief description of the feature (`II-feedback_form` or `DJ-admin_stats_page`). Please make sure to follow the capitalization standards.
-- When you have completed your updates, push them to your branch, and then open a merge request to `master` in GitLab.
-- Please follow the styleguide for how to format your code.
-- We recommend you use VSCode with at least the ESLint plugin installed and configured to auto-fix on save. ESLint can take care of a lot of little mistakes automatically.
+1. Install and add `@vuedx/typescript-plugin-vue` to the [plugins section](https://www.typescriptlang.org/tsconfig#plugins) in `tsconfig.json`
+2. Delete `src/shims-vue.d.ts` as it is no longer needed to provide module info to Typescript
+3. Open `src/main.ts` in VSCode
+4. Open the VSCode command palette
+5. Search and run "Select TypeScript version" -> "Use workspace version"

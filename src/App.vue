@@ -1,53 +1,28 @@
 <template>
-	<router-view v-if=hasQueryCompleted></router-view>
-	<div v-else id="loading">
-		<div id="loading_box" class="z-depth-3">
-			<img src="https://zabartcc.sfo3.digitaloceanspaces.com/images/zab_logo.png" alt="">
-			<h3>Please Wait...</h3>
-			<Spinner/>
+	<div
+		v-if="appLoading"
+		class="flex justify-center items-center h-screen bg-gray-50 dark:bg-gray-900"
+	>
+		<div class="shadow-lg p-8 text-center bg-white dark:bg-gray-500">
+			<AlbuquerqueLogo class="h-72" />
+			<h3 class="my-4">
+				Please Wait...
+			</h3>
+			<Loading />
 		</div>
 	</div>
+	<router-view v-else />
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 
-import {mapGetters, mapActions} from 'vuex';
-import Spinner from '@/components/Spinner.vue';
-
-export default {
-	async mounted () {
-		await this.getUser();
+export default defineComponent({
+	name: 'Root',
+	data() { 
+		return {
+			appLoading: false
+		}
 	},
-	components: {
-		Spinner
-	},
-	computed: {
-		...mapGetters('user', [
-			'hasQueryCompleted'
-		])
-	},
-	methods: {
-		...mapActions('user', [
-			'getUser'
-		])
-	}
-};
+});
 </script>
-
-<style scoped lang="scss">
-#loading {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-
-#loading_box {
-	text-align: center;
-	padding: 3em;
-
-	img {
-		height: 100px;
-	}
-}
-</style>

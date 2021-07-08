@@ -1,43 +1,29 @@
 {
   "name": "ui",
-  "version": "1.0.0",
-  "private": true,
-  "author": "Albuquerque ARTCC",
-  "contributors": [
-    "Alexandra Robison",
-    "Daan Janssen"
-  ],
-  "license": "CC-BY-NC-SA-4.0",
+  "version": "0.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
   },
   "dependencies": {
-    "@materializecss/materialize": "^1.0.0",
-    "@toast-ui/editor": "^3.0.0",
-    "@toast-ui/editor-plugin-table-merged-cell": "^3.0.0",
-    "axios": "^0.21.1",
-    "chart.js": "^3.3.2",
-    "core-js": "^3.15.1",
-    "flatpickr": "^4.6.9",
-    "luxon": "^1.27.0",
-    "metar-parser": "^1.0.0",
-    "vue": "^3.1.2",
+    "vue": "^3.0.5",
     "vue-router": "^4.0.10",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.13",
-    "@vue/cli-plugin-eslint": "^4.5.13",
-    "@vue/cli-plugin-router": "^4.5.13",
-    "@vue/cli-plugin-vuex": "^4.5.13",
-    "@vue/cli-service": "^4.5.13",
-    "@vue/compiler-sfc": "^3.1.2",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.29.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "@vitejs/plugin-vue": "^1.2.4",
+    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "autoprefixer": "^10.2.6",
+    "eslint": "^7.30.0",
     "eslint-plugin-vue": "^7.12.1",
-    "sass": "^1.35.1",
-    "sass-loader": "^10.2.0"
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4",
+    "typescript": "^4.3.5",
+    "vite": "^2.4.0",
+    "vue-tsc": "^0.0.24"
   }
 }

@@ -1,43 +1,23 @@
 <template>
-	<div id="container">
-		<Header />
-			<main>
-				<div class="row main-content wrapper">
-					<div class="main_content col s12 l8 push-l4">
-						<router-view></router-view>
-					</div>
-					<div class="sidebar col s12 l4 pull-l8">
-						<Sidebar />
-					</div>
-				</div>
-			</main>
-		<Footer />
+	<div class="h-screen bg-gray-50 dark:bg-gray-900 dark:text-white">
+		<SideNav />
+		<main class="pl-72 h-screen flex flex-col main-content">
+			<router-view class="flex-1" />
+			<Footer />
+		</main>	
 	</div>
 </template>
 
-<script>
-import Header from '../partial/Header';
-import Sidebar from '../partial/Sidebar';
-import Footer from '../partial/Footer';
+<script lang="ts">
+import { defineComponent } from 'vue';
+import SideNav from './SideNav.vue'
+import Footer from './Footer.vue'
 
-export default {
+export default defineComponent({
+	name: 'Master',
 	components: {
-		Header,
-		Sidebar,
+		SideNav,
 		Footer
-	}, 
-};
-</script>
-
-<style scoped lang="scss">
-#container {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-
-	main {
-		flex: 1 0 auto;
-		margin: 15px 0;
 	}
-}
-</style>
+});
+</script>
