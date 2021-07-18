@@ -15,7 +15,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 	.loading {
 		position: relative;
 		display: inline-block;
@@ -31,6 +31,24 @@ export default defineComponent({
 		animation-duration: 0.6s;
 		animation-iteration-count: infinite;
 		@apply bg-primary-light;
+
+		&:nth-of-type(1) {
+			left: .5rem;
+			animation-name: dot1;
+		}
+
+		&:nth-of-type(2) {
+			left: .5rem;
+			animation-name: dot2;
+		}
+		&:nth-of-type(3) {
+			left: 2rem;
+			animation-name: dot2;
+		}
+		&:nth-of-type(4) {
+			left: 3.5rem;
+			animation-name: dot3;
+		}
 	}
 
 	.loading-secondary .dot {
@@ -39,23 +57,6 @@ export default defineComponent({
 
 	.loading-accent .dot {
 		@apply bg-accent;
-	}
-	
-	.dot:nth-of-type(1) {
-		left: .5rem;
-		animation-name: dot1;
-	}
-	.dot:nth-of-type(2) {
-		left: .5rem;
-		animation-name: dot2;
-	}
-	.dot:nth-of-type(3) {
-		left: 2rem;
-		animation-name: dot2;
-	}
-	.dot:nth-of-type(4) {
-		left: 3.5rem;
-		animation-name: dot3;
 	}
 
 	@keyframes dot1 {

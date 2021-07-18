@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 h1, h2, h3, h4, h5, h6 {
-	@apply text-primary dark:text-white;
+	@apply text-primary dark:text-gray-50;
 }
 
 h1 {
@@ -35,26 +35,61 @@ h6 {
 
 i {
 	@apply font-icons font-normal not-italic text-2xl;
-	/* display: inline-block;
-	text-transform: none;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
 
-	/* Support for all WebKit browsers. */
-	/* -webkit-font-smoothing: antialiased; */
-	/* Support for Safari and Chrome. */
-	/* text-rendering: optimizeLegibility; */
+	&.xs {
+		@apply text-lg;
+	}
 
-	/* Support for Firefox. */
-	/* -moz-osx-font-smoothing: grayscale; */
+	&.sm {
+		@apply text-xl;
+	}
 
-	/* Support for IE. */
-	/* font-feature-settings: 'liga'; */
+	&.md {
+		@apply text-2xl;
+	}
+
+	&.lg {
+		@apply text-4xl;
+	}
+
+	&.xl {
+		@apply text-5xl;
+	}
+}
+
+p {
+	@apply text-gray-900 dark:text-gray-50;
 }
 
 .nav-separator {
 	@apply my-2 bg-gray-400;
 	height: 1px;
+}
+
+.chip {
+	@apply px-2 py-1 font-bold;
+
+	&.chip-primary {
+		@apply bg-primary text-white dark:bg-gray-300 dark:text-primary;
+	}
+
+	&.chip-secondary {
+		@apply bg-secondary text-white;
+	}
+
+	&.chip-accent {
+		@apply bg-accent text-white;
+	}
+
+	&.chip-pastel-purple {
+		@apply bg-pastel-purple text-white;
+	}
+
+	&.chip-pastel-pink {
+		@apply bg-pastel-pink text-white;
+	}
+	
+	&.chip-pastel-blue {
+		@apply bg-pastel-blue text-white;
+	}
 }

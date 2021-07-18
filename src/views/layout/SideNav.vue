@@ -1,5 +1,6 @@
 <template>
 	<div
+		:key="sidebarKey"
 		class="side-nav w-72 bg-gray-100 h-screen shadow-xl absolute flex flex-col dark:bg-primary dark:text-white"
 	>
 		<!-- Logo -->
@@ -14,38 +15,53 @@
 		</router-link>
 		<div class="nav-separator" />
 		<!-- User Info -->
-		<div class="py-2 px-4 flex items-center user-info">
-			<div>
-				<h5 class="text-base font-bold">
-					Alexandra Robison
-				</h5>
-				<h6 class="text-sm">
-					Instructor
-				</h6>
+		<div v-if="userData">
+			<div class="py-2 px-4 flex items-center user-info">
+				<div>
+					<h5 class="text-base font-bold">
+						Alexandra Robison
+					</h5>
+					<h6 class="text-sm">
+						Instructor
+					</h6>
+				</div>
+				<button
+					class="ml-auto"
+					@click="logout"
+				>
+					<i class="mi">logout</i>
+				</button>
 			</div>
-			<button class="ml-auto">
-				<i class="mi">logout</i>
-			</button>
+			<nav>
+				<ul>
+					<NavItem
+						link="/dashboard"
+						icon="radar"
+						text="Controller Dashboard"
+					/>
+					<NavItem
+						link="/instructor"
+						icon="school"
+						text="Instructor Dashboard"
+					/>
+					<NavItem
+						link="/admin"
+						icon="settings"
+						text="Admin Dashboard"
+					/>
+				</ul>
+			</nav>
 		</div>
-		<nav>
+		<div v-else>
 			<ul>
 				<NavItem
-					link="/dashboard"
-					icon="radar"
-					text="Controller Dashboard"
-				/>
-				<NavItem
-					link="/instructor"
-					icon="school"
-					text="Instructor Dashboard"
-				/>
-				<NavItem
-					link="/admin"
-					icon="settings"
-					text="Admin Dashboard"
+					link="#"
+					icon="login"
+					text="Login"
+					@click="login"
 				/>
 			</ul>
-		</nav>
+		</div>
 		<div class="nav-separator" />
 		<!-- Context Nav -->
 		<div v-if="contextNav">
@@ -120,7 +136,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import NavItem from '../../components/nav/NavItem.vue';
+import { mapState, mapActions } from 'vuex';
+import NavItem from '@/components/nav/NavItem.vue';
 
 export default defineComponent({
 	name: 'SideNav',
@@ -129,38 +146,36 @@ export default defineComponent({
 	},
 	data() {
 		return {
+			useDarkMode: (localStorage.getItem('darkMode') ?? 'false') === "true",
 			contextNav: this.$route.meta.contextNav,
-			useDarkMode: false,
+			sidebarKey: 0
 		}
+	},
+	computed: {
+		...mapState('user', ['userData']),
 	},
 	watch: {
 		'$route.meta.contextNav': function() {
 			this.contextNav = this.$route.meta.contextNav
 		},
-		useDarkMode: function() {
-			this.updateDarkMode();
-		}
-	},
-	mounted() {
-		this.updateDarkMode();
 	},
 	methods: {
 		toggleDarkMode() {
+			localStorage.setItem('darkMode', (localStorage.darkMode === 'true')?'false':'true');
 			this.useDarkMode = !this.useDarkMode;
-			localStorage.setItem('darkMode', (localStorage.darkMode === 'true')?'false':'true')
+			window.dispatchEvent(new CustomEvent('darkMode'));
 		},
-		updateDarkMode() {
-			const htmlRoot = document.querySelector('html');
-
-			if(localStorage.darkMode === 'true' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-				htmlRoot?.classList.add('dark');
-				this.useDarkMode = true;
-			} else {
-				htmlRoot?.classList.remove('dark');
-				this.useDarkMode = false;
-			}
-		}
-	}
+		login() {
+			const loginWindow = window.open(`https://login.vatusa.net/uls/v2/login?fac=ZAB&url=3`, 'Login', 'height=600,width=800')
+			loginWindow?.addEventListener('beforeunload', () => {
+				this.$nextTick(() => this.loginUser());
+			})
+		},
+		async logout() {
+			await this.logoutUser();
+		},
+		...mapActions('user', ['loginUser', 'logoutUser'])
+	},
 });
 </script>
 

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Master from '..//views/layout/Master.vue';
+import Master from '@/views/layout/Master.vue';
+import LoginVerify from '@/views/pages/LoginVerify.vue';
 
 const routes: Array<RouteRecordRaw> = [
 	{
@@ -8,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
 		children: [
 			{
 				path: '',
-				component: () => import('../views/pages/Home.vue'),
+				component: () => import('@/views/pages/Home.vue'),
 			}
 		]
 	}, {
@@ -41,10 +42,14 @@ const routes: Array<RouteRecordRaw> = [
 		children: [
 			{
 				path: '',
-				component: () => import('../views/pages/Home.vue'),
+				component: () => import('@/views/pages/Home.vue'),
 			}
 		]
-	}
+	}, 
+	{
+		path: '/login/verify',
+		component: LoginVerify
+	},
 ];
 
 export default createRouter({
