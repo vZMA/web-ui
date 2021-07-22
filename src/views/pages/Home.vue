@@ -43,20 +43,7 @@
 				</ul>
 			</div>
 			<div class="col-span-3">
-				<h2>Events</h2>
-				<h3>Quite eventful, huh?</h3>
-				<div class="bg-gray-200 shadow-md dark:bg-primary-light p-4 hover:shadow-lg transition-shadow">
-					<h4>Monsoon Madness!</h4>
-					<h5 class="flex items-center text-lg font-bold mb-2">
-						<i class="mi mr-2">calendar_today</i>August 8th, 2021
-					</h5>
-					<h5 class="flex items-center text-lg font-bold">
-						<i class="mi mr-2">schedule</i>
-						1700z
-						<i class="mi mx-2 sm transform rotate-90">flight</i>
-						2300z
-					</h5>
-				</div>
+				<EventListing />
 			</div>
 			<div class="col-span-3">
 				<h2>The Leaderboard</h2>
@@ -68,9 +55,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import EventListing from '@/components/home/EventListing.vue';
 
 export default defineComponent({
 	name: 'Home',
+	components: {
+		EventListing
+	}
 });
 </script>
 
@@ -99,15 +90,15 @@ export default defineComponent({
 	backdrop-filter: blur(3px);
 }
 
-h2 {
+h2, *:deep(h2) {
 	@apply font-extrabold mb-1 text-3xl;
 }
 
-h3 {
+h3, *:deep(h3) {
 	@apply font-bold mb-2 text-lg text-primary-light dark:text-gray-400;
 }
 
-h4 {
+h4, *:deep(h4) {
 	@apply font-extrabold mb-2 text-xl;
 }
 
