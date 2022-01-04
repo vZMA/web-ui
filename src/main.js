@@ -27,12 +27,12 @@ const app = createApp(App)
 		created() {
 			const { title } = this.$options;
 			if(title) {
-				document.title = `${(typeof title === 'function') ? title.call(this) : title} | Albuquerque ARTCC`;
+				document.title = `${(typeof title === 'function') ? title.call(this) : title} | Miami ARTCC`;
 			}
 		},
 		methods: {
 			setTitle(title) {
-				document.title = `${(typeof title === 'function') ? title.call(this) : title} | Albuquerque ARTCC`;
+				document.title = `${(typeof title === 'function') ? title.call(this) : title} | Miami ARTCC`;
 			}
 		}
 	})
