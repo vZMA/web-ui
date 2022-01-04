@@ -1,9 +1,10 @@
-# Albuquerque ARTCC 2020  - UI
-A Vue SPA for the Albuquerque ARTCC Website. This communicates with the ZAB API in order to deliver content to users.
+# Miami ARTCC 2021 - UI
+
+A Vue SPA for the Miami ARTCC Website, forked from the Albuquerque ARTCC project. This communicates with the ZMA API in order to deliver content to users.
 
 # License
 
-The Albuquerque ARTCC website is hereby released under the Creative Commons CC BY-NC-SA 4.0 license. Please ensure you are familiar with the license before contributing to this project. A couple of key takeaways:
+The Miami ARTCC website is hereby released under the Creative Commons CC BY-NC-SA 4.0 license. Please ensure you are familiar with the license before contributing to this project. A couple of key takeaways:
 
 1. If you choose to share or alter this project, you **MUST** give credit to the contributors of this project.
 2. You may **NOT** use any of this project for commercial purposes.
@@ -11,30 +12,33 @@ The Albuquerque ARTCC website is hereby released under the Creative Commons CC B
 
 https://creativecommons.org/licenses/by-nc-sa/4.0/
 
-# Contributors
-The following people have contributed to this project. If you have contributed, but your name is not listed here, or if you are on this list and would like to be removed, please email atm@zabartcc.org.
+Note: The original authors of this codebase are members of the Albuquerque ARTCC listed below:
 
 Daan Janssen  
 Austin Robison  
-Robby Maura  
+Robby Maura
+
+# Contributors
+
+If you would like to contribute to this repository, please contact fe@zmaartcc.net
 
 Thank you to all contributors, past and present.
 
 # Contributing
 
 Prerequisites:
+
 - Most recent LTS of Node.js (v16), with the corresponding version of npm.
-- Have the ZAB API running locally at `http://localhost:3000`.
+- Have the ZMA API running locally at `http://localhost:3000`.
 - A basic understanding of Git (branches, merge requests).
 
 If you wish to contribute, please do the following:
 
-1. Clone down the repository to your local machine. 
+1. Clone down the repository to your local machine.
 2. Run `npm install`
 3. Run `npm run dev
 
 This will compile all of the Vue JS, and start a hot-reloading live server with Vite. Visit `http://localhost:8080` to view the app.
-
 
 ## Contributing Guidelines and Style
 
