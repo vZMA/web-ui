@@ -206,7 +206,7 @@ export default {
     ...mapActions("user", ["logout"]),
     async processLogin() {
       localStorage.setItem("redirect", this.$route.path);
-      window.location.href = `https://login.vatusa.net/uls/v2/login?fac=ZAB&url=${
+      window.location.href = `https://login.vatusa.net/uls/v2/login?fac=ZMA&url=${
         import.meta.env.VITE_ULS_LOGIN_REDIRECT_URL || 1
       }`;
     },
