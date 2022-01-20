@@ -133,7 +133,7 @@ export default {
 					certsToShow.push(cert);
 				} else {
 					const certPos = cert.code.slice(-3);
-					if(!hasCerts.includes(`p50${certPos}`)) {
+					if(!hasCerts.includes(`mia${certPos}`)) {
 						certsToShow.push(cert);
 					}
 				}
