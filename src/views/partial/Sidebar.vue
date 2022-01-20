@@ -119,7 +119,7 @@ export default {
       updateTime: "",
       atcOnline: null,
       ratings: null,
-      airports: ["KMIA"],
+      airports: ["X06","07FA","06FA","KAVO","KAGR","KBOW","X10","KBCT","KBKV","X05","KCLW","2IS","X36","X01","KFLL","FXE","KFMY","KRSW","KFPR","KHWO","KHST","X51","KIMM","KEYW","KNQX","X14","X49","KLAL","X07","X25","KMTH","KMKY","KTMB","KTNT","KMIA","KOPF","KAPF","KOBE","KPHK","KPCM","KPMP","KSPG","KPIE","KSRQ","X26","KSEF","KSUA","KTPA","KVDF","KMCF","X39","KTPF","KVNC","X52","KVRB","KCHN","F45","KPBI","KLNA","KGIF","KZPH"],
       top: null,
     };
   },
