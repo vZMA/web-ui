@@ -39,6 +39,11 @@
 						<label for="certs" class="active">Certifications</label>
 						<div id="certs_container">
 							<span 
+								id="zmo" 
+								:class="{active: form.certs.zmo}" 
+								class="cert cert_center" 
+								@click="toggleCert">Miami Oceanic</span>
+							<span 
 								id="zma" 
 								:class="{active: form.certs.zma}" 
 								class="cert cert_center" 
@@ -115,10 +120,11 @@ export default {
 				oi: '',
 				vis: false,
 				certs: {
-					zab: false,
-					p50app: false,
-					p50twr: false,
-					p50gnd: false,
+					zmo: false,
+					zma: false,
+					miaapp: false,
+					miatwr: false,
+					miagnd: false,
 					app: false,
 					twr: false,
 					gnd: false
