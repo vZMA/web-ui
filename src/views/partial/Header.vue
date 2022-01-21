@@ -53,9 +53,6 @@
               <li>
                 <router-link to="/files/downloads">Downloads</router-link>
               </li>
-              <li>
-                <router-link to="/files/documents">Documents</router-link>
-              </li>
             </ul>
           </li>
           <li>
