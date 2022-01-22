@@ -6,9 +6,9 @@
 		<div class="row">
 			<div class="col s12">
 				<ul class="tabs">
-					<li class="tab col s6 l3"><a class="active" href="#sector">Sector Files</a></li>
-					<li class="tab col s6 l2"><a href="#training">Training</a></li>
-					<li class="tab col s7 l4"><a href="#mfr">Minor Field References</a></li>
+					<li class="tab col s6 l3"><a class="active" href="#sector">Facility Files</a></li>
+					<li class="tab col s6 l2"><a href="#training">References</a></li>
+					<li class="tab col s7 l4"><a href="#mfr">SOPs and LOAs</a></li>
 					<li class="tab col s6 l3"><a href="#misc">Miscellaneous</a></li>
 				</ul>
 			</div>

@@ -85,9 +85,9 @@ export default {
 			}
 		},
 		convertCategory(cat) {
-			if(cat == "sectorFiles") return "Sector Files";
-			else if(cat == "training") return "Training";
-			else if(cat == "mfr") return "MFR";
+			if(cat == "sectorFiles") return "Facility Files";
+			else if(cat == "training") return "References";
+			else if(cat == "mfr") return "SOP/LOA";
 			else return "Miscellaneous";
 		}
 	},
