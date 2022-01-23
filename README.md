@@ -12,7 +12,7 @@ The Miami ARTCC website is hereby released under the Creative Commons CC BY-NC-S
 
 https://creativecommons.org/licenses/by-nc-sa/4.0/
 
-Note: The original authors of this codebase are members of the Albuquerque ARTCC listed below:
+Note: The original authors of this codebase are members of the Albuquerque ARTCC listed below: 
 
 Daan Janssen  
 Austin Robison  
