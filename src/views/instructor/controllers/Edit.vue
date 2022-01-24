@@ -35,23 +35,23 @@
 						<label for="certs" class="active">Certifications</label>
 						<div id="certs_container">
 							<span 
-								id="zab" 
-								:class="{active: form.certs.zab}" 
+								id="zma" 
+								:class="{active: form.certs.zma}" 
 								class="cert cert_center" 
 								@click="toggleCert">Albuquerque Center</span>
 							<span 
-								id="p50app" 
-								:class="{active: form.certs.p50app}" 
+								id="miaapp" 
+								:class="{active: form.certs.miaapp}" 
 								class="cert cert_major" 
 								@click="toggleCert">Major Approach</span>
 							<span 
-								id="p50twr" 
-								:class="{active: form.certs.p50twr}" 
+								id="miatwr" 
+								:class="{active: form.certs.miatwr}" 
 								class="cert cert_major" 
 								@click="toggleCert">Major Tower</span>
 							<span 
-								id="p50gnd" 
-								:class="{active: form.certs.p50gnd}" 
+								id="miagnd" 
+								:class="{active: form.certs.miagnd}" 
 								class="cert cert_major" 
 								@click="toggleCert">Major Ground</span>
 							<span 
@@ -112,9 +112,9 @@ export default {
 				vis: false,
 				certs: {
 					zab: false,
-					p50app: false,
-					p50twr: false,
-					p50gnd: false,
+					miaapp: false,
+					miatwr: false,
+					miagnd: false,
 					app: false,
 					twr: false,
 					gnd: false
