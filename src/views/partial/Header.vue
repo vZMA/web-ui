@@ -257,7 +257,7 @@ export default {
   position: relative;
 
   &::before {
-    background: rgba($primary-color, 0.6);
+    //background: rgba($primary-color, 0.6);
     height: 100%;
     width: 100%;
     left: 0;
