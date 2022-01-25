@@ -19,7 +19,9 @@
 				</span>
 				<div class="discord_connect">
 					<button class="btn waves-effect waves-light">
-						<a href="https://vats.im/zma/discord" target="_blank" rel="noreferrer noopener">Join Discord</a>
+					<a href="https://vats.im/zma/discord" target="_blank" rel="noreferrer noopener">
+					 	<img src="@/assets/images/discord.svg" alt="" draggable="false" class="discord_logo" height="24">
+						Join Discord</a>
 					</button>
 				</div>
 			</div>
