@@ -15,20 +15,10 @@
 					</span>
 				</div>
 				<span class="section_title">
-					<br>IDS Token
-				</span>
-				<div class="hidden" id="token_wrap">
-					<code>{{token}}</code>
-					<span class="generate right" @click="generateToken">
-						<i class="material-icons">refresh</i>
-					</span>
-					<div id="click_to_see" @click="showToken">Click to view</div>
-				</div>
-				<span class="section_title">
 					External Integrations
 				</span>
 				<div class="discord_connect">
-					<button class="btn-flat waves-effect">
+					<button class="btn waves-effect waves-light">
 						<a href="https://vats.im/zma/discord" target="_blank" rel="noreferrer noopener">Join Discord</a>
 					</button>
 				</div>
@@ -71,7 +61,7 @@ export default {
 	title: 'Dashboard',
 	data() {
 		return {
-			approvedAirports: ['ABQ', 'PHX', 'TUS', 'AMA', 'ELP', 'DMA', 'DVT', 'SDL', 'FFZ', 'CHD', 'IWA', 'GEU', 'GYR', 'LUF', 'PRC', 'FLG'],
+			approvedAirports: ['MIA', 'FLL', 'OPF', 'FXE', 'TMB', 'TPA', 'SRQ', 'PIE', 'SPG', 'BKV', 'LAL', 'PMP', 'BCT', 'HST', 'MCF', 'PBI', 'SUA', 'FPR', 'VRB', 'RSW', 'APF', 'PGD', 'FMY', 'EYW', 'NQX'],
 			token: '',
 			discordConnected: false,
 			controllingSessions: null,
