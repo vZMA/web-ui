@@ -33,7 +33,7 @@
 					<div class="input-field col s12 m6">
 						<select v-model="feedback.controller" required class="materialize-select">
 							<option value="" disabled selected>Select a controller</option>
-							<option v-for="controller in controllers" :value="controller.cid" :key="controller.cid">{{controller.fname}} {{controller.lname}}</option>
+							<option v-for="controller in controllers" :value="controller.cid" :key="controller.cid">{{controller.lname}},{{controller.fname}}</option>
 						</select>
 						<label>Controller</label>
 					</div>
