@@ -78,6 +78,46 @@
 								:class="{active: form.certs.gnd}" 
 								class="cert cert_minor" 
 								@click="toggleCert">Minor Ground</span>
+							<span 
+								id="gnds" 
+								:class="{active: form.certs.gnds}" 
+								class="cert cert_solon" 
+								@click="toggleCert">Minor Ground (Solo)</span>
+							<span 
+								id="miagnds" 
+								:class="{active: form.certs.miagnds}" 
+								class="cert cert_solom" 
+								@click="toggleCert">Miami Ground (Solo)</span>
+							<span 
+								id="twrs" 
+								:class="{active: form.certs.twrs}" 
+								class="cert cert_solon" 
+								@click="toggleCert">Minor Tower (Solo)</span>
+							<span 
+								id="miatwrs" 
+								:class="{active: form.certs.miatwrs}" 
+								class="cert cert_solom" 
+								@click="toggleCert">Miami Tower (Solo)</span>
+							<span 
+								id="apps" 
+								:class="{active: form.certs.apps}" 
+								class="cert cert_solon" 
+								@click="toggleCert">Minor Approach (Solo)</span>
+							<span 
+								id="miaapps" 
+								:class="{active: form.certs.miaapps}" 
+								class="cert cert_solom" 
+								@click="toggleCert">Miami Approach (Solo)</span>
+							<span 
+								id="zmas" 
+								:class="{active: form.certs.zmas}" 
+								class="cert cert_solom" 
+								@click="toggleCert">Miami Center (Solo)</span>
+							<span 
+								id="zmos" 
+								:class="{active: form.certs.zmos}" 
+								class="cert cert_solom" 
+								@click="toggleCert">Miami Oceanic (Solo)</span>
 						</div>
 					</div>
 					<div class="input-field col s12">
