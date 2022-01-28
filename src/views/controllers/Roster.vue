@@ -230,7 +230,8 @@ td {
 		background: #FFA500;
 	}
 	&.cert_solom {
-		background: #FFFF00;
+		background: #FFE83E;
+		color: #000000;
 	}
 }
 
