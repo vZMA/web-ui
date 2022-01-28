@@ -226,6 +226,12 @@ td {
 	&.cert_minor {
 		background: $secondary-color-light;
 	}
+	&.cert_solon {
+		background: #FFA500;
+	}
+	&.cert_solom {
+		background: #FFFF00;
+	}
 }
 
 .tooltipped {
