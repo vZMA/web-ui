@@ -294,6 +294,15 @@ export default {
 			background: $secondary-color-light;
 			color: #fff;
 		}
+		&.cert_solom {
+			background: #FFE83E;
+			color: #2F4F4F;
+		}
+	
+		&.cert_solon {
+			background: #FFA500;
+			color: #fff;
+		}
 	}
 
 }
