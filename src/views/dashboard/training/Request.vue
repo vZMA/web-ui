@@ -132,7 +132,7 @@ export default {
 
 			if(this.milestones !== null) {
 				const minorPrerequisites = ["obs", "gnd", "twr", "app"];
-				const majorPrerequisites = ["obs", "gnd", "p50gnd", "p50twr", "p50app"];
+				const majorPrerequisites = ["obs", "gnd", "miagnd", "miatwr", "miaapp"];
 
 				let milestonesShowed = this.milestones.filter((milestone) => {
 					if(this.user.data.vis) {
@@ -143,8 +143,8 @@ export default {
 							(
 								milestone.code === "GT1" ||
 								(milestone.certCode.substring(0, 3) === "p50" && certs.includes(milestone.certCode.slice(-3)) && certs.includes(majorPrerequisites[milestone.rating - 1])) || 
-								(milestone.certCode.substring(0, 3) !== "p50" && (certs.includes(minorPrerequisites[milestone.rating - 1]) || (milestone.rating === "1" && certs.length === 0)) && milestone.certCode !== "zab") ||
-								(milestone.certCode === "zab" && certs.includes("p50app"))
+								(milestone.certCode.substring(0, 3) !== "p50" && (certs.includes(minorPrerequisites[milestone.rating - 1]) || (milestone.rating === "1" && certs.length === 0)) && milestone.certCode !== "zma") ||
+								(milestone.certCode === "zma" && certs.includes("miaapp"))
 							) && 
 							milestone.certCode.substring(0, 3) !== "vis"
 						);

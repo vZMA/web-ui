@@ -37,6 +37,9 @@
               <li>
                 <router-link to="/controllers/staff">ARTCC Staff</router-link>
               </li>
+	      <li>
+	      	<a href="https://www.zmaartcc.net/wp/controllers/training-department/training-faq">Training FAQ (Legacy)</a>
+	      </li>
             </ul>
           </li>
           <li>
@@ -257,7 +260,7 @@ export default {
   position: relative;
 
   &::before {
-    background: rgba($primary-color, 0.6);
+    background: rgba(176, 233, 255,.1);
     height: 100%;
     width: 100%;
     left: 0;
@@ -288,11 +291,11 @@ export default {
   }
 
   &.hero6 {
-    background-image: url("@/assets/images/hero/sandias.jpg");
+    background-image: url("@/assets/images/hero/skyline.jpg");
   }
 
   &.hero_aprilfools {
-    background-image: url("@/assets/images/hero/bb.jpg");
+    background-image: url("@/assets/images/hero/skyline.jpg");
   }
 
   .wrapper {

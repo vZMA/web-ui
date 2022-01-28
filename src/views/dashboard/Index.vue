@@ -8,28 +8,20 @@
 			<div v-else>
 				<div class="hours_info">
 					<span>
-						You have controlled for <b>{{hoursCalc}}</b> in the past 60 days.
+						You have controlled for <b>{{hoursCalc}}</b> in the past 30 days.
 					</span>
 					<span v-if="user.data.rating !== 1">
-						You will need to control again by <b>{{calcControlDate}}</b> to prevent removal from the roster.
+						You will need to control three hours by <b>{{calcControlDate}}</b> to prevent removal from the roster.
 					</span>
-				</div>
-				<span class="section_title">
-					<br>IDS Token
-				</span>
-				<div class="hidden" id="token_wrap">
-					<code>{{token}}</code>
-					<span class="generate right" @click="generateToken">
-						<i class="material-icons">refresh</i>
-					</span>
-					<div id="click_to_see" @click="showToken">Click to view</div>
 				</div>
 				<span class="section_title">
 					External Integrations
 				</span>
 				<div class="discord_connect">
-					<button class="btn-flat waves-effect">
-						<a href="https://vats.im/zma/discord" target="_blank" rel="noreferrer noopener">Join Discord</a>
+					<button class="btn waves-effect waves-light">
+					<a href="https://vats.im/zma/discord" target="_blank" rel="noreferrer noopener">
+					 	<img src="@/assets/images/discord.svg" alt="" draggable="false" class="discord_logo" height="24">
+						Join Discord</a>
 					</button>
 				</div>
 			</div>
@@ -71,7 +63,7 @@ export default {
 	title: 'Dashboard',
 	data() {
 		return {
-			approvedAirports: ['ABQ', 'PHX', 'TUS', 'AMA', 'ELP', 'DMA', 'DVT', 'SDL', 'FFZ', 'CHD', 'IWA', 'GEU', 'GYR', 'LUF', 'PRC', 'FLG'],
+			approvedAirports: ['MIA', 'FLL', 'OPF', 'FXE', 'TMB', 'TPA', 'SRQ', 'PIE', 'SPG', 'BKV', 'LAL', 'PMP', 'BCT', 'HST', 'MCF', 'PBI', 'SUA', 'FPR', 'VRB', 'RSW', 'APF', 'PGD', 'FMY', 'EYW', 'NQX'],
 			token: '',
 			discordConnected: false,
 			controllingSessions: null,
@@ -141,7 +133,7 @@ export default {
 		hoursCalc() {
 			let seconds = 0;
 			for(const session of this.controllingSessions) {
-				if((Math.abs(new Date().getTime() - new Date(session.timeEnd).getTime()) / (1000 * 60 * 60 * 24) < 61)) {
+				if((Math.abs(new Date().getTime() - new Date(session.timeEnd).getTime()) / (1000 * 60 * 60 * 24) < 31)) {
 					const newSeconds = (new Date(session.timeEnd) - new Date(session.timeStart)) / 1000;
 					seconds += newSeconds;
 				}
@@ -154,19 +146,19 @@ export default {
 			if(this.controllingSessions.length > 0 ) {
 				let seconds = 0;
 				for (const session of this.controllingSessions) {
-					if(seconds < 7200 && this.approvedAirports.includes(session.position.slice(0, 3))) {
+					if(seconds < 10800 && this.approvedAirports.includes(session.position.slice(0, 3))) {
 						const newSeconds = (new Date(session.timeEnd) - new Date(session.timeStart)) / 1000;
 						seconds += newSeconds;
 						date = new Date(session.timeEnd);
 					}
 
-					if(seconds >= 7200) {
+					if(seconds >= 10800) {
 						break;
 					}
 				}
 			}
 
-			date.setUTCDate(date.getUTCDate() + 61);
+			date.setUTCDate(date.getUTCDate() + 31);
 			return this.formatDate(date);
 		}
 	}

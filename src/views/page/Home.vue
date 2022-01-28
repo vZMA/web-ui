@@ -32,12 +32,14 @@
 import { mapState } from "vuex";
 import WeatherInfo from "../partial/WeatherInfo.vue";
 import NewsSummary from "../partial/NewsSummary.vue";
+import EventSummary from '../partial/EventSummary.vue';
 
 export default {
   title: "Home",
   components: {
     NewsSummary,
     WeatherInfo,
+    EventSummary
   },
   computed: {
     ...mapState("user", ["user"]),
