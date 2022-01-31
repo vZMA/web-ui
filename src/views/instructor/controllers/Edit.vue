@@ -80,7 +80,7 @@
 								class="cert cert_minor" 
 								@click="toggleCert">Minor Ground</span>
 							<span 
-								id="gnd" 
+								id="del" 
 								:class="{active: form.certs.del}" 
 								class="cert cert_minor" 
 								@click="toggleCert">Minor Clearance</span>
