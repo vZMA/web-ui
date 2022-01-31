@@ -60,6 +60,11 @@
 								class="cert cert_major" 
 								@click="toggleCert">Major Ground</span>
 							<span 
+								id="miadel" 
+								:class="{active: form.certs.miadel}" 
+								class="cert cert_major" 
+								@click="toggleCert">Major Clearance</span>
+							<span 
 								id="app" 
 								:class="{active: form.certs.app}" 
 								class="cert cert_minor" 
@@ -75,15 +80,30 @@
 								class="cert cert_minor" 
 								@click="toggleCert">Minor Ground</span>
 							<span 
+								id="gnd" 
+								:class="{active: form.certs.del}" 
+								class="cert cert_minor" 
+								@click="toggleCert">Minor Clearance</span>
+							<span 
 								id="gnds" 
 								:class="{active: form.certs.gnds}" 
 								class="cert cert_solon" 
 								@click="toggleCert">Minor Ground (Solo)</span>
 							<span 
-								id="miagnds" 
+								id="dels" 
+								:class="{active: form.certs.dels}" 
+								class="cert cert_solon" 
+								@click="toggleCert">Minor Clearance (Solo)</span>
+							<span 
+								id="dels" 
 								:class="{active: form.certs.miagnds}" 
 								class="cert cert_solom" 
 								@click="toggleCert">Miami Ground (Solo)</span>
+							<span 
+								id="miadels" 
+								:class="{active: form.certs.miadels}" 
+								class="cert cert_solom" 
+								@click="toggleCert">Miami Clearance (Solo)</span>
 							<span 
 								id="twrs" 
 								:class="{active: form.certs.twrs}" 
