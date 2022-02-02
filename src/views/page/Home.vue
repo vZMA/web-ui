@@ -23,6 +23,7 @@
         </div>
       </div>
     </div>
+    <EventSummary />
     <NewsSummary />
     <WeatherInfo />
   </div>
