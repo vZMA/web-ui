@@ -9,7 +9,7 @@
 		<div class="card-content loading_container" v-if="loading">
 			<Spinner />
 		</div>
-		<p class="no_certs" v-else-if="loading === false && certs.length === 0">There are no active solo certifications issued by ZAB</p>
+		<p class="no_certs" v-else-if="loading === false && certs.length === 0">There are no active solo certifications issued by ZMA</p>
 		<div class="table_wrapper" v-else>
 			<table class="striped">
 				<thead class="certs_list_head">
