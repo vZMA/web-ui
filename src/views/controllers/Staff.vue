@@ -87,13 +87,10 @@
 						<div class="col s12 l6">
 							<div class="card">
 							<div class="card-content">
-								<h5 class="staff_heading">Approved ACAs</h5>
+								<h5 class="staff_heading">ZMO ACAs</h5>
 									<ul>
-									 <li>Shane Friedman (ZMA)</li>
-									 <li>Erik Quinn (ZMA)</li>
-									 <li>Gerardo Rodriguez (ZMA)</li>
-									 <li>Braden Vonderau (VATCAR)</li>
-									 <li>Eric Boxerman (MYNA)</li>
+									 <li>Braden Vonderau</li>
+									 <li>Eric Boxerman</li>
 									</ul>
 								</div>
 								
@@ -138,10 +135,30 @@ export default {
 	z-index: 1;
 }
 
-.card-content .card {
-	margin: 0 .5em;
+.card-content {
+	padding: 0.75em;
+	text-align: center;
 }
-
+.staff_heading {
+	margin-top: 0;
+	font-size: 1rem;
+	font-weight: 700;
+}
+.staff_email {
+	display: inline-flex;
+	align-items: center;
+	margin-top: 0.5em;
+	.material-icons {
+		font-size: 16px;
+		margin-top: 0.2em;
+		margin-right: 0.2em;
+	}
+}
+.staff_member {
+	font-size: 1.2rem;
+	font-weight: 600;
+	display: block;
+}
 .staff_table {
 	tr {
 		border-bottom: none;
