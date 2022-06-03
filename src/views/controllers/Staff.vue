@@ -82,10 +82,22 @@
 							<StaffCard :staffItem="staff.ins" />
 						</div>
 						<div class="col s12 l6">
-							<StaffCard :staffItem="staff.ins" />
+							<StaffCard :staffItem="staff.mtr" />
 						</div>
 						<div class="col s12 l6">
-							<StaffCard :staffItem="staff.mtr" />
+							<div class="card">
+							<div class="card-content">
+								<h5 class="staff_heading">Approved ACAs</h5>
+									<ul>
+									 <li>Shane Friedman (ZMA)</li>
+									 <li>Erik Quinn (ZMA)</li>
+									 <li>Gerardo Rodriguez (ZMA)</li>
+									 <li>Braden Vonderau (VATCAR)</li>
+									 <li>Eric Boxerman (MYNA)</li>
+									</ul>
+								</div>
+								
+							</div>
 						</div>
 					</div>
 				</div>
