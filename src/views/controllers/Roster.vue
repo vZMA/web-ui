@@ -14,6 +14,11 @@
 		<div v-else>
 			<div class="card">
 				<div class="card-content">
+					<span>Note: For ZMO certs, please follow <a href="https://docs.google.com/spreadsheets/d/1-4IZNAukEu7I24OcracEZzRe6XkgDVukUFSteZHzUhU/edit?usp=sharing" target="_blank">this link to the Miami-Nassau Mutual Roster</a>.</span>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
 					<span class="card-title">Home Controllers</span>
 				</div>
 				<table class="controller_list striped">
