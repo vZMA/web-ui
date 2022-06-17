@@ -38,11 +38,11 @@
 					<div class="input-field col s12">
 						<label for="certs" class="active">Certifications</label>
 						<div id="certs_container">
-							<span 
+							<!-- <span 
 								id="zmo" 
 								:class="{active: form.certs.zmo}" 
 								class="cert cert_center" 
-								@click="toggleCert">Miami Oceanic</span>
+								@click="toggleCert">Miami Oceanic</span> -->
 							<span 
 								id="zma" 
 								:class="{active: form.certs.zma}" 
@@ -133,11 +133,11 @@
 								:class="{active: form.certs.zmas}" 
 								class="cert cert_solom" 
 								@click="toggleCert">Miami Center (Solo)</span>
-							<span 
+							<!-- <span 
 								id="zmos" 
 								:class="{active: form.certs.zmos}" 
 								class="cert cert_solom" 
-								@click="toggleCert">Miami Oceanic (Solo)</span>
+								@click="toggleCert">Miami Oceanic (Solo)</span> -->
 						</div>
 					</div>
 					<div class="input-field col s12">
