@@ -74,7 +74,7 @@
 									@click="toggleCert">TWR</span>
 								<span id="apps" :class="{active: form.certs.apps}" class="cert cert_solon"
 									@click="toggleCert">APP</span>
-								<br/><br/>
+								<br/>
 								<span id="miadels" :class="{active: form.certs.miadels}" class="cert cert_solom"
 									@click="toggleCert">MIA_DEL</span>
 								<span id="dels" :class="{active: form.certs.miagnds}" class="cert cert_solom"
