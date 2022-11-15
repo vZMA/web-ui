@@ -146,7 +146,16 @@ export default {
 					miagnd: false,
 					app: false,
 					twr: false,
-					gnd: false
+					gnd: false,
+					dels: false,
+					gnds: false,
+					twrs: false,
+					apps: false,
+					miadels: false,
+					miagnds: false,
+					miatwrs: false,
+					miaapps: false,
+					miazmas: false
 				},
 				roles: {
 					atm: false,
