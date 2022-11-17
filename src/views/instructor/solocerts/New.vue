@@ -36,8 +36,7 @@
 	</div>
 </template>
 <script>
-//import {vatusaApiAuth, zabApi} from '@/helpers/axios.js';
-import {vatusaApi, zabApi} from '@/helpers/axios.js';
+import {vatusaApiAuth, zabApi} from '@/helpers/axios.js';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
@@ -84,7 +83,7 @@ export default {
 				formData.append('cid', this.form.cid);
 				formData.append('position', this.form.position);
 				formData.append('expDate', this.$refs.expirationDate.value);
-				await vatusaApi.post('/solo', formData);
+				await vatusaApiAuth.post('/solo', formData);
 
 				this.toastSuccess('Solo Certification issued');
 
