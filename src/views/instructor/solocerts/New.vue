@@ -63,8 +63,8 @@ export default {
 			minDate: today,
 			maxDate: new Date(future.setDate(future.getDate() + 30)),
 			disableMobile: true,
-			dateFormat: 'YYYY-MM-DD',
-			altFormat: 'YYYY-MM-DD',
+			dateFormat: 'Y-m-d',
+			altFormat: 'Y-m-d',
 			altInput: true,
 		});
 		
