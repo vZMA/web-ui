@@ -36,7 +36,8 @@
 	</div>
 </template>
 <script>
-import {vatusaApiAuth, zabApi} from '@/helpers/axios.js';
+//import {vatusaApiAuth, zabApi} from '@/helpers/axios.js';
+import {vatusaApi, zabApi} from '@/helpers/axios.js';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
