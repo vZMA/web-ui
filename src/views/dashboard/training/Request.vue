@@ -7,10 +7,20 @@
 			</div>
 			<div class="request_wrapper row row_no_margin" v-else>
 				<div class="col s12 l6 push-l6">
-					<p><b class="red-text">Important: </b> training requests are just that — requests. <br /><br />
-					There is no guarantee that your session will be picked up by a member of the training staff. If a request you've made gets picked up, you are expected to show up.
-					Treat the times as your availability, mentors and instructors have the ability to modify them when they pick up the session. <br /><br />
-					Please make sure that you've studied the relevant training material, as per the Training Syllabus, before requesting a session.</p>
+                    <p>
+                        <b class="red-text">IMPORTANT:</b> PLEASE READ THESE INSTRUCTIONS.<br/><br/>
+                        When choosing your availability, please include the entire window of your availability, whether
+                        it's 30 minutes or 4 hours. The Trainer has the ability to modify the session times to a more
+                        reasonable duration, if needed, when s/he picks up the training session.
+                    </p>
+                    <b>By submitting this training request, you acknowledge:</b>
+                    <ol>
+                        <li>This is a <em>request</em> and not a guarantee of training.</li>
+                        <li>You are required to keep your availability up-to-date.</li>
+                        <li>You have completed the pre-requisites as outlined in the applicable Training Program
+                            document.
+                        </li>
+                    </ol>
 				</div>
 				<div class="col s12 l6 pull-l6">
 					<form class="row row_no_margin" @submit.prevent=submitRequest>

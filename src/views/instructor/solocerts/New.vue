@@ -7,8 +7,18 @@
 			</div>
 			<div class="row row_no_margin" v-else>
 				<div class="col s12 l6 push-l6 card_desc">
-					<p>Solo certifications may be issued to students who have demonstrated sufficient competency on the position they are receiving a solo certification for. <br /><br />Solo certifications must be issued in accordance with the training syllabus and are automatically submitted to VATUSA. <br /><br />Solo certifications may not extend beyond 30 days in length.</p>
-				</div>
+                    <p>
+                        The issuance of a solo certification shall be in accordance with <b>section 8 of the Miami ARTCC
+                        SOP</b>.
+
+                        Please ensure that the student's training records have been entered onto their ZMA and VATUSA
+                        record <b>prior</b> to issuance of any solo certification.
+
+                        Ensure that you enter solo certifications into the appropriate system in accordance with section
+                        <b>8.4 of the Miami ARTCC SOP</b>. The student <i>cannot</i> take advantage of solo certifications that are
+                        not entered correctly.
+                    </p>
+                </div>
 				<form class="col s12 l6 pull-l6" @submit.prevent=submitCert>
 					<div class="row row_no_margin">
 						<div class="col s12 input-field">
