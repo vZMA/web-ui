@@ -13,6 +13,7 @@
                         it's 30 minutes or 4 hours. The Trainer has the ability to modify the session times to a more
                         reasonable duration, if needed, when s/he picks up the training session.
                     </p>
+                    <br>
                     <b>By submitting this training request, you acknowledge:</b>
                     <ol>
                         <li>This is a <em>request</em> and not a guarantee of training.</li>
