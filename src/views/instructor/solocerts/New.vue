@@ -10,12 +10,10 @@
                     <p>
                         The issuance of a solo certification shall be in accordance with <b>section 8 of the Miami ARTCC
                         SOP</b>.
-					</p>
-					<p>
+					<br><br>
                         Please ensure that the student's training records have been entered onto their ZMA and VATUSA
                         record <b>prior</b> to issuance of any solo certification.
-					</p>
-					<p>
+					<br><br>
                         Ensure that you enter solo certifications into the appropriate system in accordance with section
                         <b>8.4 of the Miami ARTCC SOP</b>. The student <i>cannot</i> take advantage of solo certifications that are
                         not entered correctly.
