@@ -94,7 +94,7 @@ export default {
 			}
 		},
 		calculateDates() {
-			const d = new Date((new Date()).toISOString()),
+			const d = new Date((new Date()).toISOString().slice(0,10)),
 				currentDay = d.getDay(),
 				diff = d.getDate() - currentDay,
 				startOfWeek = d.setDate(diff);
