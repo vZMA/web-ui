@@ -94,12 +94,11 @@ export default {
 			}
 		},
 		calculateDates() {
-			const d = new Date((new Date()).toISOString(),
-				currentDay = d.getDay();
-			d.setHours(12);
-			const	diff = d.getDate() - currentDay,
+			const d = new Date((new Date()).toISOString()),
+				currentDay = d.getDay(),
+				diff = d.getDate() - currentDay,
 				startOfWeek = d.setDate(diff);
-		
+			
 			for(let i = 0; i < this.days; i++) {
 				this.dates.push({
 					"date": (new Date(startOfWeek + (i * 1000 * 60 * 60 * 24)).toISOString()),
