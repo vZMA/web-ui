@@ -73,8 +73,8 @@ export default {
 
 				console.log('Payload: ' + payload);
 
-				const {data1} = JSON.parse(payload); 
-				console.log('Decoded Payload Data: ' + data1[0]);
+				data = JSON.parse(payload); 
+				console.log('Parsed data' + data);
 	
 				for (const cert of data1.data) {
 					if(this.positions.includes(cert.position.slice(0, 3))) 
