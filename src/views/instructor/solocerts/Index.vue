@@ -70,11 +70,9 @@ export default {
 			try {
 				const {data} = await vatusaApi.get('/solo');
 				console.log(data);
-
-				const {data1} = eval('(' + data + ')');
-				console.log(data1.data[0]);
-				const {data2} = atob(data1.data[0]);
-				console.log(data2);
+				console.log(data.payload);
+				const {data1} = atob(data.payload);
+				console.log(data1);
 				for (const cert of data1.data) {
 					//if(this.positions.includes(cert.position.slice(0, 3))) 
 						this.certs.push(cert);
