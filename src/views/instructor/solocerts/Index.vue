@@ -73,7 +73,7 @@ export default {
 
 				console.log('Payload: ' + payload);
 
-				data = JSON.parse(payload); 
+				var data1 = JSON.parse(payload); 
 				console.log('Parsed data' + data);
 	
 				for (const cert of data1.data) {
