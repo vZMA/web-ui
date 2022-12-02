@@ -68,13 +68,13 @@ export default {
 	methods: {
 		async getSoloCerts() {
 			try {
-				const {data} = await vatusaApiAuth.get('/solo');
-				for (const cert of data.data) {
+				const {data} = await vatusaApi.get('/solo');
+				for (const cert of data.payload.atob()) {
 					//if(this.positions.includes(cert.position.slice(0, 3))) 
 						this.certs.push(cert);
 				}
 			} catch(e) {
-				console.log(e);
+				console.log(e);  
 			}
 		},
 		async getControllers() {
