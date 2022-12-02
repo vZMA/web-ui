@@ -22,7 +22,8 @@
 				</thead>
 				<tbody class="certs_list_row">
 					<tr v-for="(cert, i) in certs" :key="cert.id">
-						<td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">{{getName(cert.cid)}}</router-link></td>						<td>{{cert.position}}</td>
+						<td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">{{getName(cert.cid)}}</router-link></td>
+						<td>{{cert.position}}</td>
 						<td>{{cert.expires}}</td> 
 						<td class="options">
 							<a :href="`#modal_delete_${cert.cid}`" data-position="top" data-tooltip="Delete Solocert" class="tooltipped modal-trigger">
@@ -32,12 +33,12 @@
 						<div :id="`modal_delete_${cert.cid}`" class="modal modal_delete">
 							<div class="modal-content">
 								<h4>Delete solo certification?</h4>
-								<p>This will delete the solo certification for {{getName(cert.cid)}} on {{cert.position}} entirely.</p>
+								<p>This will delete the solo certification for <!--{{getName(cert.cid)}} on {{cert.position}}--> entirely.</p>
 							</div>
-							<!--<div class="modal-footer">
+							<div class="modal-footer">
 								<a href="#!" class="waves-effect btn" @click="deleteCert(cert.cid, cert.position)">Delete</a>
 								<a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
-							</div>-->
+							</div>
 						</div>
 					</tr>
 				</tbody>
