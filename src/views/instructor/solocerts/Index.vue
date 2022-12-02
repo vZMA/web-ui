@@ -68,9 +68,7 @@ export default {
 	methods: {
 		async getSoloCerts() {
 			try {
-				const {response} = await vatusaApi.get('/solo');
-				const {data} = JSON.parse(response);
-				console.log(response);
+				const {data} = await vatusaApi.get('/solo');
 				console.log(data);
 				const {data1} = JSON.parse(data[0].atob());
 				console.log(data1);
