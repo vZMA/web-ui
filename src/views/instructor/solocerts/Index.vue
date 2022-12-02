@@ -69,8 +69,9 @@ export default {
 		async getSoloCerts() {
 			try {
 				const {response} = await vatusaApi.get('/solo');
-				const {data} = JSON.parse(atob(response.payload));
-				for (const cert of data.data) {
+				const {data} = JSON.parse(response);
+				const {data1} = JSON.parse(data[0].atob())
+				for (const cert of data1.data) {
 					//if(this.positions.includes(cert.position.slice(0, 3))) 
 						this.certs.push(cert);
 				}
