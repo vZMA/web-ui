@@ -71,7 +71,7 @@ export default {
 				const {data} = await vatusaApi.get('/solo');
 				console.log('Response:' + data);
 				console.log('Decoded Payload:' + atob(data.payload));
-				const {data1} = atob(data.payload.data);
+				const {data1} = atob(data.payload);
 				console.log('Decoded Payload Data: ' + data1);
 	
 				for (const cert of data1.data) {
