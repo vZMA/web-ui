@@ -29,7 +29,7 @@
 								<i class="material-icons red-text text-darken-2">delete</i>
 							</a>
 						</td>
-						<div :id="`modal_delete_${i}`" class="modal modal_delete">
+<!--						<div :id="`modal_delete_${i}`" class="modal modal_delete">
 							<div class="modal-content">
 								<h4>Delete solo certification?</h4>
 								<p>This will delete the solo certification for {{getName(cert.cid)}} on {{cert.position}} entirely.</p>
@@ -38,7 +38,7 @@
 								<a href="#!" class="waves-effect btn" @click="deleteCert(cert.cid, cert.position)">Delete</a>
 								<a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
 							</div>
-						</div>
+						</div>-->
 					</tr>
 				</tbody>
 			</table>
