@@ -24,7 +24,9 @@
 					<tr v-for="(cert, i) in certs" :key="cert.id">
 						<td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">{{getName(cert.cid)}}</router-link></td>						<td>{{cert.position}}</td>
 						<td>{{cert.expires}}</td> 
-						<td>
+						<td><a :href="`#modal_delete_${i}`" data-position="top" data-tooltip="Delete Solo Certificate" class="tooltipped modal-trigger">
+								<i class="material-icons red-text text-darken-2">delete</i>
+							</a>
 							<div :id="`modal_delete_${i}`" class="modal modal_delete">
 							<div class="modal-content">
 								<h4>Delete solo certification?</h4>
