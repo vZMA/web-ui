@@ -66,10 +66,13 @@ export default {
 		await this.getControllers();
 		this.loading = false;
 		
-		M.Tooltip.init(document.querySelectorAll('.tooltipped'), {});
 		M.Modal.init(document.querySelectorAll('.modal'), {
 			preventScrolling: false
 		});
+		M.Tooltip.init(document.querySelectorAll('.tooltipped'), { 
+			margin: 0
+		});
+
 	},
 	methods: {
 		async getSoloCerts() {
