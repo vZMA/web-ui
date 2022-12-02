@@ -22,7 +22,7 @@
 						<div class="week">
 							<router-link :to="`/ins/training/requests/${urlSafeDate(date.date)}`" :class="`day ${date.requests.length > 0 ? 'has_request' : ''}`" v-for="date in dates.slice(0,7)" :key="date.date">
 								<div class="week_date">
-									<span :class="[((new Date(date.date).getTime()) - (new Date().getTime()) < 0 ? 'past_date' : ''), (new Date(new Date().getTime()).getUTCDate() === new Date(date.date).getUTCDate() ? 'current_date' : '')]">
+									<span :class="[((new Date(date.date).getTime()) - (new Date().getTime()) < 0 ? 'past_date' : ''), (new Date(new Date().getTime()).getDate() === new Date(date.date).getDate() ? 'current_date' : '')]">
 										{{new Date(date.date).toUTCString().slice(5, 11)}}
 									</span>
 								</div>
