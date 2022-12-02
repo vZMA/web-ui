@@ -70,7 +70,10 @@ export default {
 			try {
 				const {response} = await vatusaApi.get('/solo');
 				const {data} = JSON.parse(response);
-				const {data1} = JSON.parse(data[0].atob())
+				console.log(response);
+				console.log(data);
+				const {data1} = JSON.parse(data[0].atob());
+				console.log(data1);
 				for (const cert of data1.data) {
 					//if(this.positions.includes(cert.position.slice(0, 3))) 
 						this.certs.push(cert);
