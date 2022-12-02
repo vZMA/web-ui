@@ -98,7 +98,7 @@ export default {
 		},
 		calculateDates() {
 			const d = new Date((new Date()).toISOString()),
-				currentDay = d.getDay(),
+				currentDay = d.getUTCDay(),
 				diff = d.getDate() - currentDay,
 				startOfWeek = d.setDate(diff);
 			
