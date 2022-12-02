@@ -26,7 +26,6 @@
 										{{new Date(date.date).toString().slice(4, 11)}}
 									</span>
 								</div>
-							//  <div :class="`date_requests ${(new Date(Date.UTC(date.date)).getTime()) - (new Date().getTime()) < 0 ? 'past' : ''}`" v-if="date.requests.length > 0">
 								<div :class="`date_requests ${(new Date(date.date).getTime()) - (new Date().getTime()) < 0 ? 'past' : ''}`" v-if="date.requests.length > 0">
 									{{date.requests.length}} request<span v-if="date.requests.length > 1">s</span>
 								</div>
