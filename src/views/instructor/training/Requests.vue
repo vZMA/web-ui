@@ -98,13 +98,13 @@ export default {
 		},
 		calculateDates() { // This section is used to calculate the start date of the week and the subsequent 21 date
 			const d = new Date((new Date()).toISOString()),
-				currentDay = d.getDay(),
+				currentDay = d.getUTCDay(),
 				diff = d.getDate() - currentDay,
 				startOfWeek = d.setDate(diff);
 			
 			for(let i = 0; i < this.days; i++) {
 				this.dates.push({
-					"date": (new Date(startOfWeek + (i * 1000 * 60 * 60 * 24)).toISOString()),
+					"date": (new Date(startOfWeek + (i * 1000 * 60 * 60 * 24)).toISOString())),
 					"requests": []
 				});
 			}
