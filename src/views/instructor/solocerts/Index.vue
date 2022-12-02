@@ -69,10 +69,11 @@ export default {
 		async getSoloCerts() {
 			try {
 				const {data} = await vatusaApi.get('/solo');
-				console.log('Response:' + data);
-				console.log('Decoded Payload:' + atob(data.payload));
-				console.log('Parser output: ' + JSON.parse(atob(data.payload)));
-				const {data1} = JSON.parse(atob(data.payload)); 
+				const payload = atob(data.payload);
+
+				console.log('Payload: ' + payload);
+
+				const {data1} = JSON.parse(payload); 
 				console.log('Decoded Payload Data: ' + data1);
 	
 				for (const cert of data1.data) {
