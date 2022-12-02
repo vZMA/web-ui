@@ -78,17 +78,14 @@ export default {
 	methods: {
 		async getRequests() {
 			try {
-				const {data} = await zabApi.get('/training/request/open', {
+				const { data } = await zabApi.get('/training/request/open', {
 					params: {
 						period: 21 // 21 days from start of week
 					}
 				});
-
 				for(const request of data.data) {
 					for(const date of this.dates) {
-						if(date.date.slice(0,10) === new Date(new Date(request.startTime)).toISOString().slice(0,10)) {
-							date.requests.push(request);
-						}
+						if(date.date.slice(0,10) === new Date(request.startTime).toISOString().slice(0, 10)) date.requests.push(request);
 					}
 				}
 				this.loading = false;
@@ -96,7 +93,7 @@ export default {
 				console.log(e);
 			}
 		},
-		calculateDates() { // This section is used to calculate the start date of the week and the subsequent 21 date
+		calculateDates() {
 			const d = new Date((new Date()).toISOString()),
 				currentDay = d.getDay(),
 				diff = d.getDate() - currentDay,
@@ -104,7 +101,7 @@ export default {
 			
 			for(let i = 0; i < this.days; i++) {
 				this.dates.push({
-					"date": (new Date(startOfWeek + (i * 1000 * 60 * 60 * 24)).toIOSString()),
+					"date": (new Date(startOfWeek + (i * 1000 * 60 * 60 * 24)).toISOString()),
 					"requests": []
 				});
 			}
