@@ -77,7 +77,7 @@ export default {
 				console.log('Parsed data' + data);
 	
 				for (const cert of data1.data) {
-					if(this.positions.includes(cert.position.slice(0, 3))) 
+				//	if(this.positions.includes(cert.position.slice(0, 3))) 
 						this.certs.push(cert);
 				}
 			} catch(e) {
