@@ -23,7 +23,7 @@
 							<router-link :to="`/ins/training/requests/${urlSafeDate(date.date)}`" :class="`day ${date.requests.length > 0 ? 'has_request' : ''}`" v-for="date in dates.slice(0,7)" :key="date.date">
 								<div class="week_date">
 									<span :class="[((new Date(date.date).getTime()) - (new Date().getTime()) < 0 ? 'past_date' : ''), (new Date(new Date().getTime()).getUTCDate() === new Date(date.date).getUTCDate() ? 'current_date' : '')]">
-										{{new Date(date.date).toString().slice(4, 11)}}
+										{{new Date(date.date).toUTCString().slice(5, 11)}}
 									</span>
 								</div>
 								<div :class="`date_requests ${(new Date(date.date).getTime()) - (new Date().getTime()) < 0 ? 'past' : ''}`" v-if="date.requests.length > 0">
@@ -34,7 +34,7 @@
 						<div class="week">
 							<router-link :to="`/ins/training/requests/${urlSafeDate(date.date)}`" :class="`day ${date.requests.length > 0 ? 'has_request' : ''}`" v-for="date in dates.slice(7,14)" :key="date.date">
 								<div class="week_date">
-									{{new Date(date.date).toString().slice(4, 11)}}
+									{{new Date(date.date).toUTCString().slice(5, 11)}}
 								</div>
 								<div class="date_requests" v-if="date.requests.length > 0">
 									{{date.requests.length}} request<span v-if="date.requests.length > 1">s</span>
@@ -44,7 +44,7 @@
 						<div class="week">
 							<router-link :to="`/ins/training/requests/${urlSafeDate(date.date)}`" :class="`day ${date.requests.length > 0 ? 'has_request' : ''}`" v-for="date in dates.slice(14)" :key="date.date">
 								<div class="week_date">
-									{{new Date(date.date).toString().slice(4, 11)}}
+									{{new Date(date.date).toUTCString().slice(5, 11)}}
 								</div>
 								<div class="date_requests" v-if="date.requests.length > 0">
 									{{date.requests.length}} request<span v-if="date.requests.length > 1">s</span>
@@ -96,9 +96,9 @@ export default {
 				console.log(e);
 			}
 		},
-		calculateDates() {
+		calculateDates() { // This section is used to calculate the start date of the week and the subsequent 21 date
 			const d = new Date((new Date()).toISOString()),
-				currentDay = d.getDay(),
+				currentDay = d.getUTCDay(),
 				diff = d.getUTCDate() - currentDay,
 				startOfWeek = d.setDate(diff);
 			
