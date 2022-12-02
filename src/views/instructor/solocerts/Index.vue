@@ -23,8 +23,8 @@
 				<tbody class="certs_list_row">
 					<tr v-for="(cert, i) in certs" :key="cert.id">
 						<td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">{{getName(cert.cid)}}</router-link></td>						<td>{{cert.position}}</td>
-						<td>{{cert.expires}}</td>
-						<td class="options"><a :href="`#modal_delete_${i}`" class="modal-trigger red-text text-darken-2"><i class="material-icons">delete</i></a></td>
+						<td>{{cert.expires}}</td> 
+						<!--<td class="options"><a :href="`#modal_delete_${i}`" class="modal-trigger red-text text-darken-2"><i class="material-icons">delete</i></a></td>
 						<div :id="`modal_delete_${i}`" class="modal modal_delete">
 							<div class="modal-content">
 								<h4>Delete solo certification?</h4>
@@ -34,7 +34,7 @@
 								<a href="#!" class="waves-effect btn" @click="deleteCert(cert.cid, cert.position)">Delete</a>
 								<a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
 							</div>
-						</div>
+						</div>-->
 					</tr>
 				</tbody>
 			</table>
@@ -76,7 +76,7 @@ export default {
 				console.log('Parsed data' + data1.data);
 	
 				for (const cert of data1.data) {
-				//	if(this.positions.includes(cert.position.slice(0, 3))) 
+					if(this.positions.includes(cert.position.slice(0, 3))) 
 						this.certs.push(cert);
 				}
 			} catch(e) {
