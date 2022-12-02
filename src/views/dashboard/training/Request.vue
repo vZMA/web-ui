@@ -148,10 +148,10 @@ export default {
 				let milestonesShowed = this.milestones.filter((milestone) => {
 					//simplified this logic per TA request to offer only these options to all trainees, regardless of cert held
 					if(this.user.data.vis) {
-							return milestone.code === "TRN" || milestone.code === "PVR";
+							return milestone.code === "TRN" || milestone.code === "GRP" || milestone.code === "MOTS";
 					} else {
 							//simplified this logic per TA request to offer only these options to all trainees, regardless of cert held
-							return milestone.code === "TRN" || milestone.code === "OTS" || milestone.code === "PVR";
+							return milestone.code === "TRN" || milestone.code === "GRP" || milestone.code === "MOTS" || milestone.code === "ROTS";
 					}
 				});
 
