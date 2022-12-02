@@ -49,7 +49,7 @@ export default {
 	title: 'Solo Certifications',
 	data() {
 		return {
-			positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'EYW'],
+			positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'NQX', 'ZMO'],
 			certs: [],
 			controllers: null,
 			loading: true
@@ -69,12 +69,7 @@ export default {
 			try {
 				const {data} = await vatusaApi.get('/solo');
 				const payload = atob(data.payload);
-
-				console.log('Payload: ' + payload);
-
-				var data1 = JSON.parse(payload); 
-				console.log('Parsed data' + data1.data);
-	
+				var data1 = JSON.parse(payload);  
 				for (const cert of data1.data) {
 					if(this.positions.includes(cert.position.slice(0, 3))) 
 						this.certs.push(cert);
