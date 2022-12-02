@@ -36,7 +36,7 @@
 								<p>This will delete the solo certification for <!--{{getName(cert.cid)}} on {{cert.position}}--> entirely.</p>
 							</div>
 							<div class="modal-footer">
-								<!--><a href="#!" class="waves-effect btn" @click="deleteCert(cert.cid, cert.position)">Delete</a>-->
+								<!--<a href="#!" class="waves-effect btn" @click="deleteCert(cert.cid, cert.position)">Delete</a>-->
 								<a href="#!" class="waves-effect btn" @click="">Delete</a>
 								<a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
 							</div>
