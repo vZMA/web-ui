@@ -104,7 +104,7 @@ export default {
 			
 			for(let i = 0; i < this.days; i++) {
 				this.dates.push({
-					"date": (new Date(startOfWeek + (i * 1000 * 60 * 60 * 24)).toISOString())),
+					"date": (new Date(startOfWeek + (i * 1000 * 60 * 60 * 24)).toIOSString()),
 					"requests": []
 				});
 			}
