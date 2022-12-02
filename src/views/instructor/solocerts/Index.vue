@@ -50,7 +50,7 @@ export default {
 	title: 'Solo Certifications',
 	data() {
 		return {
-			positions: ['ABQ', 'PHX', 'TUS', 'ELP', 'AMA'],
+			positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'EYW'],
 			certs: [],
 			controllers: null,
 			loading: true
@@ -68,9 +68,11 @@ export default {
 	methods: {
 		async getSoloCerts() {
 			try {
-				const {data} = await vatusaApi.get('/solo');
+				//const {data} = await vatusaApi.get('/solo');
+				const {data} = ftech('https://api.vatusa.net/v2/solo');
 				for (const cert of data.data) {
-					if(this.positions.includes(cert.position.slice(0, 3))) this.certs.push(cert);
+					//if(this.positions.includes(cert.position.slice(0, 3))) 
+						this.certs.push(cert);
 				}
 			} catch(e) {
 				console.log(e);
