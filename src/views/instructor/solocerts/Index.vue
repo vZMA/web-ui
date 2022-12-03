@@ -6,7 +6,7 @@
 				<div class="col s4"><router-link to="/ins/solo/new"><span class="btn new_event_button right">New</span></router-link></div>
 			</div>
 		</div>
-		<div class="loading_container" v-if="!events">
+		<div class="loading_container" v-if="loading">
 			<Spinner />
 		</div>
 		<p class="no_certs" v-else-if="loading === false && certs.length == 0">There are no active solo certifications issued by ZMA</p>
