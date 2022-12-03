@@ -65,13 +65,15 @@ export default {
 		await this.getSoloCerts();
 		await this.getControllers();
 
+		this.loading = false;
+		
 		M.Modal.init(document.querySelectorAll('.modal'), {
 			preventScrolling: false
 		});
 		M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
 			margin: 0
 		});
-		this.loading = false;
+		
 	},
 	methods: {
 	async getSoloCerts() {
