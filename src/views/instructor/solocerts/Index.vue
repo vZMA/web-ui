@@ -10,8 +10,8 @@
         <div class="loading_container" v-if="loading">
             <Spinner />
         </div>
-        <p class="no_certs" v-else-if="loading === false && certs.length == 0">There are no active solo certifications issued by ZMA</p>
-        <div class="certs wrapper" v-else>
+        
+        <div class="certs wrapper">
 			 <table class="certs_list striped compact" >
                 <thead class="certs_list_head">
                     <tr>
@@ -54,7 +54,7 @@ export default {
    title: 'Solo Certifications',
    data() {
         return {
-            positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'NQX', 'ZMO', 'CLT', 'DEN'],
+            positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'NQX', 'ZMO'],
             certs: [],
             controllers: null,
             loading: true
