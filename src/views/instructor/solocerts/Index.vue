@@ -11,7 +11,7 @@
 		</div>
 		<p class="no_certs" v-else-if="loading === false && certs.length === 0">There are no active solo certifications issued by ZMA</p>
 		<div class="table_wrapper" v-else>
-			<table class="striped">
+			<table class="striped compact">
 				<thead class="certs_list_head">
 					<tr>
 						<th>Controller</th>
@@ -21,7 +21,7 @@
 					</tr>
 				</thead>
 				<tbody class="certs_list_row">
-					<tr v-for="(cert, i) in certs" :key="cert.id">
+					<tr v-for="cert in certs" :key="cert.id">
 						<td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">{{getName(cert.cid)}}</router-link></td>
 						<td>{{cert.position}}</td>
 						<td>{{cert.expires}}</td> 
@@ -33,11 +33,11 @@
 						<div :id="`modal_delete_${cert.id}`" class="modal modal_delete">
 							<div class="modal-content">
 								<h4>Delete solo certification?</h4>
-								<p>This will delete the solo certification for <!--{{getName(cert.cid)}} on {{cert.position}}--> entirely.</p>
+								<p>This will delete the solo certification for {{getName(cert.cid)}} on {{cert.position}} entirely.</p>
 							</div>
 							<div class="modal-footer">
-								<!--<a href="#!" class="waves-effect btn" @click="deleteCert(cert.cid, cert.position)">Delete</a>
-								--><a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
+								<a href="#!" class="waves-effect btn" @click="deleteCert(cert.cid, cert.position)">Delete</a>
+								<a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
 							</div>
 						</div>
 					</tr>
