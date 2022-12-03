@@ -10,7 +10,6 @@
         <div class="loading_container" v-if="loading">
             <Spinner />
         </div>
-        <div class="no_certs" v-else-if="certs.length === 0"><p>There are no active solo certifications issued by ZMA</p></div>
         <div class="certs_wrapper" v-else>
 			 <table class="certs_list striped compact" >
                 <thead class="certs_list_head">
