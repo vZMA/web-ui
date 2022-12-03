@@ -3,7 +3,7 @@
 		<div class="card">
 			<div class="card-content">
 				<div class="row row_no_margin">
-					<span class="card-title">Solo Certifications</span>
+					<div><span class="card-title">Solo Certifications</span></div>
 					<div class="col s4"><router-link to="/ins/solo/new"><span class="btn new_cert_button right">New</span></router-link></div>
 				</div>
 			</div>
