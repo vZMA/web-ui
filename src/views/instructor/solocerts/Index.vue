@@ -6,11 +6,7 @@
                 <div class="col s4"><router-link to="/ins/solo/new"><span class="btn waves-effect waves-light right">New</span></router-link></div>
             </div>
         </div>
-        <div class="loading_container" v-if="loading">
-            <Spinner />
-        </div>
-		
-        <p class="no_certs" v-else-if="loading === false && certs.length === 0">There are no solo certificates for ZMA.</p>
+   
         <div class="certs wrapper" v-else>
 			<table class="certs_list striped compact">
                 <thead class="certs_list_head">
@@ -23,16 +19,16 @@
                 </thead>
                 <tbody class="certs_list_row">
 					
-					 <tr v-for="(cert, i) in certs" :key="cert.id">
-                        <td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">Name</router-link></td>
-                        <td>{{cert.position}}</td>
-                        <td>{{cert.expires}}</td>
+					 <tr>
+                        <td>Name</td>
+                        <td>Position</td>
+                        <td>Expires</td>
                         <td class="options">
-                           <a :href="`#modal_delete_${i}`" data-position="top" data-tooltip="Delete Certificate" class="tooltipped modal-trigger">
+                           <a href="#modal_delete" data-position="top" data-tooltip="Delete Certificate" class="tooltipped modal-trigger">
                                 <i class="material-icons red-text text-darken-2">delete</i>
                             </a>
                         </td>
-                        <div :id="`modal_delete_${i}`" class="modal modal_delete">
+                        <div id="modal_delete" class="modal modal_delete">
                             <div class="modal-content">
                                 <h4>Delete Certificate?</h4>
                                 <p>This will delete the solo certificate for on.</p>
@@ -46,10 +42,11 @@
                 </tbody>
             </table>
 		</div>
-    </div>
+	</div>
 </template>
+
 <script>
-import {vatusaApiAuth, vatusaApi, zabApi} from '@/helpers/axios.js';
+//import {vatusaApiAuth, vatusaApi, zabApi} from '@/helpers/axios.js';
 
 export default {
    name: 'SoloCerts',
@@ -64,72 +61,18 @@ export default {
     },
     
     async mounted() {
-        await this.getSoloCerts();
-        await this.getControllers();
-        this.loading = false;
-        console.log('Init Data loaders complete')
 
-        console.log('result :' + M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
+        this.loading = false;
+
+		 M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
             margin: 0
-        }) );
-        console.log('tooltips init tooltipped complete')
-        console.log('result :' + M.Modal.init(document.querySelectorAll('.modal'), {
+        }) ;
+        M.Modal.init(document.querySelectorAll('.modal'), {
             preventScrolling: false
-        }));
-        console.log('tooltips init modal complete')
+        });
         
     },
-    methods: {
-    async getSoloCerts() {
-                try {
-                            
-                    // Fetch and decode API data
-
-                    const {data} = await vatusaApi.get('/solo');    
-                    const payload = atob(data.payload);
-                    var data1 = JSON.parse(payload);
-                    for (const cert of data1.data) {
-                        if(this.positions.includes(cert.position.slice(0, 3))) 
-                            this.certs.push(cert);
-                    }
-
-                } catch(e) {
-                    console.log(e);  
-                }
-            },
-            async getControllers() {
-                try {
-                    const {data} = await zabApi.get('/feedback/controllers');
-                    this.controllers = data.data;
-                } catch(e) {
-                    console.log(e);
-                }
-            },
-            async deleteCert(cid, pos) {
-                try {
-                    const formData = new FormData();
-                    formData.append('cid', cid);
-                    formData.append('position', pos);
-                    await vatusaApiAuth.delete('/solo', formData);
-
-                    this.toastSuccess('Solo Certification deleted');
-
-                    await this.getSoloCerts();
-                    this.$nextTick(() => {
-                        M.Modal.getInstance(document.querySelector('.modal_delete')).close();
-                    });
-                    
-                } catch(e) {
-                    this.toastError('Something went wrong, please try again');
-                }
-            },
-            getName(cid2) {
-                const controller = this.controllers.filter(i => { return i.cid === cid2; });
-                console.log(controller);
-                return controller[0].fname + ' ' + controller[0].lname;
-            }
-        }
-    };
+ } ;
 </script>
 
 <style scoped lang="scss">
