@@ -15,7 +15,7 @@
 				<thead class="certs_list_head">
 					<tr>
 						<th>Controller</th>
-						<th>Postition</th>
+						<th>Position</th>
 						<th>Expires</th>
 						<th class="options">Options</th>
 					</tr>
@@ -26,8 +26,7 @@
 						<td>{{cert.position}}</td>
 						<td>{{cert.expires}}</td>
 						<td class="options">
-							<router-link data-position="top" data-tooltip="Assign Positions" class="tooltipped" :to="`/admin/events/assign/`"><i class="material-icons">group</i></router-link>
-							<a :href="`#modal_delete_${cert.cid}`" data-position="top" data-tooltip="Delete Solo Cert" data-toggle="modal" class="tooltipped modal-trigger"><i class="material-icons red-text text-darken-2">delete</i></a>
+							<a :href="`#modal_delete_${cert.cid}`" data-position="top" data-tooltip="Delete Solo Cert" class="tooltipped modal-trigger"><i class="material-icons red-text text-darken-2">delete</i></a>
 						</td>
 						<div :id="`modal_delete_${cert.cid}`" class="modal modal_delete">
 							<div class="modal-content">
