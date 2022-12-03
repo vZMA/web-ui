@@ -3,7 +3,7 @@
 		<div class="card">
 			<div class="card-content">
 				<div class="row row_no_margin">
-					<div class="card-title col s8"><span class="card-title">Solo Certifications</span></div>
+					<span class="card-title">Solo Certifications</span>
 					<div class="col s4"><router-link to="/ins/solo/new"><span class="btn new_cert_button right">New</span></router-link></div>
 				</div>
 			</div>
@@ -26,9 +26,9 @@
 						<td>{{cert.position}}</td>
 						<td>{{cert.expires}}</td>
 						<td class="options">
-							<a :href="`#modal_delete_${cert.cid}`" data-position="top" data-tooltip="Delete Solo Cert" class="tooltipped modal-trigger"><i class="material-icons red-text text-darken-2">delete</i></a>
+							<a href="`#modal_delete_${cert.cid}`" data-position="top" data-tooltip="Delete Solo Cert" class="tooltipped modal-trigger"><i class="material-icons red-text text-darken-2">delete</i></a>
 						</td>
-						<div :id="`modal_delete_${cert.cid}`" class="modal modal_delete">
+						<div id="`modal_delete_${cert.cid}`" class="modal modal_delete">
 							<div class="modal-content">
 								<h4>Delete Solo Cert?</h4>
 								<p>This will remove the Solo Certification from VATUSA.</p>
