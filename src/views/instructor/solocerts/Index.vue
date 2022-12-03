@@ -8,7 +8,11 @@
         </div>
    
         <div class="certs wrapper">
-			<table class="certs_list striped compact">
+			<div class="loading_container" v-if="loading">
+                <Spinner />
+            </div>
+            <p class="no_certs" v-else-if="loading === false && certs.length == 0">There are no active solo certifications issued by ZMA</p>
+            <table class="certs_list striped compact" v-else>
                 <thead class="certs_list_head">
                     <tr>
                         <th>Name</th>
