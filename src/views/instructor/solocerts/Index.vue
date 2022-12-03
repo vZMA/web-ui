@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import {vatusaAPIAuth, vatusaAPI, zabApi} from '@/helpers/axios.js';
+import {vatusaAPIAuth, vatusaApi, zabApi} from '@/helpers/axios.js';
 
 export default {
     name: 'SoloCerts',
