@@ -6,8 +6,12 @@
                 <div class="col s4"><router-link to="/ins/solo/new"><span class="btn waves-effect waves-light right">New</span></router-link></div>
             </div>
         </div>
-   
-        <div class="certs wrapper">
+ 
+        <div class="loading_container" v-if="loading">
+            <Spinner />
+        </div>
+        <p class="no_certs" v-else-if="loading === false && certs.length == 0">There are no active solo certifications issued by ZMA</p>
+        <div class="certs wrapper" v-else>
 			 <table class="certs_list striped compact" >
                 <thead class="certs_list_head">
                     <tr>
