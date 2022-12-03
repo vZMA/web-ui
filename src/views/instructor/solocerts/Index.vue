@@ -61,7 +61,8 @@ export default {
     },
     
     async mounted() {
-
+        await this.getControllers();
+        await this.getSoloCerts();
         this.loading = false;
 
 		 M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
@@ -73,6 +74,58 @@ export default {
         
     },
  } ;
+
+ methods: {
+    async getSoloCerts() {
+                try {
+                            
+                    // Fetch and decode API data
+
+                    const {data} = await vatusaApi.get('/solo');    
+                    const payload = atob(data.payload);
+                    var data1 = JSON.parse(payload);
+                    for (const cert of data1.data) {
+                        if(this.positions.includes(cert.position.slice(0, 3))) 
+                            this.certs.push(cert);
+                    }
+
+                } catch(e) {
+                    console.log(e);  
+                }
+            },
+            async getControllers() {
+                try {
+                    const {data} = await zabApi.get('/feedback/controllers');
+                    this.controllers = data.data;
+                } catch(e) {
+                    console.log(e);
+                }
+            },
+            async deleteCert(cid, pos) {
+                try {
+                    const formData = new FormData();
+                    formData.append('cid', cid);
+                    formData.append('position', pos);
+                    await vatusaApiAuth.delete('/solo', formData);
+
+                    this.toastSuccess('Solo Certification deleted');
+
+                    await this.getSoloCerts();
+                    this.$nextTick(() => {
+                        M.Modal.getInstance(document.querySelector('.modal_delete')).close();
+                    });
+                    
+                } catch(e) {
+                    this.toastError('Something went wrong, please try again');
+                }
+            },
+            getName(cid2) {
+                const controller = this.controllers.filter(i => { return i.cid === cid2; });
+                console.log(controller);
+                return controller[0].fname + ' ' + controller[0].lname;
+            }
+        }
+    
 </script>
 
 <style scoped lang="scss">
