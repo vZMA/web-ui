@@ -26,11 +26,11 @@
 						<td>{{cert.position}}</td>
 						<td>{{cert.expires}}</td> 
 						<td class="options">
-							<a :href="`#modal_delete_${i}`" data-position="top" data-tooltip="Delete Solocert" class="tooltipped modal-trigger">
+							<a :href="`#modal_delete_${cert.id}`" data-position="top" data-tooltip="Delete Solocert" class="tooltipped modal-trigger">
 								<i class="material-icons red-text text-darken-2">delete</i>
 							</a>
 						</td>
-						<div :id="`modal_delete_${i}`" class="modal modal_delete">
+						<div :id="`modal_delete_${cert.id}`" class="modal modal_delete">
 							<div class="modal-content">
 								<h4>Delete solo certification?</h4>
 								<p>This will delete the solo certification for <!--{{getName(cert.cid)}} on {{cert.position}}--> entirely.</p>
