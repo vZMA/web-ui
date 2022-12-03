@@ -5,13 +5,16 @@
                 <div class="card-title col s8"><span class="card-title">Solo Certificates</span></div>
                 <div class="col s4"><router-link to="/ins/solo/new"><span class="btn waves-effect waves-light right">New</span></router-link></div>
             </div>
+            <div>
+                <p class="no_certs" v-if="loading===false && certs.length === 0">There are no solo certificates on record for ZMA</p>
+            </div>
         </div>
  
         <div class="loading_container" v-if="loading">
             <Spinner />
         </div>
-        <p class="no_certs" v-else-if="loading===false &&  certs.length === 0">There are no solo certificates on record for ZMA</p>
-        <div class="certs_wrapper" v-else>
+       
+        <div class="certs_wrapper">
 			 <table class="certs_list striped compact" >
                 <thead class="certs_list_head">
                     <tr>
