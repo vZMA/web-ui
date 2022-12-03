@@ -22,15 +22,8 @@
                     </tr>
                 </thead>
                 <tbody class="certs_list_row">
-					<tr>
-						<td>Name data</td>
-						<td>position data</td>
-						<td>expirey data</td>
-						<td><a href="#modal_delete_0" data-position="top" data-tooltip="Delete Certificate" class="tooltipped modal-trigger">
-                                <i class="material-icons red-text text-darken-2">delete</i>
-                            </a></td>
-						
-<!--                    <tr v-for="(cert, i) in certs" :key="cert.id">
+					
+					 <tr v-for="(cert, i) in certs" :key="cert.id">
                         <td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">Name</router-link></td>
                         <td>{{cert.position}}</td>
                         <td>{{cert.expires}}</td>
@@ -38,8 +31,8 @@
                            <a :href="`#modal_delete_${i}`" data-position="top" data-tooltip="Delete Certificate" class="tooltipped modal-trigger">
                                 <i class="material-icons red-text text-darken-2">delete</i>
                             </a>
-                        </td>-->
-                        <div id="modal_delete_0" class="modal modal_delete">
+                        </td>
+                        <div :id="`modal_delete_${i}`" class="modal modal_delete">
                             <div class="modal-content">
                                 <h4>Delete Certificate?</h4>
                                 <p>This will delete the solo certificate for on.</p>
@@ -55,7 +48,6 @@
 		</div>
     </div>
 </template>
-
 <script>
 import {vatusaApiAuth, vatusaApi, zabApi} from '@/helpers/axios.js';
 
