@@ -85,8 +85,13 @@ export default {
 					for (const cert of data1.data) {
 						if(this.positions.includes(cert.position.slice(0, 3))) 
 							this.certs.push(cert);
+<<<<<<< HEAD
 					}			
 
+=======
+					}						
+					
+>>>>>>> aa94fc1df2266e7b1097a32ed0ddcfdbed0dcbad
 				} catch(e) {
 					console.log(e);  
 				}
