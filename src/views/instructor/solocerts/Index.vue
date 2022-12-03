@@ -64,13 +64,16 @@ export default {
 		await this.getSoloCerts();
 		await this.getControllers();
 		this.loading = false;
+		console.log('Init Data loaders complete')
 
-		M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
+		console.log('result :' + M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
 			margin: 0
-		});	M.Modal.init(document.querySelectorAll('.modal'), {
+		}) );
+		console.log('tooltips init tooltipped complete')
+		console.log('result :' + M.Modal.init(document.querySelectorAll('.modal'), {
 			preventScrolling: false
-		});
-
+		}));
+		console.log('tooltips init modal complete')
 		
 	},
 	methods: {
