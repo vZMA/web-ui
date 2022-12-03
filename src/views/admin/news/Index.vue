@@ -30,7 +30,7 @@
 						</td>
 						<div :id="`modal_delete_${cert.cid}`" class="modal modal_delete">
 							<div class="modal-content">
-								<h4>Delete Solo Cert?</h4>
+								<h4>Delete Solo Cert?</h4> 
 								<p>This will remove the Solo Certification from VATUSA.</p>
 							</div>
 							<div class="modal-footer">
