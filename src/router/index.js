@@ -105,11 +105,11 @@ const routes = [
 				path: 'controllers/:cid',
 				component: () => import('../views/instructor/controllers/Edit.vue')
 			},
-	/*		{
+			{
 				path: 'solo',
 				component: () => import('../views/instructor/solocerts/Index.vue')
 			},
-	*/		{
+			{
 				path: 'solo/new',
 				component: () => import('../views/instructor/solocerts/New.vue')
 			},
@@ -144,10 +144,6 @@ const routes = [
 			{
 				path: '',
 				component: () => import('../views/admin/Index.vue')
-			},
-			{
-				path: 'solo',
-				component: () => import('../views/instructor/solocerts/Index.vue')
 			},
 			{
 				path: 'controllers',
