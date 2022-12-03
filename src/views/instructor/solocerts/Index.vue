@@ -25,18 +25,16 @@
 					<td>{{cert.position}}</td>
 					<td>{{cert.expires}}</td>
 					<td class="options">
-						<a :href="`#modal_delete_${i}`" data-position="top" data-tooltip="Delete Solo Cert" class="tooltipped modal-trigger">
-							<i class="material-icons red-text text-darken-2">delete</i>
-						</a>
+						<a :href="`#modal_delete_${cert.cid}`" data-position="top" data-tooltip="Delete Solo Cert" class="tooltipped modal-trigger"><i class="material-icons red-text text-darken-2">delete</i></a>
 					</td>
-					<div :id="`modal_delete_${i}`" class="modal modal_delete">
+					<div :id="`modal_delete_${cert.cid}`" class="modal modal_delete">
 						<div class="modal-content">
-							<h4>Delete Solo Certificate?</h4>
-							<p>This will delete the solo certification on VATUSA.  Are you sure?</p>
+							<h4>Delete Solo Cert?</h4>
+							<p>This will remove the Solo Certification from VATUSA.</p>
 						</div>
 						<div class="modal-footer">
-							<a href="#!" class="modal-close waves-effect waves-light btn" @click="deleteCert(cert.cid, cert.position)">Delete</a>
-							<a href="#!" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+							<a href="#!" @click="deleteCert(cert.cid, cert.position)" class="btn waves-effect">Delete</a>
+							<a href="#!" class="btn-flat waves-effect modal-close">Cancel</a>
 						</div>
 					</div>
 				</tr>
