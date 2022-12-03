@@ -79,7 +79,7 @@ export default {
 					const {data} = await vatusaApi.get('/solo');
 					
 					// Testing data.   Comment out this block, and uncomment following line to inject real API data
-					const payload =   '{"data":[{"id":1366,"cid":1305373,"position":"MIA_APP","expires":"2022-12-19","created_at":"2022-02-10T02:38:30+00:00","updated_at":"2022-11-19T23:19:22+00:00"},' +
+					const payload =   '{"id":1366,"cid":1305373,"position":"MIA_APP","expires":"2022-12-19","created_at":"2022-02-10T02:38:30+00:00","updated_at":"2022-11-19T23:19:22+00:00"},' +
 					'{"id":1489,"cid":1305373,"position":"TPA_APP","expires":"2022-12-06","created_at":"2022-11-06T19:45:36+00:00","updated_at":"2022-11-06T19:45:36+00:00"},'+
 					'{"id":1489,"cid":1305373,"position":"NQX_APP","expires":"2022-12-06","created_at":"2022-11-06T19:45:36+00:00","updated_at":"2022-11-06T19:45:36+00:00"},'+
 					'{"id":1489,"cid":1305373,"position":"FLL_APP","expires":"2022-12-06","created_at":"2022-11-06T19:45:36+00:00","updated_at":"2022-11-06T19:45:36+00:00"},'+
