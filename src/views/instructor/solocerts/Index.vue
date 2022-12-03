@@ -3,7 +3,7 @@
 		<div class="card-content">
 			<div class="row row_no_margin">
 				<div class="card-title col s8"><span class="card-title">Solo Certifications</span></div>
-				<div class="col s4"><router-link to="/admin/events/new"><span class="btn new_event_button right">New</span></router-link></div>
+				<div class="col s4"><router-link to="/ins/solo/new"><span class="btn new_event_button right">New</span></router-link></div>
 			</div>
 		</div>
 		<div class="loading_container" v-if="!events">
@@ -64,9 +64,8 @@ export default {
 	async mounted() {
 		await this.getSoloCerts();
 		await this.getControllers();
-
 		this.loading = false;
-		
+
 		M.Modal.init(document.querySelectorAll('.modal'), {
 			preventScrolling: false
 		});
