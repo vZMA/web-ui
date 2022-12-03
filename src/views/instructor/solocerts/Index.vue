@@ -21,7 +21,7 @@
 			</thead>
 			<tbody class="certs_list_row">
 				<tr v-for="(cert, i) in certs" :key="cert.id">
-					<td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">{{getName(cert.cid)}}</router-link>></td>
+					<td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">{{getName(cert.cid)}}</router-link></td>
 					<td>{{cert.position}}</td>
 					<td>{{cert.expires}}</td>
 					<td class="options">
@@ -124,10 +124,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.name {
-	color: $primary-color;
-	font-weight: 700;
-}
 
 table tbody {
 	tr {
@@ -144,16 +140,6 @@ table tbody {
 	font-style: italic;
 }
 
-.table_wrapper {
-	width: 100%;
-	overflow: hidden;
-}
-
-.loading {
-	width: 500px;
-	text-align: center;
-	margin: auto;
-}
 .controller_link {
 	font-weight: 700;
 	color: $primary-color;
