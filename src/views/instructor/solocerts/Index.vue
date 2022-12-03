@@ -34,7 +34,7 @@
                         <div :id="`modal_delete_${i}`" class="modal modal_delete">
                             <div class="modal-content">
                                 <h4>Delete Certificate?</h4>
-                                <p>This will delete the solo certificate for {{getName(cert.cid)}} on {{cert.position}}.</p>
+                                <p>This will delete the solo certificate for on {{cert.position}}.</p>
                             </div>
                             <div class="modal-footer">
                                 <a href="#!" class="waves-effect btn" @click="deleteCert(cert.cid, cert.postion)">Delete</a>
