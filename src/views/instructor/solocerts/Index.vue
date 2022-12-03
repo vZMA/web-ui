@@ -86,7 +86,7 @@ export default {
 					'{"id":1489,"cid":1305373,"position":"RSW_APP","expires":"2022-12-06","created_at":"2022-11-06T19:45:36+00:00","updated_at":"2022-11-06T19:45:36+00:00"},'+
 					'{"id":1480,"cid":1305373,"position":"MIA_CTR","expires":"2022-12-09","created_at":"2022-10-08T02:59:59+00:00","updated_at":"2022-11-10T04:40:20+00:00"},'+
 					'{"id":1490,"cid":1305373,"position":"ZMO_CTR","expires":"2022-12-08","created_at":"2022-11-08T05:51:56+00:00","updated_at":"2022-11-08T05:51:56+00:00"},],"testing":false}' ; 
-					
+					console.log(payload);
 					//const payload = atob(data.payload); // Replace this line to process real API data
 
 					var data1 = JSON.parse(payload);
