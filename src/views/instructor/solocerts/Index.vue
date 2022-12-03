@@ -54,7 +54,7 @@ export default {
    title: 'Solo Certifications',
    data() {
         return {
-            positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'NQX', 'ZMO'],
+            positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'NQX', 'ZMO', 'CLT', 'DEN'],
             certs: [],
             controllers: null,
             loading: true
