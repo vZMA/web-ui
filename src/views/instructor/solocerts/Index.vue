@@ -10,7 +10,8 @@
         <div class="loading_container" v-if="loading">
             <Spinner />
         </div>
-        <div class="certs_wrapper" v-else>
+        
+        <div class="certs_wrapper">
 			 <table class="certs_list striped compact" >
                 <thead class="certs_list_head">
                     <tr>
