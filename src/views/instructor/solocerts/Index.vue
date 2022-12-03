@@ -47,8 +47,7 @@
 </template>
 
 <script>
-import { zabApi } from '@/helpers/axios.js';
-import Past from './Past.vue';
+import {vatusaAPIAuth, vatusaApi, zabApi } from '@/helpers/axios.js';
 
 export default {
 	name: 'SoloCerts',
