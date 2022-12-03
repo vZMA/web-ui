@@ -17,15 +17,15 @@
                     <tr>
                         <th>Name</th>
                         <th>Position</th>
-                        <th>Expirey</th>
+                        <th>Expires</th>
                         <th class="options">Options</th>
                     </tr>
                 </thead>
                 <tbody class="certs_list_row">
                     <tr v-for="(cert, i) in certs" :key="cert.id">
-                        <td>Name</td>
-                        <td>Position</td>
-                        <td>Expiry</td>
+                        <td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">{{getName(cert.cid)}}</router-link></td>
+                        <td>{{cert.position}}</td>
+                        <td>{{cert.expires}}</td>
                         <td class="options">
                            <a :href="`#modal_delete_${i}`" data-position="top" data-tooltip="Delete Certificate" class="tooltipped modal-trigger">
                                 <i class="material-icons red-text text-darken-2">delete</i>
@@ -49,11 +49,11 @@
 </template>
 
 <script>
-import {vatusaAPIAuth, vatusaApi, zabApi} from '@/helpers/axios.js';
+import {vatusaApiAuth, vatusaApi, zabApi} from '@/helpers/axios.js';
 
 export default {
-    name: 'SoloCerts',
-    title: 'Solo Certifications',
+   name: 'SoloCerts',
+   title: 'Solo Certifications',
    data() {
         return {
             positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'NQX', 'ZMO', 'CLT', 'DEN'],
@@ -163,9 +163,4 @@ table tbody {
     width: 30%;
 }
 
-.page_info {
-    padding-left: 1.5em;
-    font-size: 0.9rem;
-    margin-top: 1.5em;
-}
 </style>
