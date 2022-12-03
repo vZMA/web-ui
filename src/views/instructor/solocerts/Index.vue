@@ -26,7 +26,7 @@
 						<td>Name data</td>
 						<td>position data</td>
 						<td>expirey data</td>
-						<td><a href="`#modal_delete_0`" data-position="top" data-tooltip="Delete Certificate" class="tooltipped modal-trigger">
+						<td><a href="#modal_delete_0" data-position="top" data-tooltip="Delete Certificate" class="tooltipped modal-trigger">
                                 <i class="material-icons red-text text-darken-2">delete</i>
                             </a></td>
 						
@@ -39,7 +39,7 @@
                                 <i class="material-icons red-text text-darken-2">delete</i>
                             </a>
                         </td>-->
-                        <div id="`modal_delete_0`" class="modal modal_delete">
+                        <div id="modal_delete_0" class="modal modal_delete">
                             <div class="modal-content">
                                 <h4>Delete Certificate?</h4>
                                 <p>This will delete the solo certificate for on.</p>
