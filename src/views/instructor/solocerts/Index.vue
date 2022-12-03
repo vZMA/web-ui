@@ -59,7 +59,7 @@ export default {
 			loading: true
 		};
 	},
-
+	
 	async mounted() {
 		await this.getSoloCerts();
 		await this.getControllers();
@@ -71,24 +71,24 @@ export default {
 			preventScrolling: false
 		});
 
-
+		
 	},
 	methods: {
 	async getSoloCerts() {
 				try {
-
+							
 					// Fetch and decode API data
 
-					const {data} = await vatusaApi.get('/solo');
+					const {data} = await vatusaApi.get('/solo');	
 					const payload = atob(data.payload);
 					var data1 = JSON.parse(payload);
 					for (const cert of data1.data) {
-						if(this.positions.includes(cert.position.slice(0, 3)))
+						if(this.positions.includes(cert.position.slice(0, 3))) 
 							this.certs.push(cert);
 					}
 
 				} catch(e) {
-					console.log(e);
+					console.log(e);  
 				}
 			},
 			async getControllers() {
@@ -112,7 +112,7 @@ export default {
 					this.$nextTick(() => {
 						M.Modal.getInstance(document.querySelector('.modal_delete')).close();
 					});
-
+					
 				} catch(e) {
 					this.toastError('Something went wrong, please try again');
 				}
@@ -122,19 +122,7 @@ export default {
 				console.log(controller);
 				return controller[0].fname + ' ' + controller[0].lname;
 			}
-		},
-    watch: {
-      page: async function() {
-        await this.getSoloCerts();
-        await this.getControllers();
-        M.Modal.init(document.querySelectorAll('.modal'), {
-          preventScrolling: false
-        });
-        M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
-          margin: 0
-        });
-      }
-    }
+		}
 	};
 </script>
 
@@ -158,7 +146,7 @@ table tbody {
 .controller_link {
 	font-weight: 700;
 	color: $primary-color;
-
+	
 	&:hover {
 		color: $primary-color-light;
 	}
