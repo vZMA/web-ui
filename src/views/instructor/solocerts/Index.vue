@@ -28,7 +28,7 @@
                         <div :id="`modal_delete_${cert.cid}`" class="modal modal_delete">
                             <div class="modal-content">
                                 <h4>Delete Solo Certificate?</h4>
-                                <p>This will remove the Solo Certification for {{getName(cert.cid)}} on {{cert.position}} from VATUSA.</p>
+                                <p>This will remove the Solo Certification from VATUSA.</p>
                             </div>
                             <div class="modal-footer">
                                 <a href="#!" @click="deleteCert(cert.cid, cert.position)" class="btn waves-effect">Delete</a>
