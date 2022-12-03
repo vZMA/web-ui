@@ -73,9 +73,8 @@ export default {
         });
         
     },
- } ;
 
- methods: {
+    methods: {
     async getSoloCerts() {
                 try {
                             
@@ -125,7 +124,7 @@ export default {
                 return controller[0].fname + ' ' + controller[0].lname;
             }
         }
-    
+    }; 
 </script>
 
 <style scoped lang="scss">
