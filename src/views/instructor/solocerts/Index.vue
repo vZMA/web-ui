@@ -7,7 +7,7 @@
             </div>
         </div>
    
-        <div class="certs wrapper" v-else>
+        <div class="certs wrapper">
 			<table class="certs_list striped compact">
                 <thead class="certs_list_head">
                     <tr>
