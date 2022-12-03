@@ -23,7 +23,7 @@
                 </thead>
                 <tbody class="certs_list_row">
                     <tr v-for="(cert, i) in certs" :key="cert.id">
-                        <td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">{{getName(cert.cid)}}</router-link></td>
+                        <td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">Name</router-link></td>
                         <td>{{cert.position}}</td>
                         <td>{{cert.expires}}</td>
                         <td class="options">
