@@ -1,137 +1,162 @@
 <template>
-    <div class="card">
-        <div class="card-content">
-            <div class="row row_no_margin">
-                <div class="card-title col s8"><span class="card-title">News Articles</span></div>
-                <div class="col s4"><router-link to="/admin/news/new"><span class="btn waves-effect waves-light right">New</span></router-link></div>
+    <div>
+        <div class="card">
+            <div class="card-content">
+                <div class="row row_no_margin">
+                    <div class="card-title col s8"><span class="card-title">Solo Certifications</span></div>
+                    <div class="col s4"><router-link to="/ins/solo/new"><span class="btn new_cert_button right">New</span></router-link></div>
+                </div>
             </div>
-        </div>
-        <div class="loading_container" v-if="!newsItems">
-            <Spinner />
-        </div>
-        <p class="no_news" v-else-if="newsItems && newsItems.length === 0">There are no news articles</p>
-        <div class="news_wrapper" v-else>
-            <table class="news_list striped">
-                <thead class="news_list_head">
+            <div class="loading_container" v-if="loading">
+                <Spinner />
+            </div>
+            <p class="no_certs" v-else-if="loading === false && certs.length == 0">There are no active solo certifications issued by ZMA</p>
+            <table class="certs_list striped compact" v-else>
+                <thead class="certs_list_head">
                     <tr>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Date</th>
+                        <th>Controller</th>
+                        <th>Position</th>
+                        <th>Expires</th>
                         <th class="options">Options</th>
                     </tr>
                 </thead>
-                <tbody class="news_list_row">
-                    <tr v-for="(news, i) in newsItems" :key="news._id">
-                        <td>{{news.title}}</td>
-                        <td>{{news.user.fname + ' ' + news.user.lname}}</td>
-                        <td>{{dLong(news.createdAt)}}</td>
+                <tbody class="certs_list_row">
+                    <tr v-for="(cert, i) in certs" :key="cert.id">
+                        <td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">{{getName(cert.cid)}}</router-link></td>
+                        <td>{{cert.position}}</td>
+                        <td>{{cert.expires}}</td>
                         <td class="options">
-                            <router-link data-position="top" data-tooltip="Edit Article" class="tooltipped" :to="`/admin/news/${news.uriSlug}`">
-                                <i class="material-icons">edit</i>
-                            </router-link>
-                            <a :href="`#modal_delete_${i}`" data-position="top" data-tooltip="Delete Article" class="tooltipped modal-trigger">
-                                <i class="material-icons red-text text-darken-2">delete</i>
-                            </a>
+                            <a :href="`#modal_delete_${cert.cid}`" data-position="top" data-tooltip="Delete Solo Cert" class="tooltipped modal-trigger"><i class="material-icons red-text text-darken-2">delete</i></a>
                         </td>
-                        <div :id="`modal_delete_${i}`" class="modal modal_delete">
+                        <div :id="`modal_delete_${cert.cid}`" class="modal modal_delete">
                             <div class="modal-content">
-                                <h4>Delete article?</h4>
-                                <p>This will delete <strong>{{news.title}}</strong> completely</p>
+                                <h4>Delete Solo Cert?</h4>
+                                <p>This will remove the Solo Certification from VATUSA.</p>
                             </div>
                             <div class="modal-footer">
-                                <a href="#!" class="waves-effect btn" @click="deleteNews(news.uriSlug)">Delete</a>
-                                <a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
+                                <a href="#!" @click="deleteCert(cert.cid, cert.position)" class="btn waves-effect">Delete</a>
+                                <a href="#!" class="btn-flat waves-effect modal-close">Cancel</a>
                             </div>
                         </div>
                     </tr>
                 </tbody>
             </table>
-            <div v-if="newsItems && newsAmount !== 0">
-                <Pagination :amount="newsAmount" :page="page" :limit="limit" :amountOfPages="amountOfPages" />
-            </div>
         </div>
     </div>
 </template>
 
 <script>
-import {zabApi} from '@/helpers/axios.js';
-import Pagination from '@/components/Pagination.vue';
+import {vatusaAPIAuth, vatusaApi, zabApi } from '@/helpers/axios.js';
 
 export default {
-    name: 'News',
-    title: 'News',
+    name: 'SoloCerts',
+    title: 'Solo Certifications',
     data() {
         return {
-            newsItems: null,
-            newsAmount: 0,
-            page: 1,
-            limit: 10,
-            amountOfPages: 0
+            positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'NQX', 'ZMO', 'CLT', 'DEN'],
+            certs: [],
+            controllers: null,
+            loading: true
         };
     },
-    components: {
-        Pagination
-    },
+    
     async mounted() {
-        await this.getNews();
-        this.amountOfPages = Math.ceil(this.newsAmount / this.limit);
-        M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
+        await this.getSoloCerts();
+        await this.getControllers();
+        this.loading = false;
+        console.log('Init Data loaders complete')
+
+        console.log('result :' + M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
             margin: 0
-        });
-        M.Modal.init(document.querySelectorAll('.modal'), {
+        }) );
+        console.log('tooltips init tooltipped complete')
+        console.log('result :' + M.Modal.init(document.querySelectorAll('.modal'), {
             preventScrolling: false
-        });
+        }));
+        console.log('tooltips init modal complete')
+        
     },
     methods: {
-        async getNews() { 
-            const {data} = await zabApi.get('/news', {
-                params: {
-                    page: this.page, 
-                    limit: this.limit
+    async getSoloCerts() {
+                try {
+                            
+                    // Fetch and decode API data
+
+                    const {data} = await vatusaApi.get('/solo');    
+                    const payload = atob(data.payload);
+                    var data1 = JSON.parse(payload);
+                    for (const cert of data1.data) {
+                        if(this.positions.includes(cert.position.slice(0, 3))) 
+                            this.certs.push(cert);
+                    }
+
+                } catch(e) {
+                    console.log(e);  
                 }
-            });
-            if(data.ret_det.code === 200) {
-                this.newsItems = data.data;
-                this.newsAmount = data.amount;
-            }
-        },
-        async deleteNews(slug) {
-            const {data} = await zabApi.delete(`/news/${slug}`);
-            if(data.ret_det.code === 200) {
-                this.toastSuccess('News article deleted');
+            },
+            async getControllers() {
+                try {
+                    const {data} = await zabApi.get('/feedback/controllers');
+                    this.controllers = data.data;
+                } catch(e) {
+                    console.log(e);
+                }
+            },
+            async deleteCert(cid, pos) {
+                try {
+                    const formData = new FormData();
+                    formData.append('cid', cid);
+                    formData.append('position', pos);
+                    await vatusaApiAuth.delete('/solo', formData);
 
-                setTimeout(() => M.Modal.getInstance(document.querySelector('.modal_delete')).close(), 500);
-                await this.getNews();
+                    this.toastSuccess('Solo Certification deleted');
 
-            } else {
-                this.toastError(data.ret_det.message);
+                    await this.getSoloCerts();
+                    this.$nextTick(() => {
+                        M.Modal.getInstance(document.querySelector('.modal_delete')).close();
+                    });
+                    
+                } catch(e) {
+                    this.toastError('Something went wrong, please try again');
+                }
+            },
+            getName(cid2) {
+                const controller = this.controllers.filter(i => { return i.cid === cid2; });
+                console.log(controller);
+                return controller[0].fname + ' ' + controller[0].lname;
             }
         }
-    },
-    watch: {
-        page: async function() {
-            await this.getNews();
-            M.Modal.init(document.querySelectorAll('.modal'), {
-                preventScrolling: false
-            });
-            M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
-                margin: 0
-            });
-        }
-    }
-};
+    };
 </script>
 
-<style lang="scss" scoped>
-.no_news {
-    font-style: italic;
-    margin-top: -1em;
-    padding: 0 1em 1em 1em;
+<style scoped lang="scss">
+
+table tbody {
+    tr {
+        transition: background-color .3s ease;
+        &:hover {
+            background: #eaeaea;
+        }
+    }
 }
 
-.page_info {
-    padding-left: 1.5em;
-    font-size: 0.9rem;
-    margin-top: 1.5em;
+.no_certs {
+    padding: 0 1em 1em 1em;
+    margin-top: -1em;
+    font-style: italic;
+}
+
+.controller_link {
+    font-weight: 700;
+    color: $primary-color;
+    
+    &:hover {
+        color: $primary-color-light;
+    }
+}
+
+.modal_delete {
+    min-width: 400px;
+    width: 30%;
 }
 </style>
