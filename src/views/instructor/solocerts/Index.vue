@@ -65,12 +65,12 @@ export default {
 		await this.getControllers();
 		this.loading = false;
 
-		M.Modal.init(document.querySelectorAll('.modal'), {
-			preventScrolling: false
-		});
 		M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
 			margin: 0
+		});	M.Modal.init(document.querySelectorAll('.modal'), {
+			preventScrolling: false
 		});
+
 		
 	},
 	methods: {
