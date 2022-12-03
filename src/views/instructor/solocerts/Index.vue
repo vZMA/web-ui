@@ -53,7 +53,7 @@ export default {
 	title: 'Solo Certifications',
 	data() {
 		return {
-			positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'NQX', 'ZMO', 'CLT'],
+			positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'NQX', 'ZMO'],
 			certs: [],
 			controllers: null,
 			loading: true
@@ -77,10 +77,21 @@ export default {
 	async getSoloCerts() {
 				try {
 					const {data} = await vatusaApi.get('/solo');
-					const payload = atob(data.payload);
-					var data1 = JSON.parse(payload);  
+					
+					// Testing data.   Comment out this block, and uncomment following line to inject real API data
+					const payload =   '{"data":[{"id":1366,"cid":1305373,"position":"MIA_APP","expires":"2022-12-19","created_at":"2022-02-10T02:38:30+00:00","updated_at":"2022-11-19T23:19:22+00:00"},' +
+					'{"id":1489,"cid":1305373,"position":"TPA_APP","expires":"2022-12-06","created_at":"2022-11-06T19:45:36+00:00","updated_at":"2022-11-06T19:45:36+00:00"},'+
+					'{"id":1489,"cid":1305373,"position":"NQX_APP","expires":"2022-12-06","created_at":"2022-11-06T19:45:36+00:00","updated_at":"2022-11-06T19:45:36+00:00"},'+
+					'{"id":1489,"cid":1305373,"position":"FLL_APP","expires":"2022-12-06","created_at":"2022-11-06T19:45:36+00:00","updated_at":"2022-11-06T19:45:36+00:00"},'+
+					'{"id":1489,"cid":1305373,"position":"RSW_APP","expires":"2022-12-06","created_at":"2022-11-06T19:45:36+00:00","updated_at":"2022-11-06T19:45:36+00:00"},'+
+					'{"id":1480,"cid":1305373,"position":"MIA_CTR","expires":"2022-12-09","created_at":"2022-10-08T02:59:59+00:00","updated_at":"2022-11-10T04:40:20+00:00"},'+
+					'{"id":1490,"cid":1305373,"position":"ZMO_CTR","expires":"2022-12-08","created_at":"2022-11-08T05:51:56+00:00","updated_at":"2022-11-08T05:51:56+00:00"},],"testing":false}' ; 
+					
+					//const payload = atob(data.payload); // Replace this line to process real API data
+
+					var data1 = JSON.parse(payload);
 					for (const cert of data1.data) {
-						//if(this.positions.includes(cert.position.slice(0, 3))) 
+						if(this.positions.includes(cert.position.slice(0, 3))) 
 							this.certs.push(cert);
 					}
 				} catch(e) {
@@ -116,7 +127,7 @@ export default {
 			getName(cid2) {
 				const controller = this.controllers.filter(i => { return i.cid === cid2; });
 				console.log(controller);
-				return 'Mickey Mouse'; //controller[0].fname + ' ' + controller[0].lname;
+				return controller[0].fname + ' ' + controller[0].lname;
 			}
 		}
 	};
