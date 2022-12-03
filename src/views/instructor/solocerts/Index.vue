@@ -1,57 +1,59 @@
 <template>
-    <div>
-        <div class="card">
-            <div class="card-content">
-                <div class="row row_no_margin">
-                    <div class="card-title col s8"><span class="card-title">Solo Certifications</span></div>
-                    <div class="col s4"><router-link to="/ins/solo/new"><span class="btn new_cert_button right">New</span></router-link></div>
-                </div>
+    <div class="card">
+        <div class="card-content">
+            <div class="row row_no_margin">
+                <div class="card-title col s8"><span class="card-title">Solo Certificates</span></div>
+                <div class="col s4"><router-link to="/ins/solo/new"><span class="btn waves-effect waves-light right">New</span></router-link></div>
             </div>
-            <div class="loading_container" v-if="loading">
-                <Spinner />
-            </div>
-            <p class="no_certs" v-else-if="loading === false && certs.length == 0">There are no active solo certifications issued by ZMA</p>
-            <table class="certs_list striped compact" v-else>
+        </div>
+        <div class="loading_container" v-if="loading">
+            <Spinner />
+        </div>
+        <p class="no_certs" v-else-if="loading === false && certd.length === 0">There are no solo certificates for ZMA.</p>
+        <div class="certd_wrapper" v-else>
+            <table class="certs_list striped compact">
                 <thead class="certs_list_head">
                     <tr>
-                        <th>Controller</th>
+                        <th>Name</th>
                         <th>Position</th>
-                        <th>Expires</th>
+                        <th>Expirey</th>
                         <th class="options">Options</th>
                     </tr>
                 </thead>
                 <tbody class="certs_list_row">
                     <tr v-for="(cert, i) in certs" :key="cert.id">
-                        <td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">{{getName(cert.cid)}}</router-link></td>
-                        <td>{{cert.position}}</td>
-                        <td>{{cert.expires}}</td>
+                        <td>Name</td>
+                        <td>Position</td>
+                        <td>Expiry</td>
                         <td class="options">
-                            <a :href="`#modal_delete_${cert.cid}`" data-position="top" data-tooltip="Delete Solo Cert" class="tooltipped modal-trigger"><i class="material-icons red-text text-darken-2">delete</i></a>
+                           <a :href="`#modal_delete_${i}`" data-position="top" data-tooltip="Delete Certificate" class="tooltipped modal-trigger">
+                                <i class="material-icons red-text text-darken-2">delete</i>
+                            </a>
                         </td>
-                        <div :id="`modal_delete_${cert.cid}`" class="modal modal_delete">
+                        <div :id="`modal_delete_${i}`" class="modal modal_delete">
                             <div class="modal-content">
-                                <h4>Delete Solo Cert?</h4>
-                                <p>This will remove the Solo Certification from VATUSA.</p>
+                                <h4>Delete Certificate?</h4>
+                                <p>This will delete the solo certificate completely</p>
                             </div>
                             <div class="modal-footer">
-                                <a href="#!" @click="deleteCert(cert.cid, cert.position)" class="btn waves-effect">Delete</a>
-                                <a href="#!" class="btn-flat waves-effect modal-close">Cancel</a>
+                                <a href="#!" class="waves-effect btn" @click="deleteCert(cert.cid, cert.postion)">Delete</a>
+                                <a href="#!" class="modal-close waves-effect btn-flat">Cancel</a>
                             </div>
                         </div>
                     </tr>
                 </tbody>
             </table>
-        </div>
+         </div>
     </div>
 </template>
 
 <script>
-import {vatusaAPIAuth, vatusaApi, zabApi } from '@/helpers/axios.js';
+import {vatusaAPIAuth, vatusaAPI, zabApi} from '@/helpers/axios.js';
 
 export default {
     name: 'SoloCerts',
     title: 'Solo Certifications',
-    data() {
+   data() {
         return {
             positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'NQX', 'ZMO', 'CLT', 'DEN'],
             certs: [],
@@ -158,5 +160,11 @@ table tbody {
 .modal_delete {
     min-width: 400px;
     width: 30%;
+}
+
+.page_info {
+    padding-left: 1.5em;
+    font-size: 0.9rem;
+    margin-top: 1.5em;
 }
 </style>
