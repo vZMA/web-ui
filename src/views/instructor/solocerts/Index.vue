@@ -9,9 +9,10 @@
         <div class="loading_container" v-if="loading">
             <Spinner />
         </div>
-        <p class="no_certs" v-else-if="loading === false && certd.length === 0">There are no solo certificates for ZMA.</p>
-        <div class="certd_wrapper" v-else>
-            <table class="certs_list striped compact">
+		
+        <p class="no_certs" v-else-if="loading === false && certs.length === 0">There are no solo certificates for ZMA.</p>
+        <div class="certs wrapper" v-else>
+			<table class="certs_list striped compact">
                 <thead class="certs_list_head">
                     <tr>
                         <th>Name</th>
@@ -43,7 +44,7 @@
                     </tr>
                 </tbody>
             </table>
-         </div>
+		</div>
     </div>
 </template>
 
