@@ -1,47 +1,48 @@
 <template>
-	<div class="card">
-		<div class="card-content">
-			<div class="row row_no_margin">
-				<div class="card-title col s8"><span class="card-title">Solo Certifications</span></div>
-				<div class="col s4"><router-link to="/ins/solo/new"><span class="btn new_event_button right">New</span></router-link></div>
+	<div>
+		<div class="card">
+			<div class="card-content">
+				<div class="row row_no_margin">
+					<div class="card-title col s8"><span class="card-title">Solo Certifications</span></div>
+					<div class="col s4"><router-link to="/ins/solo/new"><span class="btn new_cert_button right">New</span></router-link></div>
+				</div>
 			</div>
-		</div>
-		<div class="loading_container" v-if="loading">
-			<Spinner />
-		</div>
-		<p class="no_certs" v-else-if="loading === false && certs.length == 0">There are no active solo certifications issued by ZMA</p>
-		<table class="certs_list striped compact" v-else>
-			<thead class="certs_list_head">
-				<tr>
-					<th>Controller</th>
-					<th>Postition</th>
-					<th>Expires</th>
-					<th class="options">Options</th>
-				</tr>
-			</thead>
-			<tbody class="certs_list_row">
-				<tr v-for="(cert, i) in certs" :key="cert.id">
-					<td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">{{getName(cert.cid)}}</router-link></td>
-					<td>{{cert.position}}</td>
-					<td>{{cert.expires}}</td>
-					<td class="options">
-						<a :href="`#modal_delete_${cert.cid}`" data-position="top" data-tooltip="Delete Solo Cert" class="tooltipped modal-trigger"><i class="material-icons red-text text-darken-2">delete</i></a>
-					</td>
-					<div :id="`modal_delete_${cert.cid}`" class="modal modal_delete">
-						<div class="modal-content">
-							<h4>Delete Solo Cert?</h4>
-							<p>This will remove the Solo Certification from VATUSA.</p>
+			<div class="loading_container" v-if="loading">
+				<Spinner />
+			</div>
+			<p class="no_certs" v-else-if="loading === false && certs.length == 0">There are no active solo certifications issued by ZMA</p>
+			<table class="certs_list striped compact" v-else>
+				<thead class="certs_list_head">
+					<tr>
+						<th>Controller</th>
+						<th>Postition</th>
+						<th>Expires</th>
+						<th class="options">Options</th>
+					</tr>
+				</thead>
+				<tbody class="certs_list_row">
+					<tr v-for="(cert, i) in certs" :key="cert.id">
+						<td><router-link :to="`/controllers/${cert.cid}`" class="controller_link">{{getName(cert.cid)}}</router-link></td>
+						<td>{{cert.position}}</td>
+						<td>{{cert.expires}}</td>
+						<td class="options">
+							<a :href="`#modal_delete_${cert.cid}`" data-position="top" data-tooltip="Delete Solo Cert" class="tooltipped modal-trigger"><i class="material-icons red-text text-darken-2">delete</i></a>
+						</td>
+						<div :id="`modal_delete_${cert.cid}`" class="modal modal_delete">
+							<div class="modal-content">
+								<h4>Delete Solo Cert?</h4>
+								<p>This will remove the Solo Certification from VATUSA.</p>
+							</div>
+							<div class="modal-footer">
+								<a href="#!" @click="deleteCert(cert.cid, cert.position)" class="btn waves-effect">Delete</a>
+								<a href="#!" class="btn-flat waves-effect modal-close">Cancel</a>
+							</div>
 						</div>
-						<div class="modal-footer">
-							<a href="#!" @click="deleteCert(cert.cid, cert.position)" class="btn waves-effect">Delete</a>
-							<a href="#!" class="btn-flat waves-effect modal-close">Cancel</a>
-						</div>
-					</div>
-				</tr>
-			</tbody>
-		</table>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
-	<Past />
 </template>
 
 <script>
