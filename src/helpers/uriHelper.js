@@ -13,18 +13,14 @@ export const vatsimAuthRedirectUrl = `${getAuthEndpoint()}/oauth/authorize?clien
       return betaClientId;
     } else if (window.location.origin.includes("zmaartcc.net")) {
       return prodClientId;
-    } else {
+    } else { 
       return devClientId;
     }
   }
   
   function getAuthEndpoint() {
     const authUrl = "https://auth.vatsim.net";
-    const authDevUrl = "https://auth-dev.vatsim.net";
-  
-    if (window.location.origin.includes("zmaartcc.net")) {
+    
       return authUrl;
-    } else {
-      return authDevUrl;
-    }
+
   }
