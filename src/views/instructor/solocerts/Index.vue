@@ -108,6 +108,7 @@ export default {
                 try {
                     const formData = new FormData();
                     formData.append('id', ci);
+                    console.log(formData);
                     await vatusaApi.delete('/solo', formData);
 
                     this.toastSuccess('Solo Certification deleted');
