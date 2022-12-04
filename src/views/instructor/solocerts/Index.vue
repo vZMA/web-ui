@@ -122,16 +122,20 @@ export default {
 
                     //        const apiresponse = await Api.delete('solo', { data: formData });
                     
-                    const response=fetch('https://api.vatusa.net/v2/solo?apikey=2619l5gS8BT4Gf6U', {
+                    /*const response=fetch('https://api.vatusa.net/v2/solo?apikey=2619l5gS8BT4Gf6U', {
                         method: 'DELETE',
                         body: formData 
                     }).then (response => response.json());
-                    
-                         //   await vatusaApi.delete('/solo', formData);
+                    */
+                    await vatusaApi.delete('/solo', formData);
 
-                   // this.toastSuccess('Solo Certification deleted');
-                    certs = {};
+                    this.toastSuccess('Solo Certification deleted');
+                    
+                    for (cert in certs)
+                        delete certs.cert;
+                        
                     await this.getSoloCerts();
+                    
                     this.$nextTick(() => {
                         M.Modal.getInstance(document.querySelector('.modal_delete')).close();
                     });
