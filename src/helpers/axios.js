@@ -8,7 +8,7 @@ export const zabApi = axios.create({
 export const vatusaApi = axios.create({
 	baseURL: 'https://api.vatusa.net/v2',
 	params: {
-		apikey: import.meta.env.VITE_VATUSA_API_KEY,
+		apikey: '2619l5gS8BT4Gf6U', //import.meta.env.VITE_VATUSA_API_KEY,
 	},
 });
 
