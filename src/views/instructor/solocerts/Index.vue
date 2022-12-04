@@ -120,7 +120,7 @@ export default {
 	                        withCredentials: true });
                             
 
-                            await Api.delete('solo', { data: formData });
+                            const apiresponse = await Api.delete('solo', { data: formData });
                     
                          //   await vatusaApi.delete('/solo', formData);
 
@@ -132,7 +132,7 @@ export default {
                     });
                     
                 } catch(e) {
-                    this.toastError(e);
+                    this.toastError(JSON.parse(atob(apiresponusse.payload).data.msg));
                 }
             },
             getName(cid2) {
