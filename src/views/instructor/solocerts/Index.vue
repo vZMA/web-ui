@@ -117,7 +117,7 @@ export default {
                     
                     const Api = axios.create({baseURL: 'https://api.vatusa.net/v2', 
                             withCredentials: true });
-                    const apiresponse = await Api.delete('solo', formData );
+                    const apiresponse = await Api.delete('solo', {data: formData} );
                     
                     //await vatusaApi.delete('/solo', formData);
 
