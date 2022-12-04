@@ -108,7 +108,7 @@ export default {
             async deleteCert(id,  cid, position) {
                 try {
                     const formData = new FormData();
-				    formData.append('id', id);
+				    //formData.append('id', id);
                     formData.append('cid', cid);
 				    formData.append('position', position);
 
