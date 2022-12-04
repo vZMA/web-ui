@@ -188,8 +188,10 @@
 </template>
 
 <script>
+
 import { mapState, mapMutations, mapActions } from "vuex";
 import Notifications from "./Notifications.vue";
+import { vatsimAuthRedirectUrl } from "@/helpers/uriHelper.js";
 
 export default {
   data() {
