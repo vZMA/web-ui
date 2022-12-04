@@ -132,7 +132,7 @@ export default {
                     });
                     
                 } catch(e) {
-                    this.toastError(JSON.parse(atob(apiresponusse.payload).data.msg));
+                    this.toastError(JSON.parse(atob(apiresponse.payload).data.msg));
                 }
             },
             getName(cid2) {
