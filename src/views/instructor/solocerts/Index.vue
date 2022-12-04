@@ -115,7 +115,7 @@ export default {
                     console.log('Formdate: ' + formData)
                     console.log('Deleting ' +id + ' ' + cid + ' ' + position);
                     
-                    const Api = axios.create({baseURL: 'https://api.vatusa.net/v2', params {
+                    const Api = axios.create({baseURL: 'https://api.vatusa.net/v2', params: {
 	                        //withCredentials: true });
                             apikey: '2619l5gS8BT4Gf6U' }});
 
