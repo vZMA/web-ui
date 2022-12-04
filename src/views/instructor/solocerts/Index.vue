@@ -83,7 +83,8 @@ export default {
     async getSoloCerts() {
                 try {
                             
-                    // Fetch and decode API data
+                    // Fetch and decode API data.
+                    // The API returns back base 64 encoded data with authentication blocks.   The payload needs to be base64 decoded and then parsd for json.
 
                     const {data} = await vatusaApi.get('/solo');    
                     const payload = atob(data.payload);
@@ -110,6 +111,7 @@ export default {
                     const formData = new FormData();
                     formData.append('id', id);
                                         
+                    // form data seems not to be passed when using the DELETE method.   This works only when the ID is passed on the URL.
                     await vatusaApiAuth.delete('/solo?id='+id, {data: formData});
 
                     this.toastSuccess('Solo Certification deleted');
