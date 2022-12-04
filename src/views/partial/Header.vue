@@ -9,7 +9,7 @@
         </div>
         <router-link to="/"
           ><img
-            src="https://zma-web.nyc3digitaloceanspaces.com/images/zma_logo.png"
+            src="https://zma-web.nyc3.digitaloceanspaces.com/images/zma_logo.png"
             alt=""
             draggable="false"
             height="125"
@@ -37,6 +37,9 @@
               <li>
                 <router-link to="/controllers/staff">ARTCC Staff</router-link>
               </li>
+              <!--      <li>
+	          	<a href="https://legacy.zmaartcc.net/wp/controllers/training-department/training-faq">Training FAQ (Legacy)</a>
+	            </li>-->
             </ul>
           </li>
           <li>
@@ -125,7 +128,7 @@
                 v-if="user.isLoggedIn && (user.data.isIns || user.data.isStaff)"
               >
                 <a
-                  href="https://sunport.zabartcc.org/mail/"
+                  href="https://webmail.zmaartcc.org/mail/"
                   target="_blank"
                   rel="noopener noreferrer"
                   >Webmail</a
