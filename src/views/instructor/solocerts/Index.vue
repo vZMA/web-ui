@@ -124,14 +124,14 @@ export default {
                     
                     const response=fetch('https://api.vatusa.net/v2/solo', {
                         method: 'DELETE',
-                        body: { withCredentials: true, 
+                        body: { apikey: '2619l5gS8BT4Gf6U', 
                             formData }
                     }).then (response => response.json());
                     
                          //   await vatusaApi.delete('/solo', formData);
 
                    // this.toastSuccess('Solo Certification deleted');
-
+                    certs = {};
                     await this.getSoloCerts();
                     this.$nextTick(() => {
                         M.Modal.getInstance(document.querySelector('.modal_delete')).close();
