@@ -108,17 +108,13 @@ export default {
             async deleteCert(id,  cid, position) {
                 try {
                     const formData = new FormData();
-				    //formData.append('id', id);
-                    formData.append('cid', cid);
-				    formData.append('position', position);
+                    formData.append('id', id);
+                    //formData.append('cid', cid);
+				    //formData.append('position', position);
 
                     console.log('Formdate: ' + formData)
                     console.log('Deleting ' +id + ' ' + cid + ' ' + position);
                     
-                    /*const Api = axios.create({baseURL: 'https://api.vatusa.net/v2', 
-                            withCredentials: true });
-                    const apiresponse = await Api.delete('solo', {data: formData} );
-                    */
                     await vatusaApiAuth.delete('/solo', {data: formData});
 
                     this.toastSuccess('Solo Certification deleted');
