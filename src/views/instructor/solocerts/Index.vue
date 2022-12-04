@@ -115,11 +115,11 @@ export default {
                     console.log('Formdate: ' + formData)
                     console.log('Deleting ' +id + ' ' + cid + ' ' + position);
                     
-                    const Api = axios.create({baseURL: 'https://api.vatusa.net/v2', 
+                    /*const Api = axios.create({baseURL: 'https://api.vatusa.net/v2', 
                             withCredentials: true });
                     const apiresponse = await Api.delete('solo', {data: formData} );
-                    
-                    //await vatusaApi.delete('/solo', formData);
+                    */
+                    await vatusaApiAuth.delete('/solo', {data: formData});
 
                     this.toastSuccess('Solo Certification deleted');
                     
