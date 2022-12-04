@@ -115,26 +115,31 @@ export default {
                     console.log('Formdate: ' + formData)
                     console.log('Deleting ' +id + ' ' + cid + ' ' + position);
                     
-                    const Api = axios.create({baseURL: 'https://api.vatusa.net/v2', 
+                    //const Api = axios.create({baseURL: 'https://api.vatusa.net/v2', 
                     //params: { apikey: '2619l5gS8BT4Gf6U' }});
-	                        withCredentials: true });
+	                //        withCredentials: true });
                             
 
-                            const apiresponse = await Api.delete('solo', { data: formData });
+                    //        const apiresponse = await Api.delete('solo', { data: formData });
+                    
+                    const response=fetch('https://api.vatusa.net/v2/solot', {
+                        method: 'DELETE',
+                        body: formData 
+                    }).then (response => response.json());
                     
                          //   await vatusaApi.delete('/solo', formData);
 
-                    this.toastSuccess('Solo Certification deleted');
+                   // this.toastSuccess('Solo Certification deleted');
 
                     await this.getSoloCerts();
                     this.$nextTick(() => {
                         M.Modal.getInstance(document.querySelector('.modal_delete')).close();
                     });
-                    
-                } catch(e) {
-                    this.toastError(JSON.parse(atob(apiresponse.payload).data.msg));
-                }
-            },
+               
+                    } catch(e) {
+                       this.toastError(e);
+                    }
+                }, 
             getName(cid2) {
                 const controller = this.controllers.filter(i => { return i.cid === cid2; });
                 console.log(controller);
