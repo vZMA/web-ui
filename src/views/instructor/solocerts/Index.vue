@@ -111,6 +111,7 @@ export default {
                     formData.append('cid', cid);
 				    formData.append('position', position);
 
+                    console.log('Formdate: ' + formData)
                     console.log('Deleting ' +id + ' ' + cid + ' ' + position);
                     
                     await vatusaApiAuth.delete('/solo', formData);
