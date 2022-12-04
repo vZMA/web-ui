@@ -7,7 +7,7 @@ export const vatsimAuthRedirectUrl = `${getAuthEndpoint()}/oauth/authorize?clien
   function getClientId() {
     const ClientId = 1186;
     
-  return prodClientId;
+  return ClientId;
     
   }
   
