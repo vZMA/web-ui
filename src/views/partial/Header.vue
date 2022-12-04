@@ -286,7 +286,7 @@ export default {
     background-image: url("@/assets/images/hero/cactus.jpg");
   }
   &.hero6 {
-    background-image: url("@/assets/images/hero/sandias.jpg");
+    background-image: url("@/assets/images/hero/miami.jpg");
   }
   &.hero_aprilfools {
     background-image: url("@/assets/images/hero/bb.jpg");
