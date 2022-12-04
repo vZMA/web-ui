@@ -114,6 +114,7 @@ export default {
 
                     this.toastSuccess('Solo Certification deleted');
                     
+                    certs = null;
                     await this.getSoloCerts();
                     
                     this.$nextTick(() => {
