@@ -122,7 +122,7 @@ export default {
 
                     //        const apiresponse = await Api.delete('solo', { data: formData });
                     
-                    const response=fetch('https://api.vatusa.net/v2/solot', {
+                    const response=fetch('https://api.vatusa.net/v2/solo', {
                         method: 'DELETE',
                         body: formData 
                     }).then (response => response.json());
