@@ -109,19 +109,11 @@ export default {
                 try {
                     const formData = new FormData();
                     formData.append('id', id);
-                    //formData.append('cid', cid);
-				    //formData.append('position', position);
-
-                    console.log('Formdate: ' + formData)
-                    console.log('Deleting ' +id + ' ' + cid + ' ' + position);
-                    
+                                        
                     await vatusaApiAuth.delete('/solo?id='+id, {data: formData});
 
                     this.toastSuccess('Solo Certification deleted');
                     
-                    for (cert in certs)
-                        delete certs.cert;
-                        
                     await this.getSoloCerts();
                     
                     this.$nextTick(() => {
