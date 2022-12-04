@@ -122,7 +122,7 @@ export default {
                     });
                     
                 } catch(e) {
-                    this.toastError('Something went wrong, please try again');
+                    this.toastError(e);
                 }
             },
             getName(cid2) {
