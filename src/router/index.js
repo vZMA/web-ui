@@ -85,14 +85,6 @@ const routes = [
         component: () => import("../views/page/PilotBrief.vue"),
       },
       {
-        path: "/tanmac",
-        component: () => import("../views/page/Tanmac.vue"),
-      },
-      {
-        path: "/tanmac/pfr",
-        component: () => import("../views/page/TanmacPFR.vue"),
-      },
-      {
         path: "/privacy-policy",
         component: () => import("../views/page/PrivacyPolicy.vue"),
       },
