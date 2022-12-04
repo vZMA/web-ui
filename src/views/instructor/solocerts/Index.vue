@@ -51,6 +51,7 @@
 
 <script>
 import {vatusaApiAuth, vatusaApi, zabApi} from '@/helpers/axios.js';
+import axios from 'axios';
 
 export default {
    name: 'SoloCerts',
