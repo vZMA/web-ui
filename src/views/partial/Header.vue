@@ -182,6 +182,9 @@
       <li>
         <router-link class="sidenav-close" to="/feedback">FEEDBACK</router-link>
       </li>
+      <li>
+        <router-link class="sidenav-close" to="/privacypolicy">PRIVACY</router-link>
+      </li>
     </ul>
   </header>
 </template>

@@ -85,7 +85,7 @@ const routes = [
         component: () => import("../views/page/PilotBrief.vue"),
       },
       {
-        path: "/privacy-policy",
+        path: "/privacypolicy",
         component: () => import("../views/page/PrivacyPolicy.vue"),
       },
     ],
