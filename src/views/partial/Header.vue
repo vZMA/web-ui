@@ -206,9 +206,7 @@ export default {
     ...mapActions("user", ["logout"]),
     async processLogin() {
       localStorage.setItem("redirect", this.$route.path);
-      window.location.href = `https://login.vatusa.net/uls/v2/login?fac=ZMA&url=${
-        import.meta.env.VITE_ULS_LOGIN_REDIRECT_URL || 2
-      }`;
+      window.location.href = vatsimAuthRedirectUrl;
     },
     async processLogout() {
       await this.logout();
@@ -217,9 +215,8 @@ export default {
         this.$route.meta.isAdmin ||
         this.$route.meta.isAdmin ||
         this.$route.meta.loggedIn
-      ) {
+      )
         this.$router.push("/");
-      }
     },
   },
   computed: {
