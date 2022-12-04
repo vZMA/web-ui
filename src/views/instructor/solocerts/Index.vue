@@ -38,7 +38,7 @@
                                 <p>This will remove the Solo Certification from VATUSA.</p>
                             </div>
                             <div class="modal-footer">
-                                <a href="#!" @click="deleteCert(cert.id)" class="btn waves-effect">Delete</a>
+                                <a href="#!" @click="deleteCert(cert.cid, cert.position)" class="btn waves-effect">Delete</a>
                                 <a href="#!" class="btn-flat waves-effect modal-close">Cancel</a>
                             </div>
                         </div>
@@ -104,12 +104,15 @@ export default {
                     console.log(e);
                 }
             },
-            async deleteCert(id) {
+            async deleteCert(cid, position) {
                 try {
                     const formData = new FormData();
-                    formData.append('id', id);
-                    console.log(formData);
-                    await vatusaApiAuth.get('/solo', formData);
+                    formData.append('cid', cid);
+                    formData.append('position', position);
+
+                    console.log('Deleting ' + cid + ' ' + position);
+                    
+                    await vatusaApiAuth.delete('/solo', formData);
 
                     this.toastSuccess('Solo Certification deleted');
 
