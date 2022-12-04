@@ -107,7 +107,7 @@ export default {
             async deleteCert(id) {
                 try {
                     const formData = new FormData();
-                    formData.append('id', ci);
+                    formData.append('id', id);
                     console.log(formData);
                     await vatusaApiAuth.delete('/solo', formData);
 
