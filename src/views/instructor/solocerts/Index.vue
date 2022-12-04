@@ -114,9 +114,10 @@ export default {
                     console.log('Formdate: ' + formData)
                     console.log('Deleting ' +id + ' ' + cid + ' ' + position);
                     
-                    //const vatusaApiAuth = axios.create({'https://api.vatusa.net/v2/solo',
-	                //        withCredentials: true,
-                            await axios.delete('url', { data: formData });
+                    const Api = axios.create({'https://api.vatusa.net/v2',
+	                        withCredentials: true });
+                            
+                            await Api.delete('solo', { data: formData });
                     
                          //   await vatusaApi.delete('/solo', formData);
 
