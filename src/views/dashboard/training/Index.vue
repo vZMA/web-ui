@@ -87,6 +87,7 @@ export default {
 		{
 			console.log(id);
 			const {data} = await zabApi.delete(`/training/request/${id}`);
+			const {data} = await zabApi.get(`/training/request/upcoming`);
 			this.upcomingSessions = data.data;
 		}
 	}
