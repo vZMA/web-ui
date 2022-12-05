@@ -85,6 +85,7 @@ export default {
 
 		async deleteSession(id)
 		{
+			console.log(id);
 			const {data} = await zabApi.delete(`/training/request/${id}`);
 			this.upcomingSessions = data.data;
 		}
