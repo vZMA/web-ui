@@ -30,7 +30,8 @@
 						<td>{{dtLong(session.endTime)}}</td>
 						<td>{{session.instructor ? (session.instructor.fname + ' ' + session.instructor.lname) : 'Unfulfilled'}}</td>
 						<td class="options">
-                            <a :href="`#modal_delete_${session.cid}`" data-position="top" data-tooltip="Cancel Training Session" class="tooltipped modal-trigger"><i class="material-icons red-text text-darken-2">cancel</i></a>
+                            <a :href="`#modal_delete_${session.cid}`" data-position="top" data-tooltip="Cancel Training Session" 
+							class="tooltipped modal-trigger"><i class="material-icons red-text text-darken-2">cancel</i></a>
                         </td>
                         <div :id="`modal_delete_${session.id}`" class="modal modal_delete">
                             <div class="modal-content">
@@ -84,7 +85,9 @@ export default {
 
 		async deleteSession(id)
 		{
-			const {data} = await zabApi.get(`/session/delete/${id}`);
+			const {data} = await zabApi.delete(`/training/request/${id}`) {
+				id: id
+			};
 			this.upcomingSessions = data.data;
 		}
 	}
