@@ -85,9 +85,7 @@ export default {
 
 		async deleteSession(id)
 		{
-			const {data} = await zabApi.delete(`/training/request/${id}`) {
-				id: id
-			};
+			const {data} = await zabApi.delete(`/training/request/${id}`);
 			this.upcomingSessions = data.data;
 		}
 	}
