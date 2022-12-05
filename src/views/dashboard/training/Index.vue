@@ -80,6 +80,9 @@ export default {
 	methods: {
 		async getUpcomingSessions() {
 			const {data} = await zabApi.get(`/training/request/upcoming`);
+			this.upcomingSessions = [];
+			await this.getUpcomingSessions();
+			
 			this.upcomingSessions = data.data;
 		},
 
