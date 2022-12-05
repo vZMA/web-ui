@@ -30,16 +30,16 @@
 						<td>{{dtLong(session.endTime)}}</td>
 						<td>{{session.instructor ? (session.instructor.fname + ' ' + session.instructor.lname) : 'Unfulfilled'}}</td>
 						<td class="options">
-                            <a :href="`#modal_delete_${session.cid}`" data-position="top" data-tooltip="Cancel Training Session" 
+                            <a :href="`#modal_delete_${session._id}`" data-position="top" data-tooltip="Cancel Training Session" 
 							class="tooltipped modal-trigger"><i class="material-icons red-text text-darken-2">cancel</i></a>
                         </td>
-                        <div :id="`modal_delete_${session.id}`" class="modal modal_delete">
+                        <div :id="`modal_delete_${session._id}`" class="modal modal_delete">
                             <div class="modal-content">
                                 <h4>Cancel Training Session?</h4>
                                 <p>This will remove the training session.  Are you sure?</p>
                             </div>
                             <div class="modal-footer">
-                                <a href="#!" @click="deleteSession(session.id)" class="btn waves-effect">Delete</a>
+                                <a href="#!" @click="deleteSession(session._id)" class="btn waves-effect">Delete</a>
                                 <a href="#!" class="btn-flat waves-effect modal-close">Cancel</a>
                             </div>
                         </div>
