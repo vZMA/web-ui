@@ -36,7 +36,9 @@
                         <div :id="`modal_delete_${session._id}`" class="modal modal_delete">
                             <div class="modal-content">
                                 <h4>Cancel Training Session?</h4>
-                                <p>This will remove the training session.  Are you sure?</p>
+                                <p>This will remove the training session.  <br>
+								<br>If you are cancelling a scheduled session within 24 hours, please advise the instructor or ta@zmaartcc.net via email also.<br><br>
+								Are you sure?</p>
                             </div>
                             <div class="modal-footer">
                                 <a href="#!" @click="deleteSession(session._id)" class="btn waves-effect">Delete</a>
