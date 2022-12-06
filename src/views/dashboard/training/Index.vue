@@ -89,10 +89,13 @@ export default {
 		{
 			console.log(id);
 			const {data} = await zabApi.delete(`/training/request/${id}`);
-			data = await zabApi.get(`/training/request/upcoming`);
-			this.upcomingSessions = data.data;
+			
 			this.$nextTick(() => {
                         M.Modal.getInstance(document.querySelector('.modal_delete')).close();
+
+			this.upcomingSessions = [];
+			this.getUpcomingSessions();
+
 			});
 		}
 	}
