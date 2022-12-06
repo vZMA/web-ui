@@ -21,15 +21,15 @@
 				Downloads
 				<div class="secondary-content"><i class="material-icons">insert_drive_file</i></div>
 			</router-link>
-			<router-link to="/admin/events" class="collection-item" v-if="requiresAuth(['atm', 'datm', 'ta', 'ec'])">
+			<router-link to="/admin/events" class="collection-item" v-if="requiresAuth(['atm', 'datm', 'ta', 'ec', 'wm'])">
 				Events
 				<div class="secondary-content"><i class="material-icons">event</i></div>
 			</router-link>
-			<router-link to="/admin/feedback" class="collection-item" v-if="requiresAuth(['atm', 'datm', 'ta'])">
+			<router-link to="/admin/feedback" class="collection-item" v-if="requiresAuth(['atm', 'datm', 'ta', 'wm'])">
 				Feedback
 				<div class="secondary-content"><i class="material-icons">feedback</i></div>
 			</router-link>
-			<router-link to="/admin/absence" class="collection-item" v-if="requiresAuth(['atm', 'datm'])">
+			<router-link to="/admin/absence" class="collection-item" v-if="requiresAuth(['atm', 'datm', 'wm'])">
 				Leave of Absence
 				<div class="secondary-content"><i class="material-icons">access_time</i></div>
 			</router-link>
@@ -37,7 +37,7 @@
 				News
 				<div class="secondary-content"><i class="material-icons">rss_feed</i></div>
 			</router-link>
-			<router-link to="/admin/visit/applications" class="collection-item" v-if="requiresAuth(['atm', 'datm'])">
+			<router-link to="/admin/visit/applications" class="collection-item" v-if="requiresAuth(['atm', 'datm', 'wm'])">
 				Visitor Applications
 				<div class="secondary-content"><i class="material-icons">group_add</i></div>
 			</router-link>
