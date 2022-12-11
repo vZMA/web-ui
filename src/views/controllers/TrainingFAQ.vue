@@ -8,7 +8,7 @@
                     <p><li><b>I am new to the Miami ARTCC. What do I do?</b>                  
                         <ul>
                             <li>If you are an Observer (OBS), you can begin requesting training through your Controller Dashboard. You will first undergo the 
-                            New Student Orientation training and then we will begin on your Clearance Delivery/Ground Control (S1) rating course material.</li>                  
+                            New Student Orientation training and then we will begin on your Clearance Delivery/Ground Control (S1) rating course material.</li><br>                
                             <li>If you just transferred to the Miami ARTCC, you need to complete the <a href="https://academy.vatusa.net/course/view.php?id=50" target="_blank">Orientation course</a> and pass the examination. 
                             Once you do that, you need to request a GRP Competency Check through your Controller Dashboard.
                             </li>
@@ -17,7 +17,7 @@
                     <p><li><b>What will I learn?</b>
                         <ul>
                             <li>
-                                Throughout your training, you'll be introduced to many concepts. To learn what you will learn, please view the 
+                                Throughout your training, you'll be introduced to many concepts. To see what you will learn, please view the 
                                 appropriate <a href="https://docs.google.com/document/d/1CS8ivM2lUssXd2bm_Z9Ex5OGJNqMpTqOU9hpAPWbjro/edit?usp=sharing" target="_blank">Training Program</a> document.
                             </li>
                         </ul>
@@ -35,7 +35,7 @@
                     <p><li>
                         <b>How do I see my Training Records?</b>
                         <ul>
-                            <li>You can see your Training Records by going to the Training Sessions portion of your Controller Dashboard and clicking the Training Session you wish to review.</li>
+                            <li>You can see your Training Records by going to the Training Sessions portion of your Controller Dashboard and clicking the Training Session you wish to review.</li><br>
                             <li>As an alternative, you can view your Training Records by visiting the VATUSA website, logging in, and then clicking My VATUSA, profile, and then clicking the Training Record tab.</li>
                         </ul>
                     </li></p>
