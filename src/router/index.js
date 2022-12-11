@@ -49,6 +49,9 @@ const routes = [
         component: () => import("../views/controllers/Visit.vue"),
       },
       {
+        path: "/controllers/trainingfaq",
+      },
+      {
         path: "/controllers/:cid",
         component: () => import("../views/controllers/Profile.vue"),
       },
