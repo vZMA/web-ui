@@ -50,6 +50,7 @@ const routes = [
       },
       {
         path: "/controllers/trainingfaq",
+        component: () => import("../views/controllers/TrainingFAQ.vue"),
       },
       {
         path: "/controllers/:cid",
@@ -142,8 +143,7 @@ const routes = [
       },
       {
         path: "training/sessions/:cid",
-        component: () =>
-          import("../views/instructor/training/UserSessions.vue"),
+        component: () => import("../views/instructor/training/UserSessions.vue"),
       },
       {
         path: "training/session/edit/:id",
