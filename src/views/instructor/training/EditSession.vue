@@ -108,7 +108,7 @@
 					</div>
 					<div class="row row_no_margin">
 						<div class="input-field col s12 submit_buttons">
-							<button type="button" v-if="step === 3" class="btn right" @click="submitForm">Finalize</button>
+							<button type="button" v-if="step === 3" class="btn right" @click="submitForm">Push to Vatsim and Lock</button>
 							<button type="button" v-if="step === 3" class="btn-flat right" @click="saveForm">Save</button>
 							<button type="button" class="btn right" v-if="step !== 3" @click="step += 1">Next</button>
 							<button type="button" v-if="step !== 1" @click="step -= 1" class="btn-flat right">Back</button>
