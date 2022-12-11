@@ -122,6 +122,8 @@
 
 <script>
 import {zabApi, vatusaApiAuth} from '@/helpers/axios.js';
+import dayjs from 'dayjs';
+
 export default {
 	name: 'EditSessionNotes',
 	title: 'Enter Session Notes',
