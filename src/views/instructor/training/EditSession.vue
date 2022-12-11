@@ -182,7 +182,7 @@ export default {
 				const delta = Math.abs(new Date(this.session.endTime) - new Date(this.session.startTime)) / 1000;
 				const hours = Math.floor(delta / 3600);
 				const minutes = Math.floor(delta / 60) % 60;
-				const this.duration = `${('00' + hours).slice(-2)}:${('00' + minutes).slice(-2)}`;
+				this.duration = `${('00' + hours).slice(-2)}:${('00' + minutes).slice(-2)}`;
 
 				await vatusaApiAuth.post(`/user/${this.session.student.cid}/training/record/`, {
 					"instructor_id": this.session.instructor.cid,
