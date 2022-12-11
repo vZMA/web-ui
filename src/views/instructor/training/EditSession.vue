@@ -121,7 +121,7 @@
 </template>
 
 <script>
-import {zabApi, vatusaApi} from '@/helpers/axios.js';
+import {zabApi, vatusaApi, vatusaApiAuth} from '@/helpers/axios.js';
 import dayjs from 'dayjs';
 
 export default {
@@ -184,7 +184,7 @@ export default {
 				const minutes = Math.floor(delta / 60) % 60;
 				this.duration = `${('00' + hours).slice(-2)}:${('00' + minutes).slice(-2)}`;
 
-				await vatusaApi.post(`/user/${this.session.student.cid}/training/record/`, {
+				await vatusaApiAuth.post(`/user/${this.session.student.cid}/training/record/`, {
 					"instructor_id": this.session.instructor.cid,
                 	"session_date": dayjs(this.session.startTime).format("YYYY-MM-DD HH:mm"),
 					"position": this.session.position,
