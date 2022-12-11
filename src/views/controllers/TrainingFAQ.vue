@@ -3,18 +3,17 @@
 		<div class="card-content">
 			<span class="card-title">Frequently Asked Questions</span>
 			<p>
-                <p>These are some of the questions we receive from new ARTCC members regarding traing and first steps</p>
+                <p>These are some of the questions we receive from new ARTCC members and visiting controllers regarding traing and first steps:</p>
                 <ul>
-                    <li><b>I am new to the Miami ARTCC. What do I do?</b>
+                    <li><b>I am new to the Miami ARTCC. What do I do?</b>                  
                         <ul>
                             <li>If you are an Observer (OBS), you can begin requesting training through your Controller Dashboard. You will first undergo the 
-                                New Student Orientation training and then we will begin on your Clearance Delivery/Ground Control (S1) rating course material.</li>                  
-                            </li>
-                            <li>
-                                If you just transferred to the Miami ARTCC, you need to complete the <a href="https://academy.vatusa.net/course/view.php?id=50" target="_blank">Orientation course</a> and pass the examination. 
-                                Once you do that, you need to request a GRP Competency Check through your Controller Dashboard.
+                            New Student Orientation training and then we will begin on your Clearance Delivery/Ground Control (S1) rating course material.</li>                  
+                            <li>If you just transferred to the Miami ARTCC, you need to complete the <a href="https://academy.vatusa.net/course/view.php?id=50" target="_blank">Orientation course</a> and pass the examination. 
+                            Once you do that, you need to request a GRP Competency Check through your Controller Dashboard.
                             </li>
                         </ul>
+                    </li>
                     <li><b>What will I learn?</b>
                         <ul>
                             <li>
