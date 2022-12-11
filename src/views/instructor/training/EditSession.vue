@@ -121,7 +121,7 @@
 </template>
 
 <script>
-import {zabApi} from '@/helpers/axios.js';
+import {zabApi, vatusaApiAuth} from '@/helpers/axios.js';
 export default {
 	name: 'EditSessionNotes',
 	title: 'Enter Session Notes',
@@ -176,6 +176,20 @@ export default {
 		},
 		async submitForm() {
 			try {
+				await vatusaApiAuth.post(`/user/${this.session.student.cid}/training/record/`, {
+					"instructor_id": this.session.instructor.cid,
+                	"session_date": dayjs(this.session.startTime).format("YYYY-MM-DD HH:mm"),
+					"position": this.session.position,
+					"duration": this.session.duration,
+					"movements": this.session.movements,
+					"score": this.session.progress,
+					"notes": this.session.studentNotes,
+			     	"ots_status": this.session.ots,
+				    "location": this.session.location,
+                    "is_cbt": false,
+                     "solo_granted": false
+					});
+
 				const {data} = await zabApi.put(`/training/session/submit/${this.$route.params.id}`, this.session);
 				if(data.ret_det.code === 200) {
 					this.toastSuccess('Session notes finalized');
