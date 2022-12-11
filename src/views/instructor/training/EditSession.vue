@@ -179,7 +179,7 @@ export default {
 		},
 		async submitForm() {
 			try {
-				const delta = Math.abs(new Date(session.endTime) - new Date(session.startTime)) / 1000;
+				const delta = Math.abs(new Date(this.session.endTime) - new Date(this.session.startTime)) / 1000;
 				const hours = Math.floor(delta / 3600);
 				const minutes = Math.floor(delta / 60) % 60;
 				const duration = `${('00' + hours).slice(-2)}:${('00' + minutes).slice(-2)}`;
