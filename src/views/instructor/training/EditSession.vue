@@ -130,7 +130,8 @@ export default {
 	data() {
 		return {
 			session: null,
-			step: 1
+			step: 1,
+			duration: 0
 		};
 	},
 	async mounted() {
