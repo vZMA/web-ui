@@ -38,7 +38,7 @@
                 <router-link to="/controllers/staff">ARTCC Staff</router-link>
               </li>
               <li>
-                <router-link to="/TrainingFaq">Training Frequently Asked Questions</router-link>
+                <router-link to="/controllers/TrainingFAQ">Training Frequently Asked Questions</router-link>
               </li>
               <!--      <li>
 	          	<a href="https://legacy.zmaartcc.net/wp/controllers/training-department/training-faq">Training FAQ (Legacy)</a>
