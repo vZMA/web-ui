@@ -195,7 +195,8 @@ export default {
 			     	"ots_status": this.session.ots,
 				    "location": this.session.location,
                     "is_cbt": false,
-                     "solo_granted": false
+                     "solo_granted": false,
+					 "testing": true
 					});
 
 				const {data} = await zabApi.put(`/training/session/submit/${this.$route.params.id}`, this.session);
