@@ -1,4 +1,5 @@
 <template>
+  <h2 style="color: red">This page is INOP as a work in progress.  Thank you for your patience.</h2>
 	<div class="card">
 		<div class="card-content">
 			<div class="card-title">Your Training Sessions</div>
