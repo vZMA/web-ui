@@ -76,7 +76,7 @@
 										<label for="student" class="active">Student</label>
 									</div>
 									<div class="input-field col s6">
-										<p id="milestone">{{session.milestone.code}}</p>
+										<p id="milestone">{{session.milestoneCode}}</p>
 										<label for="milestone" class="active">Milestone</label>
 									</div>
 									<div class="input-field col s6">
