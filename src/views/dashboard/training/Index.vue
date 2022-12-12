@@ -96,6 +96,7 @@ export default {
 			this.upcomingSessions = [];
 			this.getUpcomingSessions();
 
+			document.location.reload();
 			});
 		}
 	}
