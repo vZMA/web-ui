@@ -20,7 +20,7 @@
 						<th class="options">Options</th>
 					</tr>
 				</thead>
-		<!--		<tbody class="sessions_list_row">
+				<tbody class="sessions_list_row">
 					<tr v-for="(session, i) in sessions" :key="session._id">
 						<td>{{session.student.fname + ' ' + session.student.lname}} <span v-if="session.student.vis === true">(VC)</span></td>
 						<td>{{session.milestone.name}}</td>
@@ -67,7 +67,7 @@
 						</div>
 						<div :id="`modal_session_delete${i}`" class="modal modal_session">
 							<div class="modal_title">Cancel Training Session</div>
-							<div class="session">
+							<!-- <div class="session">
 								<div class="row row_no_margin" id="session">
 									<div class="input-field col s6">
 										<p id="student">{{session.student.fname + ' ' + session.student.lname}} <span v-if="session.student.vis === true">(VC)</span></p>
@@ -86,7 +86,7 @@
 										<label for="endTime" class="active">End Time</label>
 									</div>
 								</div>
-							</div>
+							</div>  -->
 							<div>
 								To Cancel the training session and remove it from the system, press <b>'CANCEL SESSION'</b>, or press 'Close'.
 							</div>
@@ -96,7 +96,7 @@
 							</div>
 						</div>
 					</tr>
-				</tbody>-->
+				</tbody>
 			</table>
 		</div>
 	</div>
