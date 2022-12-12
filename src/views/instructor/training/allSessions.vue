@@ -109,7 +109,7 @@ import {zabApi} from '@/helpers/axios.js';
 import Completed from './Completed.vue';
 
 export default {
-	name: 'AllUpcomingSessions',
+	name: 'AllSessions',
 	title: 'All Training Sessions',
 	data() {
 		return {
