@@ -39,7 +39,7 @@
 								<i class="material-icons">cancel</i>
 							</a>
 						</td>
-						<div :id="`modal_session_${i}`" class="modal modal_session">
+						<!-- <div :id="`modal_session_${i}`" class="modal modal_session">
 							<div class="modal-content">
 								<div class="modal_title">Training Session Details</div>
 								<div class="session">
@@ -96,7 +96,7 @@
 								<a href="#!" @click="deleteSession(session._id)" class="btn waves-effect">CANCEL SESSION</a>
 								<a href="#!" class="waves-effect btn-flat modal-close">Close</a>
 							</div>
-						</div>
+						</div>-->
 					</tr>
 				</tbody>
 			</table>
