@@ -1,4 +1,5 @@
 <template>
+  <h4 style="color: red; font-weight: bold">This page is INOP as a work in progress.  Thank you for your patience.</h4>
 	<div class="card">
 		<div class="card-content">
 			<div class="card-title">Open Training Sessions</div>
@@ -100,7 +101,7 @@
 			</table>
 		</div>
 	</div>
-	<Completed />
+<!--	<Completed />-->
 </template>
 
 <script>
