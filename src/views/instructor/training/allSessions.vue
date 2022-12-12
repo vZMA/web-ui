@@ -158,12 +158,7 @@ export default {
 
 			})
 			
-			M.Modal.init(document.querySelectorAll('.modal'), {
-				preventScrolling: false
-			});
-			M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
-				margin: 0
-			});
+			document.location.reload();
 		},
 		formatDateTime(value) {
 			const d = new Date(value);
