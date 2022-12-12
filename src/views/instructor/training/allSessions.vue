@@ -41,7 +41,7 @@
 						<div :id="`modal_session_${i}`" class="modal modal_session">
 							<div class="modal-content">
 								<div class="modal_title">Training Session Details</div>
-								<div class="session">
+								<!--<div class="session">
 									<div class="row row_no_margin" id="session">
 										<div class="input-field col s6">
 											<p id="student">{{session.student.fname + ' ' + session.student.lname}} <span v-if="session.student.vis === true">(VC)</span></p>
@@ -60,7 +60,7 @@
 											<label for="endTime" class="active">End Time</label>
 										</div>
 									</div>
-								</div>
+								</div>-->
 							</div>
 							<div class="modal-footer">
 								<a href="#!" class="waves-effect btn-flat modal-close">Close</a>
