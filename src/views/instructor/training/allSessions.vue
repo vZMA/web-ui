@@ -25,8 +25,8 @@
 					<tr v-for="(session, i) in sessions" :key="session._id">
 						<td>{{session.student.fname + ' ' + session.student.lname}}</td>
 						<td>{{session.milestoneCode}}</td>
-						<td>{{session.startTime}}</td>
-						<td>{{session.endTime}}</td>
+						<td>{{dtLong(session.startTime)}}</td>
+						<td>{{dtLong(session.endTime)}}</td>
 						
 						<td class="options">
 							<a :href="`#modal_session_${i}`" data-position="top" data-tooltip="View Details" class="tooltipped modal-trigger">
