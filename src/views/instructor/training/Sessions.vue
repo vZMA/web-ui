@@ -61,6 +61,9 @@
 									</div>
 								</div>
 							</div>
+							<div class="modal-footer">
+								<a href="#!" class="waves-effect btn-flat modal-close">Close</a>
+							</div>
 						</div>
 						<div :id="`modal_session_delete${i}`" class="modal modal_session">
 							<div class="modal_title">Cancel Training Session</div>
@@ -87,10 +90,10 @@
 							<div>
 								<b>To Cancel the training session and remove it from the system, press 'CANCEL SESSION'</b>, or press 'Close'.
 							</div>
-						</div>
-						<div class="modal-footer">
+							<div class="modal-footer">
 								<a href="#!" @click="cancelSession(session._id)" class="btn waves-effect">CANCEL SESSION</a>
 								<a href="#!" class="waves-effect btn-flat modal-close">Close</a>
+							</div>
 						</div>
 					</tr>
 				</tbody>
