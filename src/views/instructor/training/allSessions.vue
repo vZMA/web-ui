@@ -157,8 +157,13 @@ export default {
                         M.Modal.getInstance(document.querySelector('.modal_delete')).close();
 
 			})
-
-			document.location.reload();
+			
+			M.Modal.init(document.querySelectorAll('.modal'), {
+				preventScrolling: false
+			});
+			M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
+				margin: 0
+			});
 		},
 		formatDateTime(value) {
 			const d = new Date(value);
