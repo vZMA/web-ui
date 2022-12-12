@@ -1,5 +1,4 @@
 <template>
-  <h4 style="color: red; font-weight: bold">This page is INOP as a work in progress.  Thank you for your patience.</h4>
 	<div class="card">
 		<div class="card-content">
 			<div class="card-title">Open Training Sessions</div>
@@ -49,15 +48,15 @@
 											<label for="student" class="active">Student</label>
 										</div>
 										<div class="input-field col s6">
-											<p id="milestone">{{session.milestoneCode}})</p>
+											<p id="milestone">{{session.milestoneCode}}</p>
 											<label for="milestone" class="active">Milestone</label>
 										</div>
 										<div class="input-field col s6">
-											<p id="startTime">{{session.startTime}}</p>
+											<p id="startTime">{{dtLong(session.startTime)}}</p>
 											<label for="startTime" class="active">Start Time</label>
 										</div>
 										<div class="input-field col s6">
-											<p id="endTime">{{session.endTime}}</p>
+											<p id="endTime">{{dtLong(session.endTime)}}</p>
 											<label for="endTime" class="active">End Time</label>
 										</div>
 									</div>
