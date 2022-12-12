@@ -100,7 +100,7 @@
 			</table>
 		</div>
 	</div>
-	<!--<Completed />-->
+	<Completed />
 </template>
 
 <script>
