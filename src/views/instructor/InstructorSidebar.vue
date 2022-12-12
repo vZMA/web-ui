@@ -30,8 +30,24 @@
 </template>
 
 <script>
-export default {
+import { mapState } from 'vuex';
 
+export default {
+	methods: {
+		requiresAuth(roles) {
+			const havePermissions = roles.some(r => this.user.data.roleCodes.includes(r));
+			if(havePermissions) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	},
+	computed: {
+		...mapState('user', [
+			'user'
+		])
+	}
 };
 </script>
 
