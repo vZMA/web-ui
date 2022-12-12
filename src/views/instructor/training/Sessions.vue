@@ -100,7 +100,7 @@
 			</table>
 		</div>
 	</div>
-<!--	<Completed />-->
+	<!--<Completed />-->
 </template>
 
 <script>
@@ -138,14 +138,14 @@ export default {
 			}
 		},
 		async cancelSession(id) {
-				const {data} = await zabApi.delete(`/training/session/${id}`);
+			const {data} = await zabApi.delete(`/training/session/${id}`);
 			
-				this.sessions =[];
-				this.getSessions();
+			this.sessions =[];
+			this.getSessions();
 
-				this.$nextTick(() => {
+			this.$nextTick(() => {
                         M.Modal.getInstance(document.querySelector('.modal_delete')).close();
-					}
+			})
 		},
 		formatDateTime(value) {
 			const d = new Date(value);
