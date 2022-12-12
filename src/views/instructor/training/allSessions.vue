@@ -9,7 +9,7 @@
 		<div v-else-if="sessions.length === 0" class="no_sessions">
 			There are no open training sessions
 		</div>
-	<!--	<div class="sessions_wrapper">
+		<div class="sessions_wrapper">
 			<table class="sessions_list striped">
 				<thead class="sessions_list_head">
 					<tr>
@@ -20,7 +20,7 @@
 						<th class="options">Options</th>
 					</tr>
 				</thead>
-				<tbody class="sessions_list_row">
+		<!--		<tbody class="sessions_list_row">
 					<tr v-for="(session, i) in sessions" :key="session._id">
 						<td>{{session.student.fname + ' ' + session.student.lname}} <span v-if="session.student.vis === true">(VC)</span></td>
 						<td>{{session.milestone.name}}</td>
@@ -96,9 +96,9 @@
 							</div>
 						</div>
 					</tr>
-				</tbody>
+				</tbody>-->
 			</table>
-		</div>-->
+		</div>
 	</div>
 	<Completed />
 </template>
