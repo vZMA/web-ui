@@ -24,8 +24,8 @@
 				<tbody class="sessions_list_row">
 					<tr v-for="(session, i) in sessions" :key="session._id">
 						<td>{{session.student.fname + ' ' + session.student.lname}}</td>
-						<!--<td>{{session.milestone.name}}</td>
-						<td>{{dtLong(session.startTime)}}</td>
+						<td>{{session.milestone.name}}</td>
+						<!--<td>{{dtLong(session.startTime)}}</td>
 						<td>{{dtLong(session.endTime)}}</td>
 						<td>{{session.student.fname + ' ' + session.student.lname}} <span v-if="session.student.vis === true">(VC)</span></td>
 						<td>{{session.milestone.name}}</td>
