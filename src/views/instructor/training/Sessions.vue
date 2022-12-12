@@ -91,7 +91,7 @@
 								<b>To Cancel the training session and remove it from the system, press 'CANCEL SESSION'</b>, or press 'Close'.
 							</div>
 							<div class="modal-footer">
-								<a href="#!" @click="cancelSession(session._id)" class="btn waves-effect">CANCEL SESSION</a>
+								<a href="#!" @click="deleteSession(session._id)" class="btn waves-effect">CANCEL SESSION</a>
 								<a href="#!" class="waves-effect btn-flat modal-close">Close</a>
 							</div>
 						</div>
@@ -137,7 +137,8 @@ export default {
 				console.log(e);
 			}
 		},
-		async cancelSession(id) {
+		async deleteSession(id)
+		{
 			const {data} = await zabApi.delete(`/training/session/${id}`);
 			
 			this.sessions =[];
@@ -145,6 +146,7 @@ export default {
 
 			this.$nextTick(() => {
                         M.Modal.getInstance(document.querySelector('.modal_delete')).close();
+
 			})
 		},
 		formatDateTime(value) {
