@@ -33,6 +33,9 @@
 							<router-link :to="`/ins/training/session/edit/${session._id}`" data-position="top" data-tooltip="Enter Notes" class="tooltipped">
 								<i class="material-icons">edit</i>
 							</router-link>
+							<a :href="`#modal_session_delete${i}`" data-position="top" data-tooltip="Cancel Session" class="tooltipped modal-trigger">
+								<i class="material-icons">search</i>
+							</a>
 						</td>
 						<div :id="`modal_session_${i}`" class="modal modal_session">
 							<div class="modal-content">
@@ -58,7 +61,34 @@
 									</div>
 								</div>
 							</div>
+							<div :id="`modal_session_delete${i}`" class="modal modal_session">
+								<div class="modal_title">Cancel Training Session</div>
+								<div class="session">
+									<div class="row row_no_margin" id="session">
+										<div class="input-field col s6">
+											<p id="student">{{session.student.fname + ' ' + session.student.lname}} <span v-if="session.student.vis === true">(VC)</span></p>
+											<label for="student" class="active">Student</label>
+										</div>
+										<div class="input-field col s6">
+											<p id="milestone">{{session.milestone.name}} ({{session.milestone.code}})</p>
+											<label for="milestone" class="active">Milestone</label>
+										</div>
+										<div class="input-field col s6">
+											<p id="startTime">{{dtLong(session.startTime)}}</p>
+											<label for="startTime" class="active">Start Time</label>
+										</div>
+										<div class="input-field col s6">
+											<p id="endTime">{{dtLong(session.endTime)}}</p>
+											<label for="endTime" class="active">End Time</label>
+										</div>
+									</div>
+								</div>
+								<div>
+									<b>To Cancel the training session and remove it from the system, press 'CANCEL SESSION'</b>, or press 'Close'.
+								</div>
+							</div>
 							<div class="modal-footer">
+								<a href="#!" @click="cancelSession(session._id)" class="btn waves-effect">CANCEL SESSION</a>
 								<a href="#!" class="waves-effect btn-flat modal-close">Close</a>
 							</div>
 						</div>
@@ -103,6 +133,13 @@ export default {
 			} catch(e) {
 				console.log(e);
 			}
+		},
+		async cancelSession(id) {
+			const {data} = await zabApi.delete(`/training/request/${id}`);
+			
+			this.$nextTick(() => {
+                        M.Modal.getInstance(document.querySelector('.modal_delete')).close();
+			})
 		},
 		formatDateTime(value) {
 			const d = new Date(value);
