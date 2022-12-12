@@ -79,11 +79,11 @@
 										<label for="milestone" class="active">Milestone</label>
 									</div>
 									<div class="input-field col s6">
-										<p id="startTime">{{session.startTime}}</p>
+										<p id="startTime">{{dtLong(session.startTime)}}</p>
 										<label for="startTime" class="active">Start Time</label>
 									</div>
 									<div class="input-field col s6">
-										<p id="endTime">{{session.endTime}}</p>
+										<p id="endTime">{{dtLong(session.endTime)}}</p>
 										<label for="endTime" class="active">End Time</label>
 									</div>
 								</div>
