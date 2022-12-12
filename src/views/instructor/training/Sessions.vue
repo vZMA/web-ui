@@ -147,8 +147,9 @@ export default {
 
 			this.$nextTick(() => {
                         M.Modal.getInstance(document.querySelector('.modal_delete')).close();
+						})
 
-			})
+			document.location.reload();
 		},
 		formatDateTime(value) {
 			const d = new Date(value);
