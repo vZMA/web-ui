@@ -22,8 +22,8 @@
 				<div class="secondary-content"><i class="material-icons">event_note</i></div>
 			</router-link>
 			<router-link to="/ins/training/allsessions" class="collection-item">
-				All Training Sessions
-				<div class="secondary-content"><i class="material-icons">event_note</i></div>
+				Manage Training Sessions (TA)
+				<div class="secondary-content"><i class="material-icons">search</i></div>
 			</router-link>
 		</div>
 	</div>

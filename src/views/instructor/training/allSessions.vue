@@ -1,7 +1,10 @@
 <template>
 	<div class="card">
+    <div style="background: lightblue; border: #406672; border-radius: 8px; padding: 10px;margin: 10px;font-weight: bold; color: #406672">
+      <span><u>PLEASE NOTE:</u> This page is intended for TA use.  If you are not the TA, you will not see any open training sessions.</span>
+    </div>
 		<div class="card-content">
-			<div class="card-title">Open Training Sessions</div>
+			<div class="card-title">All Open Training Sessions</div>
 		</div>
 		<div v-if="sessions === null" class="loading_container">
 			<Spinner />
@@ -24,7 +27,7 @@
 				<tbody class="sessions_list_row">
 					<tr v-for="(session, i) in sessions" :key="session._id">
 						<td>{{session.student.fname + ' ' + session.student.lname}}</td>
-						<td>{{session.instructor.fname + ' ' + session.instructor.lname}}</td>
+						<td><i>{{session.instructor.fname + ' ' + session.instructor.lname}}</i></td>
 						<td>{{session.milestoneCode}}</td>
 						<td>{{dtLong(session.startTime)}}</td>
 <!--						<td>{{dtLong(session.endTime)}}</td>-->
