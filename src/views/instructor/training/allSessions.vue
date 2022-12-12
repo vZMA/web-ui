@@ -25,9 +25,9 @@
 					<tr v-for="(session, i) in sessions" :key="session._id">
 						<td>{{session.student.fname + ' ' + session.student.lname}}</td>
 						<td>{{session.milestoneCode}}</td>
-						<td>{{dtLong(session.startTime)}}</td>
-						<td>{{dtLong(session.endTime)}}</td>
-						
+						<td>{{session.startTime}}</td>
+						<td>{{session.endTime}}</td>
+						<!--
 						<td class="options">
 							<a :href="`#modal_session_${i}`" data-position="top" data-tooltip="View Details" class="tooltipped modal-trigger">
 								<i class="material-icons">search</i>
@@ -39,7 +39,7 @@
 								<i class="material-icons">cancel</i>
 							</a>
 						</td>
-						<!-- <div :id="`modal_session_${i}`" class="modal modal_session">
+						<div :id="`modal_session_${i}`" class="modal modal_session">
 							<div class="modal-content">
 								<div class="modal_title">Training Session Details</div>
 								<div class="session">
