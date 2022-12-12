@@ -25,12 +25,9 @@
 					<tr v-for="(session, i) in sessions" :key="session._id">
 						<td>{{session.student.fname + ' ' + session.student.lname}}</td>
 						<td>{{session.milestoneCode}}</td>
-						<!--<td>{{dtLong(session.startTime)}}</td>
-						<td>{{dtLong(session.endTime)}}</td>
-						<td>{{session.student.fname + ' ' + session.student.lname}} <span v-if="session.student.vis === true">(VC)</span></td>
-						<td>{{session.milestone.name}}</td>
 						<td>{{dtLong(session.startTime)}}</td>
 						<td>{{dtLong(session.endTime)}}</td>
+						
 						<td class="options">
 							<a :href="`#modal_session_${i}`" data-position="top" data-tooltip="View Details" class="tooltipped modal-trigger">
 								<i class="material-icons">search</i>
@@ -52,7 +49,7 @@
 											<label for="student" class="active">Student</label>
 										</div>
 										<div class="input-field col s6">
-											<p id="milestone">{{session.milestone.name}} ({{session.milestone.code}})</p>
+											<p id="milestone">{{session.milestoneCode}})</p>
 											<label for="milestone" class="active">Milestone</label>
 										</div>
 										<div class="input-field col s6">
@@ -79,7 +76,7 @@
 										<label for="student" class="active">Student</label>
 									</div>
 									<div class="input-field col s6">
-										<p id="milestone">{{session.milestone.name}} ({{session.milestone.code}})</p>
+										<p id="milestone">{{session.milestone.code}}</p>
 										<label for="milestone" class="active">Milestone</label>
 									</div>
 									<div class="input-field col s6">
@@ -99,7 +96,7 @@
 								<a href="#!" @click="deleteSession(session._id)" class="btn waves-effect">CANCEL SESSION</a>
 								<a href="#!" class="waves-effect btn-flat modal-close">Close</a>
 							</div>
-						</div>-->
+						</div>
 					</tr>
 				</tbody>
 			</table>
