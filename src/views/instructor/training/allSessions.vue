@@ -9,7 +9,7 @@
 		<div v-else-if="sessions.length === 0" class="no_sessions">
 			There are no open training sessions
 		</div>
-		<div class="sessions_wrapper">
+	<!--	<div class="sessions_wrapper">
 			<table class="sessions_list striped">
 				<thead class="sessions_list_head">
 					<tr>
@@ -99,7 +99,7 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
+	</div>-->
 	<Completed />
 </template>
 
