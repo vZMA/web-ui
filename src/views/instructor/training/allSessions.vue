@@ -14,18 +14,20 @@
 				<thead class="sessions_list_head">
 					<tr>
 						<th>Student</th>
+						<th>Trainer</th>
 						<th>Milestone</th>
 						<th>Start</th>
-						<th>End</th>
+<!--						<th>End</th>-->
 						<th class="options">Options</th>
 					</tr>
 				</thead>
 				<tbody class="sessions_list_row">
 					<tr v-for="(session, i) in sessions" :key="session._id">
 						<td>{{session.student.fname + ' ' + session.student.lname}}</td>
+						<td>{{session.instructor.fname + ' ' + session.instructor.lname}}</td>
 						<td>{{session.milestoneCode}}</td>
 						<td>{{dtLong(session.startTime)}}</td>
-						<td>{{dtLong(session.endTime)}}</td>
+<!--						<td>{{dtLong(session.endTime)}}</td>-->
 						
 						<td class="options">
 							<a :href="`#modal_session_${i}`" data-position="top" data-tooltip="View Details" class="tooltipped modal-trigger">
@@ -59,6 +61,10 @@
 											<p id="endTime">{{dtLong(session.endTime)}}</p>
 											<label for="endTime" class="active">End Time</label>
 										</div>
+                    <div class="input-field col s6">
+                      <p id="trainer">{{session.instructor.fname + ' ' + session.instructor.lname}}</p>
+                      <label for="trainer" class="active">Trainer</label>
+                    </div>
 									</div>
 								</div>
 							</div>
