@@ -27,7 +27,7 @@
 						<td>{{session.milestoneCode}}</td>
 						<td>{{session.startTime}}</td>
 						<td>{{session.endTime}}</td>
-						<!--
+						
 						<td class="options">
 							<a :href="`#modal_session_${i}`" data-position="top" data-tooltip="View Details" class="tooltipped modal-trigger">
 								<i class="material-icons">search</i>
@@ -53,11 +53,11 @@
 											<label for="milestone" class="active">Milestone</label>
 										</div>
 										<div class="input-field col s6">
-											<p id="startTime">{{dtLong(session.startTime)}}</p>
+											<p id="startTime">{{session.startTime}}</p>
 											<label for="startTime" class="active">Start Time</label>
 										</div>
 										<div class="input-field col s6">
-											<p id="endTime">{{dtLong(session.endTime)}}</p>
+											<p id="endTime">{{session.endTime}}</p>
 											<label for="endTime" class="active">End Time</label>
 										</div>
 									</div>
@@ -80,11 +80,11 @@
 										<label for="milestone" class="active">Milestone</label>
 									</div>
 									<div class="input-field col s6">
-										<p id="startTime">{{dtLong(session.startTime)}}</p>
+										<p id="startTime">{{session.startTime}}</p>
 										<label for="startTime" class="active">Start Time</label>
 									</div>
 									<div class="input-field col s6">
-										<p id="endTime">{{dtLong(session.endTime)}}</p>
+										<p id="endTime">{{dsession.endTime}}</p>
 										<label for="endTime" class="active">End Time</label>
 									</div>
 								</div>
@@ -96,7 +96,7 @@
 								<a href="#!" @click="deleteSession(session._id)" class="btn waves-effect">CANCEL SESSION</a>
 								<a href="#!" class="waves-effect btn-flat modal-close">Close</a>
 							</div>
-						</div>-->
+						</div>
 					</tr>
 				</tbody>
 			</table>
