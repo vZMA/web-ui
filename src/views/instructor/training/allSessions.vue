@@ -27,7 +27,7 @@
 						<td>{{session.milestone.name}}</td>
 						<td>{{dtLong(session.startTime)}}</td>
 						<td>{{dtLong(session.endTime)}}</td>
-						<td class="options">
+						<!-- <td class="options">
 							<a :href="`#modal_session_${i}`" data-position="top" data-tooltip="View Details" class="tooltipped modal-trigger">
 								<i class="material-icons">search</i>
 							</a>
@@ -38,7 +38,7 @@
 								<i class="material-icons">cancel</i>
 							</a>
 						</td>
-						<!-- <div :id="`modal_session_${i}`" class="modal modal_session">
+						<div :id="`modal_session_${i}`" class="modal modal_session">
 							<div class="modal-content">
 								<div class="modal_title">Training Session Details</div>
 								<div class="session">
