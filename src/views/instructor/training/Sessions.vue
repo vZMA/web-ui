@@ -88,7 +88,7 @@
 								</div>
 							</div>
 							<div>
-								<b>To Cancel the training session and remove it from the system, press 'CANCEL SESSION'</b>, or press 'Close'.
+								To Cancel the training session and remove it from the system, press <b>'CANCEL SESSION'</b>, or press 'Close'.
 							</div>
 							<div class="modal-footer">
 								<a href="#!" @click="deleteSession(session._id)" class="btn waves-effect">CANCEL SESSION</a>
