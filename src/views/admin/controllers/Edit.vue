@@ -77,7 +77,7 @@
 								<br/>
 								<span id="miadels" :class="{active: form.certs.miadels}" class="cert cert_solom"
 									@click="toggleCert">MIA_DEL</span>
-								<span id="dels" :class="{active: form.certs.miagnds}" class="cert cert_solom"
+								<span id="miagnds" :class="{active: form.certs.miagnds}" class="cert cert_solom"
 									@click="toggleCert">MIA_GND</span>
 								<span id="miatwrs" :class="{active: form.certs.miatwrs}" class="cert cert_solom"
 									@click="toggleCert">MIA_TWR</span>
