@@ -197,19 +197,19 @@ export default {
 					this.toastSuccess('Session notes finalized');
 									
 					// Send the training notes to vatsim
-					await vatusaApiAuth.post(`/user/${this.session.student.cid}/training/record/`, {
-					"instructor_id": this.session.instructor.cid,
-                	"session_date": dayjs(this.session.startTime).format("YYYY-MM-DD HH:mm"),
-					"position": this.session.position,
-					"duration": this.duration,
-					"movements": this.session.movements,
-					"score": this.session.progress,
-					"notes": this.session.studentNotes,
-			     	"ots_status": this.session.ots,
-				    "location": this.session.location,
-                    "is_cbt": false,
-                     "solo_granted": false
-					});	
+					//await vatusaApiAuth.post(`/user/${this.session.student.cid}/training/record/`, {
+					//"instructor_id": this.session.instructor.cid,
+                	//"session_date": dayjs(this.session.startTime).format("YYYY-MM-DD HH:mm"),
+					//"position": this.session.position,
+					//"duration": this.duration,
+					//"movements": this.session.movements,
+					//"score": this.session.progress,
+					//"notes": this.session.studentNotes,
+			     	//"ots_status": this.session.ots,
+				    //"location": this.session.location,
+                    //"is_cbt": false,
+                    //"solo_granted": false
+					//});	
 					
 					this.$router.push('/ins/training/sessions');
 				}
