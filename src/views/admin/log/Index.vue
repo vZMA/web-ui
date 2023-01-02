@@ -61,12 +61,27 @@ export default {
 		},
 		populateLog(log) {
 			let action = log.action;
-/*			if(action.match(/%b/)) {
-				action = action.replace(/%b/, `<strong>${log.userBy.fname} ${log.userBy.lname}</strong>`);
+			try {
+				let byfirstname = log.userBy.fname;
+				let bylastname = log.userBy.lname;
+			} catch (error) {
+				let byfirstname = 'unknown';
+				let bylastname = 'user';
+			};
+			try {
+				let affectedfirstname = log.userAffected.fname;
+				let affectedlastname = log.userAffected.lname;
+			} catch (error) {
+				let affectedfirstname = 'unknown';
+				let affectedlastname = 'unknown';
+			};
+
+			if(action.match(/%b/)) {
+				action = action.replace(/%b/, `<strong>${byfirstname} ${bylastname}</strong>`);
 			}
 			if(action.match(/%a/)) {
-				action = action.replace(/%a/, `<strong>${log.userAffected.fname} ${log.userAffected.lname}</strong>`);
-			}*/
+				action = action.replace(/%a/, `<strong>${affectedfirstname} ${affectedlastname}</strong>`);
+			}
 			if(action.match(/\*([^*]+)\*/g)) {
 				action = action.replace(/\*([^*]+)\*/g, `<strong>$1</strong>`);
 			}
