@@ -241,12 +241,10 @@ export default {
 		},
 		increaseTime(type) {
 			if(type === 'start'  && new Date(this.session.startTime) < new Date(this.session.endTime)-900000) {
-//			if(type === 'start'  && this.session.startTime !== this.oldTimes.endTime && new Date(this.session.startTime) < new Date(this.session.endTime)) {
 				let d = new Date(this.session.startTime);
 				d.setUTCMinutes(d.getUTCMinutes() + 15);
 				this.session.startTime = d.toISOString();
 			} else if(type === 'end') {
-//			} else if(type === 'end' && this.session.endTime !== this.oldTimes.endTime && new Date(this.session.endTime) >= new Date(this.session.startTime)) {
 				let d = new Date(this.session.endTime);
 				d.setUTCMinutes(d.getUTCMinutes() + 15);
 				this.session.endTime = d.toISOString();
@@ -254,12 +252,10 @@ export default {
 		},
 		decreaseTime(type) {
 			if(type === 'start') {
-//			if(type === 'start' && this.session.startTime !== this.oldTimes.startTime && new Date(this.session.startTime) <= new Date(this.session.endTime)) {
 				let d = new Date(this.session.startTime);
-				d.setUTCMinutes(d.getUTCMinutes() - 15);		
+				d.setUTCMinutes(d.getUTCMinutes() - 15);
 				this.session.startTime = d.toISOString();
 			} else if(type === 'end' && new Date(this.session.endTime)-900000 > new Date(this.session.startTime)) {
-//			} else if(type === 'end' && this.session.endTime !== this.oldTimes.startTime && new Date(this.session.endTime) > new Date(this.session.startTime)) {
 				let d = new Date(this.session.endTime);
 				d.setUTCMinutes(d.getUTCMinutes() - 15);
 				this.session.endTime = d.toISOString();
