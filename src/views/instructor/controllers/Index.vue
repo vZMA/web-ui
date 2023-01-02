@@ -94,8 +94,7 @@ export default {
 			});
 		},
 		openVatsim(cid) {
-			console.log('trying to jumper to controller page ' + cid);
-			window.open("https://www.vatusa.net/mgt/controller/" + cid, "_blank");
+					window.open("https://www.vatusa.net/mgt/controller/" + cid, "_blank");
 		}
 	}
 };
