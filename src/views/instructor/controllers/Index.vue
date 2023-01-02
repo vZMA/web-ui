@@ -94,7 +94,7 @@ export default {
 			});
 		},
 		openVatsim(cid) {
-			window.open("https://www.vatuse.net/mgt/contoller/" & cid, "_blank");
+			window.open("https://www.vatusa.net/mgt/contoller/" & cid, "_blank");
 		}
 	}
 };
