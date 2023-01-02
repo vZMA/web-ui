@@ -94,6 +94,7 @@ export default {
 			});
 		},
 		openVatsim(cid) {
+			console.log('open vatsim clicked');
 			window.open("https://www.vatusa.net/mgt/contoller/" & cid, "_blank");
 		}
 	}
