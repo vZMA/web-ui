@@ -252,13 +252,14 @@ export default {
 		},
 		decreaseTime(type) {
 			if(type === 'end' && new Date(this.session.endTime)-900000 > new Date(this.session.startTime)) {
+				console.log(`end time decreased`);
 				let d = new Date(this.session.endTime);
 				d.setUTCMinutes(d.getUTCMinutes()-15);
 				this.session.endTime = d.toISOString();		
 			} else if(type === 'start') {
-				console.log(`decrease start time`);
+				console.log('start time decreased');
 				let d = new Date(this.session.startTime);
-				d.setUTCMinutes(d.getUTCMinutes() - 15);
+				d.setUTCMinutes(d.getUTCMinutes()-15);
 				this.session.startTime = d.toISOString();
 			}
 		}
