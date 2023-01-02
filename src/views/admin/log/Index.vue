@@ -61,12 +61,12 @@ export default {
 		},
 		populateLog(log) {
 			let action = log.action;
-			if(action.match(/%b/)) {
+/*			if(action.match(/%b/)) {
 				action = action.replace(/%b/, `<strong>${log.userBy.fname} ${log.userBy.lname}</strong>`);
 			}
 			if(action.match(/%a/)) {
 				action = action.replace(/%a/, `<strong>${log.userAffected.fname} ${log.userAffected.lname}</strong>`);
-			}
+			}*/
 			if(action.match(/\*([^*]+)\*/g)) {
 				action = action.replace(/\*([^*]+)\*/g, `<strong>$1</strong>`);
 			}
