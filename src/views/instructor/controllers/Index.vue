@@ -39,7 +39,7 @@
 								</div>
 							</td>
 							<td class="options">
-								<a href="#!" @click="openVatsim(controller.cid)" class="tooltipped" data-tooltip="Open VATSIM Managment page"><img src="@/assets/images/VATSIM_Logo.png" height="15" alt="VATSIM"></a>
+								<a href="#!" @click="openVatsim(controller.cid)" class="tooltipped" data-tooltip="Open VATSIM Managment page"><img src="@/assets/images/VATSIM_Logo.png" height="20" alt="VATSIM"></a>
 								<router-link data-position="top" data-tooltip="View Training Sessions" class="tooltipped" :to="`/ins/training/sessions/${controller.cid}`"><i class="material-icons">assignment</i></router-link>
 								<router-link data-position="top" data-tooltip="Edit Controller" class="tooltipped" :to="`/ins/controllers/${controller.cid}`"><i class="material-icons">edit</i></router-link>
 							</td>
@@ -94,7 +94,8 @@ export default {
 			});
 		},
 		openVatsim(cid) {
-			window.open("https://www.vatusa.net/mgt/controller/" & cid, "_blank");
+			console.log('trying to jumper to controller page ' + cid);
+			window.open("https://www.vatusa.net/mgt/controller/" + cid, "_blank");
 		}
 	}
 };
