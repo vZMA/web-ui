@@ -251,15 +251,15 @@ export default {
 			}
 		},
 		decreaseTime(type) {
-			if(type === 'start') {
-				console.log(`decrease start time`);
-				let d = new Date(this.session.startTime);
-				d.setUTCMinutes(d.getUTCMinutes()-15);
-				this.session.startTime = d.toISOString();
-			} else if(type === 'end' && new Date(this.session.endTime)-900000 > new Date(this.session.startTime)) {
+			if(type === 'end' && new Date(this.session.endTime)-900000 > new Date(this.session.startTime)) {
 				let d = new Date(this.session.endTime);
 				d.setUTCMinutes(d.getUTCMinutes()-15);
-				this.session.endTime = d.toISOString();
+				this.session.endTime = d.toISOString();		
+			} else if(type === 'start') {
+				console.log(`decrease start time`);
+				let d = new Date(this.session.startTime);
+				d.setUTCMinutes(d.getUTCMinutes() - 15);
+				this.session.startTime = d.toISOString();
 			}
 		}
 	}
