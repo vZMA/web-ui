@@ -95,6 +95,14 @@
 							</select>
 							<label>OTS</label>
 						</div>
+						<div class="input-field col s12 m6">
+							<select required v-model="session.solo_granted" class="materialize-select">
+								<option value="" disabled selected>Select an option</option>
+								<option value=0>Not Issued</option>
+								<option value=1>Issued</option>
+							</select>
+							<label>Solo Certificate</label>
+						</div>
 					</div>
 					<div class="row row_no_margin" v-show="step === 3">
 						<div class="input-field col s12">
@@ -232,22 +240,25 @@ export default {
 			};
 		},
 		increaseTime(type) {
-			if(type === 'start'  && this.session.startTime !== this.oldTimes.endTime && new Date(this.session.startTime) < new Date(this.session.endTime)) {
+			if(type === 'start'  && new Date(this.session.startTime) < new Date(this.session.endTime)-900000) {
+//			if(type === 'start'  && this.session.startTime !== this.oldTimes.endTime && new Date(this.session.startTime) < new Date(this.session.endTime)) {
 				let d = new Date(this.session.startTime);
 				d.setUTCMinutes(d.getUTCMinutes() + 15);
 				this.session.startTime = d.toISOString();
-			} else if(type === 'end' && this.session.endTime !== this.oldTimes.endTime && new Date(this.session.endTime) >= new Date(this.session.startTime)) {
+			} else if(type === 'end') {
+//			} else if(type === 'end' && this.session.endTime !== this.oldTimes.endTime && new Date(this.session.endTime) >= new Date(this.session.startTime)) {
 				let d = new Date(this.session.endTime);
 				d.setUTCMinutes(d.getUTCMinutes() + 15);
 				this.session.endTime = d.toISOString();
 			}
 		},
 		decreaseTime(type) {
-			if(type === 'start'  && this.session.startTime !== this.oldTimes.startTime && new Date(this.session.startTime) <= new Date(this.session.endTime)) {
+			if(type === 'start') {
+//			if(type === 'start' && this.session.startTime !== this.oldTimes.startTime && new Date(this.session.startTime) <= new Date(this.session.endTime)) {
 				let d = new Date(this.session.startTime);
-				d.setUTCMinutes(d.getUTCMinutes() - 15);
 				this.session.startTime = d.toISOString();
-			} else if(type === 'end' && this.session.endTime !== this.oldTimes.startTime && new Date(this.session.endTime) > new Date(this.session.startTime)) {
+			} else if(type === 'end' && new Date(this.session.endTime)-900000 > new Date(this.session.startTime)) {
+//			} else if(type === 'end' && this.session.endTime !== this.oldTimes.startTime && new Date(this.session.endTime) > new Date(this.session.startTime)) {
 				let d = new Date(this.session.endTime);
 				d.setUTCMinutes(d.getUTCMinutes() - 15);
 				this.session.endTime = d.toISOString();
