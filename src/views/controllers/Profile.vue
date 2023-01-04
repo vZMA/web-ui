@@ -19,6 +19,7 @@
 								{{controller.fname}} {{controller.lname}} ({{controller.oi}})
 								<span v-if="controller.absence.length > 0" class="controller_loa">LOA</span>
 							</div>
+							<div class="controller_cid">{{controller.cid}}	</div>
 							<div class="controller_rating">{{controller.ratingLong}}</div>
 						</div>
 						<div class="col s12 m8 l9">
