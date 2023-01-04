@@ -178,6 +178,11 @@ export default {
 	font-size: 1.5rem;
 }
 
+.controller_cid {
+	font-weight: 300;
+	font-size: 1.2rem;
+	margin-top: -7px;
+}
 .controller_rating {
 	font-weight: 300;
 	font-size: 1.2rem;
