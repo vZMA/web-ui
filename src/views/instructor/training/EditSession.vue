@@ -168,7 +168,7 @@ export default {
 					position: this.session.position,
 					movements: this.session.movements,
 					progress: this.session.progress,
-					ots: this.session.progress,
+					ots: this.session.ots,
 					location: this.session.location,
 					startTime: this.session.startTime,
 					endTime: this.session.endTime,
@@ -207,9 +207,9 @@ export default {
 				if (!this.session.studentNotes)
 					this.toastError("Student Notes are required on page 3");
 
-				if (this.session.progress ||
-					this.session.location ||
-					this.session.studentNotes) {
+				if (this.session.progress != null &&
+					this.session.location != null &&
+					this.session.studentNotes != null) {
 					try {	// Hit the local database to Finalize the record
 				
 						const {data} = await zabApi.put(`/training/session/submit/${this.$route.params.id}`, this.session);
