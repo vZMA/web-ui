@@ -198,17 +198,18 @@ export default {
 				// Force Save the data to the local database
 				await this.saveForm();
 
+				
 				// Error check the fields
-				if (this.session.progress == "")
+				if (!this.session.progress)
 					this.toastError("Progress is required on page 2");
-				if (this.session.location == "")
+				if (!this.session.location)
 					this.toastError("Location is required on page 2");
-				if (this.session.studentNotes == "")
+				if (!this.session.studentNotes)
 					this.toastError("Student Notes are required on page 3");
 
-				if (this.session.progress != "" &&
-					this.session.location != "" &&
-					this.session.studentNotes != "") {
+				if (!this.session.progressv||
+					!this.session.location ||
+					!this.session.studentNotes) {
 					try {	// Hit the local database to Finalize the record
 				
 						const {data} = await zabApi.put(`/training/session/submit/${this.$route.params.id}`, this.session);
