@@ -56,9 +56,9 @@
               >FILES</a
             >
             <ul id="files-dropdown" class="dropdown-content">
-              <li>
+              <!--<li>
                 <router-link to="/files/documents">Documents</router-link>
-              </li>
+              </li> -->
               <li>
                 <router-link to="/files/downloads">Downloads</router-link>
               </li>
