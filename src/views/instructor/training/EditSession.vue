@@ -200,15 +200,12 @@ export default {
 
 
 				// Error check the fields
-				if (!this.session.progress)
-					this.toastError("Progress is required on page 2");
 				if (!this.session.location)
 					this.toastError("Location is required on page 2");
 				if (!this.session.studentNotes)
 					this.toastError("Student Notes are required on page 3");
 
-				if (this.session.progress != null &&
-					this.session.location != null &&
+				if (this.session.location != null &&
 					this.session.studentNotes != null) {
 					try {	// Hit the local database to Finalize the record
 				
