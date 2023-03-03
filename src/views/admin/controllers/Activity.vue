@@ -159,16 +159,6 @@ export default {
 			const hms = new Date(remainderSeconds * 1000).toISOString().substring(11, 19);
 			return hms.replace(/^(\d+)/, h => `${+h + days * 24}`.padStart(2, '0'));
 		},
-		sec2hms(secs) {
-			if(!secs) return '00:00:00';
-			let hours = Math.floor(secs / 3600);
-			if(hours < 10) {
-				hours = `00${hours}`.slice(-2);
-			}
-			const minutes = `0${Math.round((secs / 60) % 60)}`.slice(-2);
-			const seconds = `0${secs % 60}`.slice(-2);
-			return `${hours}:${minutes}:${seconds}`;
-		},
 		reduceControllerCerts(certs) {
 			if(!certs) return [];
 			const hasCerts = certs.map(cert => cert.code);
