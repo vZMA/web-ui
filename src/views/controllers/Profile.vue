@@ -150,10 +150,8 @@ export default {
 			//const hours = Math.floor(secs / 3600);
 			//const minutes = `0${Math.round((secs / 60) % 60)}`.slice(-2);
 			const hours = Math.floor(secs / 3600);
-			const minutes = Math.floor((secs %3600)/60);
-			const hoursString = hours.toString().padStart(2, '0');
-  			const minutesString = minutes.toString().padStart(2, '0');
-  			return `${hoursString}:${minutesString}`;		
+			const minutes = `0${Math.floor((secs % 3600) / 60)}`.slice(-2);
+			return `${hours}:${minutes}`;
 		},
 		totalTime(month) {
 			return Object.values(month).reduce((acc, cv) => acc + cv);
