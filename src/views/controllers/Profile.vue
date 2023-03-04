@@ -154,13 +154,13 @@ export default {
 			return `${hours}:${minutes}`;
 		},
 		totalTime(month) {
-			return (this.stats[month].del+
+			//return (this.stats[month].del+
 			this.stats[month].gnd+
 			this.stats[month].twr+
 			this.stats[month].app+
 			this.stats[month].ctr);
 
-			//return Object.values(month).reduce((acc, cv) => acc + cv);
+			return Object.values(month).reduce((acc, cv) => acc + cv);
 		},
 		openVatsim(cid) {
 					window.open("https://stats.vatsim.net/stats/" + cid, "_blank");
