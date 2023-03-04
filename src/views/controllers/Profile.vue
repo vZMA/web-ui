@@ -154,12 +154,6 @@ export default {
 			return `${hours}:${minutes}`;
 		},
 		totalTime(month) {
-			//return (this.stats[month].del+
-			this.stats[month].gnd+
-			this.stats[month].twr+
-			this.stats[month].app+
-			this.stats[month].ctr);
-
 			return Object.values(month).reduce((acc, cv) => acc + cv);
 		},
 		openVatsim(cid) {
