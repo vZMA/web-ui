@@ -7,10 +7,11 @@
 				for visiting status, click the button below to login and continue.<br />
 			</p>
 			<p>
-				<b class="red-text">Important: </b>please ensure that you meet all
-				requirements to become a visitor, as outlined in our 
-				<router-link to="/files/documents/visiting-controller-policy-26476"><b>Visiting Controller Policy</b></router-link>. 
-				Any application that doesn't meet the requirements will be rejected.
+				<b class="red-text">Important: </b>Please ensure that you meet all
+				requirements to become a visitor. We do not currently accept visitors
+				who hold OBS (Observer) or S1 (Student) ratings. Furthermore, you must meet the
+				requirements of the VATSIM Transfer and Visiting Controller Policy.	Any application 
+				that doesn't meet the requirements will be rejected.
 			</p>
 			<div v-if="!user.isLoggedIn">
 				<button class="btn btn-waves login_button" @click="login">
