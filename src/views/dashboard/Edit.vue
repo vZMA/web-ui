@@ -8,7 +8,7 @@
 					<label for="bio" class="active">Biography</label>
 				</div>
 				<div class="input-field col s12 m6">
-					<select required v-model="userTimezone" class="materialize-select">
+					<select required v-model="form.userTimezone" class="materialize-select">
 						<option value="" disabled selected>Select a timezone</option>
 						<option value=12>UTC+12</option>
 						<option value=11>UTC+11</option>
