@@ -12,7 +12,7 @@
 					<label for="timezone" class="active">Biography</label>
 				</div>
 				<div class="input-field col s12">
-					<textarea id="googleid"" class="materialize-textarea" data-length="256" v-model="form.GoogleId"></textarea>
+					<textarea id="googleid"" class="materialize-textarea" data-length="256" v-model="form.googleinfo.ClientId"></textarea>
 					<label for="googleid" class="active">Biography</label>
 				</div>
 				<div class="input-field col s12">
