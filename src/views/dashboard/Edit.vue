@@ -7,7 +7,7 @@
 					<textarea id="bio" class="materialize-textarea" data-length="2000" v-model="form.bio"></textarea>
 					<label for="bio" class="active">Biography</label>
 				</div>
-				<div class="input-field col s12 m6">
+				<div class="input-field col s12">
 					<select required v-model="form.userTimezone" class="materialize-select">
 						<option value="" disabled selected>Select a timezone</option>
 						<option value=12>UTC+12</option>
