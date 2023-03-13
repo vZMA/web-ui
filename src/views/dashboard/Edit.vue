@@ -9,11 +9,11 @@
 				</div>
 				<div class="input-field col s12">
 					<textarea id="timezone" class="materialize-textarea" data-length="3" v-model="form.userTimezone"></textarea>
-					<label for="timezone" class="active">Biography</label>
+					<label for="timezone" class="active">Timezone</label>
 				</div>
 				<div class="input-field col s12">
 					<textarea id="googleid" class="materialize-textarea" data-length="256" v-model="form.googleinfo.ClientId"></textarea>
-					<label for="googleid" class="active">Biography</label>
+					<label for="googleid" class="active">Google Username</label>
 				</div>
 				<div class="input-field col s12">
 					<input type="submit" class="btn right" value="Update" />
