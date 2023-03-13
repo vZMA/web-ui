@@ -8,6 +8,14 @@
 					<label for="bio" class="active">Biography</label>
 				</div>
 				<div class="input-field col s12">
+					<textarea id="timezone" class="materialize-textarea" data-length="3" v-model="form.userTimezone"></textarea>
+					<label for="timezone" class="active">Biography</label>
+				</div>
+				<div class="input-field col s12">
+					<textarea id="googleid"" class="materialize-textarea" data-length="256" v-model="form.GoogleId"></textarea>
+					<label for="googleid" class="active">Biography</label>
+				</div>
+				<div class="input-field col s12">
 					<input type="submit" class="btn right" value="Update" />
 				</div>
 			</form>
@@ -23,12 +31,18 @@ export default {
 	data() {
 		return {
 			form: {
-				bio: ''
+				bio: '',
+				userTimezone: 0,
+				googleinfo: { 
+					clientId: ''
+				}
 			}
 		};
 	},
 	async mounted() {
 		this.form.bio = this.user.data.bio || '';
+		this.form.userTimezone = this.user.data.userTimezone / 60;
+		this.form.googleinfo.googleId = this.user.data.googleinfo.ClientId;
 		this.$nextTick(() => {
 			M.textareaAutoResize(document.querySelector('textarea'));
 			M.CharacterCounter.init(document.querySelector('textarea'));
@@ -37,6 +51,7 @@ export default {
 	},
 	methods: {
 		async updateProfile() {
+			this.form.userTimezone *= 60;
 			const {data} = await zabApi.put('/user/profile', this.form);
 
 			if(data.ret_det.code === 200) {
