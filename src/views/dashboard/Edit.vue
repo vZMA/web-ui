@@ -58,7 +58,7 @@ export default {
 		return {
 			form: {
 				bio: '',
-				userTimezone: 0,
+				userTimezone: '',
 				googleinfo: { 
 					clientId: ''
 				}
@@ -67,7 +67,7 @@ export default {
 	},
 	async mounted() {
 		this.form.bio = this.user.data.bio || '';
-		this.form.userTimezone = this.user.data.userTimezone / 60;
+		this.form.userTimezone = this.user.data.userTimezone;
 		this.form.googleinfo.googleId = this.user.data.googleinfo.ClientId;
 		this.$nextTick(() => {
 			M.textareaAutoResize(document.querySelector('textarea'));
@@ -77,7 +77,6 @@ export default {
 	},
 	methods: {
 		async updateProfile() {
-			this.form.userTimezone *= 60;
 			const {data} = await zabApi.put('/user/profile', this.form);
 
 			if(data.ret_det.code === 200) {
