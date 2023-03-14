@@ -68,7 +68,7 @@ export default {
 	async mounted() {
 		this.form.bio = this.user.data.bio || '';
 		this.form.userTimezone = this.user.data.userTimezone;
-		this.form.googleinfo.clientId = this.user.data.googleinfo.ClientId;
+		this.form.googleinfo.clientId = this.user.data.googleinfo.clientId;
 		this.$nextTick(() => {
 			M.textareaAutoResize(document.querySelector('textarea'));
 			M.CharacterCounter.init(document.querySelector('textarea'));
