@@ -10,30 +10,30 @@
 				<div class="input-field col s12">
 					<select id="timezone" required v-model="form.userTimezone" class="materialize-select">
 						<option value="" disabled selected>Select a timezone</option>
-						<option value=12>UTC+12</option>
-						<option value=11>UTC+11</option>
-						<option value=10>UTC+10</option>
-						<option value=9>UTC+9</option>
-						<option value=8>UTC+8</option>
-						<option value=7>UTC+7</option>
-						<option value=6>UTC+6</option>
-						<option value=5>UTC+5</option>
-						<option value=4>UTC+4</option>
-						<option value=3>UTC+3</option>
-						<option value=2>UTC+2</option>			
-						<option value=1>UTC+1</option>			
-						<option value=0>UTC</option>
-						<option value=-1>UTC-1</option>
-						<option value=-2>UTC-2</option>
-						<option value=-3>UTC-3</option>
-						<option value=-4>UTC-4</option>
-						<option value=-5>UTC-5</option>
-						<option value=-6>UTC-6</option>
-						<option value=-7>UTC-7</option>
-						<option value=-8>UTC-8</option>
-						<option value=-9>UTC-9</option>
-						<option value=-10>UTC-10</option>			
-						<option value=-11>UTC-11</option>			
+						<option value="12">UTC+12</option>
+						<option value="11">UTC+11</option>
+						<option value="10">UTC+10</option>
+						<option value="9">UTC+9</option>
+						<option value="8">UTC+8</option>
+						<option value="7">UTC+7</option>
+						<option value="6">UTC+6</option>
+						<option value="5">UTC+5</option>
+						<option value="4">UTC+4</option>
+						<option value="3">UTC+3</option>
+						<option value="2">UTC+2</option>			
+						<option value="1">UTC+1</option>			
+						<option value="0">UTC</option>
+						<option value="-1">UTC-1</option>
+						<option value="-2">UTC-2</option>
+						<option value="-3">UTC-3</option>
+						<option value="-4">UTC-4</option>
+						<option value="-5">UTC-5</option>
+						<option value="-6">UTC-6</option>
+						<option value="-7">UTC-7</option>
+						<option value="-8">UTC-8</option>
+						<option value="-9">UTC-9</option>
+						<option value="-10">UTC-10</option>			
+						<option value="-11">UTC-11</option>			
 					</select>
 					<label for="timezone" class="active">Timezone</label>
 				</div>
@@ -66,8 +66,8 @@ export default {
 	},
 	async mounted() {
 		this.form.bio = this.user.data.bio || '';
-		this.form.userTimezone = this.user.data.userTimezone;
-		this.form.GoogleClientId = this.user.data.GoogleClientId;
+		this.form.userTimezone = this.user.data.userTimezone || '';
+		this.form.GoogleClientId = this.user.data.GoogleClientId || '';
 		this.$nextTick(() => {
 			M.textareaAutoResize(document.querySelector('textarea'));
 			M.CharacterCounter.init(document.querySelector('textarea'));
