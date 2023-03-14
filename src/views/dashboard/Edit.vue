@@ -69,6 +69,7 @@ export default {
 		this.form.userTimezone = this.user.data.userTimezone || '';
 		this.form.GoogleClientId = this.user.data.GoogleClientId || '';
 		this.$nextTick(() => {
+			M.FormSelect.init(document.querySelectorAll('select'), {});
 			M.textareaAutoResize(document.querySelector('textarea'));
 			M.CharacterCounter.init(document.querySelector('textarea'));
 			M.updateTextFields();
