@@ -38,7 +38,7 @@
 					<label for="timezone" class="active">Timezone</label>
 				</div>
 				<div class="input-field col s12">
-					<textarea id="googleid" class="materialize-textarea" data-length="256" v-model="form.googleinfo.clientId"></textarea>
+					<textarea id="googleid" class="materialize-textarea" data-length="256" v-model="form.GoogleClientId"></textarea>
 					<label for="googleid" class="active">Google Username</label>
 				</div>
 				<div class="input-field col s12">
@@ -59,16 +59,15 @@ export default {
 			form: {
 				bio: '',
 				userTimezone: '',
-				googleinfo: { 
-					clientId: ''
-				}
+				GoogleClientId: ''
+				
 			}
 		};
 	},
 	async mounted() {
 		this.form.bio = this.user.data.bio || '';
 		this.form.userTimezone = this.user.data.userTimezone;
-		this.form.googleinfo.clientId = this.user.data.googleinfo.clientId;
+		this.form.GoogleClientId = this.user.data.GoogleClientId;
 		this.$nextTick(() => {
 			M.textareaAutoResize(document.querySelector('textarea'));
 			M.CharacterCounter.init(document.querySelector('textarea'));
