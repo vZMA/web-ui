@@ -38,7 +38,7 @@
 					<label for="timezone" class="active">Timezone</label>
 				</div>
 				<div class="input-field col s12">
-					<textarea id="googleid" class="materialize-textarea" data-length="256" v-model="form.googleinfo.ClientId"></textarea>
+					<textarea id="googleid" class="materialize-textarea" data-length="256" v-model="form.googleinfo.clientId"></textarea>
 					<label for="googleid" class="active">Google Username</label>
 				</div>
 				<div class="input-field col s12">
