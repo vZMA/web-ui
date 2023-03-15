@@ -70,8 +70,6 @@ export default {
 	},
 	async mounted() {
 		//const Offset = parseInt(this.user.data.userTimezone) * 60000;
-		console.log(this.user.data.userTimezone);
-
 		await this.getUpcomingSessions();
 		
 		M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
