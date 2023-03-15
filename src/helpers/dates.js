@@ -17,15 +17,12 @@ export default {
 			hourCycle: 'h23'
 		})}z`;
 	},
-	dtsLong(isoDate,offset) { // January 2, 2006, 15:04
-		console.log(isoDate);
-		console.log(offset);
+	dtsLong(isoDate) { // January 2, 2006, 15:04
 		const d = new Date(isoDate);
 		return `${d.toLocaleString('en-US', {
 			month: 'long',
 			day: 'numeric',
 			year: 'numeric', 
-			timeZone: 'UTC'+offset, 
 			hour: '2-digit', 
 			minute: '2-digit',
 			hourCycle: 'h23'
