@@ -70,7 +70,7 @@ export default {
 	},
 	async mounted() {
 		//const Offset = this.user.data.userTimezone * 60000;
-		console.log(Offset);
+		//console.log(Offset);
 
 		await this.getUpcomingSessions();
 		
