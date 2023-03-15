@@ -17,17 +17,6 @@ export default {
 			hourCycle: 'h23'
 		})}z`;
 	},
-	dtsLong(isoDate) { // January 2, 2006, 15:04
-		const d = new Date(isoDate);
-		return `${d.toLocaleString('en-US', {
-			month: 'long',
-			day: 'numeric',
-			year: 'numeric', 
-			hour: '2-digit', 
-			minute: '2-digit',
-			hourCycle: 'h23'
-		})}z`;
-	},
 	dtFull(isoDate) { // Monday, January 2, 2006, 15:04:05
 		const d =  new Date(isoDate);
 		return d.toLocaleString('en-US', {
