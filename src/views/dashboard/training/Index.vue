@@ -69,8 +69,8 @@ export default {
 		PastSessions
 	},
 	async mounted() {
-		//const Offset = this.user.data.userTimezone * 60000;
-		//console.log(Offset);
+		const Offset = parseInt(this.user.data.userTimezone) * 60000;
+		console.log(Offset);
 
 		await this.getUpcomingSessions();
 		
