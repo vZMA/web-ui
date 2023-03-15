@@ -18,6 +18,8 @@ export default {
 		})}z`;
 	},
 	dtsLong(isoDate,offset) { // January 2, 2006, 15:04
+		console.log(isoDate);
+		console.log(offset);
 		const d = new Date(isoDate);
 		return `${d.toLocaleString('en-US', {
 			month: 'long',
