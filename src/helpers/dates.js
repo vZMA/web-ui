@@ -7,7 +7,7 @@
 export default {
 	dtLong(isoDate) { // January 2, 2006, 15:04z
 		const d = new Date(isoDate);
-		return `${d.toLocaleString('en-US', {
+		/*return `${d.toLocaleString('en-US', {
 			month: 'long',
 			day: 'numeric',
 			year: 'numeric', 
@@ -15,10 +15,18 @@ export default {
 			hour: '2-digit', 
 			minute: '2-digit',
 			hourCycle: 'h23'
-		})}z`;
+		})}z`;*/
+		return `${d.toLocaleString('en-US', {
+			month: 'long',
+			day: 'numeric',
+			year: 'numeric', 
+			//timeZone: 'UTC', 
+			hour: '2-digit', 
+			minute: '2-digit',
+			hourCycle: 'h23'
+		})}`;
 	},
-	dtLongtz(isoDate,tz) { // January 2, 2006, 15:04z
-		console.log('logging tz:' + tz);
+	dtLongtz(isoDate) { // January 2, 2006, 15:04z
 		const d = new Date(isoDate);
 		return `${d.toLocaleString('en-US', {
 			month: 'long',
@@ -28,7 +36,7 @@ export default {
 			hour: '2-digit', 
 			minute: '2-digit',
 			hourCycle: 'h23'
-		})}z`;
+		})}`;
 	},
 	dtFull(isoDate) { // Monday, January 2, 2006, 15:04:05
 		const d =  new Date(isoDate);

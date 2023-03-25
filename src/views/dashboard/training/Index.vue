@@ -26,8 +26,8 @@
 				<tbody class="session_list_row" v-if="upcomingSessions">
 					<tr v-for="session in upcomingSessions" :key="session._id">
 						<td>{{session.milestone.code + ' - ' + session.milestone.name}}</td>
-						<td>{{dtLongtz(session.startTime, 'UTC-5')}}</td>
-						<td>{{dtLongtz(session.endTime, 'UTC-5')}}</td>
+						<td>{{dtLong(session.startTime)}}</td>
+						<td>{{dtLong(session.endTime)}}</td>
 						<td>{{session.instructor ? (session.instructor.fname + ' ' + session.instructor.lname) : 'Unfulfilled'}}</td>
 						<td class="options">
                             <a :href="`#modal_delete_${session._id}`" data-position="top" data-tooltip="Cancel Training Session" 
