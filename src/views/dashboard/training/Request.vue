@@ -92,10 +92,6 @@ export default {
 			disableMobile: true,
 			minuteIncrement: 15,
 			dateFormat: 'Y-m-dTH:i:00.000',
-			formatDate: function(date, formatStr) {
-				const utcDate = new Date(date.getTime()- date.getTimezoneOffset() * 60 * 1000);
-				return utcDate.toISOString();
-    		},
 			altFormat: 'Y-m-d H:i',
 			altInput: true,
 		});
@@ -108,10 +104,6 @@ export default {
 			disableMobile: true,
 			minuteIncrement: 15,
 			dateFormat: 'Y-m-dTH:i:00.000',
-			formatDate: function(date, formatStr) {
-				const utcDate = new Date(date.getTime()- date.getTimezoneOffset() * 60 * 1000);
-				return utcDate.toISOString();
-    		},
 			altFormat: 'Y-m-d H:i',
 			altInput: true,
 		});
