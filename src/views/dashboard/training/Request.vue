@@ -116,9 +116,9 @@ export default {
 				} else {
 					// Apply the correction for UTC to the local dates collected
 					const offset = new Date().getTimezoneOffset();
-					//const start = new Date(this.$refs.start_date.value);
+					const start = new Date(this.$refs.start_date.value);
 					//start.setUTCMinutes(start.getMinutes()+offset);
-					//const end = new Date(this.$refs.end_date.value);
+					const end = new Date(this.$refs.end_date.value);
 					//end.setUTCMinutes(end.getMinutes()+offset);
 					console.log ('Offset ' + offset);
 					console.log ('start ' + start);
