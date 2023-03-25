@@ -17,7 +17,7 @@
 						<th>Milestone</th>
 						<th>Start</th>
 						<th>End</th>
-						<th class="options">Options</th>
+						<th class="options">Options </th>
 					</tr>
 				</thead>
 				<tbody class="requests_list_row">
