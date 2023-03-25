@@ -114,11 +114,21 @@ export default {
 				if(!this.request.milestone) {
 					this.toastError('You must select a milestone');
 				} else {
+					// Apply the correction for UTC to the local dates collected
+					const offset = new Date.getTimezoneOffset();
+					const start = new Date(his.$refs.start_date.value);
+					start.setMinutes(start.getMinutes()-offset);
+					const end = new Date(this.$refs.end_date.value);
+					end.setMinutes(end.getMinutes()-offset);
+					console.log ('Offset ' + offset);
+					console.log ('start ' + start);
+					console.log ('end ' + end);
+					
 					this.makingRequest = true;
 					const {data} = await zabApi.post('/training/request/new', {
 						...this.request,
-						startTime: `${this.$refs.start_date.value}`,
-						endTime: `${this.$refs.end_date.value}`
+						startTime: start,
+						endTime: end
 					});
 					if(data.ret_det.code === 200) {
 						this.toastSuccess('Training session requested');
