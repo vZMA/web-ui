@@ -92,7 +92,7 @@ export default {
 			minuteIncrement: 15,
 			dateFormat: 'Y-m-dTH:i:00.000',
 			formatDate: function(date, formatStr) {
-				const utcDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+				const utcDate = new Date(date.getTime());
 				return utcDate.toISOString();
     		},
 			altFormat: 'Y-m-d H:i',
@@ -107,7 +107,7 @@ export default {
 			minuteIncrement: 15,
 			dateFormat: 'Y-m-dTH:i:00.000',
 			formatDate: function(date, formatStr) {
-				const utcDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+				const utcDate = new Date(date.getTime());
 				return utcDate.toISOString();
     		},
 			altFormat: 'Y-m-d H:i',
