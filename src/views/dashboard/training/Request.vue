@@ -27,11 +27,11 @@
 					<form class="row row_no_margin" @submit.prevent=submitRequest>
 						<div class="input-field col s12">
 							<input id="start_date" type="text" ref="start_date" required>
-							<label for="start_date">Start Time (Zulu)<span class="red-text">*</span></label>
+							<label for="start_date">Start Time (Local)<span class="red-text">*</span></label>
 						</div>
 						<div class="input-field col s12">
 							<input id="end_date" type="text" ref="end_date" required>
-							<label for="end_date">End Time (Zulu)<span class="red-text">*</span></label>
+							<label for="end_date">End Time (Local)<span class="red-text">*</span></label>
 						</div>
 						<div class="input-field col s12">
 							<select v-model="request.milestone" class="materialize-select">
@@ -92,7 +92,7 @@ export default {
 			minuteIncrement: 15,
 			dateFormat: 'Y-m-dTH:i:00.000',
 			formatDate: function(date, formatStr) {
-				const utcDate = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+				const utcDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
 				return utcDate.toISOString();
     		},
 			altFormat: 'Y-m-d H:i',
@@ -107,7 +107,7 @@ export default {
 			minuteIncrement: 15,
 			dateFormat: 'Y-m-dTH:i:00.000',
 			formatDate: function(date, formatStr) {
-				const utcDate = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+				const utcDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
 				return utcDate.toISOString();
     		},
 			altFormat: 'Y-m-d H:i',
