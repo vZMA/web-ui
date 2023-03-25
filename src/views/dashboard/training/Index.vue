@@ -26,8 +26,8 @@
 				<tbody class="session_list_row" v-if="upcomingSessions">
 					<tr v-for="session in upcomingSessions" :key="session._id">
 						<td>{{session.milestone.code + ' - ' + session.milestone.name}}</td>
-						<td>{{dtLong(session.startTime)}}</td>
-						<td>{{dtLong(session.endTime)}}</td>
+						<td>{{dtLongtz(session.startTime, 'UTC'+this.user.data.userTiezone)}}</td>
+						<td>{{dtLongtz(session.endTime, 'UTC'+this.user.data.userTimezone)}}</td>
 						<td>{{session.instructor ? (session.instructor.fname + ' ' + session.instructor.lname) : 'Unfulfilled'}}</td>
 						<td class="options">
                             <a :href="`#modal_delete_${session._id}`" data-position="top" data-tooltip="Cancel Training Session" 
@@ -62,8 +62,8 @@ export default {
 	title: 'Training',
 	data() {
 		return {
-			upcomingSessions: null
-		};
+			upcomingSessions: null,
+			};
 	},
 	components: {
 		PastSessions
@@ -71,7 +71,7 @@ export default {
 	async mounted() {
 		//const Offset = parseInt(this.user.data.userTimezone) * 60000;
 		await this.getUpcomingSessions();
-		
+				
 		M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
    			margin: 0
 			}) ;
