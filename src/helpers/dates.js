@@ -18,6 +18,7 @@ export default {
 		})}z`;
 	},
 	dtLongtz(isoDate,tz) { // January 2, 2006, 15:04z
+		console.log('logging tz:' + tz);
 		const d = new Date(isoDate);
 		return `${d.toLocaleString('en-US', {
 			month: 'long',
