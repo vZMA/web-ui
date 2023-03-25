@@ -26,7 +26,7 @@
 				<tbody class="session_list_row" v-if="upcomingSessions">
 					<tr v-for="session in upcomingSessions" :key="session._id">
 						<td>{{session.milestone.code + ' - ' + session.milestone.name}}</td>
-						<td>{{dtLongtz(session.startTime, 'UTC'+this.user.data.userTiezone)}}</td>
+						<td>{{dtLongtz(session.startTime, 'UTC'+this.user.data.userTimezone)}}</td>
 						<td>{{dtLongtz(session.endTime, 'UTC'+this.user.data.userTimezone)}}</td>
 						<td>{{session.instructor ? (session.instructor.fname + ' ' + session.instructor.lname) : 'Unfulfilled'}}</td>
 						<td class="options">
