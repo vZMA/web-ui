@@ -174,7 +174,8 @@ export default {
 			return d.toLocaleString('en-US', {month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC',});
 		},
 		formatHtmlDate(value) {
-			const d = new Date(value).toISOString();
+			const offset = new Date().getTimezoneOffset();
+			const d = new Date(value + offset).toISOString();
 			return d.replace('T', ' ').slice(0,16);
 		},
 		setTimes(i) {
