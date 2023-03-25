@@ -119,7 +119,7 @@ export default {
 					const start = new Date(this.$refs.start_date.value);
 					start.setMinutes(start.getMinutes()+offset);
 					const end = new Date(this.$refs.end_date.value);
-					end.setMinutes(end.getMinutes()+ouserffset);
+					end.setMinutes(end.getMinutes()+offset);
 					console.log ('Offset ' + offset);
 					console.log ('start ' + start);
 					console.log ('end ' + end);
