@@ -86,13 +86,14 @@ export default {
 
 		flatpickr(this.$refs.start_date, {
 			enableTime: true,
+			utc:false,
 			time_24hr: true,
 			minDate: today,
 			disableMobile: true,
 			minuteIncrement: 15,
 			dateFormat: 'Y-m-dTH:i:00.000',
 			formatDate: function(date, formatStr) {
-				const utcDate = new Date(date.getTime());
+				const utcDate = new Date(date.getTime()- date.getTimezoneOffset() * 60 * 1000);
 				return utcDate.toISOString();
     		},
 			altFormat: 'Y-m-d H:i',
@@ -101,13 +102,14 @@ export default {
 
 		flatpickr(this.$refs.end_date, {
 			enableTime: true,
+			uc:false,
 			time_24hr: true,
 			minDate: today,
 			disableMobile: true,
 			minuteIncrement: 15,
 			dateFormat: 'Y-m-dTH:i:00.000',
 			formatDate: function(date, formatStr) {
-				const utcDate = new Date(date.getTime());
+				const utcDate = new Date(date.getTime()- date.getTimezoneOffset() * 60 * 1000);
 				return utcDate.toISOString();
     		},
 			altFormat: 'Y-m-d H:i',
