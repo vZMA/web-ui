@@ -175,7 +175,8 @@ export default {
 		},
 		formatHtmlDate(value) {
 			const offset = new Date().getTimezoneOffset();
-			const d = new Date(value).toISOString();
+			const displayDate = new Date(value) - offset * 60000;
+			const d = new Date(displayDate).toISOString();
 			return d.replace('T', ' ').slice(0,16);
 		},
 		setTimes(i) {
