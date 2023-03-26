@@ -41,7 +41,7 @@
 				<div class="input-field col s12">
 					<textarea id="googleid" class="materialize-textarea" data-length="256" v-model="form.GoogleClientId"></textarea>
 					<label for="googleid" class="active">Google Username</label>
-					<button @click="authorize">Authorize</button>
+					<!-- <button @click="authorize">Authorize</button> -->
 				</div>
 				<div class="input-field col s12">
 					<input type="submit" class="btn right" value="Update" />
@@ -94,8 +94,8 @@ export default {
 		}
 	*/	},
 	methods: {
-		authorize() {
-	/*		const ClientId = '508757888270-og0a2vc2gmcnopoa1rl8sdq1jkaoq4kh.apps.googleusercontent.com';
+		/*authorize() {
+			const ClientId = '508757888270-og0a2vc2gmcnopoa1rl8sdq1jkaoq4kh.apps.googleusercontent.com';
 			const ClientSecret = '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';
 			const RedirectURI = 'https://zmaartcc.net/dash/profile';
 			const Scope = ['https://www.googleapis.com/auth/calendar.events'];
@@ -105,7 +105,7 @@ export default {
 				scope: Scope,
 			});
 			window.location.href = authUrl;
-		*/	},
+			},*/
 		async updateProfile() {
 			// Get google calendar token if the user changes his id or
 			const {data} = await zabApi.put('/user/profile', this.form);
