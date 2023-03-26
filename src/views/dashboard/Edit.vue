@@ -53,7 +53,7 @@
 <script>
 import {mapState} from 'vuex';
 import {zabApi} from '@/helpers/axios.js';
-import {google} from 'googleapis';
+//import {google} from 'googleapis';
 
 export default {
 	data() {
@@ -83,7 +83,7 @@ export default {
 			const {data} = await zabApi.put('/user/profile', this.form);
 			if(data.ret_det.code === 200) {
 				this.toastSuccess('Profile successfully updated');
-			
+		/*	
 			if (this.user.data.GoogleClientId != this.form.GoogleClientId)
 				{
 				const clientId = '508757888270-og0a2vc2gmcnopoa1rl8sdq1jkaoq4kh.apps.googleusercontent.com';
@@ -105,7 +105,7 @@ export default {
         	window.location.href = authUrl;
 			}
 
-			}
+			}*/
 		}
 	},
 	computed: {
