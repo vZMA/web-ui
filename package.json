@@ -2,11 +2,10 @@
   "name": "ui",
   "version": "1.0.0",
   "private": true,
-  "author": "Miami ARTCC",
+  "author": "Albuquerque ARTCC",
   "contributors": [
     "Alexandra Robison",
-    "Daan Janssen",
-    "Tom Coombs"
+    "Daan Janssen"
   ],
   "license": "CC-BY-NC-SA-4.0",
   "scripts": {
