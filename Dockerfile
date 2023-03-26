@@ -1,9 +1,9 @@
 FROM node:lts AS builder
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm --max-old-space-size=4096 install
+RUN npm --max_old_space_size=4096 install
 COPY . .
-RUN npm --max-old-space-size=4096 run build
+RUN npm --max_old_space_size=4096 run build
 
 FROM nginx:alpine
 COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
