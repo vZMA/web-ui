@@ -50,9 +50,9 @@
 	</div>
 </template>
 
-<script src="https://apis.google.com/js/api.js"></script>
-
 <script>
+src="https://apis.google.com/js/api.js";
+
 import {mapState} from 'vuex';
 import {zabApi} from '@/helpers/axios.js';
 //import {google} from 'googleapis';
