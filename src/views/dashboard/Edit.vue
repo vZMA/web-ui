@@ -53,7 +53,7 @@
 <script>
 import {mapState} from 'vuex';
 import {zabApi} from '@/helpers/axios.js';
-import {google} from 'googleapis';
+//import {google} from 'googleapis';
 
 export default {
 	data() {
