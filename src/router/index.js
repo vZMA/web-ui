@@ -27,6 +27,10 @@ const routes = [
         component: () => import("../views/page/LoginVerify.vue"),
       },
       {
+        path: "/connect/google",
+        component: () => import("../views/page/GoogleVerify.vue"),
+      },
+      {
         path: "/login/discord",
         beforeEnter() {
           location.href = uriHelper.discordRedirectUrl;

@@ -53,6 +53,7 @@
 <script>
 import {mapState} from 'vuex';
 import {zabApi} from '@/helpers/axios.js';
+import {google} from 'googleapis';
 
 export default {
 	data() {
@@ -78,12 +79,32 @@ export default {
 	},
 	methods: {
 		async updateProfile() {
+			// Get google calendar token if the user changes his id or
 			const {data} = await zabApi.put('/user/profile', this.form);
-
 			if(data.ret_det.code === 200) {
 				this.toastSuccess('Profile successfully updated');
-			} else {
-				this.toastError(data.ret_det.message);
+			
+			if (this.user.data.GoogleClientId != this.form.GoogleClientId)
+				{
+				const clientId = '508757888270-og0a2vc2gmcnopoa1rl8sdq1jkaoq4kh.apps.googleusercontent.com';
+		        const clientSecret = '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';
+        		const redirectUri = 'https://zmaartcc.net/connect/google';
+        		const scopes = ['https://www.googleapis.com/auth/calendar.events'];
+
+				const oauth2Client = new google.auth.OAuth2(
+	          		clientId,
+    	      		clientSecret,
+        	  		redirectUri
+        			);
+
+        		const authUrl = oauth2Client.generateAuthUrl({
+          			access_type: 'offline',
+          			scope: scopes
+        	});
+
+        	window.location.href = authUrl;
+			}
+
 			}
 		}
 	},

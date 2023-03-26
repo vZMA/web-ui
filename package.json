@@ -2,10 +2,11 @@
   "name": "ui",
   "version": "1.0.0",
   "private": true,
-  "author": "Albuquerque ARTCC",
+  "author": "Miami ARTCC",
   "contributors": [
     "Alexandra Robison",
-    "Daan Janssen"
+    "Daan Janssen",
+    "Tom Coombs"
   ],
   "license": "CC-BY-NC-SA-4.0",
   "scripts": {
@@ -30,7 +31,8 @@
     "metar-parser": "^1.0.0",
     "vue": "^3.2.22",
     "vue-router": "^4.0.12",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "googleapis": "^114.0.0"
   },
   "devDependencies": {
     "vite": "^2.6.14",
