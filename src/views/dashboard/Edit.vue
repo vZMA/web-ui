@@ -85,7 +85,7 @@ export default {
 				this.toastSuccess('Profile successfully updated');
 			}
 		
-			if (this.user.data.GoogleClientId != this.form.GoogleClientId)
+			/*if (this.user.data.GoogleClientId != this.form.GoogleClientId)
 				{
 				const clientId = '508757888270-og0a2vc2gmcnopoa1rl8sdq1jkaoq4kh.apps.googleusercontent.com';
 		        const clientSecret = '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';
@@ -103,8 +103,8 @@ export default {
           			scope: scopes
         		});
 			
-        	//window.location.href = authUrl;
-			}
+        	window.location.href = authUrl;
+			}*/
 		}
 	},
 	computed: {
