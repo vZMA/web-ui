@@ -41,6 +41,7 @@
 				<div class="input-field col s12">
 					<textarea id="googleid" class="materialize-textarea" data-length="256" v-model="form.GoogleClientId"></textarea>
 					<label for="googleid" class="active">Google Username</label>
+					<button @click="authorize">Authorize</button>
 				</div>
 				<div class="input-field col s12">
 					<input type="submit" class="btn right" value="Update" />
@@ -51,18 +52,19 @@
 </template>
 
 <script>
+import {google} from 'googleapis';
+import {OAuth2} from 'google-auth-library';
 import {mapState} from 'vuex';
 import {zabApi} from '@/helpers/axios.js';
-//import {google} from 'googleapis';
 
 export default {
 	data() {
 		return {
+			oauth2client: null,
 			form: {
 				bio: '',
 				userTimezone: '',
-				GoogleClientId: ''
-				
+				GoogleClientId: ''			
 			}
 		};
 	},
@@ -76,8 +78,34 @@ export default {
 			M.CharacterCounter.init(document.querySelector('textarea'));
 			M.updateTextFields();
 		});
+
+		const authorizationCode = new URLSearchParams(window.location.search).get('code');
+		if (authorizationCode) {
+			this.oauth2Client.getToken(authorizationCode, (err, token) => {
+        		if (err) {
+          			console.error('Error retrieving access token', err);
+         	 		return;
+        		}	
+				else {
+					this.user.data.GoogleCalendarToken = token;
+					updateProfile();
+				}
+			});
+		}
 	},
 	methods: {
+		authorize() {
+			const ClientId = '508757888270-og0a2vc2gmcnopoa1rl8sdq1jkaoq4kh.apps.googleusercontent.com';
+			const ClientSecret = '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';
+			const RedirectURI = 'https://zmaartcc.net/dash/profile';
+			const Scope = ['https://www.googleapis.com/auth/calendar.events'];
+			this.oauth2client = new OAuth2(ClientID, ClientSecret, RedirectURI);
+			const authUrl = this.oauth2client.generateAuthUrl({
+				access_type: 'offline',
+				scope: Scope,
+			});
+			window.location.href = authUrl;
+		},
 		async updateProfile() {
 			// Get google calendar token if the user changes his id or
 			const {data} = await zabApi.put('/user/profile', this.form);
