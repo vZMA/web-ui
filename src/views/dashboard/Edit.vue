@@ -51,8 +51,6 @@
 </template>
 
 <script>
-src="https://apis.google.com/js/api.js";
-
 import {mapState} from 'vuex';
 import {zabApi} from '@/helpers/axios.js';
 //import {google} from 'googleapis';
@@ -86,50 +84,6 @@ export default {
 			if(data.ret_det.code === 200) {
 				this.toastSuccess('Profile successfully updated');
 			}
-		
-			const CLIENT_ID = '508757888270-og0a2vc2gmcnopoa1rl8sdq1jkaoq4kh.apps.googleusercontent.com';
-			const CLIENT_SECRET = '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';
-			const SCOPE = 'https://www.googleapis.com/auth/calendar';
-			const REDIRECT_URI = 'https://zmaartcc.net/connect/google';
-
-			// Initialize the Google API client library
-			gapi.load('client:auth2', () => {
-			gapi.client.init({
-			clientId: CLIENT_ID,
-			discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
-			scope: SCOPE,
-			clientSecret: CLIENT_SECRET
-				}).then(() => {
-					// Get the authorization token from the user
-					return gapi.auth2.getAuthInstance().signIn({
-					redirect_uri: REDIRECT_URI
-					});
-				}).then((authResult) => {
-					// Get the access token from the authorization result
-					const accessToken = authResult.access_token;
-					console.log(`Access token: ${accessToken}`);
-  					});
-			});
-			/*if (this.user.data.GoogleClientId != this.form.GoogleClientId)
-				{
-				const clientId = '';
-		        const clientSecret = '';
-        		const redirectUri = 'https://zmaartcc.net/connect/google';
-        		const scopes = ['https://www.googleapis.com/auth/calendar.events'];
-
-				const oauth2Client = new google.auth.OAuth2(
-	          		clientId,
-    	      		clientSecret,
-        	  		redirectUri
-        			);
-
-        		const authUrl = oauth2Client.generateAuthUrl({
-          			access_type: 'offline',
-          			scope: scopes
-        		});
-			
-        	window.location.href = authUrl;
-			}*/
 		}
 	},
 	computed: {
