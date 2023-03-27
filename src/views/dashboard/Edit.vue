@@ -41,7 +41,7 @@
 				<div class="input-field col s12">
 					<textarea id="googleid" class="materialize-textarea" data-length="256" v-model="form.GoogleClientId"></textarea>
 					<label for="googleid" class="active">Google Username</label>
-					<!--<button @click="authorize">Authorize</button>-->
+					<button @click="authorize">Authorize</button>
 				</div>
 				<div class="input-field col s12">
 					<input type="submit" class="btn right" value="Update" />
@@ -53,7 +53,7 @@
 
 <script>
 //import {google} from 'googleapis';
-import {OAuth2} from 'google-auth-library';
+//import {OAuth2} from 'google-auth-library';
 import {mapState} from 'vuex';
 import {zabApi} from '@/helpers/axios.js';
 
