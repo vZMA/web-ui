@@ -94,8 +94,8 @@ export default {
 		}
 		},
 	methods: {
-		/*async authorize() {
-			const ClientId = '508757888270-og0a2vc2gmcnopoa1rl8sdq1jkaoq4kh.apps.googleusercontent.com';
+		async authorize() {
+			/*const ClientId = '508757888270-og0a2vc2gmcnopoa1rl8sdq1jkaoq4kh.apps.googleusercontent.com';
 			const ClientSecret = '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';
 			const RedirectURI = 'https://zmaartcc.net/dash/profile';
 			const Scope = 'https://www.googleapis.com/auth/calendar.events';
@@ -104,8 +104,8 @@ export default {
 				access_type: 'offline',
 				scope: Scope,
 			});
-			window.location.href = authUrl;
-			},*/
+			window.location.href = authUrl;*/
+			},
 		async updateProfile() {
 			// Get google calendar token if the user changes his id or
 			const {data} = await zabApi.put('/user/profile', this.form);
