@@ -60,7 +60,7 @@ import {zabApi} from '@/helpers/axios.js';
 export default {
 	data() {
 		return {
-			oauth2client: null,
+			//oauth2client: null,
 			form: {
 				bio: '',
 				userTimezone: '',
@@ -79,9 +79,9 @@ export default {
 			M.updateTextFields();
 		});
 
-		const authorizationCode = new URLSearchParams(window.location.search).get('code');
+/*		const authorizationCode = new URLSearchParams(window.location.search).get('code');
 		if (authorizationCode) { console.log(authorizationCode);
-			/*this.oauth2Client.getToken(authorizationCode, (err, token) => {
+			this.oauth2Client.getToken(authorizationCode, (err, token) => {
         		if (err) {
           			console.error('Error retrieving access token', err);
          	 		return;
@@ -94,7 +94,7 @@ export default {
 		}
 		},
 	methods: {
-		async authorize() {
+		/*async authorize() {
 			const ClientId = '508757888270-og0a2vc2gmcnopoa1rl8sdq1jkaoq4kh.apps.googleusercontent.com';
 			const ClientSecret = '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';
 			const RedirectURI = 'https://zmaartcc.net/dash/profile';
@@ -104,8 +104,8 @@ export default {
 				access_type: 'offline',
 				scope: Scope,
 			});
-			window.location.href = authUrl;*/
-			},
+			window.location.href = authUrl;
+			},*/
 		async updateProfile() {
 			// Get google calendar token if the user changes his id or
 			const {data} = await zabApi.put('/user/profile', this.form);
