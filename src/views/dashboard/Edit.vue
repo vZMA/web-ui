@@ -90,8 +90,8 @@ export default {
 					this.user.data.GoogleCalendarToken = token;
 					updateProfile();
 				}
-			});*/
-		}
+			});
+		}*/
 		},
 	methods: {
 		async authorize() {
