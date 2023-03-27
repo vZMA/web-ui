@@ -53,7 +53,7 @@
 
 <script>
 //import {google} from 'googleapis';
-//import {OAuth2} from 'google-auth-library';
+import {OAuth2} from 'google-auth-library';
 import {mapState} from 'vuex';
 import {zabApi} from '@/helpers/axios.js';
 
@@ -79,7 +79,7 @@ export default {
 			M.updateTextFields();
 		});
 
-/*		const authorizationCode = new URLSearchParams(window.location.search).get('code');
+		const authorizationCode = new URLSearchParams(window.location.search).get('code');
 		if (authorizationCode) {
 			this.oauth2Client.getToken(authorizationCode, (err, token) => {
         		if (err) {
@@ -92,20 +92,20 @@ export default {
 				}
 			});
 		}
-	*/	},
+		},
 	methods: {
-		/*authorize() {
+		authorize() {
 			const ClientId = '508757888270-og0a2vc2gmcnopoa1rl8sdq1jkaoq4kh.apps.googleusercontent.com';
 			const ClientSecret = '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';
 			const RedirectURI = 'https://zmaartcc.net/dash/profile';
 			const Scope = ['https://www.googleapis.com/auth/calendar.events'];
-			this.oauth2client = new OAuth2(ClientID, ClientSecret, RedirectURI);
+			this.oauth2client = new OAuth2(ClientId, ClientSecret, RedirectURI);
 			const authUrl = this.oauth2client.generateAuthUrl({
 				access_type: 'offline',
 				scope: Scope,
 			});
 			window.location.href = authUrl;
-			},*/
+			},
 		async updateProfile() {
 			// Get google calendar token if the user changes his id or
 			const {data} = await zabApi.put('/user/profile', this.form);
