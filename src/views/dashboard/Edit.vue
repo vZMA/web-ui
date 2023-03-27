@@ -80,8 +80,8 @@ export default {
 		});
 
 		const authorizationCode = new URLSearchParams(window.location.search).get('code');
-		if (authorizationCode) {
-			this.oauth2Client.getToken(authorizationCode, (err, token) => {
+		if (authorizationCode) { console.log(authorizationCode);
+			/*this.oauth2Client.getToken(authorizationCode, (err, token) => {
         		if (err) {
           			console.error('Error retrieving access token', err);
          	 		return;
@@ -90,7 +90,7 @@ export default {
 					this.user.data.GoogleCalendarToken = token;
 					updateProfile();
 				}
-			});
+			});*/
 		}
 		},
 	methods: {
