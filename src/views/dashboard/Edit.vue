@@ -98,7 +98,7 @@ export default {
 			const ClientId = '508757888270-og0a2vc2gmcnopoa1rl8sdq1jkaoq4kh.apps.googleusercontent.com';
 			const ClientSecret = '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';
 			const RedirectURI = 'https://zmaartcc.net/dash/profile';
-			const Scope = ['https://www.googleapis.com/auth/calendar.events'];
+			const Scope = 'https://www.googleapis.com/auth/calendar.events';
 			/*this.oauth2client = new OAuth2(ClientId, ClientSecret, RedirectURI);
 			const authUrl = this.oauth2client.generateAuthUrl({
 				access_type: 'offline',
