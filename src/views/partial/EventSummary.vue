@@ -49,7 +49,7 @@ export default {
 		},
 		formatTime(value) {
 			const d = new Date(value);
-			return d.toLocaleString('en-us', { timeZone: 'UTC', hour: '2-digit', minute: '2-digit', hour12: false });
+			return d.toLocaleString('en-us', { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, hour: '2-digit', minute: '2-digit', hour12: false });
 		}
 	}
 };
