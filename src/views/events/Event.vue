@@ -51,7 +51,7 @@ export default {
 		},
 		formatTime(value) {
 			var d = new Date(value);
-			return d.toLocaleString('en-us', {timeZone: 'UTC', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'});
+			return d.toLocaleString('en-us', {timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23'});
 		},
 	}
 };
