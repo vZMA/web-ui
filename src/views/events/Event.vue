@@ -9,7 +9,7 @@
 				<div class="row">
 					<div class="col s12">
 						<span class="card-title event_title">{{event.name}}</span>
-						<span class="card-title event_date">{{dtLong(event.eventStart)}} <i class="material-icons rotate tiny">airplanemode_active</i> {{formatTime(event.eventEnd)}}</span>
+						<span class="card-title event_date">{{dtLong(event.eventStart)}} <i class="material-icons rotate tiny">airplanemode_active</i> {{formatTime(event.eventEnd)}} Local</span>
 					</div>
 				</div>
 				<div class="row">
