@@ -97,7 +97,7 @@ export default {
 		async authorize() {
 			console.log("Authorize Google ID pressed")
 			google.accounts.id.initialize({
-				client_id: '508757888270-8oud90fcb16ra3cslcuour0l6km4ijcq.apps.googleusercontent.com'
+				client_id: '508757888270-7k8sf2rvep5m4mhe1qohef8rq1c64t3c.apps.googleusercontent.com'
 			})
 
 			google.accounts.id.prompt(notification => {
