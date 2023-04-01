@@ -97,16 +97,12 @@ export default {
 		async authorize() {
 			console.log("Authorize Google ID pressed")
 			google.accounts.id.initialize({
-				client_id: '508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v'
-			})
+				client_id: '508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v'});
 
 			const response = google.accounts.id.prompt(notification => {
-				//const googid = respons.GoogleClientId;
-				//const credential = notification.credential;
-
 				console.log('Response ' + response);
 				console.log('Credential ' + credential);
-			})
+			});
 			/*const ClientId = 
 			const ClientSecret = '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';
 			const RedirectURI = 'https://zmaartcc.net/dash/profile';
