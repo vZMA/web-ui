@@ -100,9 +100,9 @@ export default {
 				client_id: '508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v'
 			})
 
-			google.accounts.id.prompt(notification => {
-				const response = notification.GoogleClientId;
-				const credential = notification.credential;
+			const response = google.accounts.id.prompt(notification => {
+				//const googid = respons.GoogleClientId;
+				//const credential = notification.credential;
 
 				console.log('Response ' + response);
 				console.log('Credential ' + credential);
