@@ -95,12 +95,13 @@ export default {
 		},
 	methods: {
 		async authorize() {
+			console.log("Authorize Google ID pressed")
 			google.accounts.id.initialize({
 				client_id: '508757888270-og0a2vc2gmcnopoa1rl8sdq1jkaoq4kh.apps.googleusercontent.com'
 			})
 
 			google.accounts.id.prompt(notification => {
-
+				console.log(notification);
 			})
 			/*const ClientId = 
 			const ClientSecret = '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';
