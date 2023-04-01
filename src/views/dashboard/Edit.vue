@@ -99,7 +99,7 @@ export default {
 			google.accounts.id.initialize({
 				client_id: '508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v'});
 
-			const response = google.accounts.id.prompt(notification => {
+			google.accounts.id.prompt(notification => {
 				console.log(notification);
 			});
 			/*const ClientId = 
