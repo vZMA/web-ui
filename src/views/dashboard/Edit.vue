@@ -41,7 +41,7 @@
 				<div class="input-field col s12">
 					<textarea id="googleid" class="materialize-textarea" data-length="256" v-model="form.GoogleClientId"></textarea>
 					<label for="googleid" class="active">Google Username</label>
-					<a href="#!" @click="authorize">Authorize</a>
+					<a href="#!" @click="authorize()">Authorize</a>
 				</div>
 				<div class="input-field col s12">
 					<input type="submit" class="btn right" value="Update" />
