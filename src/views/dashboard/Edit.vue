@@ -89,7 +89,7 @@ export default {
 			// exchange code for Tokens and store tokens.
 			const tokenEndpoint = 'https://oauth2.googleapis.com/token';
 			const data = new URLSearchParams();
-			data.append('client_id', { process.env.GOOGLE_AUTH_CLIENT_ID });
+			data.append('client_id', process.env.GOOGLE_AUTH_CLIENT_ID);
 			data.append('client_secret', process.env.GOOGLE_AUTH_CLIENT_SECRET);
 			data.append('code', code);
 			data.append('grant_type', 'authorization_code');
