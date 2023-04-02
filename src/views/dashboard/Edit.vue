@@ -98,9 +98,7 @@ export default {
 				console.log('Access token:', data.access_token);
 				console.log('Refresh token:', data.refresh_token);
 				console.log('Expires in (seconds):', data.expires_in);
-				const {profdata} = zabApi.put('/user/profile', this.form);
-				if(profdata.ret_det.code === 200) {
-					this.toastSuccess('Google tokens retrieved');
+				this.updateProfile();
 				}
 			})
 			.catch(error => console.error(error));
