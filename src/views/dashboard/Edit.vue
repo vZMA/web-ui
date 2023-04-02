@@ -108,9 +108,10 @@ export default {
       				}).then((data) => {
     	    			const accessToken = data.access_token;
 	        			const refreshToken = data.refresh_token;
+						console.log(accessToken);
+						console.log(refreshToken);
 					})
-        		console.log(accessToken);
-				console.log(refreshToken);
+        	
 					// Use the access token and refresh token to access the user's calendar data
         		// ...
 				
