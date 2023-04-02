@@ -42,6 +42,7 @@
 					<textarea id="googleid" class="materialize-textarea" data-length="256" v-model="form.GoogleClientId"></textarea>
 					<label for="googleid" class="active">Google Username</label>
 					<a href="#!" @click="authorize()">Authorize</a>
+					<div id="g_id_signout"></div>
 				</div>
 				<div class="input-field col s12">
 					<input type="submit" class="btn right" value="Update" />
@@ -56,6 +57,7 @@
 //import {OAuth2} from 'google-auth-library';
 import {mapState} from 'vuex';
 import {zabApi} from '@/helpers/axios.js';
+import {jwt} from 'jwt-decode';
 
 export default {
 	data() {
@@ -82,7 +84,9 @@ export default {
 	methods: {
 		async authorize() {
 			const onetapcallback = response => {
-				console.log(response);
+				const googleCredential = jwt(response.credential);
+				//this.user.GoogleClientId = googleCredential.
+				console.log(googleCredential);
 			};
 
 			console.log("Authorize Google ID pressed")
@@ -95,16 +99,7 @@ export default {
 			google.accounts.id.prompt(notification => {
 				console.log(notification);
 			});
-			/*const ClientId = 
-			const ClientSecret = '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';
-			const RedirectURI = 'https://zmaartcc.net/dash/profile';
-			const Scope = 'https://www.googleapis.com/auth/calendar.events';
-			/*this.oauth2client = new OAuth2(ClientId, ClientSecret, RedirectURI);
-			const authUrl = this.oauth2client.generateAuthUrl({
-				access_type: 'offline',
-				scope: Scope,
-			});
-			window.location.href = authUrl;*/
+			
 			},
 		async updateProfile() {
 			// Get google calendar token if the user changes his id or
