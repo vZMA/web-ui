@@ -69,6 +69,8 @@ export default {
 		};
 	},
 	async mounted() {
+		console.log('ClientID: ' + process.env.GOOGLE_AUTH_CLIENT_ID);
+		console.log('Secret:' + process.env.GOOGLE_AUTH_CLIENT_SECRET);
 		// check for 'code' in inbound params.  This means we have a call back from Google.
 		const urlParams = new URLSearchParams(window.location.search);
 		const code= urlParams.get('code');
@@ -87,8 +89,8 @@ export default {
 			// exchange code for Tokens and store tokens.
 			const tokenEndpoint = 'https://oauth2.googleapis.com/token';
 			const data = new URLSearchParams();
-			data.append('client_id', import.meta.GOOGLE_AUTH_CLIENT_ID);
-			data.append('client_secret', import.meta.GOOGLE_AUTH_CLIENT_SECRET);
+			data.append('client_id', { process.env.GOOGLE_AUTH_CLIENT_ID });
+			data.append('client_secret', process.env.GOOGLE_AUTH_CLIENT_SECRET);
 			data.append('code', code);
 			data.append('grant_type', 'authorization_code');
 			data.append('redirect_uri', 'https://zmaartcc.net/dash/profile');
@@ -113,10 +115,9 @@ export default {
 		async authorize() {
 					
 			// gcreate google auth URL and Redirect
-			const clientID = import.meta.env.GOOGLE_AUTH_CLIENT_ID;
-			console.log(clientID);
+			const clientID = process.env.GOOGLE_AUTH_CLIENT_ID;
 			const redirectURI = 'https://zmaartcc.net/dash/profile';
-			const scopes = 'openid email profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events';
+			const scopes = 'openid email profile https://www.googleapis.com/auth/calendar.events';
 
 			// Build the authorization URL
 			const authURL = `https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=${clientID}&redirect_uri=${redirectURI}&scope=${scopes}&access_type=offline`;
