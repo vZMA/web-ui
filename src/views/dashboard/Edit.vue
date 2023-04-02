@@ -72,8 +72,32 @@ export default {
 	},
 	async mounted() {
 		// check for 'code' in inbound params.  This means we have a call back from Google.
+		const urlParams = new URLSearchParams(window.location.search);
+		const code= urlParams.get('code');
 
+		if (code){
 			// exchange code for Tokens and store tokens.
+			const tokenEndpoint = 'https://oauth2.googleapis.com/token';
+			const data = new URLSearchParams();
+			data.append('client_id', '508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v.apps.googleusercontent.com');
+			data.append('client_secret', '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');
+			data.append('code', code);
+			data.append('grant_type', 'authorization_code');
+			data.append('redirect_uri', 'https://zmaartcc.net/dash/profile');
+
+			// Send the POST request to exchange authorization code for tokens
+			fetch(tokenEndpoint, {
+				method: 'POST',
+				body: data,
+			})
+			.then(response => response.json())
+			.then(data => {
+				console.log('Access token:', data.access_token);
+				console.log('Refresh token:', data.refresh_token);
+				console.log('Expires in (seconds):', data.expires_in);
+			})
+			.catch(error => console.error(error));
+		}
 
 		this.form.bio = this.user.data.bio || '';
 		this.form.userTimezone = this.user.data.userTimezone || '';
@@ -95,7 +119,7 @@ export default {
 			const scopes = 'openid email profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events';
 
 			// Build the authorization URL
-			const authURL = `https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=${clientID}&redirect_uri=${redirectURI}&scope=${scopes}`;
+			const authURL = `https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=${clientID}&redirect_uri=${redirectURI}&scope=${scopes}&access_type=offline`;
 
 			window.location.href=authURL;
 			},
