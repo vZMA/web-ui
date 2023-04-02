@@ -114,6 +114,7 @@ export default {
 					
 			// gcreate google auth URL and Redirect
 			const clientID = process.env.GOOGLE_AUTH_CLIENT_ID;
+			console.log(clientID);
 			const redirectURI = 'https://zmaartcc.net/dash/profile';
 			const scopes = 'openid email profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events';
 
