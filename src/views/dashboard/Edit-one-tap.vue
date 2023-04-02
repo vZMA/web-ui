@@ -71,10 +71,6 @@ export default {
 		};
 	},
 	async mounted() {
-		// check for 'code' in inbound params.  This means we have a call back from Google.
-
-			// exchange code for Tokens and store tokens.
-
 		this.form.bio = this.user.data.bio || '';
 		this.form.userTimezone = this.user.data.userTimezone || '';
 		this.form.GoogleClientId = this.user.data.GoogleClientId || '';
@@ -87,17 +83,57 @@ export default {
 		},
 	methods: {
 		async authorize() {
-					
+			const onetapcallback = response => {
+				const googleCred = jwt_decode(response.credential);
+				//this.user.GoogleClientId = googleCredential.
+				console.log(googleCred);
+				// Exchange the One Tap sign-in token for an OAuth2 access token
+				const request = {
+        			grant_type: 'urn:ietf:params:oauth:grant-type:token-exchange',
+        			audience: 'https://www.googleapis.com/oauth2/v4/token',
+        			subject_token_type: 'urn:ietf:params:oauth:token-type:jwt-bearer',
+        			requested_token_type: 'urn:ietf:params:oauth:token-type:access_token',
+        			subject_token: response.credential,
+        			client_id: 'YOUR_508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v.apps.googleusercontent.com',
+        			client_secret: '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',
+      				};
+      			fetch('https://oauth2.googleapis.com/token', {
+        			method: 'POST',
+        			headers: {
+						'Content-Type': 'application/x-www-form-urlencoded', 
+					},
+        			body: new URLSearchParams(request),
+      				}).then((response) => {
+        				return response.json();
+      				}).then((data) => {
+    	    			const accessToken = data.access_token;
+	        			const refreshToken = data.refresh_token;
+						console.log(accessToken);
+						console.log(refreshToken);
+					})
+        	
+					// Use the access token and refresh token to access the user's calendar data
+        		// ...
+				
+			}
+			
 			console.log("Authorize Google ID pressed")
-				// gcreate google auth URL and Redirect
-			const clientID = '508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v.apps.googleusercontent.com';
-			const redirectURI = 'https://zmaartcc.net/dash/profile';
-			const scopes = 'openid email profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events';
 
-			// Build the authorization URL
-			const authURL = `https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=${clientID}&redirect_uri=${redirectURI}&scope=${scopes}`;
+			google.accounts.id.initialize({
+				client_id: '508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v',
+				callback: onetapcallback
+			});
 
-			window.location.href=authURL;
+			google.accounts.id.prompt(notification => {
+				if (notification.isNotDisplayed()) {
+        			console.log(notification.getNotDisplayedReason())
+      			} else if (notification.isSkippedMoment()) {
+        			console.log(notification.getSkippedReason())
+      			} else if(notification.isDismissedMoment()) {
+        			console.log(notification.getDismissedReason())
+      			}
+			});
+			
 			},
 		async updateProfile() {
 			// Get google calendar token if the user changes his id or
