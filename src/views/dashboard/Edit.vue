@@ -78,26 +78,17 @@ export default {
 			M.CharacterCounter.init(document.querySelector('textarea'));
 			M.updateTextFields();
 		});
-
-/*		const authorizationCode = new URLSearchParams(window.location.search).get('code');
-		if (authorizationCode) { console.log(authorizationCode);
-			this.oauth2Client.getToken(authorizationCode, (err, token) => {
-        		if (err) {
-          			console.error('Error retrieving access token', err);
-         	 		return;
-        		}	
-				else {
-					this.user.data.GoogleCalendarToken = token;
-					updateProfile();
-				}
-			});
-		}*/
 		},
 	methods: {
+		async onetapcallback(response) {
+			console.log(response);
+		},
 		async authorize() {
 			console.log("Authorize Google ID pressed")
 			google.accounts.id.initialize({
-				client_id: '508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v'});
+				client_id: '508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v',
+				callback: onetapcallback()
+			});
 
 			google.accounts.id.prompt(notification => {
 				console.log(notification);
