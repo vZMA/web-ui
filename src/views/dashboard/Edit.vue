@@ -65,7 +65,9 @@ export default {
 			form: {
 				bio: '',
 				userTimezone: '',
-				GoogleClientId: ''			
+				GoogleClientId: '',
+				googleApiAccessToken: '',
+				googlaApiRefreshRoken: ''
 			}
 		};
 	},
@@ -91,12 +93,15 @@ export default {
 			})
 			.then(response => response.json())
 			.then(data => {
-				this.user.data.googleApiAccessToken = data.access_token;
-				this.user.data.googleApiRefreshToken = data.refresh_token;
-				updateProfile(); 
+				this.form.googleApiAccessToken = data.access_token;
+				this.form.googleApiRefreshToken = data.refresh_token;
 				console.log('Access token:', data.access_token);
 				console.log('Refresh token:', data.refresh_token);
 				console.log('Expires in (seconds):', data.expires_in);
+				const {profdata} = zabApi.put('/user/profile', this.form);
+				if(profdata.ret_det.code === 200) {
+					this.toastSuccess('Google tokens retrieved');
+				}
 			})
 			.catch(error => console.error(error));
 		}
