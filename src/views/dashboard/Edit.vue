@@ -57,7 +57,7 @@
 //import {OAuth2} from 'google-auth-library';
 import {mapState} from 'vuex';
 import {zabApi} from '@/helpers/axios.js';
-import {jwt} from 'jwt-decode';
+import {jwt_decode} from 'jwt-decode';
 
 export default {
 	data() {
@@ -84,7 +84,7 @@ export default {
 	methods: {
 		async authorize() {
 			const onetapcallback = response => {
-				const googleCredential = jwt(response.credential);
+				const googleCredential = jwt_decode(response.credential);
 				//this.user.GoogleClientId = googleCredential.
 				console.log(googleCredential);
 			};
