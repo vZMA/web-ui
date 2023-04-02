@@ -80,14 +80,16 @@ export default {
 		});
 		},
 	methods: {
-		function onetapcallback(response) {
-			console.log(response);
-		},
 		async authorize() {
+			const onetapcallback = response => {
+				console.log(response);
+			};
+
 			console.log("Authorize Google ID pressed")
+
 			google.accounts.id.initialize({
 				client_id: '508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v',
-				callback: onetapcallback
+				callback: this.onetapcallback
 			});
 
 			google.accounts.id.prompt(notification => {
