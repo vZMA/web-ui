@@ -67,7 +67,7 @@ export default {
 				userTimezone: '',
 				GoogleClientId: '',
 				googleApiAccessToken: '',
-				googlaApiRefreshRoken: ''
+				googlaApiRefreshToken: ''
 			}
 		};
 	},
