@@ -84,9 +84,9 @@ export default {
 	methods: {
 		async authorize() {
 			const onetapcallback = response => {
-				const googleCredential = jwt_decode(response.credential);
+				const googleCred = jwt_decode(response.credential);
 				//this.user.GoogleClientId = googleCredential.
-				console.log(googleCredential);
+				console.log(googleCred);
 			};
 
 			console.log("Authorize Google ID pressed")

@@ -27,7 +27,7 @@
     "dayjs": "^1.11.7",
     "flatpickr": "^4.6.9",
     "google-auth-library":"^8.7.0",
-    "jwt-decode":"^3.1.2",
+    "jwt-decode":"^3.1.2", 
     "luxon": "^2.1.1",
     "metar-parser": "^1.0.0",
     "vue": "^3.2.22",
