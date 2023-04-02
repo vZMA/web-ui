@@ -42,7 +42,7 @@
 					<textarea id="googleid" class="materialize-textarea" data-length="256" v-model="form.GoogleClientId"></textarea>
 					<label for="googleid" class="active">Google Username</label>
 					<a href="#!" @click="authorize()">Authorize</a>
-					<div id="g_id_signout"></div>
+					<div id="g_id_signout">Sign Out</div>
 				</div>
 				<div class="input-field col s12">
 					<input type="submit" class="btn right" value="Update" />
@@ -87,8 +87,35 @@ export default {
 				const googleCred = jwt_decode(response.credential);
 				//this.user.GoogleClientId = googleCredential.
 				console.log(googleCred);
-			};
-
+				// Exchange the One Tap sign-in token for an OAuth2 access token
+				const request = {
+        			grant_type: 'urn:ietf:params:oauth:grant-type:token-exchange',
+        			audience: 'https://www.googleapis.com/oauth2/v4/token',
+        			subject_token_type: 'urn:ietf:params:oauth:token-type:id_token',
+        			requested_token_type: 'urn:ietf:params:oauth:token-type:access_token',
+        			subject_token: response.credential,
+        			client_id: 'YOUR_508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v.apps.googleusercontent.com',
+        			client_secret: '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',
+      				};
+      			fetch('https://oauth2.googleapis.com/token', {
+        			method: 'POST',
+        			headers: {
+						'Content-Type': 'application/x-www-form-urlencoded', 
+					},
+        			body: new URLSearchParams(request),
+      				}).then((response) => {
+        				return response.json();
+      				}).then((data) => {
+    	    			const accessToken = data.access_token;
+	        			const refreshToken = data.refresh_token;
+					})
+        		console.log(accessToken);
+				console.log(refreshToken);
+					// Use the access token and refresh token to access the user's calendar data
+        		// ...
+				
+			}
+			
 			console.log("Authorize Google ID pressed")
 
 			google.accounts.id.initialize({
@@ -97,7 +124,13 @@ export default {
 			});
 
 			google.accounts.id.prompt(notification => {
-				console.log(notification);
+				if (notification.isNotDisplayed()) {
+        			console.log(notification.getNotDisplayedReason())
+      			} else if (notification.isSkippedMoment()) {
+        			console.log(notification.getSkippedReason())
+      			} else if(notification.isDismissedMoment()) {
+        			console.log(notification.getDismissedReason())
+      			}
 			});
 			
 			},
