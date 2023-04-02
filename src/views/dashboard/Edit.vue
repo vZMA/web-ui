@@ -41,8 +41,7 @@
 				<div class="input-field col s12">
 					<textarea id="googleid" class="materialize-textarea" data-length="256" v-model="form.GoogleClientId"></textarea>
 					<label for="googleid" class="active">Google Username</label>
-					<a href="#!" @click="authorize()">Authorize</a>
-					<div id="g_id_signout">Sign Out</div>
+					<a href="#!" @click="authorize()"><button>Authorize</button></a>
 				</div>
 				<div class="input-field col s12">
 					<input type="submit" class="btn right" value="Update" />
@@ -53,8 +52,6 @@
 </template>
 
 <script>
-//import {google} from 'googleapis';
-//import {OAuth2} from 'google-auth-library';
 import {mapState} from 'vuex';
 import {zabApi} from '@/helpers/axios.js';
 
@@ -105,9 +102,6 @@ export default {
 			.then(data => {
 				this.form.googleApiAccessToken = data.access_token;
 				this.form.googleApiRefreshToken = data.refresh_token;
-				console.log('Access token:', data.access_token);
-				console.log('Refresh token:', data.refresh_token);
-				console.log('Expires in (seconds):', data.expires_in);
 				this.updateProfile();
 			})
 			.catch(error => console.error(error));
@@ -118,8 +112,7 @@ export default {
 	methods: {
 		async authorize() {
 					
-			console.log("Authorize Google ID pressed")
-				// gcreate google auth URL and Redirect
+			// gcreate google auth URL and Redirect
 			const clientID = '508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v.apps.googleusercontent.com';
 			const redirectURI = 'https://zmaartcc.net/dash/profile';
 			const scopes = 'openid email profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events';
