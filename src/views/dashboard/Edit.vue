@@ -75,7 +75,17 @@ export default {
 		// check for 'code' in inbound params.  This means we have a call back from Google.
 		const urlParams = new URLSearchParams(window.location.search);
 		const code= urlParams.get('code');
-
+		
+		this.form.bio = this.user.data.bio || '';
+		this.form.userTimezone = this.user.data.userTimezone || '';
+		this.form.GoogleClientId = this.user.data.GoogleClientId || '';
+		this.$nextTick(() => {
+			M.FormSelect.init(document.querySelectorAll('select'), {});
+			M.textareaAutoResize(document.querySelector('textarea'));
+			M.CharacterCounter.init(document.querySelector('textarea'));
+			M.updateTextFields();
+		});
+		
 		if (code){
 			// exchange code for Tokens and store tokens.
 			const tokenEndpoint = 'https://oauth2.googleapis.com/token';
@@ -99,20 +109,11 @@ export default {
 				console.log('Refresh token:', data.refresh_token);
 				console.log('Expires in (seconds):', data.expires_in);
 				this.updateProfile();
-				}
 			})
 			.catch(error => console.error(error));
 		}
 
-		this.form.bio = this.user.data.bio || '';
-		this.form.userTimezone = this.user.data.userTimezone || '';
-		this.form.GoogleClientId = this.user.data.GoogleClientId || '';
-		this.$nextTick(() => {
-			M.FormSelect.init(document.querySelectorAll('select'), {});
-			M.textareaAutoResize(document.querySelector('textarea'));
-			M.CharacterCounter.init(document.querySelector('textarea'));
-			M.updateTextFields();
-		});
+		
 		},
 	methods: {
 		async authorize() {
