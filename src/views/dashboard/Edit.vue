@@ -57,7 +57,7 @@
 //import {OAuth2} from 'google-auth-library';
 import {mapState} from 'vuex';
 import {zabApi} from '@/helpers/axios.js';
-import {jwt_decode} from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 export default {
 	data() {
