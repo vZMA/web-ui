@@ -59,6 +59,8 @@ export default {
 	data() {
 		return {
 			//oauth2client: null,
+			googleClientId: '',
+			googleSecret:'',
 			form: {
 				bio: '',
 				userTimezone: '',
@@ -69,6 +71,10 @@ export default {
 		};
 	},
 	async mounted() {
+
+		const { googleconnection }=zabApi.get('google/googleinfo');
+
+		console.log(googleconnection);
 		console.log('ClientID: ' + process.env.GOOGLE_AUTH_CLIENT_ID);
 		console.log('Secret:' + process.env.GOOGLE_AUTH_CLIENT_SECRET);
 		// check for 'code' in inbound params.  This means we have a call back from Google.
