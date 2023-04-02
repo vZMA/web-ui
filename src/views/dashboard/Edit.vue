@@ -57,7 +57,6 @@
 //import {OAuth2} from 'google-auth-library';
 import {mapState} from 'vuex';
 import {zabApi} from '@/helpers/axios.js';
-import jwt_decode from 'jwt-decode';
 
 export default {
 	data() {
@@ -92,6 +91,9 @@ export default {
 			})
 			.then(response => response.json())
 			.then(data => {
+				this.user.data.googleApiAccessToken = data.access_token;
+				this.user.data.googleApiRefreshToken = data.refresh_token;
+				updateProfile(); 
 				console.log('Access token:', data.access_token);
 				console.log('Refresh token:', data.refresh_token);
 				console.log('Expires in (seconds):', data.expires_in);
