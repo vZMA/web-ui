@@ -80,7 +80,7 @@ export default {
 		});
 		},
 	methods: {
-		async onetapcallback(response) {
+		function onetapcallback(response) {
 			console.log(response);
 		},
 		async authorize() {
