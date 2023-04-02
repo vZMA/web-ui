@@ -87,8 +87,8 @@ export default {
 			// exchange code for Tokens and store tokens.
 			const tokenEndpoint = 'https://oauth2.googleapis.com/token';
 			const data = new URLSearchParams();
-			data.append('client_id', '508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v.apps.googleusercontent.com');
-			data.append('client_secret', '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');
+			data.append('client_id', process.env.GOOGLE_AUTH_CLIENT_ID);
+			data.append('client_secret', process.env.GOOGLE_AUTH_CLIENT_SECRET);
 			data.append('code', code);
 			data.append('grant_type', 'authorization_code');
 			data.append('redirect_uri', 'https://zmaartcc.net/dash/profile');
@@ -113,7 +113,7 @@ export default {
 		async authorize() {
 					
 			// gcreate google auth URL and Redirect
-			const clientID = '508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v.apps.googleusercontent.com';
+			const clientID = process.env.GOOGLE_AUTH_CLIENT_ID;
 			const redirectURI = 'https://zmaartcc.net/dash/profile';
 			const scopes = 'openid email profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events';
 
