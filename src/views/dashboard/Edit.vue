@@ -91,7 +91,7 @@ export default {
 				const request = {
         			grant_type: 'urn:ietf:params:oauth:grant-type:token-exchange',
         			audience: 'https://www.googleapis.com/oauth2/v4/token',
-        			subject_token_type: 'urn:ietf:params:oauth:token-type:id_token',
+        			subject_token_type: 'urn:ietf:params:oauth:token-type:jwt-bearer',
         			requested_token_type: 'urn:ietf:params:oauth:token-type:access_token',
         			subject_token: response.credential,
         			client_id: 'YOUR_508757888270-eudsgs85s1g4voef7g9uq9vnrv0ui52v.apps.googleusercontent.com',
