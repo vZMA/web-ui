@@ -51,7 +51,7 @@ export default {
 		console.log(this.user);
 		this.form.bio = this.user.data.bio || 'Not set';
 		this.form.googleEmail = this.user.data.googleEmail || 'Not set';
-		this.form.googleCalendarId = this.user.data.googleCalendarId  || 'Primary';
+		this.form.googleCalendarId = this.user.data.googleCalendarId  || 'primary';
 
 		this.$nextTick(() => {
 			M.FormSelect.init(document.querySelectorAll('select'), {});
