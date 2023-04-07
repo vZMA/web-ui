@@ -7,41 +7,19 @@
 					<textarea id="bio" class="materialize-textarea" data-length="2000" v-model="form.bio"></textarea>
 					<label for="bio" class="active">Biography</label>
 				</div>
-				<!--
-					<div class="input-field col s12 m6">
-					<select id="timezone" required v-model="form.userTimezone" class="materialize-select">
-						<option value="12">UTC+12</option>
-						<option value="11">UTC+11</option>
-						<option value="10">UTC+10</option>
-						<option value="9">UTC+9</option>
-						<option value="8">UTC+8</option>
-						<option value="7">UTC+7</option>
-						<option value="6">UTC+6</option>
-						<option value="5">UTC+5</option>
-						<option value="4">UTC+4</option>
-						<option value="3">UTC+3</option>
-						<option value="2">UTC+2</option>			
-						<option value="1">UTC+1</option>			
-						<option value="0">UTC</option>
-						<option value="-1">UTC-1</option>
-						<option value="-2">UTC-2</option>
-						<option value="-3">UTC-3</option>
-						<option value="-4">UTC-4</option>
-						<option value="-5">UTC-5</option>
-						<option value="-6">UTC-6</option>
-						<option value="-7">UTC-7</option>
-						<option value="-8">UTC-8</option>
-						<option value="-9">UTC-9</option>
-						<option value="-10">UTC-10</option>			
-						<option value="-11">UTC-11</option>			
-					</select>
-					<label for="timezone" class="active">Timezone</label>
-				</div>
-			-->
 				<div class="input-field col s12">
-					<textarea id="googleid" class="materialize-textarea" data-length="256" v-model="form.GoogleClientId"></textarea>
-					<label for="googleid" class="active">Google Username</label>
-					<a href="#!" @click="authorize()"><button>Authorize</button></a>
+					<textarea id="googleemail" class="materialize-textarea" data-length="256" v-model="form.googleEmail"></textarea>
+					<label for="googleemail" class="active">Google Email</label>
+					</div>
+				<div>
+					<p>To connect your Google account and authorize ZMA to post training events to your Google Calendar, please click the 'Authorize' button below.<br><br>
+					You will be presented with a Google account login, followed by a permissions window.  Events will be created in the calendar when accepted by an instructor
+					and will be modified or deleted as subsequent changes are made.<br><br></p>
+					<p align="center"><a href="#!" @click="authorize()"><button type="button">Authorize</button></a></p><br>
+				</div>
+				<div class="input-field col s12">
+					<textarea id="googlecalendarid" class="materialize-textarea" data-length="512" v-model="form.googleCalendarId"></textarea>
+					<label for="googlecalendarid" class="active">Google Calendar to be updated</label>
 				</div>
 				<div class="input-field col s12">
 					<input type="submit" class="btn right" value="Update" />
@@ -58,32 +36,23 @@ import {zabApi} from '@/helpers/axios.js';
 export default {
 	data() {
 		return {
-			//oauth2client: null,
-			googleClientId: '',
-			googleSecret:'',
-			form: {
-				bio: '',
-				userTimezone: '',
-				GoogleClientId: '',
-				googleApiAccessToken: '',
-				googleApiRefreshToken: ''
-			}
+		form: {
+			bio: '',
+			googleEmail: '',
+			googleCalendarId: ''
+		}
 		};
 	},
 	async mounted() {
-
-		const { googleconnection }=zabApi.get('google/googleinfo');
-
-		console.log(googleconnection);
-		console.log('ClientID: ' + process.env.GOOGLE_AUTH_CLIENT_ID);
-		console.log('Secret:' + process.env.GOOGLE_AUTH_CLIENT_SECRET);
 		// check for 'code' in inbound params.  This means we have a call back from Google.
 		const urlParams = new URLSearchParams(window.location.search);
-		const code= urlParams.get('code');
+		const code = urlParams.get('code');
 		
-		this.form.bio = this.user.data.bio || '';
-		this.form.userTimezone = this.user.data.userTimezone || '';
-		this.form.GoogleClientId = this.user.data.GoogleClientId || '';
+		console.log(this.user);
+		this.form.bio = this.user.data.bio || 'Not set';
+		this.form.googleEmail = this.user.data.googleEmail || 'Not set';
+		this.form.googleCalendarId = this.user.data.googleCalendarId  || 'Primary';
+
 		this.$nextTick(() => {
 			M.FormSelect.init(document.querySelectorAll('select'), {});
 			M.textareaAutoResize(document.querySelector('textarea'));
@@ -92,50 +61,38 @@ export default {
 		});
 		
 		if (code){
-			// exchange code for Tokens and store tokens.
-			const tokenEndpoint = 'https://oauth2.googleapis.com/token';
-			const data = new URLSearchParams();
-			data.append('client_id', process.env.GOOGLE_AUTH_CLIENT_ID);
-			data.append('client_secret', process.env.GOOGLE_AUTH_CLIENT_SECRET);
-			data.append('code', code);
-			data.append('grant_type', 'authorization_code');
-			data.append('redirect_uri', 'https://zmaartcc.net/dash/profile');
-
-			// Send the POST request to exchange authorization code for tokens
-			fetch(tokenEndpoint, {
-				method: 'POST',
-				body: data,
-			})
-			.then(response => response.json())
-			.then(data => {
-				this.form.googleApiAccessToken = data.access_token;
-				this.form.googleApiRefreshToken = data.refresh_token;
-				this.updateProfile();
-			})
-			.catch(error => console.error(error));
+			// Call /user/google/token to exchange code for tokens
+			const req = {
+				cid: this.user.data.cid,
+				code: code
+			}
+			this.googleCode=code;
+	
+			const { data } = await zabApi.post(`/user/google/token`, req);
+			
+			if(data.ret_det.code === 200) {
+				this.toastSuccess('Google Calendar successfully authorized')
+			}
 		}
-
-		
-		},
+	},
 	methods: {
 		async authorize() {
-					
-			// gcreate google auth URL and Redirect
-			const clientID = process.env.GOOGLE_AUTH_CLIENT_ID;
-			const redirectURI = 'https://zmaartcc.net/dash/profile';
-			const scopes = 'openid email profile https://www.googleapis.com/auth/calendar.events';
-
-			// Build the authorization URL
-			const authURL = `https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=${clientID}&redirect_uri=${redirectURI}&scope=${scopes}&access_type=offline`;
-
-			window.location.href=authURL;
+			// Call /user/google/auth
+			const { data } = await zabApi.get('/user/google/uri');
+			let redirectUri ='';
+	
+			if(data.ret_det.code === 200) { 
+				redirectUri = data.data.redirectUri;
+			};
+			
+ 			window.location.href=redirectUri;
 			},
 		async updateProfile() {
 			// Get google calendar token if the user changes his id or
 			const {data} = await zabApi.put('/user/profile', this.form);
 			if(data.ret_det.code === 200) {
 				this.toastSuccess('Profile successfully updated');
-			}
+ 			}
 		}
 	},
 	computed: {

@@ -137,6 +137,42 @@ export default {
 					instructor: this.user.data._id
 				});
 				if(data.ret_det.code === 200) {
+					// Create google event
+					if (this.requests[i].student.googleApiRefreshToken) {
+							const eventTitle = this.requests[i].milestone.name;
+							const eventDescription = this.requests[i].milestone.name + ' scheduled. \n\n'	+ 
+							'The following notes were included in the request: \n\n' + this.requests[i].remarks;
+
+							const {caldata} = await zabApi.put('/training/session/google/cal-create', {
+								cid: this.requests[i].studentCid,
+								sessionId: id,
+								calendar: this.requests[i].student.googleCalendarId, 
+								summary: eventTitle,
+								description: eventDescription,
+								start: this.requests[i].startTime,
+								end: this.requests[i].endTime
+							})
+							this.toastSuccess('Google event created.');
+						}
+					// Create google event for instructor
+					if (this.user.data.googleApiRefreshToken) {
+							const eventTitle = this.requests[i].milestone.name;
+							const eventDescription = this.requests[i].student.fname + ' ' + this.requests[i].student.lname +
+								' has scheduled a ' + this.requests[i].milestone.name + '. \n\n'
+								+ 'The following notes were included in the request: \n\n' + this.requests[i].remarks;
+							
+							const {caldata} = await zabApi.put('/training/session/google/cal-create', {
+								cid: this.user.data.cid,
+								calendar: this.user.data.googleCalendarId, 
+								summary: eventTitle,
+								description: eventDescription,
+								start: this.requests[i].startTime,
+								end: this.requests[i].endTime
+							})
+							this.toastSuccess('Google event created for insructor');
+					}
+						
+					// create a google calendar event for the training session, using the google id of the student and instructor
 					this.toastSuccess('Training request taken');
 					this.$router.push('/ins/training/requests');
 				} else {

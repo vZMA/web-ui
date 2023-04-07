@@ -1,15 +1,18 @@
 {
   "name": "ui",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
-  "author": "Albuquerque ARTCC",
+  "author": "ZMA ARTCC",
   "contributors": [
+    "Tom Coombs",
+    "Jason Cochran",
     "Alexandra Robison",
-    "Daan Janssen"
+    "Daan Janssen"    
   ],
   "license": "CC-BY-NC-SA-4.0",
   "scripts": {
-    "dev": "vite --open --port 8080",
+    "start":"ng serve --host 0.0.0.0",
+    "dev": "vite --open --port 80",
     "serve": "vite preview --open",
     "build": "vite build",
     "lint": "eslint src"
@@ -26,20 +29,20 @@
     "core-js": "^3.19.1",
     "dayjs": "^1.11.7",
     "flatpickr": "^4.6.9",
-    "google-auth-library":"^8.7.0",
-    "jwt-decode":"^3.1.2", 
+    "google-auth-library": "^8.7.0",
+    "jwt-decode": "^3.1.2",
     "luxon": "^2.1.1",
     "metar-parser": "^1.0.0",
     "vue": "^3.2.22",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"
- },
+  },
   "devDependencies": {
-    "vite": "^2.6.14",
     "@vitejs/plugin-vue": "^1.10.0",
+    "babel-eslint": "^10.1.0",
     "eslint": "^8.3.0",
     "eslint-plugin-vue": "^8.1.1",
-    "babel-eslint": "^10.1.0",
-    "sass": "^1.43.5"
+    "sass": "^1.43.5",
+    "vite": "^2.9.15"
   }
 }

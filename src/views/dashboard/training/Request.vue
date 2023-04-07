@@ -120,10 +120,7 @@ export default {
 					//start.setUTCMinutes(start.getMinutes()+offset);
 					const end = new Date(this.$refs.end_date.value);
 					//end.setUTCMinutes(end.getMinutes()+offset);
-					console.log ('Offset ' + offset);
-					console.log ('start ' + start);
-					console.log ('end ' + end);
-					
+								
 					this.makingRequest = true;
 					const {data} = await zabApi.post('/training/request/new', {
 						...this.request,
