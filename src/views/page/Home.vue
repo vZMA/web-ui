@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="card home_intro">
+      <div v-if="shouldShowPopup" class="popup">
+        <p>Please switch to Safari to get the best experience.</p>
+      </div>
       <div class="card-content">
         <span class="card-title">Welcome to Miami ARTCC</span>
         <p>
@@ -45,6 +48,20 @@ export default {
   computed: {
     ...mapState("user", ["user"]),
   },
+  data() {
+    return {
+      shouldshowPopup: false,
+    }
+  }
+
+  mounted() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isIphone = /iphone/.test(userAgent);
+    const isChrome = /chrome/.test(userAgent);
+    if (isIphone && !isChrome) {
+      this.shouldShowPopup = true;
+    }
+  }
 };
 </script>
 

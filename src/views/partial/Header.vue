@@ -68,9 +68,10 @@
             <router-link to="/privacypolicy">PRIVACY</router-link>
           </li>
         </ul>
+
         <router-link to="#" data-target="mobile-menu" class="sidenav-trigger"
-          ><i class="material-icons">menu</i></router-link
-        >
+          ><i class="material-icons">menu</i></router-link>
+
         <ul class="right left-on-med-and-down">
           <li>
             <a
@@ -84,58 +85,45 @@
             <ul
               v-show="user.isLoggedIn"
               id="notifications-dropdown"
-              class="dropdown-content"
-            >
+              class="dropdown-content">
               <Notifications v-if="user.isLoggedIn" />
             </ul>
           </li>
           <li class="user">
-            <a
-              v-show="user.isLoggedIn"
+            <a v-show="user.isLoggedIn"
               class="dropdown-right user_name"
               href="#!"
-              data-target="user-dropdown"
-              >{{
+              data-target="user-dropdown">{{
                 user.isLoggedIn
                   ? `${user.data.fname} ${user.data.lname}`
                   : "..."
-              }}<i class="material-icons user_dropdown_arrow"
-                >arrow_drop_down</i
-              ></a
-            >
+              }}<i class="material-icons user_dropdown_arrow">arrow_drop_down</i></a>
             <a
               v-if="!user.isLoggedIn"
               id="login_button"
               @click.prevent="processLogin"
               href="#"
-              >Login</a
-            >
+              >Login</a>
             <ul
               v-show="user.isLoggedIn"
               id="user-dropdown"
-              class="dropdown-content"
-            >
+              class="dropdown-content">
               <li v-if="user.isLoggedIn && user.data.isMem">
                 <router-link to="/dash">Controller Dashboard</router-link>
               </li>
               <li v-else>
-                <router-link to="/controllers/visit"
-                  >Become a Visitor</router-link
-                >
+                <router-link to="/controllers/visit">Become a Visitor</router-link>
               </li>
               <li
                 v-if="user.isLoggedIn && (user.data.isIns || user.data.isStaff)"
-                class="divider"
-              ></li>
+                class="divider"></li>
               <li
                 v-if="user.isLoggedIn && (user.data.isIns || user.data.isStaff)"
               >
                 <a
                   href="https://webmail.zmaartcc.net"
                   target="_blank"
-                  rel="noopener noreferrer"
-                  >Webmail</a
-                >
+                  rel="noopener noreferrer">Webmail</a>
               </li>
               <li v-if="user.isLoggedIn && user.data.isIns">
                 <router-link to="/ins">Instructor Dashboard</router-link>
