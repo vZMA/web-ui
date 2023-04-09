@@ -1,9 +1,6 @@
 <template>
   <div>
     <div class="card home_intro">
-      <div v-if="shouldShowPopup" class="popup">
-        <p>Please switch to Safari to get the best experience.</p>
-      </div>
       <div class="card-content">
         <span class="card-title">Welcome to Miami ARTCC</span>
         <p>
@@ -12,6 +9,9 @@
           network, the Americas region and the VATUSA division. The Miami ARTCC
           covers most of south Florida, but not Orlando.
         </p>
+        <div v-if="shouldShowPopup" class="popup">
+          <p>Please switch to Safari to get the best experience.</p>
+        </div>
         <div
           class="visit"
           v-if="!user.isLoggedIn || (!user.data.vis && !user.data.isMem)"
