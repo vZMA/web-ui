@@ -123,7 +123,8 @@ export default {
 	methods: {
 		async getRequests() {
 			try {
-				const { data } = await zabApi.get(`/training/request/${this.$route.params.date}`);
+				const timezoneOffset = new Date().getTimezoneOffset();
+				const { data } = await zabApi.get(`/training/request/${this.$route.params.date}?timezoneOffset=${timezoneOffset}`);
 				this.requests = data.data;
 			} catch(e) {
 				console.log(e);

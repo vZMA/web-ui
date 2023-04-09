@@ -225,8 +225,12 @@ export default {
 				}
 		},
 		formatHtmlDate(value) {
-			const d = new Date(value).toISOString();
-			return d.replace('T', ' ').slice(0,16);
+			//const d = new Date(value).toISOString();
+			//return d.replace('T', ' ').slice(0,16);
+			const d = new Date(value);
+  			const timezoneOffset = d.getTimezoneOffset() * 60000; // convert to milliseconds
+  			const localISOTime = (new Date(d.getTime() - timezoneOffset)).toISOString().slice(0, 16);
+  			return localISOTime.replace('T', ' ');
 		},
 		setTimes() {
 			this.oldTimes = {
