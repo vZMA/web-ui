@@ -28,8 +28,7 @@
               class="dropdown-left"
               href="#!"
               data-target="controllers-dropdown"
-              >CONTROLLERS</a
-            >
+              >CONTROLLERS</a>
             <ul id="controllers-dropdown" class="dropdown-content">
               <li>
                 <router-link to="/controllers">Controller Roster</router-link>
@@ -40,9 +39,6 @@
               <li>
                 <router-link to="/controllers/TrainingFAQ">Training Frequently Asked Questions</router-link>
               </li>
-              <!--      <li>
-	          	<a href="https://legacy.zmaartcc.net/wp/controllers/training-department/training-faq">Training FAQ (Legacy)</a>
-	            </li>-->
             </ul>
           </li>
           <li>
@@ -161,30 +157,22 @@
         <router-link class="sidenav-close" to="/">HOME</router-link>
       </li>
       <li>
-        <router-link class="sidenav-close" to="/controllers"
-          >ROSTER</router-link
-        >
+         <router-link to="/controllers/">ROSTER</router-link>
       </li>
       <li>
-        <router-link class="sidenav-close" to="/files/documents"
-          >DOCUMENTS</router-link
-        >
+        <router-link to="/controllers/staff">STAFF</router-link>
       </li>
       <li>
-        <router-link class="sidenav-close" to="/files/downloads"
-          >DOWNLOADS</router-link
-        >
-      </li>
-      <li>
-        <router-link class="sidenav-close" to="/controllers/staff"
-          >STAFF</router-link
-        >
+        <router-link to="/controllers/TrainingFAQ">TRAINING FAQ</router-link>
       </li>
       <li>
         <router-link class="sidenav-close" to="/events">EVENTS</router-link>
       </li>
       <li>
         <router-link class="sidenav-close" to="/news">NEWS</router-link>
+      </li>
+      <li>
+        <router-link to="/files/downloads">DOWNLOADS</router-link>
       </li>
       <li>
         <router-link class="sidenav-close" to="/feedback">FEEDBACK</router-link>
