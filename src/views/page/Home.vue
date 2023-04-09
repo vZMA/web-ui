@@ -58,7 +58,7 @@ export default {
     const userAgent = navigator.userAgent.toLowerCase();
     const isIphone = /iphone/.test(userAgent);
     const isChrome = /chrome/.test(userAgent);
-    if (isIphone && !isChrome) {
+    if (isIphone && isChrome) {
       this.shouldShowPopup = true;
     }
   }
