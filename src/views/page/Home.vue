@@ -52,7 +52,7 @@ export default {
     return {
       shouldshowPopup: false,
     }
-  }
+  },
 
   mounted() {
     const userAgent = navigator.userAgent.toLowerCase();
