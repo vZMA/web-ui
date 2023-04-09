@@ -125,6 +125,7 @@ export default {
     async getControllers() {
       const { data } = await zabApi.get("/feedback/controllers");
       this.controllers = data.data;
+	  this.controllers.unshift("Unknown");
     },
     async submitFeedback() {
       const { data } = await zabApi.post("/feedback", this.feedback);
