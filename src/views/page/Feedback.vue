@@ -39,7 +39,7 @@
 					</div>
 					<div class="input-field col s12 m6">
 						<select v-model="feedback.controller" required class="materialize-select">
-							<option value="" disabled selected>Select a controller</option>
+							<option value="" disabled selected>Select a Controller</option>
 							<option v-for="controller in controllers" :value="controller.cid" :key="controller.cid">{{controller.fname}} {{controller.lname}}</option>
 						</select>
 						<label>Controller</label>
@@ -125,7 +125,14 @@ export default {
     async getControllers() {
       const { data } = await zabApi.get("/feedback/controllers");
       this.controllers = data.data;
-	  this.controllers.unshift("Unknown");
+	  this.controllers.unshift({
+		fname: 'Unknown',
+		lname: 'Controller',
+		cid: 0,
+		rating: 0,
+		vis: 0,
+		_id: 0
+	  });
     },
     async submitFeedback() {
       const { data } = await zabApi.post("/feedback", this.feedback);
