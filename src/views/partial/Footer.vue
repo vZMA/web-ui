@@ -7,10 +7,10 @@
           body. All content contained herein is approved only for use on the
           VATSIM network.<br>
         </p>
-        <p>
-        This application complies with the Google API Services User Data Policy, 
-				including the Limited Use requirements, and you can review that policy here:
-				<a href="https://developers.google.com/terms/api-services-user-data-policy">https://developers.google.com/terms/api-services-user-data-policy</a><br>
+        <p>ZMA Artcc's use and transfer to any other app of information received from Google APIs
+           will adhere to <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, 
+           including the Limited Use requirements.
+        <br>
         </p>
         <p>
           <br>
