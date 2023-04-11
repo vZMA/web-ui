@@ -3,7 +3,7 @@
 		<div class="card-content">
 			<span class="card-title">Privacy Policy</span>
 			<p>
-				As a guest, the Miami ARTCC does not collect any data about you, except:
+				<u>General: </u>As a guest, the Miami ARTCC does not collect any data about you, except:
 				<ul class="browser-default">
 					<li>when you log in with your VATSIM account. Some personal information is shared with us, including, but not limited to, 
 						your name, email address, VATSIM ID and rating. You are not required to log in to access most parts of our website.</li>
@@ -34,6 +34,19 @@
 				<a href="https://membership.vatsim.net/" noopener noreferrer target="_blank">https://membership.vatsim.net/</a> to do so. VATSIM, after 
 				processing your opt out, will forward the request to VATUSA and the Maimi ARTCC for processing.
 			</p>
+			<p>
+				<u>Google Data and integration:</u> You can configure the ZMA ARTCC website to integrate 
+				with your Google Calendar. We do not store,	or access your existing Calendar events or 
+				personal data in any way. Our access is used to create training events in your calendar.<br><br>
+				Should you choose to integrate your ZMA profile with your google calendar, you will be asked to authorize access using the Google authorization 
+				process.  We will receive data access tokens, and these will be stored in the ZMA database.
+				You can remove this access at any time using the Google 'mysecurity' page here: 
+				<a href="https://myaccount.google.com/security">https://myaccount.google.com/security</a>. <br><br>
+				This application complies with the Google API Services User Data Policy, 
+				including the Limited Use requirements, and you can review that policy here:
+				<a href="https://developers.google.com/terms/api-services-user-data-policy">https://developers.google.com/terms/api-services-user-data-policy</a>
+			</p>
+
 		</div>
 	</div>
 </template>
