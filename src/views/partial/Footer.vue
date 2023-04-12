@@ -111,6 +111,7 @@ p {
 
 a {
   color: white;
+  text-decoration: underline;
 }
 
 body .page-footer {
