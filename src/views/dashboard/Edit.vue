@@ -15,7 +15,7 @@
 					<p>To connect your Google account and authorize ZMA to post training events to your Google Calendar, please click the 'Authorize' button below.<br><br>
 					You will be presented with a Google account login, followed by a permissions window.  Events will be created in the calendar when accepted by an instructor
 					and will be modified or deleted as subsequent changes are made.<br><br></p>
-					<p align="center"><a href="#!" @click="authorize()"><img src="@assets/images/btn_google_signin_dark_focus_web.png" /></a></p><br>
+					<p align="center"><a href="#!" @click="authorize()"><img src="@/assets/images/btn_google_signin_dark_focus_web.png" height="30"/></a></p><br>
 				</div>
 				<div class="input-field col s12">
 					<textarea id="googlecalendarid" class="materialize-textarea" data-length="512" v-model="form.googleCalendarId"></textarea>
