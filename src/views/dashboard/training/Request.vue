@@ -36,8 +36,8 @@
 						<div class="input-field col s12">
 							<select v-model="request.milestone" class="materialize-select">
 								<option value="" disabled selected>Select a milestone</option>
+								<!--<option v-for="milestone in filteredMilestones" :key="milestone._id" :value="milestone.code">{{milestone.code + ' - ' + milestone.name}}</option>-->
 								<option v-for="milestone in filteredMilestones" :key="milestone._id" :value="milestone.code">{{milestone.code + ' - ' + milestone.name}}</option>
-								
 							</select>
 							<label>Milestone <span class="red-text">*</span></label>
 						</div>
@@ -153,14 +153,39 @@ export default {
 			if(this.milestones !== null) {
 				const minorPrerequisites = ["obs", "gnd", "twr", "app"];
 				const majorPrerequisites = ["obs", "gnd", "miagnd", "miatwr", "miaapp"];
-
+				
 				let milestonesShowed = this.milestones.filter((milestone) => {
-					//simplified this logic per TA request to offer only these options to all trainees, regardless of cert held
-					if(this.user.data.vis) {
-							return milestone.code === "TRN" || milestone.code === "GRP" || milestone.code === "MOTS";
-					} else {
-							//simplified this logic per TA request to offer only these options to all trainees, regardless of cert held
-							return milestone.code === "TRN" || milestone.code === "GRP" || milestone.code === "MOTS" || milestone.code === "ROTS";
+				
+					if(this.user.data.vis) 
+						return ( // visiting contollers 
+								milestone.code === "GRP" || // Always send back GRP
+								
+								// Show the visitor MIA certs when the MIA cert is not set on the controllers profile
+								((milestone.certCode.substring(0, 3) === "vis" && !certs.includes(milestone.certCode.slice(-6)) && certs.includes(majorPrerequisites[milestone.rating - 1]))
+								&& milestone.rating <= rating)); // respect the vatsim controller rating before offering training above that level
+					else {
+						return (  // home controllers
+							!certs.includes(milestone.certCode) &&
+							(
+								milestone.code === "GRP" || // Always send back GRP firss
+								// Show the MIA certs, when the previous MIA cert has been acheived
+								(milestone.certCode.substring(0, 3) === "mia" && certs.includes(milestone.certCode.slice(-3)) && certs.includes(majorPrerequisites[milestone.rating - 1])) || 
+
+								// Show the non MIA certs, when the previous minor prereq has been achieved, or when no certification is valid for the observer, do not show ZMA C1
+								(milestone.certCode.substring(0, 3) !== "mia" && (certs.includes(minorPrerequisites[milestone.rating - 1]) || 
+								(milestone.rating === 1 && certs.length <= 1)) 
+								&& milestone.certCode !== "zma") ||
+								
+								// Show ZMA C1 to users who have achieved miaapp
+								(milestone.certCode === "zma" && certs.includes("miaapp")) || // Show the ZMA C1 when the Major Approach has been met
+								
+								// Show ZMA C1 to users who have achieved miaapp
+								(milestone.certCode === "zmo" && certs.includes("zma")) || // Show the ZMA C1 when the Major Approach has been met
+
+								milestone.code === "OTS" // Always send back OTS in the last position
+							) && milestone.rating <= rating // respect the vatsim controller rating before offering training above that level
+							&& milestone.certCode.substring(0, 3) !== "vis"
+						);
 					}
 				});
 
