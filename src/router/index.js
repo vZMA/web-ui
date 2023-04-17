@@ -181,6 +181,10 @@ const routes = [
         component: () => import("../views/admin/controllers/Edit.vue"),
       },
       {
+        path: "controllers/newnote/:cid",
+        component: () => import("../views/admin/controllers/NewNote.vue"),
+      },
+      {
         path: "activity",
         component: () => import("../views/admin/controllers/Activity.vue"),
       },

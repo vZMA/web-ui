@@ -61,8 +61,8 @@
 									@click="toggleCert">MIA_APP</span>
 								<span id="zma" :class="{active: form.certs.zma}" class="cert cert_center"
 									@click="toggleCert">MIA_CTR</span>
-								<!-- <span id="zmo" :class="{active: form.certs.zmo}" class="cert cert_center"
-									@click="toggleCert">ZMO_CTR</span> -->
+								<span id="zmo" :class="{active: form.certs.zmo}" class="cert cert_center"
+									@click="toggleCert">ZMO_CTR</span>
 							</div>
 							<label for="solo_certs_container" class="active">Solo Certifications:</label>
 							<div id="solo_certs_container" class="cert_container">
@@ -83,10 +83,10 @@
 									@click="toggleCert">MIA_TWR</span>
 								<span id="miaapps" :class="{active: form.certs.miaapps}" class="cert cert_solom"
 									@click="toggleCert">MIA_APP</span>
-								<span id="zmas" :class="{active: form.certs.zmas}" class="cert cert_solom"
+								<span id="miazmas" :class="{active: form.certs.miazmas}" class="cert cert_solom"
 									@click="toggleCert">MIA_CTR</span>
-								<!-- <span id="zmos" :class="{active: form.certs.zmos}" class="cert cert_solom"
-									@click="toggleCert">ZMO_CTR</span> -->
+								<span id="miazmos" :class="{active: form.certs.miazmos}" class="cert cert_solom"
+									@click="toggleCert">ZMO_CTR</span>
 							</div>
 						</div>
 					</div>
@@ -118,115 +118,130 @@
 					</div>
 				</div>
 			</form>
-		</div>
+		</div>	
 	</div>
+<Notes />
 </template>
 
 <script>
 import {zabApi} from '@/helpers/axios.js';
+import { mapState } from 'vuex';
+import Notes from './Notes.vue'; 
+
+import { FLIPPED_ALIAS_KEYS } from '@babel/types';
+
 
 export default {
-	data() {
-		return {
-			controller: null,
-			usedOi: [],
-			oi: '',
-			oiAvail: true,
-			form: {
-				fname: '',
-				lname: '',
-				email: '',
-				oi: '',
-				vis: false,
-				certs: {
-					zmo: false,
-					zma: false,
-					miaapp: false,
-					miatwr: false,
-					miagnd: false,
-					app: false,
-					twr: false,
-					gnd: false,
-					dels: false,
-					gnds: false,
-					twrs: false,
-					apps: false,
-					miadels: false,
-					miagnds: false,
-					miatwrs: false,
-					miaapps: false,
-					miazmas: false
-				},
-				roles: {
-					atm: false,
-					datm: false,
-					ta: false,
-					ec: false,
-					fe: false,
-					wm: false,
-					ins: false,
-					mtr: false,
-				},
-			}
-		};
+    data() {
+        return {
+            controller: null,
+            usedOi: [],
+            oi: "",
+            oiAvail: true,
+            form: {
+                fname: "",
+                lname: "",
+                email: "",
+                oi: "",
+                vis: false,
+                certs: {
+                    zmo: false,
+                    zma: false,
+                    miaapp: false,
+                    miatwr: false,
+                    miagnd: false,
+                    app: false,
+                    twr: false,
+                    gnd: false,
+                    dels: false,
+                    gnds: false,
+                    twrs: false,
+                    apps: false,
+                    miadels: false,
+                    miagnds: false,
+                    miatwrs: false,
+                    miaapps: false,
+                    miazmas: false,
+                    miazmos: false
+                },
+                roles: {
+                    atm: false,
+                    datm: false,
+                    ta: false,
+                    ec: false,
+                    fe: false,
+                    wm: false,
+                    ins: false,
+                    mtr: false,
+                }, 
+            }
+        };
+    },
+    async mounted() {
+		//get my user statusconst codes
+        await this.getController();
+        this.setTitle(`Edit ${this.controller.fname + " " + this.controller.lname}`);
+    },
+    methods: {
+        async getController() {
+            const { data } = await zabApi.get(`/controller/${this.$route.params.cid}`);
+            this.controller = data.data;
+            this.form = {
+                ...this.form,
+                fname: this.controller.fname,
+                lname: this.controller.lname,
+                email: this.controller.email,
+                oi: this.controller.oi,
+                vis: this.controller.vis,
+            };
+            this.controller.certifications.forEach(cert => this.form.certs[cert.code] = true);
+            this.controller.roles.forEach(role => this.form.roles[role.code] = true);
+            this.usedOi = (await zabApi.get(`/controller/oi`)).data.data;
+        },
+        checkOi(e) {
+            this.form.oi = e.target.value.toUpperCase();
+            this.oiAvail = (this.form.oi !== this.controller.oi && (this.usedOi.includes(this.form.oi) || this.form.oi.length != 2)) ? false : true;
+        },
+        toggleCert: function (e) {
+            e.target.classList.toggle("active");
+            this.form.certs[e.target.id] = e.target.classList.contains("active");
+        },
+        toggleRole: function (e) {
+            e.target.classList.toggle("active");
+            this.form.roles[e.target.id] = e.target.classList.contains("active");
+        },
+        toggleVis: function (e) {
+            e.target.classList.toggle("active");
+            this.form.vis = e.target.classList.contains("active");
+        },
+        async updateController() {
+            try {
+                if (!this.oiAvail) {
+                    this.toastError("Operating initials already in use");
+                }
+                else {
+                    const { data } = await zabApi.put(`/controller/${this.controller.cid}`, {
+                        form: this.form
+                    });
+                    if (data.ret_det.code === 200) {
+                        this.toastSuccess("Controller updated");
+                    }
+                    else {
+                        this.toastError(data.ret_det.message);
+                    }
+                }
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }
+    },
+	computed: {
+		...mapState('user', [
+			'user'
+		])
 	},
-	async mounted() {
-		await this.getController();
-		this.setTitle(`Edit ${this.controller.fname + ' ' + this.controller.lname}`);
-	},
-	methods: {
-		async getController() {
-			const {data} = await zabApi.get(`/controller/${this.$route.params.cid}`);
-			this.controller = data.data;
-			this.form = {
-				...this.form,
-				fname: this.controller.fname,
-				lname: this.controller.lname,
-				email: this.controller.email,
-				oi: this.controller.oi,
-				vis: this.controller.vis,
-			};
-			
-			this.controller.certifications.forEach(cert => this.form.certs[cert.code] = true);
-			this.controller.roles.forEach(role => this.form.roles[role.code] = true);
-			this.usedOi = (await zabApi.get(`/controller/oi`)).data.data;
-		},
-		checkOi(e) {
-			this.form.oi = e.target.value.toUpperCase();
-			this.oiAvail = (this.form.oi !== this.controller.oi && (this.usedOi.includes(this.form.oi) || this.form.oi.length != 2)) ? false : true;
-		},
-		toggleCert: function(e) {
-			e.target.classList.toggle('active');
-			this.form.certs[e.target.id] = e.target.classList.contains('active');
-		},
-		toggleRole: function(e) {
-			e.target.classList.toggle('active');
-			this.form.roles[e.target.id] = e.target.classList.contains('active');
-		},
-		toggleVis: function(e) {
-			e.target.classList.toggle('active');
-			this.form.vis = e.target.classList.contains('active');
-		},
-		async updateController() {
-			try {
-				if(!this.oiAvail) {
-					this.toastError('Operating initials already in use');
-				} else {
-					const {data} = await zabApi.put(`/controller/${this.controller.cid}`, {
-						form: this.form
-					});
-	
-					if(data.ret_det.code === 200) {
-						this.toastSuccess('Controller updated');
-					} else {
-						this.toastError(data.ret_det.message);
-					}
-				}
-			} catch(e) {
-				console.log(e);
-			}
-		}
-	}
+    components: { Notes }
 };
 </script>
 
