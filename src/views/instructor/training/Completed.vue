@@ -15,21 +15,21 @@
 					<tr>
 						<th>Student</th>
 						<th>Start Time</th>
-						<th>End Time</th>
+						<th>Milestone</th>
 						<th>Instructor</th>
 						<th class="options">Options</th>
 					</tr>
 				</thead>
 				<tbody class="session_list_row">
-					<tr v-for="session in sessions" :key="session._id">
-						<td>{{ session.student ? `${session.student.fname} ${session.student.lname}` : session.studentCid}}</td>
-						<td>{{dtLong(session.startTime)}}</td>
-						<td>{{dtLong(session.endTime)}}</td>
-						<td>{{session.instructor ? `${session.instructor.fname} ${session.instructor.lname}` : session.instructorCid}}</td>
+					<tr v-for="session in sessions" :key="session._id" :class="{ 'cancelled': session.milestoneCode === 'CAN' }">
+						<td :class="{ 'cancelled': session.milestoneCode === 'CAN' }">{{ session.student ? `${session.student.fname} ${session.student.lname}` : session.studentCid}}</td>
+						<td :class="{ 'cancelled': session.milestoneCode === 'CAN' }">{{dtLong(session.startTime)}}</td>
+						<td :class="{ 'cancelled': session.milestoneCode === 'CAN' }">{{session.milestone.name}}</td>
+						<td :class="{ 'cancelled': session.milestoneCode === 'CAN' }">{{session.instructor ? `${session.instructor.fname} ${session.instructor.lname}` : session.instructorCid}}</td>
 						<td class="options">
 							<router-link :to="`/ins/training/session/${session._id}`" data-position="top" data-tooltip="View Details" class="tooltipped">
 								<i class="material-icons">search</i>
-							</router-link>
+							</router-link> 
 						</td>
 					</tr>
 				</tbody>
@@ -100,7 +100,9 @@ export default {
 .session_list {
 	min-width: 500px;
 }
-
+.cancelled td {
+  color: red;
+}
 .session_wrapper {
 	overflow: auto;
 }

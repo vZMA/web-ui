@@ -19,11 +19,11 @@
 					</tr>
 				</thead>
 				<tbody class="session_list_row">
-					<tr v-for="session in pastSessions" :key="session._id">
-						<td>{{dtLong(session.startTime)}}</td>
-						<td>{{dtLong(session.endTime)}}</td>
-						<td>{{(session.milestone) ? session.milestone.name : 'Unknown'}}</td>
-						<td>{{session.instructor ? session.instructor.fname + ' ' + session.instructor.lname : session.instructorCid}}</td>
+					<tr v-for="session in pastSessions" :key="session._id" :class="{ 'cancelled': session.milestoneCode === 'CAN' }">
+						<td :class="{ 'cancelled': session.milestoneCode === 'CAN' }">{{dtLong(session.startTime)}}</td>
+						<td :class="{ 'cancelled': session.milestoneCode === 'CAN' }">{{dtLong(session.endTime)}}</td>
+						<td :class="{ 'cancelled': session.milestoneCode === 'CAN' }">{{(session.milestone) ? session.milestone.name : 'Unknown'}}</td>
+						<td :class="{ 'cancelled': session.milestoneCode === 'CAN' }">{{session.instructor ? session.instructor.fname + ' ' + session.instructor.lname : session.instructorCid}}</td>
 						<td class="options">
 							<router-link :to="`/dash/training/session/${session._id}`" data-position="top" data-tooltip="View Session Details" class="tooltipped">
 								<i class="material-icons">search</i>
@@ -94,7 +94,9 @@ table {
 .session_wrapper {
 	overflow: auto;
 }
-
+.cancelled td {
+  color: red;
+}
 .session_list {
 	min-width: 600px;
 }
