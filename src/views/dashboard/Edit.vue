@@ -49,7 +49,6 @@ export default {
 		const urlParams = new URLSearchParams(window.location.search);
 		const code = urlParams.get('code');
 		
-		console.log(this.user);
 		this.form.bio = this.user.data.bio || 'Not set';
 		this.form.googleEmail = this.user.data.googleEmail || 'Not set';
 		this.form.googleCalendarId = this.user.data.googleCalendarId  || 'primary';

@@ -138,15 +138,19 @@ export default {
 					instructor: this.user.data._id
 				});
 				if(data.ret_det.code === 200) {
+					// get the session id from the resposne
+					const sessionId = data.data.sessionId;
+
 					// Create google event
 					if (this.requests[i].student.googleApiRefreshToken) {
 							const eventTitle = this.requests[i].milestone.name;
 							const eventDescription = this.requests[i].milestone.name + ' scheduled. \n\n'	+ 
 							'The following notes were included in the request: \n\n' + this.requests[i].remarks;
 
-							const {caldata} = await zabApi.put('/training/session/google/cal-create', {
+							const {caldata} = await zabApi.post('/training/session/google/cal-create', {
 								cid: this.requests[i].studentCid,
-								sessionId: id,
+								sessionId: sessionId,
+								calOwner: 'student',
 								calendar: this.requests[i].student.googleCalendarId, 
 								summary: eventTitle,
 								description: eventDescription,
@@ -162,8 +166,10 @@ export default {
 								' has scheduled a ' + this.requests[i].milestone.name + '. \n\n'
 								+ 'The following notes were included in the request: \n\n' + this.requests[i].remarks;
 							
-							const {caldata} = await zabApi.put('/training/session/google/cal-create', {
+							const {caldata} = await zabApi.post('/training/session/google/cal-create', {
 								cid: this.user.data.cid,
+								sessionId: sessionId,
+								calOwner: 'instructor',
 								calendar: this.user.data.googleCalendarId, 
 								summary: eventTitle,
 								description: eventDescription,

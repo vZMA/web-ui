@@ -94,7 +94,7 @@ export default {
 	async mounted() {
 		//this.SnrStaff = this.user.data.roleCodes.includes('datm', 'atm', 'ta', 'wm');
 		this.SnrStaff = ['datm', 'atm', 'ta', 'wm'].some(code => this.user.data.roleCodes.includes(code));
-		console.log(this.SnrStaff)
+
 		this.cid = this.$route.params.cid;
 		await this.getStaffNotes();
 

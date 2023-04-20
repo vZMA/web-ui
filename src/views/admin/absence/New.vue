@@ -74,7 +74,6 @@ export default {
 					expirationDate: `${this.$refs.expirationDate.value}T00:00:00.000Z`
 				});
 
-				console.log(this.$refs.expirationDate.value);
 				if(data.ret_det.code === 200) {
 					this.toastSuccess('Leave of Absence granted');
 
