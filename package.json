@@ -7,12 +7,12 @@
     "Tom Coombs",
     "Jason Cochran",
     "Alexandra Robison",
-    "Daan Janssen"    
+    "Daan Janssen"
   ],
   "license": "CC-BY-NC-SA-4.0",
   "scripts": {
-    "start":"ng serve --host 0.0.0.0",
-    "dev": "vite --open --port 80",
+    "start": "ng serve --host 0.0.0.0",
+    "dev": "vite --open --port 8080",
     "serve": "vite preview --open",
     "build": "vite build",
     "lint": "eslint src"

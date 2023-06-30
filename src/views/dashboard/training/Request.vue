@@ -79,6 +79,17 @@ export default {
 		await this.getTrainingMilestones();
 		const today = new Date(new Date().toUTCString());
 
+		// Adjust today to the nearest 15m window
+		let minutes = today.getMinutes();
+		let remainder = minutes % 15;
+		if (remainder < 8) {
+    		today.setMinutes(minutes - remainder);
+		} else {
+    		today.setMinutes(minutes + (15 - remainder));
+		}
+		today.setSeconds(0);
+		today.setMilliseconds(0);
+	
 		M.FormSelect.init(document.querySelectorAll('select'), {});
 		M.CharacterCounter.init(document.querySelectorAll('textarea'), {});
 

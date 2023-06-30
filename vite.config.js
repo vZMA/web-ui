@@ -2,10 +2,11 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 
+
 export default defineConfig({
 	plugins: [ vue() ],
 	server: {
-		port: 80,
+		port: 8080,
 		proxy: {
 			'^/api': {
 				target: 'http://localhost:3000',
