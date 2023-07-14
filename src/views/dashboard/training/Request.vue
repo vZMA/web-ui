@@ -190,8 +190,8 @@ export default {
 								// Show ZMA C1 to users who have achieved miaapp
 								(milestone.certCode === "zma" && certs.includes("miaapp")) || // Show the ZMA C1 when the Major Approach has been met
 								
-								// Show ZMA C1 to users who have achieved miaapp
-								(milestone.certCode === "zmo" && certs.includes("zma")) || // Show the ZMA C1 when the Major Approach has been met
+								// Show ZMO to users who have achieved zma
+								(milestone.certCode === "zmo" && certs.includes("zma")) || // Show the ZMO when the domestic center has been met
 
 								milestone.code === "OTS" // Always send back OTS in the last position
 							) && milestone.rating <= rating // respect the vatsim controller rating before offering training above that level

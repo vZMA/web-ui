@@ -61,8 +61,8 @@
 									@click="toggleCert">MIA_APP</span>
 								<span id="zma" :class="{active: form.certs.zma}" class="cert cert_center"
 									@click="toggleCert">MIA_CTR</span>
-								<span id="zmo" :class="{active: form.certs.zmo}" class="cert cert_center"
-									@click="toggleCert">ZMO_CTR</span>
+								<!-- <span id="zmo" :class="{active: form.certs.zmo}" class="cert cert_center"
+									@click="toggleCert">ZMO_CTR</span> -->
 							</div>
 							<label for="solo_certs_container" class="active">Solo Certifications:</label>
 							<div id="solo_certs_container" class="cert_container">
@@ -85,8 +85,8 @@
 									@click="toggleCert">MIA_APP</span>
 								<span id="miazmas" :class="{active: form.certs.miazmas}" class="cert cert_solom"
 									@click="toggleCert">MIA_CTR</span>
-								<span id="miazmos" :class="{active: form.certs.miazmos}" class="cert cert_solom"
-									@click="toggleCert">ZMO_CTR</span>
+								<!-- <span id="miazmos" :class="{active: form.certs.miazmos}" class="cert cert_solom"
+									@click="toggleCert">ZMO_CTR</span> -->
 							</div>
 						</div>
 					</div>
