@@ -107,10 +107,13 @@
 			</form>
 		</div>
 	</div>
+	<TrainerNotes />
 </template>
 
 <script>
 import {zabApi} from '@/helpers/axios.js';
+import { mapState } from 'vuex';
+import TrainerNotes from '../../admin/controllers/TrainerNotes.vue';
 
 export default {
 	data() {
@@ -187,7 +190,13 @@ export default {
 				console.log(e);
 			}
 		}
-	}
+	},
+computed: {
+		...mapState('user', [
+			'user'
+		])
+	},
+    components: { TrainerNotes }
 };
 </script>
 

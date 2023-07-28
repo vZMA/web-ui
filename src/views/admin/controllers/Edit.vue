@@ -121,15 +121,16 @@
 		</div>	
 	</div>
 <Notes />
+<TrainerNotes />
 </template>
 
 <script>
 import {zabApi} from '@/helpers/axios.js';
 import { mapState } from 'vuex';
 import Notes from './Notes.vue'; 
+import TrainerNotes from './TrainerNotes.vue'; 
 
 import { FLIPPED_ALIAS_KEYS } from '@babel/types';
-
 
 export default {
     data() {
@@ -241,7 +242,8 @@ export default {
 			'user'
 		])
 	},
-    components: { Notes }
+    components: { Notes, 
+		TrainerNotes }
 };
 </script>
 
