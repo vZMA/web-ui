@@ -36,9 +36,9 @@
               <li>
                 <router-link to="/controllers/staff">ARTCC Staff</router-link>
               </li>
-              <li>
+             <!--<li>
                 <router-link to="/controllers/TrainingFAQ">Training Frequently Asked Questions</router-link>
-              </li>
+              </li>-->
             </ul>
           </li>
           <li>
