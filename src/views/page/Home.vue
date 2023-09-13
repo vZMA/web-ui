@@ -26,9 +26,9 @@
         </div>
       </div>
     </div>
-    <EventSummary />
-    <NewsSummary />
     <WeatherInfo />
+    <NewsSummary />
+    <EventSummary />   
   </div>
 </template>
 
