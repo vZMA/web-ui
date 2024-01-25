@@ -38,55 +38,38 @@
 					</div>
 					<div class="input-field col s12">
 						<div id="certs_container">
-							<label for="minor_certs_container" class="active">Minor Certifications:</label>
+							<label for="minor_certs_container" class="active">Tier 2 Certifications:</label>
 							<div id="minor_certs_container" class="cert_container">
-								<span id="del" :class="{active: form.certs.del}" class="cert cert_minor"
-									@click="toggleCert">DEL</span>
 								<span id="gnd" :class="{active: form.certs.gnd}" class="cert cert_minor"
-									@click="toggleCert">GND</span>
+									@click="toggleCert">Tier 2 Del. / Ground</span>
 								<span id="twr" :class="{active: form.certs.twr}" class="cert cert_minor"
-									@click="toggleCert">TWR</span>
+									@click="toggleCert">Tier 2 Tower</span>
 								<span id="app" :class="{active: form.certs.app}" class="cert cert_minor"
-									@click="toggleCert">APP</span>
+									@click="toggleCert">Tier 2 Approach</span>
 							</div>
-							<label for="miami_certs_container" class="active">KMIA & Center Certifications:</label>
+							<label for="miami_certs_container" class="active">Tier 1 Certifications:</label>
 							<div id="miami_certs_container" class="cert_container">
-								<span id="miadel" :class="{active: form.certs.miadel}" class="cert cert_major"
-									@click="toggleCert">MIA_DEL</span>
 								<span id="miagnd" :class="{active: form.certs.miagnd}" class="cert cert_major"
-									@click="toggleCert">MIA_GND</span>
+									@click="toggleCert">Tier 1 Del. / Ground</span>
 								<span id="miatwr" :class="{active: form.certs.miatwr}" class="cert cert_major"
-									@click="toggleCert">MIA_TWR</span>
+									@click="toggleCert">Tier 1 Tower</span>
 								<span id="miaapp" :class="{active: form.certs.miaapp}" class="cert cert_major"
-									@click="toggleCert">MIA_APP</span>
+									@click="toggleCert">Tier 1 Approach</span>
 								<span id="zma" :class="{active: form.certs.zma}" class="cert cert_center"
-									@click="toggleCert">MIA_CTR</span>
+									@click="toggleCert">Domestic Center</span>
 								<!-- <span id="zmo" :class="{active: form.certs.zmo}" class="cert cert_center"
-									@click="toggleCert">ZMO_CTR</span> -->
+									@click="toggleCert">Oceanic Center</span> -->
 							</div>
 							<label for="solo_certs_container" class="active">Solo Certifications:</label>
 							<div id="solo_certs_container" class="cert_container">
-								<span id="dels" :class="{active: form.certs.dels}" class="cert cert_solon"
-									@click="toggleCert">DEL</span>
-								<span id="gnds" :class="{active: form.certs.gnds}" class="cert cert_solon"
-									@click="toggleCert">GND</span>
-								<span id="twrs" :class="{active: form.certs.twrs}" class="cert cert_solon"
-									@click="toggleCert">TWR</span>
-								<span id="apps" :class="{active: form.certs.apps}" class="cert cert_solon"
-									@click="toggleCert">APP</span>
-								<br/>
-								<span id="miadels" :class="{active: form.certs.miadels}" class="cert cert_solom"
-									@click="toggleCert">MIA_DEL</span>
-								<span id="miagnds" :class="{active: form.certs.miagnds}" class="cert cert_solom"
-									@click="toggleCert">MIA_GND</span>
-								<span id="miatwrs" :class="{active: form.certs.miatwrs}" class="cert cert_solom"
-									@click="toggleCert">MIA_TWR</span>
-								<span id="miaapps" :class="{active: form.certs.miaapps}" class="cert cert_solom"
-									@click="toggleCert">MIA_APP</span>
-								<span id="miazmas" :class="{active: form.certs.miazmas}" class="cert cert_solom"
-									@click="toggleCert">MIA_CTR</span>
+								<span id="twrs" :class="{active: form.certs.twrs}" class="cert cert_solo"
+									@click="toggleCert">Tower (Solo)</span>
+								<span id="apps" :class="{active: form.certs.apps}" class="cert cert_solo"
+									@click="toggleCert">Approach (Solo)</span>
+								<span id="miazmas" :class="{active: form.certs.miazmas}" class="cert cert_solo"
+									@click="toggleCert">Domestic Center (Solo)</span>
 								<!-- <span id="miazmos" :class="{active: form.certs.miazmos}" class="cert cert_solom"
-									@click="toggleCert">ZMO_CTR</span> -->
+									@click="toggleCert">Oceanic Center (Solo)</span> -->
 							</div>
 						</div>
 					</div>
@@ -299,12 +282,8 @@ export default {
 			background: $secondary-color-light;
 			color: #fff;
 		}
-		&.cert_solom {
-			background: #FFE83E;
-			color: #2F4F4F;
-		}
-	
-		&.cert_solon {
+
+		&.cert_solo {
 			background: #FFA500;
 			color: #fff;
 		}

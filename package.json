@@ -12,7 +12,7 @@
   "license": "CC-BY-NC-SA-4.0",
   "scripts": {
     "start": "ng serve --host 0.0.0.0",
-    "dev": "vite --open --port 8080",
+    "dev": "vite --open --port 80",
     "serve": "vite preview --open",
     "build": "vite build",
     "lint": "eslint src"

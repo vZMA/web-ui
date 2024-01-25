@@ -273,13 +273,11 @@
 	&.cert_minor {
 	  background: $secondary-color-light;
 	}
-  &.cert_solon {
+  &.cert_solo {
     background: #FFA500;
+	color: #fff;
   }
-  &.cert_solom {
-    background: #FFE83E;
-    color: #000000;
-  }
+
   }
   .tooltipped {
 	cursor: pointer;

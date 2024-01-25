@@ -169,7 +169,8 @@ export default {
 				
 					if(this.user.data.vis) 
 						return ( // visiting contollers 
-								milestone.code === "GRP" || // Always send back GRP
+								milestone.code === "T1" || // Always send back T1
+								milestone.code === "T1CR" || // Always send back 
 								
 								// Show the visitor MIA certs when the MIA cert is not set on the controllers profile
 								((milestone.certCode.substring(0, 3) === "vis" && !certs.includes(milestone.certCode.slice(-6)) && certs.includes(majorPrerequisites[milestone.rating - 1]))
@@ -178,7 +179,8 @@ export default {
 						return (  // home controllers
 							!certs.includes(milestone.certCode) &&
 							(
-								milestone.code === "GRP" || // Always send back GRP firss
+								milestone.code === "T1" || // Always send back T1 firss
+								milestone.code === "T1CR" || 
 								// Show the MIA certs, when the previous MIA cert has been acheived
 								(milestone.certCode.substring(0, 3) === "mia" && certs.includes(milestone.certCode.slice(-3)) && certs.includes(majorPrerequisites[milestone.rating - 1])) || 
 
