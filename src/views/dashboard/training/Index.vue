@@ -3,7 +3,7 @@
 		<div class="card-content">
 			<div class="row row_no_margin">
 				<div class="card-title col s8"><span class="card-title">Training Requests</span></div>
-				<div class="col s8"><span class="btn new_event_button right"><a
+				<div class="col s8"><span class="btn button-warning right"><a
                   href="https://docs.google.com/document/d/1U717_AoxZC4Z2-la4DcCge7cnuHrrlK_X2Lnsar8msc/edit?pli=1"
                   target="_blank"
                   rel="noopener noreferrer">Training Information</a></span></div>
