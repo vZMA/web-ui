@@ -14,6 +14,8 @@
                         Please ensure that the student's training records have been entered onto their ZMA and VATUSA
                         record <b>prior</b> to issuance of any solo certification.
 					<br><br>
+						Tier 2 Solo Certifications should be entered as 'TWR', 'APP', or 'CTR'.
+					<br><br>
                         Ensure that you enter solo certifications into the appropriate system in accordance with section
                         <b>8.4 of the Miami ARTCC SOP</b>. The student <i>cannot</i> take advantage of solo certifications that are
                         not entered correctly.
@@ -28,9 +30,17 @@
 							</select>
 							<label>Controller</label>
 						</div>
-						<div class="col s12 input-field">
-							<input id="position" type="text" minlength=7 maxlength=7 class="validate" placeholder="PHX_APP" v-model="form.position" required>
-							<label for="position" class="active">Position</label>
+						<div class="input-field col s12 m6">
+							<select required v-model="form.position" class="materialize-select">
+								<option value="" disabled selected>Select an option</option>
+								<option value='TWR'>TWR</option>
+								<option value='APP'>APP</option>
+								<option value='CTR'>CTR</option>
+							</select>
+							<label>Position</label>
+						<!--<div class="col s12 input-field">
+							<input id="position" type="text" minlength=3 maxlength=3 class="validate" placeholder="TWR" v-model="form.position" required>
+							<label for="position" class="active">Position</label>-->
 						</div>
 						<div class="col s12 input-field">
 							<input id="expiration_date" type="text" class="datepicker" ref="expirationDate" required>
@@ -88,18 +98,33 @@ export default {
 			});
 		},
 		async submitCert() {
-			try {
-				const formData = new FormData();
-				formData.append('cid', this.form.cid);
-				formData.append('position', this.form.position);
-				formData.append('expDate', this.$refs.expirationDate.value);
-				await vatusaApiAuth.post('/solo', formData);
+			console.log(this.form.position);
+			if (this.form.position === "TWR" || this.form.position === "APP" || this.form.position === "CTR")
+				{
+				try {
+					
+					await zabApi.post('/training/solo/'+this.form.cid,
+						{
+							cid: this.form.cid,
+							position: this.form.position,
+							expDate: this.$refs.expirationDate.value
+						});
+					if (this.form.position.slice(-3)==='APP' || this.form.position.slice(-3)==='CTR')		
+						await vatusaApiAuth.post('/solo', 
+							{
+							cid: this.form.cid,
+							position: this.form.position,
+							expDate: this.$refs.expirationDate.value
+							});
+						
 
-				this.toastSuccess('Solo Certification issued');
+					this.toastSuccess('Solo Certification issued');
 
-				this.$router.push('/ins/solo');
-			} catch(e) {
-				this.toastError(e);
+					this.$router.push('/ins/solo');
+					this.$router.go();
+				} catch(e) {
+					this.toastError(e);
+				}
 			}
 		}
 	}
