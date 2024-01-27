@@ -73,7 +73,7 @@
                 <tbody class="certs_list_row">
                     <tr v-for="(user, i) in towercerts">
                         <td><router-link :to="`/controllers/${user.cid}`" class="controller_link">{{user.fname}} {{user.lname}}</router-link></td>
-                        <td>TWR</td><td>{{user.towersoloExpiration.slice(0,10)}}</td>
+                        <td>ZMA_TWR</td><td>{{user.towersoloExpiration.slice(0,10)}}</td>
                         <td class="options">
                             <a :href="`#modal_deletes_${user.cid}`" data-position="top" data-tooltip="Delete Solo Certificate" class="tooltipped modal-trigger"><i class="material-icons red-text text-darken-2">delete</i></a>
                         </td>
@@ -103,7 +103,7 @@ export default {
    title: 'Solo Certifications',
    data() {
         return {
-            positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'NQX', 'ZMO'],
+            positions: ['MIA', 'FLL', 'TPA', 'PBI', 'RSW', 'NQX', 'ZMO', 'ZMA'],
             certs: [],
             controllers: null,
             loading: true,
