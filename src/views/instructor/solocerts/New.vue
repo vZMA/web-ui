@@ -33,9 +33,9 @@
 						<div class="input-field col s12 m6">
 							<select required v-model="form.position" class="materialize-select">
 								<option value="" disabled selected>Select an option</option>
-								<option value='TWR'>ZMA_TWR</option>
-								<option value='APP'>ZMA_APP</option>
-								<option value='CTR'>ZMA_CTR</option>
+								<option value='ZMA_TWR'>ZMA_TWR</option>
+								<option value='ZMA_APP'>ZMA_APP</option>
+								<option value='ZMA_CTR'>ZMA_CTR</option>
 							</select>
 							<label>Position</label>
 						<!--<div class="col s12 input-field">
@@ -99,7 +99,7 @@ export default {
 		},
 		async submitCert() {
 			console.log(this.form.position);
-			if (this.form.position === "TWR" || this.form.position === "APP" || this.form.position === "CTR")
+			if (this.form.position === "ZMA_TWR" || this.form.position === "ZMA_APP" || this.form.position === "ZMA_CTR")
 				{
 				try {
 					
@@ -109,7 +109,7 @@ export default {
 							position: this.form.position,
 							expDate: this.$refs.expirationDate.value
 						});
-					if (this.form.position.slice(-3)==='APP' || this.form.position.slice(-3)==='CTR')		
+					if (this.form.position==='ZMA_APP' || this.form.position==='ZMA_CTR')		
 						await vatusaApiAuth.post('/solo', 
 							{
 							cid: this.form.cid,
