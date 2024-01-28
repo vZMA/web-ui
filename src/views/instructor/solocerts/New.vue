@@ -14,7 +14,7 @@
                         Please ensure that the student's training records have been entered onto their ZMA and VATUSA
                         record <b>prior</b> to issuance of any solo certification.
 					<br><br>
-						Tier 2 Solo Certifications should be entered as 'TWR', 'APP', or 'CTR'.
+						Tier 2 Solo Certifications should be entered as 'ZMA_TWR', 'ZMA_APP', or 'ZMA_CTR'.
 					<br><br>
                         Ensure that you enter solo certifications into the appropriate system in accordance with section
                         <b>8.4 of the Miami ARTCC SOP</b>. The student <i>cannot</i> take advantage of solo certifications that are
@@ -94,7 +94,7 @@ export default {
 		async getControllers() {
 			const {data} = await zabApi.get('/feedback/controllers');
 			this.controllers = data.data.filter(c => {
-				return c.rating > 2 && c.vis == false;
+				return c.rating > 1 && c.vis == false;
 			});
 		},
 		async submitCert() {
