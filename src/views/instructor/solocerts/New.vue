@@ -34,6 +34,7 @@
 							<select required v-model="form.position" class="materialize-select">
 								<option value="" disabled selected>Select an option</option>
 								<option value='PBI_TWR'>PBI_TWR</option>
+								<option value='RSW_TWR'>RSW_TWR</option>
 								<option value='PBI_APP'>PBI_APP</option>
 								<option value='RSW_APP'>RSW_APP</option>
 								<option value='ZMA_CTR'>ZMA_CTR</option>

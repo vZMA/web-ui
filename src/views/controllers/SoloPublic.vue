@@ -57,7 +57,7 @@
                 <tbody class="certs_list_row">
                     <tr v-for="(user, i) in towercerts">
                         <td><router-link :to="`/controllers/${user.cid}`" class="controller_link">{{user.fname}} {{user.lname}}</router-link></td>
-                        <td>PBI_TWR</td><td>{{user.towersoloExpiration.slice(0,10)}}</td>
+                        <td>{{user.soloPosition}}</td><td>{{user.towersoloExpiration.slice(0,10)}}</td>
                     </tr>
                 </tbody>
             </table>
