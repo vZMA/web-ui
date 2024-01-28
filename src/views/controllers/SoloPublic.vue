@@ -37,7 +37,7 @@
                 <div class="card-title col s8"><span class="card-title">Tower Solo Certificates</span></div>
             </div>
             <div>
-                <p class="no_certs" v-if="loading===false && certs.length === 0">There are no solo certificates on record for ZMA</p>
+                <p class="no_certs" v-if="loading===false && towercerts.length === 0">There are no Tower Solo certificates on record for ZMA</p>
             </div>
         </div>
  
