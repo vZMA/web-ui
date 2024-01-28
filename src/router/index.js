@@ -45,6 +45,10 @@ const routes = [
         component: () => import("../views/controllers/Roster.vue"),
       },
       {
+        path: "/controllers/solopublic",
+        component: () => import("../views/controllers/SoloPublic.vue"),
+      },
+      {
         path: "/controllers/staff",
         component: () => import("../views/controllers/Staff.vue"),
       },

@@ -34,6 +34,9 @@
                 <router-link to="/controllers">Controller Roster</router-link>
               </li>
               <li>
+                <router-link to="/controllers/solopublic">Active Solo Certifications</router-link>
+              </li>
+              <li>
                 <router-link to="/controllers/staff">ARTCC Staff</router-link>
               </li>
              <!--<li>
