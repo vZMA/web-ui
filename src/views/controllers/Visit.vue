@@ -3,15 +3,21 @@
 		<div class="card-content">
 			<span class="card-title">Become a Visitor</span>
 			<p v-if="!user.isLoggedIn">
-				Thank you for your interest in visiting the Miami ARTCC. To apply
+				Thank you for your interest in becoming a visiting controller at the Miami ARTCC. To apply
 				for visiting status, click the button below to login and continue.<br />
 			</p>
 			<p>
+				<br/>
 				<b class="red-text">Important: </b>Please ensure that you meet all
-				requirements to become a visitor. We do not currently accept visitors
-				who hold OBS (Observer) or S1 (Student) ratings. Furthermore, you must meet the
-				requirements of the VATSIM Transfer and Visiting Controller Policy.	Any application 
-				that doesn't meet the requirements will be rejected.
+				requirements to become a visitor (per VATSIM policies). Any application that doesn't 
+				meet the requirements will be rejected:
+				<ul>
+					<li>Must have a home facility (somewhere on VATSIM, in any division).</li>
+					<li>Must hold an S3 or higher certification (OBS, S1, and S2 rated controllers are not eligible).</li>
+					<li>Must be at least 90 days since your last rating upgrade.</li>
+					<li>Must have performed at least 50 controlling hours at your current rating in the ARTCC where the rating was issued.</li>
+					<li>Controllers from outside VATUSA must have completed the <a href="https://www.vatusa.net/help/kb#q12">VATUSA Rating Competency Exam (RCE)</a> at their current rating.</li>
+				</ul>
 			</p>
 			<div v-if="!user.isLoggedIn">
 				<button class="btn btn-waves login_button" @click="login">
