@@ -12,11 +12,11 @@
 				requirements to become a visitor (per VATSIM policies). Any application that doesn't 
 				meet the requirements will be rejected:
 				<ul>
-					<li>Must have a home facility (somewhere on VATSIM, in any division).</li>
-					<li>Must hold an S3 or higher certification (OBS, S1, and S2 rated controllers are not eligible).</li>
-					<li>Must be at least 90 days since your last rating upgrade.</li>
-					<li>Must have performed at least 50 controlling hours at your current rating in the ARTCC where the rating was issued.</li>
-					<li>Controllers from outside VATUSA must have completed the <a href="https://www.vatusa.net/help/kb#q12">VATUSA Rating Competency Exam (RCE)</a> at their current rating.</li>
+					<li>• Must have a home facility (somewhere on VATSIM, in any division).</li>
+					<li>• Must hold an S3 or higher certification (OBS, S1, and S2 rated controllers are not eligible).</li>
+					<li>• Must be at least 90 days since your last rating upgrade.</li>
+					<li>• Must have performed at least 50 controlling hours at your current rating in the ARTCC where the rating was issued.</li>
+					<li>• Controllers from outside VATUSA must complete the <a href="https://www.vatusa.net/help/kb#q12">VATUSA Rating Competency Exam (RCE)</a> at their current rating.</li>
 				</ul>
 			</p>
 			<div v-if="!user.isLoggedIn">
