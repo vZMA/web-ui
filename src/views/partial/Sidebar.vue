@@ -152,7 +152,7 @@ export default {
     sec2hms(secs) {
       if (!secs) return null;
       const hours = Math.floor(secs / 3600);
-      const minutes = `0${Math.round((secs / 60) % 60)}`.slice(-2);
+      const minutes = `0${Math.floor((secs % 3600) / 60)}`.slice(-2);
       const seconds = `0${secs % 60}`.slice(-2);
       return `${hours}:${minutes}:${seconds}`;
     },

@@ -17,7 +17,7 @@
 						<th>Milestone</th>
 						<th>Start</th>
 						<th>End</th>
-						<th class="options">Options</th>
+						<th class="options">Options </th>
 					</tr>
 				</thead>
 				<tbody class="requests_list_row">
@@ -30,7 +30,8 @@
 							<a :href="`#modal_request_${i}`" data-position="top" data-tooltip="View Request" class="tooltipped modal-trigger">
 								<i class="material-icons" @click="setTimes(i)">search</i>
 							</a>
-							<a :href="`#modal_delete_${i}`" data-position="top" data-tooltip="Delete Request" class="tooltipped modal-trigger red-text text-darken-2" v-if="requiresAuth(['atm', 'datm', 'ta', 'ins'])">
+							<router-link data-position="top" data-tooltip="View Training Sessions" class="tooltipped" :to="`/ins/training/sessions/${request.studentCid}`"><i class="material-icons">assignment</i></router-link>
+							<a :href="`#modal_delete_${i}`" data-position="top" data-tooltip="Delete Request" class="tooltipped modal-trigger red-text text-darken-2" v-if="requiresAuth(['atm', 'datm', 'ta', 'ins', 'wm'])">
 								<i class="material-icons">delete</i>
 							</a>
 						</td>
@@ -55,7 +56,7 @@
 													<div><i class="material-icons" @click="decreaseTime('start', i)">arrow_drop_down</i></div>
 												</div>
 											</div>
-											<label for="start_time" class="active">Start Time (Zulu)</label>
+											<label for="start_time" class="active">Start Time (Local)</label>
 										</div>
 										<div class="input-field col s12 m6">
 											<div id="end_time">
@@ -65,7 +66,7 @@
 													<div><i class="material-icons" @click="decreaseTime('end', i)">arrow_drop_down</i></div>
 												</div>
 											</div>
-											<label for="end_time" class="active">End Time (Zulu) </label>
+											<label for="end_time" class="active">End Time (Local) </label>
 										</div>
 										<div class="input-field remarks_wrapper col s12">
 											<p id="remarks">{{request.remarks ? request.remarks : '—'}}</p>
@@ -123,7 +124,8 @@ export default {
 	methods: {
 		async getRequests() {
 			try {
-				const { data } = await zabApi.get(`/training/request/${this.$route.params.date}`);
+				const timezoneOffset = new Date().getTimezoneOffset();
+				const { data } = await zabApi.get(`/training/request/${this.$route.params.date}?timezoneOffset=${timezoneOffset}`);
 				this.requests = data.data;
 			} catch(e) {
 				console.log(e);
@@ -137,6 +139,48 @@ export default {
 					instructor: this.user.data._id
 				});
 				if(data.ret_det.code === 200) {
+					// get the session id from the resposne
+					const sessionId = data.data.sessionId;
+
+					// Create google event
+					if (this.requests[i].student.googleApiRefreshToken) {
+							const eventTitle = this.requests[i].milestone.name;
+							const eventDescription = this.requests[i].milestone.name + ' scheduled. \n\n'	+ 
+							'The following notes were included in the request: \n\n' + this.requests[i].remarks;
+
+							const {caldata} = await zabApi.post('/training/session/google/cal-create', {
+								cid: this.requests[i].studentCid,
+								sessionId: sessionId,
+								calOwner: 'student',
+								calendar: this.requests[i].student.googleCalendarId, 
+								summary: eventTitle,
+								description: eventDescription,
+								start: this.requests[i].startTime,
+								end: this.requests[i].endTime
+							})
+							this.toastSuccess('Google event created.');
+						}
+					// Create google event for instructor
+					if (this.user.data.googleApiRefreshToken) {
+							const eventTitle = this.requests[i].milestone.name;
+							const eventDescription = this.requests[i].student.fname + ' ' + this.requests[i].student.lname +
+								' has scheduled a ' + this.requests[i].milestone.name + '. \n\n'
+								+ 'The following notes were included in the request: \n\n' + this.requests[i].remarks;
+							
+							const {caldata} = await zabApi.post('/training/session/google/cal-create', {
+								cid: this.user.data.cid,
+								sessionId: sessionId,
+								calOwner: 'instructor',
+								calendar: this.user.data.googleCalendarId, 
+								summary: eventTitle,
+								description: eventDescription,
+								start: this.requests[i].startTime,
+								end: this.requests[i].endTime
+							})
+							this.toastSuccess('Google event created for insructor');
+					}
+						
+					// create a google calendar event for the training session, using the google id of the student and instructor
 					this.toastSuccess('Training request taken');
 					this.$router.push('/ins/training/requests');
 				} else {
@@ -174,7 +218,9 @@ export default {
 			return d.toLocaleString('en-US', {month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC',});
 		},
 		formatHtmlDate(value) {
-			const d = new Date(value).toISOString();
+			const offset = new Date().getTimezoneOffset();
+			const displayDate = new Date(value) - offset * 60000;
+			const d = new Date(displayDate).toISOString();
 			return d.replace('T', ' ').slice(0,16);
 		},
 		setTimes(i) {

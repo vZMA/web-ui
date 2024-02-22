@@ -5,11 +5,17 @@
         <p>
           This site is not affiliated with the FAA, or any governing aviation
           body. All content contained herein is approved only for use on the
-          VATSIM network.
+          VATSIM network.<br>
+        </p>
+        <p>ZMA Artcc's use and transfer to any other app of information received from Google APIs
+           will adhere to <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, 
+           including the Limited Use requirements.
+        <br>
         </p>
         <p>
+          <br>
           This site works best in Google Chrome, Mozilla Firefox, and Microsoft
-          Edge.
+          Edge.  For mobile users on iPhone, Safari is reccomended.
         </p>
         <p>
           If you are still using Internet Explorer, please consider switching to
@@ -101,6 +107,11 @@ p {
   .bold {
     font-weight: 700;
   }
+}
+
+a {
+  color: white;
+  text-decoration: underline;
 }
 
 body .page-footer {

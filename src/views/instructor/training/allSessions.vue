@@ -1,32 +1,34 @@
 <template>
 	<div class="card">
-		<div class="card-content">
-			<div class="card-title">Your Training Sessions</div>
+ 		<div class="card-content">
+			<div class="card-title">All Open Training Sessions</div>
 		</div>
 		<div v-if="sessions === null" class="loading_container">
 			<Spinner />
 		</div>
 		<div v-else-if="sessions.length === 0" class="no_sessions">
-			You have no open training sessions
+			There are no open training sessions
 		</div>
-		<div class="sessions_wrapper" v-else>
+		<div class="sessions_wrapper">
 			<table class="sessions_list striped">
 				<thead class="sessions_list_head">
 					<tr>
 						<th>Student</th>
+						<th>Trainer</th>
 						<th>Milestone</th>
 						<th>Start</th>
-						<th>End</th>
+<!--						<th>End</th>-->
 						<th class="options">Options</th>
 					</tr>
 				</thead>
 				<tbody class="sessions_list_row">
 					<tr v-for="(session, i) in sessions" :key="session._id">
-						<td>{{session.student.fname + ' ' + session.student.lname}} <span v-if="session.student.vis === true">(VC)</span></td>
+						<td>{{session.student.fname + ' ' + session.student.lname}}</td>
+						<td><i>{{session.instructor.fname + ' ' + session.instructor.lname}}</i></td>
 						<td>{{session.milestoneCode}}</td>
-						
 						<td>{{dtLong(session.startTime)}}</td>
-						<td>{{dtLong(session.endTime)}}</td>
+<!--						<td>{{dtLong(session.endTime)}}</td>-->
+						
 						<td class="options">
 							<a :href="`#modal_session_${i}`" data-position="top" data-tooltip="View Details" class="tooltipped modal-trigger">
 								<i class="material-icons">search</i>
@@ -59,6 +61,10 @@
 											<p id="endTime">{{dtLong(session.endTime)}}</p>
 											<label for="endTime" class="active">End Time</label>
 										</div>
+                    <div class="input-field col s6">
+                      <p id="trainer">{{session.instructor.fname + ' ' + session.instructor.lname}}</p>
+                      <label for="trainer" class="active">Trainer</label>
+                    </div>
 									</div>
 								</div>
 							</div>
@@ -101,16 +107,17 @@
 			</table>
 		</div>
 	</div>
-	<Completed />
+<Completed />
 </template>
 
 <script>
 import {zabApi} from '@/helpers/axios.js';
+
 import Completed from './Completed.vue';
 
 export default {
-	name: 'UpcomingSessions',
-	title: 'Training Sessions',
+	name: 'AllSessions',
+	title: 'All Training Sessions',
 	data() {
 		return {
 			sessions: null
@@ -132,7 +139,7 @@ export default {
 	methods: {
 		async getSessions() {
 			try {
-				const {data} = await zabApi.get(`/training/session/open`);
+				const {data} = await zabApi.get(`/training/session/all`);
 				this.sessions = data.data;
 			} catch(e) {
 				console.log(e);
@@ -145,10 +152,12 @@ export default {
 			this.sessions =[];
 			this.getSessions();
 
+
 			this.$nextTick(() => {
                         M.Modal.getInstance(document.querySelector('.modal_delete')).close();
-						})
 
+			})
+			
 			document.location.reload();
 		},
 		formatDateTime(value) {

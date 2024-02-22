@@ -19,6 +19,8 @@
 								{{controller.fname}} {{controller.lname}} ({{controller.oi}})
 								<span v-if="controller.absence.length > 0" class="controller_loa">LOA</span>
 							</div>
+																			
+							<div class="controller_cid"><a href="#!" @click="openVatsim(controller.cid)">{{ controller.cid }}</a></div>
 							<div class="controller_rating">{{controller.ratingLong}}</div>
 						</div>
 						<div class="col s12 m8 l9">
@@ -132,7 +134,7 @@ export default {
 			const hasCerts = certs.map(cert => cert.code);
 			let certsToShow = [];
 			certs.forEach(cert => {
-				if(cert.class === "major" || cert.class === "center") {
+				if(cert.class === "solo" || cert.class === "major" || cert.class === "center") {
 					certsToShow.push(cert);
 				} else {
 					const certPos = cert.code.slice(-3);
@@ -145,12 +147,17 @@ export default {
 		},
 		sec2hm(secs) {
 			if(!secs) return null;
+			//const hours = Math.floor(secs / 3600);
+			//const minutes = `0${Math.round((secs / 60) % 60)}`.slice(-2);
 			const hours = Math.floor(secs / 3600);
-			const minutes = `0${Math.round((secs / 60) % 60)}`.slice(-2);
+			const minutes = `0${Math.floor((secs % 3600) / 60)}`.slice(-2);
 			return `${hours}:${minutes}`;
 		},
 		totalTime(month) {
 			return Object.values(month).reduce((acc, cv) => acc + cv);
+		},
+		openVatsim(cid) {
+					window.open("https://stats.vatsim.net/stats/" + cid, "_blank");
 		}
 	},
 	watch: {
@@ -177,6 +184,11 @@ export default {
 	font-size: 1.5rem;
 }
 
+.controller_cid {
+	font-weight: 300;
+	font-size: 1.2rem;
+	margin-top: -7px;
+}
 .controller_rating {
 	font-weight: 300;
 	font-size: 1.2rem;
@@ -227,6 +239,11 @@ export default {
 	&.cert_minor {
 		background: $secondary-color-light;
 	}
+	&.cert_solo {
+			background: #FFA500;
+			color: #fff;
+		}
+
 }
 
 .title {

@@ -2,14 +2,35 @@
 	<div class="card">
 		<div class="card-content">
 			<span class="card-title">Become a Visitor</span>
-			<p v-if="!user.isLoggedIn">Thank you for your interest in visiting the Miami ARTCC. To apply for visiting status, click the button below to login and continue.<br /></p>
-			<p><b class="red-text">Important: </b>please ensure that you meet all requirements to become a visitor, as outlined in our <router-link to="/files/documents/visiting-controller-policy-26476"><b>Visiting Controller Policy</b></router-link>. Any application that doesn't meet the requirements will be rejected.</p>
+			<p v-if="!user.isLoggedIn">
+				Thank you for your interest in becoming a visiting controller at the Miami ARTCC. To apply
+				for visiting status, click the button below to login and continue.<br />
+			</p>
+			<p>
+				<br/>
+				<b class="red-text">Important: </b>Please ensure that you meet all
+				requirements to become a visitor (per VATSIM policies). Any application that doesn't 
+				meet the requirements will be rejected:
+				<ul>
+					<li>• Must have a home facility (somewhere on VATSIM, in any division).</li>
+					<li>• Must hold an S3 or higher certification (OBS, S1, and S2 rated controllers are not eligible).</li>
+					<li>• Must be at least 90 days since your last rating upgrade.</li>
+					<li>• Must have performed at least 50 controlling hours at your current rating in the ARTCC where the rating was issued.</li>
+					<li>• Controllers from outside VATUSA must complete the <a href="https://www.vatusa.net/help/kb#q12">VATUSA Rating Competency Exam (RCE)</a> at their current rating.</li>
+				</ul>
+			</p>
 			<div v-if="!user.isLoggedIn">
-				<button class="btn btn-waves login_button" @click="login">Login with VATSIM</button>
+				<button class="btn btn-waves login_button" @click="login">
+					Login with VATSIM
+				</button>
 			</div>
 			<div v-else-if="pendingApplication">
 				<p>
-					<br />We have received your visiting application successfully! Our staff team will review your application as soon as possible. In the meantime, if you have any questions or concerns, please don't hesitate to <a class="mailto_link" href="mailto:datm@zabartcc.org">let the DATM know.</a>
+					<br />We have received your visiting application successfully! Our
+					staff team will review your application as soon as possible. In the 
+					meantime, if you have any questions or concerns, please don't hesitate 
+					to <a class="mailto_link" href="mailto:datm@zmaartcc.net">
+						let the DATM know.</a>
 				</p>
 			</div>
 			<div v-else>
@@ -58,72 +79,70 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
-import {zabApi} from '@/helpers/axios.js';
-
+import { mapState } from "vuex";
+import { zabApi } from "@/helpers/axios.js";
+import { vatsimAuthRedirectUrl } from "@/helpers/uriHelper.js";
 export default {
-	name: 'VisitorApply',
-	title: 'Become A Visitor',
-	data() {
-		return {
-			pendingApplication: false,
-			form: {
-				facility: null,
-				reason: null
-			}
-		};
-	},
-	async mounted() {
-		await this.checkOpenApplications();
-	},
-	methods: {
-		async login() {
-			localStorage.setItem('redirect', this.$route.path);
-			window.location.href = `https://login.vatusa.net/uls/v2/login?fac=ZMA&url=${import.meta.env.VITE_ULS_LOGIN_REDIRECT_URL || 2}`;
-		},
-		async checkOpenApplications() {
-			try {
-				const {data: statusData} = await zabApi.get('/controller/visit/status');
-				this.pendingApplication = !!statusData.data;
-			} catch(e) {
-				console.log(e);
-			}
-		},
-		async submitApplication() {
-			try {
-				this.$refs.submitButton.classList.add('disabled');
-				const {data} = await zabApi.post('/controller/visit', {
-					...this.form,
-					email: this.$refs.email.value
-				});
-
-				if(data.ret_det.code === 200) {
-					this.toastSuccess('Visitor application submitted');
-					this.$router.push('/');
-				} else {
-					this.toastError(data.ret_det.message);
-				}
-			} catch(e) {
-				console.log(e);
-			}
-		}
-	},
-	computed: {
-		...mapState('user', [
-			'user'
-		])
-	}
+  name: "VisitorApply",
+  title: "Become A Visitor",
+  data() {
+    return {
+      pendingApplication: false,
+      form: {
+        facility: null,
+        reason: null,
+      },
+    };
+  },
+  async mounted() {
+    await this.checkOpenApplications();
+  },
+  methods: {
+    async login() {
+      localStorage.setItem("redirect", this.$route.path);
+      window.location.href = vatsimAuthRedirectUrl;
+    },
+    async checkOpenApplications() {
+      try {
+        const { data: statusData } = await zabApi.get(
+          "/controller/visit/status"
+        );
+        this.pendingApplication = !!statusData.data;
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    async submitApplication() {
+      try {
+        this.$refs.submitButton.classList.add("disabled");
+        const { data } = await zabApi.post("/controller/visit", {
+          ...this.form,
+          email: this.$refs.email.value,
+        });
+        if (data.ret_det.code === 200) {
+          this.toastSuccess("Visitor application submitted");
+          this.$router.push("/");
+        } else {
+          this.toastError(data.ret_det.message);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    },
+  },
+  computed: {
+    ...mapState("user", ["user"]),
+  },
 };
 </script>
 
 <style scoped lang="scss">
 .login_button {
-	margin: 1em auto;
-	display: block;
-	width: 200px;
+  margin: 1em auto;
+  display: block;
+  width: 200px;
 }
-
 .mailto_link {
-	font-weight: 600;
+  font-weight: 600;
 }
 </style>

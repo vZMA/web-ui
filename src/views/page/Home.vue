@@ -9,6 +9,9 @@
           network, the Americas region and the VATUSA division. The Miami ARTCC
           covers most of south Florida, but not Orlando.
         </p>
+        <div v-if="shouldShowPopup" class="popup">
+          <p>Please switch to Safari to get the best experience.</p>
+        </div>
         <div
           class="visit"
           v-if="!user.isLoggedIn || (!user.data.vis && !user.data.isMem)"
@@ -23,9 +26,9 @@
         </div>
       </div>
     </div>
-    <EventSummary />
-    <NewsSummary />
     <WeatherInfo />
+    <NewsSummary />
+    <EventSummary />   
   </div>
 </template>
 
@@ -45,6 +48,20 @@ export default {
   computed: {
     ...mapState("user", ["user"]),
   },
+  data() {
+    return {
+      shouldshowPopup: false,
+    }
+  },
+
+  mounted() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isIphone = /iphone/.test(userAgent);
+    const isChrome = /chrome/.test(userAgent);
+    if (isIphone && isChrome) {
+      this.shouldShowPopup = true;
+    }
+  }
 };
 </script>
 

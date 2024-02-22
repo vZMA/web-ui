@@ -28,18 +28,20 @@
               class="dropdown-left"
               href="#!"
               data-target="controllers-dropdown"
-              >CONTROLLERS</a
-            >
+              >CONTROLLERS</a>
             <ul id="controllers-dropdown" class="dropdown-content">
               <li>
                 <router-link to="/controllers">Controller Roster</router-link>
               </li>
               <li>
+                <router-link to="/controllers/solopublic">Active Solo Certifications</router-link>
+              </li>
+              <li>
                 <router-link to="/controllers/staff">ARTCC Staff</router-link>
               </li>
-	      <li>
-	      	<a href="https://legacy.zmaartcc.net/wp/controllers/training-department/training-faq">Training FAQ (Legacy)</a>
-	      </li>
+             <!--<li>
+                <router-link to="/controllers/TrainingFAQ">Training Frequently Asked Questions</router-link>
+              </li>-->
             </ul>
           </li>
           <li>
@@ -53,6 +55,9 @@
               >FILES</a
             >
             <ul id="files-dropdown" class="dropdown-content">
+              <!--<li>
+                <router-link to="/files/documents">Documents</router-link>
+              </li> -->
               <li>
                 <router-link to="/files/downloads">Downloads</router-link>
               </li>
@@ -61,10 +66,15 @@
           <li>
             <router-link to="/feedback">FEEDBACK</router-link>
           </li>
+
+          <li>
+            <router-link to="/privacypolicy">PRIVACY</router-link>
+          </li>
         </ul>
+
         <router-link to="#" data-target="mobile-menu" class="sidenav-trigger"
-          ><i class="material-icons">menu</i></router-link
-        >
+          ><i class="material-icons">menu</i></router-link>
+
         <ul class="right left-on-med-and-down">
           <li>
             <a
@@ -78,58 +88,45 @@
             <ul
               v-show="user.isLoggedIn"
               id="notifications-dropdown"
-              class="dropdown-content"
-            >
+              class="dropdown-content">
               <Notifications v-if="user.isLoggedIn" />
             </ul>
           </li>
           <li class="user">
-            <a
-              v-show="user.isLoggedIn"
+            <a v-show="user.isLoggedIn"
               class="dropdown-right user_name"
               href="#!"
-              data-target="user-dropdown"
-              >{{
+              data-target="user-dropdown">{{
                 user.isLoggedIn
                   ? `${user.data.fname} ${user.data.lname}`
                   : "..."
-              }}<i class="material-icons user_dropdown_arrow"
-                >arrow_drop_down</i
-              ></a
-            >
+              }}<i class="material-icons user_dropdown_arrow">arrow_drop_down</i></a>
             <a
               v-if="!user.isLoggedIn"
               id="login_button"
               @click.prevent="processLogin"
               href="#"
-              >Login</a
-            >
+              >Login</a>
             <ul
               v-show="user.isLoggedIn"
               id="user-dropdown"
-              class="dropdown-content"
-            >
+              class="dropdown-content">
               <li v-if="user.isLoggedIn && user.data.isMem">
                 <router-link to="/dash">Controller Dashboard</router-link>
               </li>
               <li v-else>
-                <router-link to="/controllers/visit"
-                  >Become a Visitor</router-link
-                >
+                <router-link to="/controllers/visit">Become a Visitor</router-link>
               </li>
               <li
                 v-if="user.isLoggedIn && (user.data.isIns || user.data.isStaff)"
-                class="divider"
-              ></li>
+                class="divider"></li>
               <li
                 v-if="user.isLoggedIn && (user.data.isIns || user.data.isStaff)"
               >
                 <a
-                  href="https://webmail.zmaartcc.net//"
+                  href="https://webmail.zmaartcc.net"
                   target="_blank"
-                  rel="noopener noreferrer"
-                  >Webmail</a
-                >
+                  rel="noopener noreferrer">Webmail</a>
               </li>
               <li v-if="user.isLoggedIn && user.data.isIns">
                 <router-link to="/ins">Instructor Dashboard</router-link>
@@ -146,30 +143,18 @@
         </ul>
       </div>
     </nav>
-
     <ul class="sidenav" id="mobile-menu">
       <li>
         <router-link class="sidenav-close" to="/">HOME</router-link>
       </li>
       <li>
-        <router-link class="sidenav-close" to="/controllers"
-          >CONTROLLER ROSTER</router-link
-        >
+         <router-link to="/controllers/">ROSTER</router-link>
       </li>
       <li>
-        <router-link class="sidenav-close" to="/files/downloads"
-          >CONTROLLER DOWNLOADS</router-link
-        >
+        <router-link to="/controllers/staff">STAFF</router-link>
       </li>
       <li>
-        <router-link class="sidenav-close" to="/files/documents"
-          >CONTROLLER DOCUMENTS</router-link
-        >
-      </li>
-      <li>
-        <router-link class="sidenav-close" to="/controllers/staff"
-          >ARTCC STAFF</router-link
-        >
+        <router-link to="/controllers/TrainingFAQ">TRAINING FAQ</router-link>
       </li>
       <li>
         <router-link class="sidenav-close" to="/events">EVENTS</router-link>
@@ -177,11 +162,14 @@
       <li>
         <router-link class="sidenav-close" to="/news">NEWS</router-link>
       </li>
-      <!-- <li>
-				<router-link class="sidenav-close" to="/briefing">PILOT BRIEFING</router-link>
-			</li> -->
+      <li>
+        <router-link to="/files/downloads">DOWNLOADS</router-link>
+      </li>
       <li>
         <router-link class="sidenav-close" to="/feedback">FEEDBACK</router-link>
+      </li>
+      <li>
+        <router-link class="sidenav-close" to="/privacypolicy">PRIVACY</router-link>
       </li>
     </ul>
   </header>
@@ -190,7 +178,7 @@
 <script>
 import { mapState, mapMutations, mapActions } from "vuex";
 import Notifications from "./Notifications.vue";
-
+import { vatsimAuthRedirectUrl } from "@/helpers/uriHelper.js";
 export default {
   data() {
     return {
@@ -206,9 +194,7 @@ export default {
     ...mapActions("user", ["logout"]),
     async processLogin() {
       localStorage.setItem("redirect", this.$route.path);
-      window.location.href = `https://login.vatusa.net/uls/v2/login?fac=ZMA&url=${
-        import.meta.env.VITE_ULS_LOGIN_REDIRECT_URL || 2
-      }`;
+      window.location.href = vatsimAuthRedirectUrl;
     },
     async processLogout() {
       await this.logout();
@@ -217,9 +203,8 @@ export default {
         this.$route.meta.isAdmin ||
         this.$route.meta.isAdmin ||
         this.$route.meta.loggedIn
-      ) {
+      )
         this.$router.push("/");
-      }
     },
   },
   computed: {
@@ -258,9 +243,8 @@ export default {
   max-width: 3840px;
   margin: 0 auto;
   position: relative;
-
   &::before {
-    background: rgba(176, 233, 255,.1);
+    background: rgba($primary-color, 0.6);
     height: 100%;
     width: 100%;
     left: 0;
@@ -268,58 +252,46 @@ export default {
     content: "";
     position: absolute;
   }
-
   &.hero1 {
     background-image: url("@/assets/images/hero/grand_canyon.jpg");
     background-position: top 20% center;
   }
-
   &.hero2 {
     background-image: url("@/assets/images/hero/scaled/camelback.jpg");
   }
-
   &.hero3 {
     background-image: url("@/assets/images/hero/saguaro.jpg");
   }
-
   &.hero4 {
     background-image: url("@/assets/images/hero/abq.jpg");
   }
-
   &.hero5 {
     background-image: url("@/assets/images/hero/cactus.jpg");
   }
-
   &.hero6 {
-    background-image: url("@/assets/images/hero/skyline.jpg");
+    background-image: url("@/assets/images/hero/miami.jpg");
   }
-
   &.hero_aprilfools {
-    background-image: url("@/assets/images/hero/skyline.jpg");
+    background-image: url("@/assets/images/hero/bb.jpg");
   }
-
   .wrapper {
     padding: 2em 1em;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
-
     a {
       display: block;
-
       img {
         height: 125px;
       }
     }
-
     h1 {
       font-weight: 600;
       margin: 0;
       font-size: 3rem;
       color: #fff;
       text-shadow: -2px -2px 3px $primary-color-light;
-
       span {
         display: block;
         margin-left: 50%;
@@ -329,11 +301,9 @@ export default {
     }
   }
 }
-
 nav {
   background-color: $primary-color;
 }
-
 .user_dropdown_arrow {
   display: inline-block;
   display: inline-flex;
@@ -342,21 +312,17 @@ nav {
   margin-top: 1px;
   margin-left: -1px;
 }
-
 .nav_notifications {
   padding: 1px 0 0 0;
   transition: 0.3s ease;
   position: relative;
-
   &:hover {
     background: transparent;
     color: rgb(220, 220, 220);
   }
-
   i {
     font-size: 20px;
   }
-
   .new_notification {
     height: 7px;
     width: 7px;
@@ -367,40 +333,33 @@ nav {
     left: 11px;
   }
 }
-
 #notifications-dropdown {
   color: $primary-color;
   line-height: 1.1em;
   padding: 1em 1em 0.5em 1em;
   overflow: hidden;
 }
-
 .user_name {
   transition: 0.3s ease;
-
   &:hover {
     background: transparent;
     color: rgb(220, 220, 220);
   }
 }
-
 @media screen and (max-width: 910px) {
   #header_hero .wrapper {
     padding: 15px;
-
     a img {
       height: 80px;
       width: auto;
     }
-
     h1 {
       font-size: 32px;
       margin: 20px 0 0 0;
-
       span {
         font-size: 24px;
       }
     }
   }
 }
-</style>
+</style> 

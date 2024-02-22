@@ -37,7 +37,7 @@
 									<div><i class="material-icons" @click="decreaseTime('start')">arrow_drop_down</i></div>
 								</div>
 							</div>
-							<label for="start_time" class="active">Start Time (Zulu)</label>
+							<label for="start_time" class="active">Start Time (Local)</label>
 						</div>
 						<div class="input-field col s12 m6">
 							<div id="end_time">
@@ -47,7 +47,7 @@
 									<div><i class="material-icons" @click="decreaseTime('end')">arrow_drop_down</i></div>
 								</div>
 							</div>
-							<label for="end_time" class="active">End Time (Zulu) </label>
+							<label for="end_time" class="active">End Time (Local) </label>
 						</div>
 						<div class="input-field col s12 m6 milestone">
 							<select required disabled class="materialize-select">
@@ -95,6 +95,14 @@
 							</select>
 							<label>OTS</label>
 						</div>
+						<div class="input-field col s12 m6">
+							<select required v-model="session.solo_granted" class="materialize-select">
+								<option value="" disabled selected>Select an option</option>
+								<option value=0>Not Issued</option>
+								<option value=1>Issued</option>
+							</select>
+							<label>Solo Certificate</label>
+						</div>
 					</div>
 					<div class="row row_no_margin" v-show="step === 3">
 						<div class="input-field col s12">
@@ -108,7 +116,7 @@
 					</div>
 					<div class="row row_no_margin">
 						<div class="input-field col s12 submit_buttons">
-							<button type="button" v-if="step === 3" class="btn right" @click="submitForm">Finalize</button>
+							<button type="button" v-if="step === 3" class="btn right" @click="submitForm">Push to Vatsim and Lock</button>
 							<button type="button" v-if="step === 3" class="btn-flat right" @click="saveForm">Save</button>
 							<button type="button" class="btn right" v-if="step !== 3" @click="step += 1">Next</button>
 							<button type="button" v-if="step !== 1" @click="step -= 1" class="btn-flat right">Back</button>
@@ -121,14 +129,17 @@
 </template>
 
 <script>
-import {zabApi} from '@/helpers/axios.js';
+import {zabApi, vatusaApi, vatusaApiAuth} from '@/helpers/axios.js';
+import dayjs from 'dayjs';
+
 export default {
 	name: 'EditSessionNotes',
 	title: 'Enter Session Notes',
 	data() {
 		return {
 			session: null,
-			step: 1
+			step: 1,
+			duration: 0
 		};
 	},
 	async mounted() {
@@ -157,7 +168,7 @@ export default {
 					position: this.session.position,
 					movements: this.session.movements,
 					progress: this.session.progress,
-					ots: this.session.progress,
+					ots: this.session.ots,
 					location: this.session.location,
 					startTime: this.session.startTime,
 					endTime: this.session.endTime,
@@ -175,21 +186,51 @@ export default {
 			}
 		},
 		async submitForm() {
-			try {
-				const {data} = await zabApi.put(`/training/session/submit/${this.$route.params.id}`, this.session);
-				if(data.ret_det.code === 200) {
-					this.toastSuccess('Session notes finalized');
-					this.$router.push('/ins/training/sessions');
-				} else {
-					this.toastError(data.ret_det.message);
+		
+				// In theory, we get here when the user presses 'Push to Vatsim and Lock'
+				
+				// Calculate the hours string for the session length
+				const delta = Math.abs(new Date(this.session.endTime) - new Date(this.session.startTime)) / 1000;
+				const hours = Math.floor(delta / 3600);
+				const minutes = Math.floor(delta / 60) % 60;
+				this.duration = `${('00' + hours).slice(-2)}:${('00' + minutes).slice(-2)}`;
+
+				// Force Save the data to the local database
+				await this.saveForm();
+
+
+				// Error check the fields
+				if (!this.session.location)
+					this.toastError("Location is required on page 2");
+				if (!this.session.studentNotes)
+					this.toastError("Student Notes are required on page 3");
+
+				if (this.session.location != null &&
+					this.session.studentNotes != null) {
+					try {	// Hit the local database to Finalize the record
+				
+						const {data} = await zabApi.put(`/training/session/submit/${this.$route.params.id}`, this.session);
+						if(data.ret_det.code === 200) {
+						// Put a little message on screen saying success
+							this.toastSuccess('Session notes finalized')							
+							this.$router.push('/ins/training/sessions');
+							}
+						else {
+							this.toastError(data.ret_det.message);	
+						}
+					} catch(e) {
+						console.log(e);
+						this.$router.push('/ins/training/sessions');			
+					}
 				}
-			} catch(e) {
-				console.log(e);
-			}
 		},
 		formatHtmlDate(value) {
-			const d = new Date(value).toISOString();
-			return d.replace('T', ' ').slice(0,16);
+			//const d = new Date(value).toISOString();
+			//return d.replace('T', ' ').slice(0,16);
+			const d = new Date(value);
+  			const timezoneOffset = d.getTimezoneOffset() * 60000; // convert to milliseconds
+  			const localISOTime = (new Date(d.getTime() - timezoneOffset)).toISOString().slice(0, 16);
+  			return localISOTime.replace('T', ' ');
 		},
 		setTimes() {
 			this.oldTimes = {
@@ -198,25 +239,25 @@ export default {
 			};
 		},
 		increaseTime(type) {
-			if(type === 'start'  && this.session.startTime !== this.oldTimes.endTime && new Date(this.session.startTime) < new Date(this.session.endTime)) {
+			if(type === 'start'  && new Date(this.session.startTime) < new Date(this.session.endTime)-900000) {
 				let d = new Date(this.session.startTime);
 				d.setUTCMinutes(d.getUTCMinutes() + 15);
 				this.session.startTime = d.toISOString();
-			} else if(type === 'end' && this.session.endTime !== this.oldTimes.endTime && new Date(this.session.endTime) >= new Date(this.session.startTime)) {
+			} else if(type === 'end') {
 				let d = new Date(this.session.endTime);
 				d.setUTCMinutes(d.getUTCMinutes() + 15);
 				this.session.endTime = d.toISOString();
 			}
 		},
 		decreaseTime(type) {
-			if(type === 'start'  && this.session.startTime !== this.oldTimes.startTime && new Date(this.session.startTime) <= new Date(this.session.endTime)) {
-				let d = new Date(this.session.startTime);
-				d.setUTCMinutes(d.getUTCMinutes() - 15);
-				this.session.startTime = d.toISOString();
-			} else if(type === 'end' && this.session.endTime !== this.oldTimes.startTime && new Date(this.session.endTime) > new Date(this.session.startTime)) {
+			if(type === 'end' && new Date(this.session.endTime)-900000 > new Date(this.session.startTime)) {
 				let d = new Date(this.session.endTime);
-				d.setUTCMinutes(d.getUTCMinutes() - 15);
-				this.session.endTime = d.toISOString();
+				d.setUTCMinutes(d.getUTCMinutes()-15);
+				this.session.endTime = d.toISOString();		
+			} else if(type === 'start') {
+				let d = new Date(this.session.startTime);
+				d.setUTCMinutes(d.getUTCMinutes()-15);
+				this.session.startTime = d.toISOString();
 			}
 		}
 	}

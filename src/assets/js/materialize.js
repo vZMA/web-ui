@@ -3032,9 +3032,12 @@ $jscomp.polyfill = function (e, r, p, m) {
 			key: "_handleTriggerClick",
 			value: function _handleTriggerClick(e) {
 				var $trigger = $(e.target).closest('.modal-trigger');
+				console.log($trigger);
 				if ($trigger.length) {
 					var modalId = M.getIdFromTrigger($trigger[0]);
+					console.log($trigger[0]);
 					var modalInstance = document.getElementById(modalId).M_Modal;
+					console.log(modalInstance);
 					if (modalInstance) {
 						modalInstance.open($trigger);
 					}

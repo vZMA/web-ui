@@ -7,26 +7,37 @@
 			</div>
 			<div class="request_wrapper row row_no_margin" v-else>
 				<div class="col s12 l6 push-l6">
-					<p><b class="red-text">Important: </b> training requests are just that — requests. <br /><br />
-					There is no guarantee that your session will be picked up by a member of the training staff. If a request you've made gets picked up, you are expected to show up.
-					Treat the times as your availability, mentors and instructors have the ability to modify them when they pick up the session. <br /><br />
-					Please make sure that you've studied the relevant training material, as per the Training Syllabus, before requesting a session.</p>
+                    <p>
+                        <b class="red-text">IMPORTANT:</b> PLEASE READ THESE INSTRUCTIONS.<br/><br/>
+                        When choosing your availability, please include the entire window of your availability, whether
+                        it's 30 minutes or 4 hours. The Trainer has the ability to modify the session times to a more
+                        reasonable duration, if needed, when s/he picks up the training session.
+                    </p>
+                    <br>
+                    <b>By submitting this training request, you acknowledge:</b>
+                    <ol>
+                        <li>This is a <em>request</em> and not a guarantee of training.</li>
+                        <li>You are required to keep your availability up-to-date.</li>
+                        <li>You have completed the pre-requisites as outlined in the applicable Training Program
+                            document.
+                        </li>
+                    </ol>
 				</div>
 				<div class="col s12 l6 pull-l6">
 					<form class="row row_no_margin" @submit.prevent=submitRequest>
 						<div class="input-field col s12">
 							<input id="start_date" type="text" ref="start_date" required>
-							<label for="start_date">Start Time (Zulu)<span class="red-text">*</span></label>
+							<label for="start_date">Start Time (Local)<span class="red-text">*</span></label>
 						</div>
 						<div class="input-field col s12">
 							<input id="end_date" type="text" ref="end_date" required>
-							<label for="end_date">End Time (Zulu)<span class="red-text">*</span></label>
+							<label for="end_date">End Time (Local)<span class="red-text">*</span></label>
 						</div>
 						<div class="input-field col s12">
 							<select v-model="request.milestone" class="materialize-select">
 								<option value="" disabled selected>Select a milestone</option>
+								<!--<option v-for="milestone in filteredMilestones" :key="milestone._id" :value="milestone.code">{{milestone.code + ' - ' + milestone.name}}</option>-->
 								<option v-for="milestone in filteredMilestones" :key="milestone._id" :value="milestone.code">{{milestone.code + ' - ' + milestone.name}}</option>
-								
 							</select>
 							<label>Milestone <span class="red-text">*</span></label>
 						</div>
@@ -68,6 +79,17 @@ export default {
 		await this.getTrainingMilestones();
 		const today = new Date(new Date().toUTCString());
 
+		// Adjust today to the nearest 15m window
+		let minutes = today.getMinutes();
+		let remainder = minutes % 15;
+		if (remainder < 8) {
+    		today.setMinutes(minutes - remainder);
+		} else {
+    		today.setMinutes(minutes + (15 - remainder));
+		}
+		today.setSeconds(0);
+		today.setMilliseconds(0);
+	
 		M.FormSelect.init(document.querySelectorAll('select'), {});
 		M.CharacterCounter.init(document.querySelectorAll('textarea'), {});
 
@@ -75,22 +97,24 @@ export default {
 
 		flatpickr(this.$refs.start_date, {
 			enableTime: true,
+			utc:false,
 			time_24hr: true,
 			minDate: today,
 			disableMobile: true,
 			minuteIncrement: 15,
-			dateFormat: 'Y-m-dTH:i:00.000\\Z',
+			dateFormat: 'Y-m-dTH:i:00.000',
 			altFormat: 'Y-m-d H:i',
 			altInput: true,
 		});
 
 		flatpickr(this.$refs.end_date, {
 			enableTime: true,
+			uc:false,
 			time_24hr: true,
 			minDate: today,
 			disableMobile: true,
 			minuteIncrement: 15,
-			dateFormat: 'Y-m-dTH:i:00.000\\Z',
+			dateFormat: 'Y-m-dTH:i:00.000',
 			altFormat: 'Y-m-d H:i',
 			altInput: true,
 		});
@@ -101,11 +125,18 @@ export default {
 				if(!this.request.milestone) {
 					this.toastError('You must select a milestone');
 				} else {
+					// Apply the correction for UTC to the local dates collected
+					const offset = new Date().getTimezoneOffset();
+					const start = new Date(this.$refs.start_date.value);
+					//start.setUTCMinutes(start.getMinutes()+offset);
+					const end = new Date(this.$refs.end_date.value);
+					//end.setUTCMinutes(end.getMinutes()+offset);
+								
 					this.makingRequest = true;
 					const {data} = await zabApi.post('/training/request/new', {
 						...this.request,
-						startTime: `${this.$refs.start_date.value}`,
-						endTime: `${this.$refs.end_date.value}`
+						startTime: start,
+						endTime: end
 					});
 					if(data.ret_det.code === 200) {
 						this.toastSuccess('Training session requested');
@@ -133,20 +164,40 @@ export default {
 			if(this.milestones !== null) {
 				const minorPrerequisites = ["obs", "gnd", "twr", "app"];
 				const majorPrerequisites = ["obs", "gnd", "miagnd", "miatwr", "miaapp"];
-
+				
 				let milestonesShowed = this.milestones.filter((milestone) => {
-					if(this.user.data.vis) {
-						return (milestone.certCode.substring(0, 3) === "vis" && milestone.rating <= rating) || milestone.code === "GT1";
-					} else {
-						return (  // This is still slightly hard to understand.  It returns the milestones that haven't been completed yet for the rating, or the P50 equivelant (if no major cert has been attained yet) and next rating's milestones, or center milestones if all other certs have been attained.
+				
+					if(this.user.data.vis) 
+						return ( // visiting contollers 
+								milestone.code === "T1" || // Always send back T1
+								milestone.code === "T1CR" || // Always send back 
+								
+								// Show the visitor MIA certs when the MIA cert is not set on the controllers profile
+								((milestone.certCode.substring(0, 3) === "vis" && !certs.includes(milestone.certCode.slice(-6)) && certs.includes(majorPrerequisites[milestone.rating - 1]))
+								&& milestone.rating <= rating)); // respect the vatsim controller rating before offering training above that level
+					else {
+						return (  // home controllers
 							!certs.includes(milestone.certCode) &&
 							(
-								milestone.code === "GT1" ||
-								(milestone.certCode.substring(0, 3) === "p50" && certs.includes(milestone.certCode.slice(-3)) && certs.includes(majorPrerequisites[milestone.rating - 1])) || 
-								(milestone.certCode.substring(0, 3) !== "p50" && (certs.includes(minorPrerequisites[milestone.rating - 1]) || (milestone.rating === "1" && certs.length === 0)) && milestone.certCode !== "zma") ||
-								(milestone.certCode === "zma" && certs.includes("miaapp"))
-							) && 
-							milestone.certCode.substring(0, 3) !== "vis"
+								milestone.code === "T1" || // Always send back T1 firss
+								milestone.code === "T1CR" || 
+								// Show the MIA certs, when the previous MIA cert has been acheived
+								(milestone.certCode.substring(0, 3) === "mia" && certs.includes(milestone.certCode.slice(-3)) && certs.includes(majorPrerequisites[milestone.rating - 1])) || 
+
+								// Show the non MIA certs, when the previous minor prereq has been achieved, or when no certification is valid for the observer, do not show ZMA C1
+								(milestone.certCode.substring(0, 3) !== "mia" && (certs.includes(minorPrerequisites[milestone.rating - 1]) || 
+								(milestone.rating === 1 && certs.length <= 1)) 
+								&& milestone.certCode !== "zma") ||
+								
+								// Show ZMA C1 to users who have achieved miaapp
+								(milestone.certCode === "zma" && certs.includes("miaapp")) || // Show the ZMA C1 when the Major Approach has been met
+								
+								// Show ZMO to users who have achieved zma
+								(milestone.certCode === "zmo" && certs.includes("zma")) || // Show the ZMO when the domestic center has been met
+
+								milestone.code === "OTS" // Always send back OTS in the last position
+							) && milestone.rating <= rating // respect the vatsim controller rating before offering training above that level
+							&& milestone.certCode.substring(0, 3) !== "vis"
 						);
 					}
 				});

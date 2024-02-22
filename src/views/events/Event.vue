@@ -9,7 +9,7 @@
 				<div class="row">
 					<div class="col s12">
 						<span class="card-title event_title">{{event.name}}</span>
-						<span class="card-title event_date">{{dtLong(event.eventStart)}} <i class="material-icons rotate tiny">airplanemode_active</i> {{formatTime(event.eventEnd)}}z</span>
+						<span class="card-title event_date">{{dtLong(event.eventStart)}} <i class="material-icons rotate tiny">airplanemode_active</i> {{formatTime(event.eventEnd)}} Local</span>
 					</div>
 				</div>
 				<div class="row">
@@ -51,7 +51,7 @@ export default {
 		},
 		formatTime(value) {
 			var d = new Date(value);
-			return d.toLocaleString('en-us', {timeZone: 'UTC', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'});
+			return d.toLocaleString('en-us', {timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23'});
 		},
 	}
 };

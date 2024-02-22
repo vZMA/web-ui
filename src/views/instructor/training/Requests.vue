@@ -26,7 +26,7 @@
 										{{new Date(date.date).toUTCString().slice(5, 11)}}
 									</span>
 								</div>
-								<div :class="`date_requests ${(new Date(Date.UTC(date.date)).getTime()) - (new Date().getTime()) < 0 ? 'past' : ''}`" v-if="date.requests.length > 0">
+								<div :class="`date_requests ${(new Date(date.date).getTime()) - (new Date().getTime()) < 0 ? 'past' : ''}`" v-if="date.requests.length > 0">
 									{{date.requests.length}} request<span v-if="date.requests.length > 1">s</span>
 								</div>
 							</router-link>
@@ -78,27 +78,36 @@ export default {
 	methods: {
 		async getRequests() {
 			try {
-				const {data} = await zabApi.get('/training/request/open', {
+				const { data } = await zabApi.get('/training/request/open', {
 					params: {
 						period: 21 // 21 days from start of week
 					}
 				});
-
-				for(const request of data.data) {
+				/*for(const request of data.data) {
 					for(const date of this.dates) {
-						if(date.date.slice(0,10) === new Date(new Date(request.startTime)).toISOString().slice(0,10)) {
+						if(date.date.slice(0,10) === new Date(request.startTime).toISOString().slice(0, 10)) date.requests.push(request);
+					}
+				}*/
+				for (const request of data.data) {
+					for (const date of this.dates) {
+						const requestDate = new Date(request.startTime);
+						const timezoneOffset = requestDate.getTimezoneOffset() * 60000; // convert to milliseconds
+						const localISOTime = (new Date(requestDate.getTime() - timezoneOffset)).toISOString().slice(0, 10);
+						if (date.date.slice(0, 10) === localISOTime) {
 							date.requests.push(request);
 						}
 					}
 				}
+
 				this.loading = false;
 			} catch(e) {
 				console.log(e);
 			}
 		},
 		calculateDates() {
-			const d = new Date((new Date()).toISOString()),
-				currentDay = d.getDay(),
+			const d = new Date((new Date()).toISOString());
+			d.setHours(12);
+			const currentDay = d.getDay(),
 				diff = d.getDate() - currentDay,
 				startOfWeek = d.setDate(diff);
 			
