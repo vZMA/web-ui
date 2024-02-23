@@ -33,12 +33,14 @@
 							<a :href="`#modal_session_${i}`" data-position="top" data-tooltip="View Details" class="tooltipped modal-trigger">
 								<i class="material-icons">search</i>
 							</a>
+							<div v-if="ShowViewDelete(i)">
 								<router-link :to="`/ins/training/session/edit/${session._id}`" data-position="top" data-tooltip="Enter Notes" class="tooltipped">
 									<i class="material-icons">edit</i>
 								</router-link>
 								<a :href="`#modal_session_delete${i}`" data-position="top" data-tooltip="Cancel Session" class="tooltipped modal-trigger">
 									<i class="material-icons">cancel</i>
 								</a>
+								</div>
 						</td>
 						<div :id="`modal_session_${i}`" class="modal modal_session">
 							<div class="modal-content">
