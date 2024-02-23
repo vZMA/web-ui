@@ -146,7 +146,7 @@ export default {
 	},
 	methods: {
 		async ShowViewDelete(session) {
-			return (this.sessions[session].instructorCid == this.currentUser ||
+			return (//this.sessions[session].instructorCid == this.currentUser ||
 				this.SnrStaff);		
 		},
 		async getSessions() {
