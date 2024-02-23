@@ -130,6 +130,10 @@ const routes = [
         component: () => import("../views/instructor/controllers/Edit.vue"),
       },
       {
+        path: "controllers/newtnote/:cid",
+        component: () => import("../views/instructor/controllers/NewTrainerNote.vue"),
+      },
+      {
         path: "solo",
         component: () => import("../views/instructor/solocerts/Index.vue"),
       },
@@ -170,7 +174,7 @@ const routes = [
   {
     path: "/admin",
     component: Admin,
-    meta: { isIns:true, isAdmin: true },
+    meta: { isAdmin: true },
     children: [
       {
         path: "",
