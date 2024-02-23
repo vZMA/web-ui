@@ -33,7 +33,7 @@
 							<a :href="`#modal_session_${i}`" data-position="top" data-tooltip="View Details" class="tooltipped modal-trigger">
 								<i class="material-icons">search</i>
 							</a>
-							<span v-if="this.SnrStaff===true">
+							<span v-if="ShowViewDelete(i)">
 								<router-link :to="`/ins/training/session/edit/${session._id}`" data-position="top" data-tooltip="Enter Notes" class="tooltipped">
 									<i class="material-icons">edit</i>
 								</router-link>
@@ -146,8 +146,12 @@ export default {
 	},
 	methods: {
 		async ShowViewDelete(session) {
-			return (//this.sessions[session].instructorCid == this.currentUser ||
+			console.log(session);
+			const result= (this.sessions[session].instructorCid == this.currentUser ||
 				this.SnrStaff);		
+			console.log(result);
+
+			return result;
 		},
 		async getSessions() {
 			try {
