@@ -57,7 +57,7 @@
 			<td></td><td></td><td></td>
 			<td>
 			<div class="input-field col s12">
-							<router-link :to="`/instructor/controllers/newtnote/${this.cid}`" data-position="top" data-tooltip="Create New Note" class="tooltipped">
+							<router-link :to="`/ins/controllers/newtnote/${this.cid}`" data-position="top" data-tooltip="Create New Note" class="tooltipped">
 								<i class="waves-effect waves-light btn-small right">New Note</i>
 							</router-link>
 					</div>
