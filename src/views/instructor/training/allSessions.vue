@@ -33,7 +33,7 @@
 							<a :href="`#modal_session_${i}`" data-position="top" data-tooltip="View Details" class="tooltipped modal-trigger">
 								<i class="material-icons">search</i>
 							</a>
-							<span v-if="ShowViewDelete(i)">
+							<span v-if="this.SnrStaff===true">
 								<router-link :to="`/ins/training/session/edit/${session._id}`" data-position="top" data-tooltip="Enter Notes" class="tooltipped">
 									<i class="material-icons">edit</i>
 								</router-link>
