@@ -139,8 +139,8 @@ export default {
 
 		for (counter=0; counter<this.sessions.length; counter++)
 		{
-			this.showButtons[counter]=(this.sessions[counter].instructorCid === this.currentUser ||
-				this.SnrStaff===true);	
+			this.showButtons.push((this.sessions[counter].instructorCid === this.currentUser ||
+				this.SnrStaff===true));	
 			console.log(this.showButtons[counter]);
 		}
 		M.Modal.init(document.querySelectorAll('.modal'), {
