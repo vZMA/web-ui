@@ -129,9 +129,9 @@ export default {
 		Completed
 	},
 	async mounted() {
-		this.currentUser = this.user.data.cid;
-		this.SnrStaff = ['datm', 'atm', 'ta'/**, 'wm'*/].some(code => this.user.data.roleCodes.includes(code));
-
+	/**	this.currentUser = this.user.data.cid;
+		this.SnrStaff = ['datm', 'atm', 'ta'/**, 'wm'].some(code => this.user.data.roleCodes.includes(code));
+*/
 		await this.getSessions();
 
 		M.Modal.init(document.querySelectorAll('.modal'), {
