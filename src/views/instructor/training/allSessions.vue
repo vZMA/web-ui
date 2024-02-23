@@ -142,10 +142,10 @@ export default {
 		});
 	},
 	methods: {
-		async ShowViewDelete(session) {
+	/**	async ShowViewDelete(session) {
 			return (sessions[session].instructorCid == this.currentUser ||
 				this.SnrStaff);		
-		},
+		},*//
 		async getSessions() {
 			try {
 				const {data} = await zabApi.get(`/training/session/all`);
