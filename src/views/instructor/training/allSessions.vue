@@ -121,7 +121,7 @@ export default {
 	data() {
 		return {
 			sessions: null,
-			currentUser: '',
+			currentUser: 0,
 			SnrStaff: false
 		};
 	},
@@ -129,9 +129,9 @@ export default {
 		Completed
 	},
 	async mounted() {
-	/**	this.currentUser = this.user.data.cid;
-		this.SnrStaff = ['datm', 'atm', 'ta'/**, 'wm'].some(code => this.user.data.roleCodes.includes(code));
-*/
+		this.currentUser = this.user.data.cid;
+		this.SnrStaff = ['datm', 'atm', 'ta'/**, 'wm'*/].some(code => this.user.data.roleCodes.includes(code));
+
 		await this.getSessions();
 
 		M.Modal.init(document.querySelectorAll('.modal'), {
@@ -142,10 +142,10 @@ export default {
 		});
 	},
 	methods: {
-	/**	async ShowViewDelete(session) {
+		async ShowViewDelete(session) {
 			return (sessions[session].instructorCid == this.currentUser ||
 				this.SnrStaff);		
-		},*/
+		},
 		async getSessions() {
 			try {
 				const {data} = await zabApi.get(`/training/session/all`);
