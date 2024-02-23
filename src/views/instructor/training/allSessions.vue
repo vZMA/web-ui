@@ -33,7 +33,7 @@
 							<a :href="`#modal_session_${i}`" data-position="top" data-tooltip="View Details" class="tooltipped modal-trigger">
 								<i class="material-icons">search</i>
 							</a>
-							<span v-if="ShowViewDelete(i)">
+							<span v-if="this.showButtons[i]">
 								<router-link :to="`/ins/training/session/edit/${session._id}`" data-position="top" data-tooltip="Enter Notes" class="tooltipped">
 									<i class="material-icons">edit</i>
 								</router-link>
@@ -125,7 +125,8 @@ export default {
 		return {
 			sessions: null,
 			currentUser: 0,
-			SnrStaff: false
+			SnrStaff: false,
+			showButtons: null
 		};
 	},
 	components: {
@@ -134,9 +135,14 @@ export default {
 	async mounted() {
 		this.currentUser = this.user.data.cid;
 		this.SnrStaff = ['datm', 'atm', 'ta'/**, 'wm'*/].some(code => this.user.data.roleCodes.includes(code));
-
 		await this.getSessions();
 
+		for (counter=0; counter<this.sessions.length; counter++)
+		{
+			this.showButtons[counter]=(this.sessions[counter].instructorCid === this.currentUser ||
+				this.SnrStaff===true);	
+			console.log(this.showButtons[counter]);
+		}
 		M.Modal.init(document.querySelectorAll('.modal'), {
 			preventScrolling: false
 		});
@@ -145,19 +151,6 @@ export default {
 		});
 	},
 	methods: {
-		async ShowViewDelete(session) {
-			console.log(session);
-			console.log(this.sessions[session].instructorCid);
-			console.log(this.currentUser);
-			console.log(this.SnrStaff);
-
-			const result=(this.sessions[session].instructorCid === this.currentUser ||
-				this.SnrStaff===true);		
-			
-			console.log(result);
-
-			return result;
-		},
 		async getSessions() {
 			try {
 				const {data} = await zabApi.get(`/training/session/all`);
