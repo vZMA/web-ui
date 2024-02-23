@@ -190,6 +190,7 @@ const routes = [
       },
       {
         path: "controllers/newtnote/:cid",
+        meta: { isIns: true },
         component: () => import("../views/admin/controllers/NewTrainerNote.vue"),
       },
       {
