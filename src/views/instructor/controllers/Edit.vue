@@ -96,7 +96,7 @@
 <script>
 import {zabApi} from '@/helpers/axios.js';
 import { mapState } from 'vuex';
-import TrainerNotes from './TrainerNotes.vue';
+import TrainerNotes from '../../admin/controllers/TrainerNotes.vue';
 
 export default {
 	data() {
