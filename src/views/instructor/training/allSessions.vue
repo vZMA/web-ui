@@ -33,7 +33,7 @@
 							<a :href="`#modal_session_${i}`" data-position="top" data-tooltip="View Details" class="tooltipped modal-trigger">
 								<i class="material-icons">search</i>
 							</a>
-							<span v-if="this.showButtons[i]">
+							<span v-if="showButtons[i]">
 								<router-link :to="`/ins/training/session/edit/${session._id}`" data-position="top" data-tooltip="Enter Notes" class="tooltipped">
 									<i class="material-icons">edit</i>
 								</router-link>
@@ -126,7 +126,7 @@ export default {
 			sessions: null,
 			currentUser: 0,
 			SnrStaff: false,
-			showButtons: null
+			showButtons: []
 		};
 	},
 	components: {
