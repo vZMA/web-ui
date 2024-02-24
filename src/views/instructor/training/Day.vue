@@ -188,7 +188,7 @@ export default {
 							i != counter)
 							{
 							//delete it
-							await this.deleteRequest(this.requests[counter]._id);
+							await zabApi.delete(`/training/request/${this.requests[counter]._id}`);
 							}
 
 					// create a google calendar event for the training session, using the google id of the student and instructor
