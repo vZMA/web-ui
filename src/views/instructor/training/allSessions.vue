@@ -141,7 +141,6 @@ export default {
 		{
 			this.showButtons.push((this.sessions[counter].instructorCid === this.currentUser ||
 				this.SnrStaff===true));	
-			console.log(this.showButtons[counter]);
 		}
 		M.Modal.init(document.querySelectorAll('.modal'), {
 			preventScrolling: false
