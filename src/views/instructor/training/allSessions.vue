@@ -137,7 +137,7 @@ export default {
 		this.SnrStaff = ['datm', 'atm', 'ta'/**, 'wm'*/].some(code => this.user.data.roleCodes.includes(code));
 		await this.getSessions();
 
-		for (counter=0; counter<this.sessions.length; counter++)
+		for (let counter=0; counter<this.sessions.length; counter++)
 		{
 			this.showButtons.push((this.sessions[counter].instructorCid === this.currentUser ||
 				this.SnrStaff===true));	
