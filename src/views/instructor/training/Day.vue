@@ -141,7 +141,7 @@ export default {
 				if(data.ret_det.code === 200) {
 					// get the session id from the resposne
 					const sessionId = data.data.sessionId;
-
+	
 					// Create google event
 					if (this.requests[i].student.googleApiRefreshToken) {
 							const eventTitle = this.requests[i].milestone.name;
@@ -179,7 +179,18 @@ export default {
 							})
 							this.toastSuccess('Google event created for insructor');
 					}
-						
+					
+					// Remove training requests for the same student on the same day
+					// Iterate through the requests list
+					for (let counter=0; counter<this.requests.length; counter++)
+						// Check for the same StudentCid and not the just taken training request
+						if (this.requests[counter].student.cid == this.requests[i].student.cid &&
+							i != counter)
+							{
+							//delete it
+							await this.deleteRequest(this.requests[counter].sessionId);
+							}
+
 					// create a google calendar event for the training session, using the google id of the student and instructor
 					this.toastSuccess('Training request taken');
 					this.$router.push('/ins/training/requests');
