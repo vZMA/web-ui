@@ -188,7 +188,7 @@ export default {
 							i != counter)
 							{
 							//delete it
-							await this.deleteRequest(this.requests[counter].sessionId);
+							await this.deleteRequest(this.requests[counter].requestId);
 							}
 
 					// create a google calendar event for the training session, using the google id of the student and instructor
