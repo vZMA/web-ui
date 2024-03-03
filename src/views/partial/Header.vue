@@ -58,7 +58,7 @@
             <ul id="files-dropdown" class="dropdown-content">
               <li>
                 <a
-                  href="https://zmaartcc.net/public/chartsindex.html"
+                  href="https://zmaartcc.net/chartsindex.html"
                   target="_blank"
                   rel="noopener noreferrer">ZMA Charts</a>
               </li>
