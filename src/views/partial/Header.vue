@@ -131,7 +131,7 @@
                 v-if="user.isLoggedIn && (user.data.isIns || user.data.isStaff)"
               >
                 <a
-                  href="https://webmail.zmaartcc.net"
+                  href="https://mail.google.com/"
                   target="_blank"
                   rel="noopener noreferrer">Webmail</a>
               </li>
