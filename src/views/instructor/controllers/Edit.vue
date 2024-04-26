@@ -56,17 +56,14 @@
 								<!-- <span id="zmo" :class="{active: form.certs.zmo}" class="cert cert_center"
 									@click="toggleCert">ZMO_CTR</span> -->
 							</div>
-							<label for="solo_certs_container" class="active">Solo Certifications:</label>
+							<!--<label for="solo_certs_container" class="active">Solo Certifications:</label>
 							<div id="solo_certs_container" class="cert_container">
-								<span id="twrs" :class="{active: form.certs.twrs}" class="cert cert_solo"
-									@click="toggleCert">Tower (Solo)</span>
-								<span id="apps" :class="{active: form.certs.apps}" class="cert cert_solo"
-									@click="toggleCert">Approach (Solo)</span>
-								<span id="miazmas" :class="{active: form.certs.miazmas}" class="cert cert_solo"
-									@click="toggleCert">Domestic Center (Solo)</span>
-								<!-- <span id="miazmos" :class="{active: form.certs.miazmos}" class="cert cert_solom"
-									@click="toggleCert">Oceanic Center (Solo)</span> -->
-							</div>
+								<span id="twrs" :class="{active: form.certs.twrs}" class="cert cert_solo">Tower (Solo)</span>
+								<span id="apps" :class="{active: form.certs.apps}" class="cert cert_solo">Approach (Solo)</span>
+								<span id="miazmas" :class="{active: form.certs.miazmas}" class="cert cert_solo">Domestic Center (Solo)</span>
+								<span id="miazmos" :class="{active: form.certs.miazmos}" class="cert cert_solom"
+									@click="toggleCert">Oceanic Center (Solo)</span>
+							</div>-->
 						</div>
 					</div>
 					<div class="input-field col s12">
