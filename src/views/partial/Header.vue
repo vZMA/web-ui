@@ -58,9 +58,9 @@
             <ul id="files-dropdown" class="dropdown-content">
               <li>
                 <a
-                  href="https://zmaartcc.net/chartsindex.html"
+                  href="https://infotool.zmaartcc.net/"
                   target="_blank"
-                  rel="noopener noreferrer">ZMA Charts</a>
+                  rel="noopener noreferrer">ZMA Charts and Info</a>
               </li>
               <!--<li>
                 <router-link to="/files/documents">Documents</router-link>
@@ -131,7 +131,7 @@
                 v-if="user.isLoggedIn && (user.data.isIns || user.data.isStaff)"
               >
                 <a
-                  href="https://webmail.zmaartcc.net"
+                  href="https://mail.google.com/"
                   target="_blank"
                   rel="noopener noreferrer">Webmail</a>
               </li>
