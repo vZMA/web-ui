@@ -80,6 +80,8 @@ export default {
 		const today = new Date(new Date().toUTCString());
 		const future = new Date(new Date().toUTCString());
 
+		this.$refs.expirationDate = new Date(future.setDate(future.getDate() + 30));
+
 		flatpickr(this.$refs.expirationDate, {
 			enableTime: false,
 			minDate: today,
