@@ -8,10 +8,10 @@
 			<div v-else>
 				<div class="hours_info">
 					<span>
-						You have controlled for <b>{{hoursCalc}}</b> in the past 30 days.
+						You have controlled for <b>{{hoursCalc}}</b> in the current quarter.
 					</span>
 					<span v-if="user.data.rating !== 1">
-						You will need to control three hours by <b>{{calcControlDate}}</b> to prevent removal from the roster.
+						Per GCAP policy you are required to control for a minimum of three hours every quarter to prevent removal from the roster.
 					</span>
 				</div>
 				<span class="section_title">
@@ -89,7 +89,7 @@ export default {
 			this.discordConnected = discordData.data;
 		},
 		async getControllingSessions() {
-			const { data: sessionData } = await zabApi.get('/user/sessions');
+			const { data: sessionData } = await zabApi.get('/user/sessions-cq');
 			this.controllingSessions = sessionData.data;
 		},
 		showToken() {
