@@ -8,10 +8,10 @@
 			<div v-else>
 				<div class="hours_info">
 					<span>
-						You have controlled for <b>{{hoursCalc}}</b> in the current quarter.
+						You have controlled for <b>{{hoursCalc}}</b> in the current quarter.<br><br>
 					</span>
 					<span v-if="user.data.rating !== 1">
-						Per GCAP policy you are required to control for a minimum of three hours every quarter to prevent removal from the roster.
+						Per SOP D1 13.3 policy you are required to control for a minimum of three hours every quarter to prevent removal from the roster.
 					</span>
 				</div>
 				<span class="section_title">
@@ -133,10 +133,10 @@ export default {
 		hoursCalc() {
 			let seconds = 0;
 			for(const session of this.controllingSessions) {
-				if((Math.abs(new Date().getTime() - new Date(session.timeEnd).getTime()) / (1000 * 60 * 60 * 24) < 31)) {
+				//if((Math.abs(new Date().getTime() - new Date(session.timeEnd).getTime()) / (1000 * 60 * 60 * 24) < 31)) {
 					const newSeconds = (new Date(session.timeEnd) - new Date(session.timeStart)) / 1000;
 					seconds += newSeconds;
-				}
+				//}
 			}
 			return this.sec2hms(seconds);
 		},
