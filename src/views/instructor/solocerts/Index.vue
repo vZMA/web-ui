@@ -172,7 +172,7 @@ export default {
                                       
                     if (position.slice(-3)==='APP' || position.slice(-3)==='CTR')
                         {
-                            await vatusaApiAuth.delete('/solo?cid='+cid+'&position='+pos);
+                            await vatusaApiAuth.delete('/solo?cid='+cid+'&position='+position);
                             /*, 
 							{
 							cid: cid,
