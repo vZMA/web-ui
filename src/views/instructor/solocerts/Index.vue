@@ -169,17 +169,7 @@ export default {
                     const {data} = await zabApi.post('/training/solodelete/'+cid, {
                         position: position
                     });
-                                      
-                    if (position.slice(-3)==='APP' || position.slice(-3)==='CTR')
-                        {
-                            await vatusaApiAuth.delete('/solo?cid='+cid+'&position='+position);
-                            /*, 
-							{
-							cid: cid,
-							position: position
-							});*/                         
-                    }
-                    
+                                                        
                     this.toastSuccess('Solo Certification deleted');
                         
                     this.certs = [];
