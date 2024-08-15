@@ -40,7 +40,7 @@
 								<option value='PBI_APP'>PBI_APP</option>
 								<option value='RSW_APP'>RSW_APP</option>
 								<option value='TPA_APP'>TPA_APP</option>
-								<option value='MIA_CTR'>ZMA_CTR</option>
+								<option value='MIA_CTR'>MIA_CTR</option>
 							</select>
 							<label>Position</label>
 						<!--<div class="col s12 input-field">
