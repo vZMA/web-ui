@@ -113,15 +113,7 @@ export default {
 							cid: this.form.cid,
 							position: this.form.position,
 							expDate: this.$refs.expirationDate.value
-						});
-					if (this.form.position.slice(-3)==='APP' || this.form.position.slice(-3)==='CTR')		
-						await vatusaApiAuth.post('/solo', 
-							{
-							cid: this.form.cid,
-							position: this.form.position,
-							expDate: this.$refs.expirationDate.value
-							});
-						
+						});				
 
 					this.toastSuccess('Solo Certification issued');
 
