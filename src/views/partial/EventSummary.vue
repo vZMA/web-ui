@@ -33,7 +33,7 @@
 import { zabApi } from '@/helpers/axios.js';
 export default {
 	name: 'Events',
-	title: 'Events',
+	title: 'HOME',
 	data() {
 		return {
 			events: null
