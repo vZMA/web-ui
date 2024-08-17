@@ -28,7 +28,7 @@
                             <li>
                                 You can request training through your Controller Dashboard on the Miami ARTCC website. You access the Controller Dashboard 
                                 by logging in, clicking your name (on the upper right-hand side of the page), and clicking Controller Dashboard. You then go to Training Sessions and then 
-                                click Request to add your availability. <b>Remember, this time is in UTC/Zulu time.</b>
+                                click Request to add your availability. <b>Remember, this time is in your local browser time zone.</b>
                             </li>
                         </ul>
                     </li></p>
