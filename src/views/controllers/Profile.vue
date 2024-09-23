@@ -134,7 +134,7 @@ export default {
 			const hasCerts = certs.map(cert => cert.code);
 			let certsToShow = [];
 			certs.forEach(cert => {
-				if(cert.class === "solo" || cert.class === "major" || cert.class === "center") {
+				if(cert.class === "major" || cert.class === "center") {
 					certsToShow.push(cert);
 				} else {
 					const certPos = cert.code.slice(-3);
