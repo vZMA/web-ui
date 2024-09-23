@@ -120,11 +120,11 @@ export default {
                     dels: false,
                     gnds: false,
                     twrs: false,
-                    apps: false,
+                    //apps: false,
                     miadels: false,
                     miagnds: false,
                     miatwrs: false,
-                    miaapps: false,
+                    //miaapps: false,
                     miazmas: false,
                     miazmos: false
 				},
