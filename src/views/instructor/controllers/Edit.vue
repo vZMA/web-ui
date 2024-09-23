@@ -116,7 +116,7 @@ export default {
                     miagnd: false,
                     app: false,
                     twr: false,
-                    gnd: false,
+                    gnd: false
                     //dels: false,
                     //gnds: false,
                     //twrs: false,
@@ -158,7 +158,10 @@ export default {
 				vis: this.controller.vis,
 			};
 			
-			this.controller.certifications.forEach(cert => this.form.certs[cert.code] = true);
+			this.controller.certifications.forEach(cert => {
+    			if (!cert.code.endsWith('s')) {
+        			this.form.certs[cert.code] = true;}
+				}); // this.controller.certifications.forEach(cert => this.form.certs[cert.code] = true);
             this.controller.roles.forEach(role => this.form.roles[role.code] = true);
 			this.usedOi = (await zabApi.get(`/controller/oi`)).data.data;
 		},
