@@ -191,7 +191,7 @@
 			certsToShow.push(cert);
 		  else {
 			const certPos = cert.code.slice(-3);
-			if (!hasCerts.includes(`p50${certPos}`)) {
+			if (!hasCerts.includes(`p50${certPos}`)&& !cert.code.endsWith('s')) {
 			  certsToShow.push(cert);
 			}
 		  }
