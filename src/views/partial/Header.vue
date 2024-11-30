@@ -155,13 +155,13 @@
         <router-link class="sidenav-close" to="/">HOME</router-link>
       </li>
       <li>
+        <router-link to="/controllers/whatwedo">WHAT WE DO</router-link>
+      </li>
+      <li>
          <router-link to="/controllers/">ROSTER</router-link>
       </li>
       <li>
         <router-link to="/controllers/staff">STAFF</router-link>
-      </li>
-      <li>
-        <router-link to="/controllers/whatwedo">TRAINING FAQ</router-link>
       </li>
       <li>
         <router-link class="sidenav-close" to="/events">EVENTS</router-link>
