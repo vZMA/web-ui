@@ -23,6 +23,9 @@
           <li>
             <router-link to="/">HOME</router-link>
           </li>
+          <li>
+                <router-link to="/controllers/whatwedo">WHAT WE DO</router-link>
+          </li>
           <li class="has_dropdown" data-state="hide">
             <a
               class="dropdown-left"
@@ -40,10 +43,7 @@
               <li>
                 <router-link to="/controllers/staff">ARTCC Staff</router-link>
               </li>
-             <li>
-                <router-link to="/controllers/whatwedo">What we do!</router-link>
-              </li>
-            </ul>
+             </ul>
           </li>
           <li>
             <router-link to="/events">EVENTS</router-link>
