@@ -57,8 +57,8 @@ const routes = [
         component: () => import("../views/controllers/Visit.vue"),
       },
       {
-        path: "/controllers/trainingfaq",
-        component: () => import("../views/controllers/TrainingFAQ.vue"),
+        path: "/controllers/whatwedo",
+        component: () => import("../views/controllers/WhatWeDo.vue"),
       },
       {
         path: "/controllers/:cid",

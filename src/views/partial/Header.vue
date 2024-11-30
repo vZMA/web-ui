@@ -40,9 +40,9 @@
               <li>
                 <router-link to="/controllers/staff">ARTCC Staff</router-link>
               </li>
-             <!--<li>
-                <router-link to="/controllers/TrainingFAQ">Training Frequently Asked Questions</router-link>
-              </li>-->
+             <li>
+                <router-link to="/controllers/whatwedo">What we do!</router-link>
+              </li>
             </ul>
           </li>
           <li>
@@ -161,7 +161,7 @@
         <router-link to="/controllers/staff">STAFF</router-link>
       </li>
       <li>
-        <router-link to="/controllers/TrainingFAQ">TRAINING FAQ</router-link>
+        <router-link to="/controllers/whatwedo">TRAINING FAQ</router-link>
       </li>
       <li>
         <router-link class="sidenav-close" to="/events">EVENTS</router-link>
