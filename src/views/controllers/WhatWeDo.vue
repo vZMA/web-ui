@@ -16,7 +16,7 @@
     <div class="card">
 		<div class="card-content">
 			<span class="card-title">WHY DO IT?</span>
-			<p>Not for money. The VATSIM network is free- it is funded both by donations and the benevolence of the network founders. The organization is a registered 501(c)3 non-profit in the United States. (More at <a href='https://www.vatsim.net/'>VATSIM</a>.</p>
+			<p>Not for money. The VATSIM network is free- it is funded both by donations and the benevolence of the network founders. The organization is a registered 501(c)3 non-profit in the United States. (More at <a href='https://www.vatsim.net/'>VATSIM</a>).</p>
             <p>Every VATSIM participant is here for a different reason. Casual participants may be slightly interested in airplanes and wonder how they work. Dedicated users might be using VATSIM as an aide to real-world training to reinforce real world procedures and save time and money by learning concepts and ideas at their computer, instead of behind the yoke of an aircraft where it's more expensive and less safe to learn certain lessons. Many of our young people have used their VATSIM careers to launch careers in aviation as airline pilots, real air traffic controllers, aviation mechanics, airport administrators, and Federal agency bureaucrats. To summarize, it's about learning and sharing a passion for aviation with others.</p>
 		</div>
 	</div>
