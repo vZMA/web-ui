@@ -88,6 +88,7 @@ export default {
 			if(cat == "loa") return "Agreements";
 			else if(cat == "sop") return "Procedures";
 			else if(cat == "policy") return "Policies";
+			else if(cat == "training") return "Training";
 			else return "Miscellaneous";
 		}
 	},

@@ -17,6 +17,7 @@
 							<option value="sop">SOP</option>
 							<option value="loa">LOA</option>
 							<option value="policy">Policies</option>
+							<option value="training">Training</option>
 							<option value="misc">Miscellaneous</option>
 						</select>
 						<label>Category</label>
