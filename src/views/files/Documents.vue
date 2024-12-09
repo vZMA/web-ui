@@ -9,7 +9,7 @@
 					<li class="tab col s6 l2"><a class="active" href="#sop">SOPs</a></li>
 					<li class="tab col s6 l3"><a href="#loa">LOAs</a></li>
 					<li class="tab col s7 l3"><a href="#policy">Policies</a></li>
-					<li class="tab col s7 14"><a href="#training">Training</a></li>
+					<li class="tab col s6 14"><a href="#training">Training</a></li>
 					<li class="tab col s6 l4"><a href="#misc">Miscellaneous</a></li>
 				</ul>
 			</div>
