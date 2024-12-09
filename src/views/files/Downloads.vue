@@ -6,11 +6,16 @@
 		<div class="row">
 			<div class="col s12">
 				<ul class="tabs">
-					<li class="tab col s6 l3"><a class="active" href="#sector">Facility Files</a></li>
+					<li class="tab col s6 l2"><a class="active" href="#sector">Facility Files</a></li>
+					<li class="tab col s6 l2"><a href="#references">References</a></li>
+					<li class="tab col s6 l2"><a href="#mfr">SOPs and LOAs</a></li>
+					<li class="tab col s6 l2"><a href="#training">Training</a></li>
+					<li class="tab col s6 l2"><a href="#misc">Miscellaneous</a></li>
+					<!--<li class="tab col s6 l3"><a class="active" href="#sector">Facility Files</a></li>
 					<li class="tab col s6 l2"><a href="#references">References</a></li>
 					<li class="tab col s7 l4"><a href="#mfr">SOPs and LOAs</a></li>
-				<!--	<li class="tab col s6 13"><a href="#training">Training</a></li>-->
-					<li class="tab col s6 l3"><a href="#misc">Miscellaneous</a></li>
+					<li class="tab col s6 l3"><a href="#training">Training</a></li>
+					<li class="tab col s6 l3"><a href="#misc">Miscellaneous</a></li>-->
 				</ul>
 			</div>
 			<div class="loading_container loading_files" v-if="downloads === null">
@@ -48,7 +53,7 @@ export default {
 			this.downloads = {
 				sector: fileData.data.filter(file => file.category === 'sectorFiles'),
 				reference: fileData.data.filter(file => file.category === 'references'), 
-				//training: fileData.data.filter(file => file.category === 'training'),
+				training: fileData.data.filter(file => file.category === 'training'), 
 				mfr: fileData.data.filter(file => file.category === 'mfr'),
 				misc: fileData.data.filter(file => file.category === 'misc'),
 			};
