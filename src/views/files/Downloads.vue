@@ -7,8 +7,9 @@
 			<div class="col s12">
 				<ul class="tabs">
 					<li class="tab col s6 l3"><a class="active" href="#sector">Facility Files</a></li>
-					<li class="tab col s6 l2"><a href="#training">References</a></li>
+					<li class="tab col s6 l2"><a href="#references">References</a></li>
 					<li class="tab col s7 l4"><a href="#mfr">SOPs and LOAs</a></li>
+					<li class="tab col s6 13"><a href="#training">Training</a></li>
 					<li class="tab col s6 l3"><a href="#misc">Miscellaneous</a></li>
 				</ul>
 			</div>
@@ -46,6 +47,7 @@ export default {
 			const {data: fileData} = await zabApi.get('/file/downloads');
 			this.downloads = {
 				sector: fileData.data.filter(file => file.category === 'sectorFiles'),
+				reference: fileData.data.filter(file => file.category === 'reference'), 
 				training: fileData.data.filter(file => file.category === 'training'),
 				mfr: fileData.data.filter(file => file.category === 'mfr'),
 				misc: fileData.data.filter(file => file.category === 'misc'),
