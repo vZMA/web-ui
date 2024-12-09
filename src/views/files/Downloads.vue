@@ -52,7 +52,7 @@ export default {
 			const {data: fileData} = await zabApi.get('/file/downloads');
 			this.downloads = {
 				sector: fileData.data.filter(file => file.category === 'sectorFiles'),
-				reference: fileData.data.filter(file => file.category === 'references'), 
+				references: fileData.data.filter(file => file.category === 'references'), 
 				training: fileData.data.filter(file => file.category === 'training'), 
 				mfr: fileData.data.filter(file => file.category === 'mfr'),
 				misc: fileData.data.filter(file => file.category === 'misc'),
