@@ -3,6 +3,9 @@
 		<div class="card-content">
 			<div class="card-title">Your Training Sessions</div>
 		</div>
+		
+		<!-- Add a new button in here to trigger the edit session page -->
+		
 		<div v-if="sessions === null" class="loading_container">
 			<Spinner />
 		</div>

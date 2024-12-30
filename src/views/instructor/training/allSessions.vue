@@ -134,7 +134,7 @@ export default {
 	},
 	async mounted() {
 		this.currentUser = this.user.data.cid;
-		this.SnrStaff = ['datm', 'atm', 'ta'/**, 'wm'*/].some(code => this.user.data.roleCodes.includes(code));
+		this.SnrStaff = ['datm', 'atm', 'ta', 'wm'].some(code => this.user.data.roleCodes.includes(code));
 		await this.getSessions();
 
 		for (let counter=0; counter<this.sessions.length; counter++)
