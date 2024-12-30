@@ -172,7 +172,7 @@ export default {
 						});
 					if(data.ret_det.code === 200) {
 						this.toastSuccess('Session created');
-						this.$router.push('ins/training/sessions');
+						this.$router.push('/ins/sessions');
 					} else {
 						this.toastError(data.ret_det.message);
 					}
