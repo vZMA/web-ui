@@ -156,7 +156,7 @@ export default {
 				const end = new Date(this.$refs.end_date.value);
 			
 				try {
-					const {data} = await zabApi.put(`/training/session/new`, {
+					const {data} = await zabApi.post(`/training/session/new`, {
 						studentCid: this.session.studentCid,
 						instructorCid: this.session.instructorCid,
 						position: this.session.position,
