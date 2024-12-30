@@ -41,7 +41,7 @@
 						</div>
 
 						<div class="input-field col s6 m6 milestone">
-							<select required v-model="session.milestone" class="materialize-select">
+							<select required v-model="session.milestoneCode" class="materialize-select">
 								<option value="" disabled selected>Select an option</option>
 								<option value="T1">Tier 1</option>
 								<option value="T1CR">Tier 1 Checkride</option>
@@ -56,7 +56,7 @@
 								<option value="TRN-ZMO">Oceanic Qualification Program</option>
 								<option value="CR-ZMO">Oceanic Checkride</option>
 							</select>
-							<label for="milestone">Milestron</label>
+							<label for="milestone">Milestone</label>
 						</div>
 
 					</div>
@@ -90,7 +90,7 @@ export default {
 				studentCid: null,
 				instructorCid: null,
 				instructor: { fname: '', lname: '' },
-				milestone: { name: '' },
+				milestoneCode: { name: '' },
 				position: '',
 			},
 			step: 1,
@@ -159,7 +159,7 @@ export default {
 					const {data} = await zabApi.post(`/training/session/new`, {
 						studentCid: this.session.studentCid,
 						instructorCid: this.session.instructorCid,
-						milestoneCode: this.session.milestone.
+						milestoneCode: this.session.milestoneCode.
 						position: this.session.position,
 						movements: this.session.movements,
 						progress: this.session.progress,
