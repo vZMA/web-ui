@@ -1,8 +1,8 @@
 <template>
 	<div class="card">
 		<div class="card-content">
-			<div class="card-title">Your Training Sessions</div>
-			<div class="col s4"><router-link to="/ins/training/session/new"><span class="btn waves-effect waves-light right">Create Session</span></router-link></div>
+			<div class="card-title col s6 m6">Your Training Sessions</div>
+			<div class="col s6 m6" ><router-link to="/ins/training/session/new"><span class="btn waves-effect waves-light right">Create Session</span></router-link></div>
 		</div>
 		
 		<!-- Add a new button in here to trigger the edit session page -->
