@@ -3,17 +3,28 @@
 		<div class="card-content">
 			<div class="row row_no_margin">
 				<div class="card-title col s8"><span class="card-title">Training Requests</span></div>
-				<div class="col s8"><span><a
+				<div class="col s2"><span><a
                   href="https://docs.google.com/document/d/1U717_AoxZC4Z2-la4DcCge7cnuHrrlK_X2Lnsar8msc/edit?pli=1"
                   target="_blank"
-                  rel="noopener noreferrer" class="btn right">Training Information</a></span></div>
-				<div class="col s4"><router-link to="/dash/training/new"><span class="btn new_event_button right">Request</span></router-link></div>
+                  rel="noopener noreferrer" class="btn">Training Information</a></span></div>
+				<div class="col s2"><span><a
+                  href="https://docs.google.com/document/d/1U717_AoxZC4Z2-la4DcCge7cnuHrrlK_X2Lnsar8msc/edit?pli=1"
+                  target="_blank"
+                  rel="noopener noreferrer" class="btn">Join Training Queue</a></span></div>
+				<div class="col s2"><span><a
+                  href="https://docs.google.com/document/d/1U717_AoxZC4Z2-la4DcCge7cnuHrrlK_X2Lnsar8msc/edit?pli=1"
+                  target="_blank"
+                  rel="noopener noreferrer" class="btn">Training Queue</a></span></div>
+				<!--<div class="col s4"><router-link to="/dash/training/new"><span class="btn new_event_button right">Request</span></router-link></div>-->
 			</div>
 		</div>
 		<div class="loading_container" v-if="!upcomingSessions">
 			<Spinner />
 		</div>
-		
+
+		<!-- ADD Buttons for links to Google Training Pages -->
+
+		<!--
 		<p class="no_sessions" v-else-if="upcomingSessions && upcomingSessions.length === 0">You have no upcoming training sessions.</p>
 		
 		<div class="session_wrapper">
@@ -53,7 +64,7 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
+		</div>-->
 	</div>
 	<PastSessions />
 </template>
