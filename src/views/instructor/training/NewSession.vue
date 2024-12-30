@@ -12,16 +12,16 @@
 					<div class="row row_no_margin">
 						
 						<select v-model="session.studentCid" required class="materialize-select">
-							<option value="" selected>Select a Student</option>
+							<option value="">Select a Student</option>
 							<option v-for="controller in controllers" :value="controller.cid" :key="controller.cid">{{controller.fname}} {{controller.lname}}</option>
 						</select>
-						<label>Student Name</label>
+						<label for="controller">Student Name</label>
 						
 						<select v-model="session.instructorCid" required class="materialize-select">
-							<option value="" selected>Select an instructor</option>
+							<option value="">Select an instructor</option>
 							<option v-for="instructor in instructors" :value="instructor.cid" :key="instructor.cid">{{instructor.fname}} {{instructor.lname}}</option>
 						</select>
-						<label>Instructor Name</label>
+						<label for="instructor">Instructor Name</label>
 						
 						<div class="input-field col s12">
 							<input id="start_date" type="text" ref="start_date" required>
@@ -133,10 +133,15 @@ export default {
 		async getControllers() {
 			const { data: contollerData } = await zabApi.get("/controller/controllers");
 			this.controllers = controllerData.data;
+			console.log(this.controllers);
 			
 			const { data: instructorData } = await zabApi.get("/controller/ins-and-mts");
 			this.instructors = instructorData.data;
-			
+			console.log(this.instructors);
+
+			this.$nextTick(() => {
+  				M.FormSelect.init(document.querySelectorAll('select'), {});
+});
 		},
 		async submitForm() {
 				// Calculate the hours string for the session length
