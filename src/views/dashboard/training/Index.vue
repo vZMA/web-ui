@@ -3,15 +3,15 @@
 		<div class="card-content">
 			<div class="row row_no_margin">
 				<div class="card-title col s12"><span class="card-title">Training Requests</span></div>
-				<div class="col s12"><span><a
+				<div class="col s4 "><span><a
                   href="https://docs.google.com/document/d/1U717_AoxZC4Z2-la4DcCge7cnuHrrlK_X2Lnsar8msc/edit?pli=1"
                   target="_blank"
                   rel="noopener noreferrer" class="btn">Training Information</a></span></div>
-				<div class="col s12"><span><a
+				<div class="col s4"><span><a
                   href="https://docs.google.com/document/d/1U717_AoxZC4Z2-la4DcCge7cnuHrrlK_X2Lnsar8msc/edit?pli=1"
                   target="_blank"
                   rel="noopener noreferrer" class="btn">Join Training Queue</a></span></div>
-				<div class="col s12"><span><a
+				<div class="col s4"><span><a
                   href="https://docs.google.com/document/d/1U717_AoxZC4Z2-la4DcCge7cnuHrrlK_X2Lnsar8msc/edit?pli=1"
                   target="_blank"
                   rel="noopener noreferrer" class="btn">Training Queue</a></span></div>
