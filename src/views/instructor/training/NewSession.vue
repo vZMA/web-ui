@@ -29,7 +29,7 @@
 							</div>
 							<label for="start_time" class="active">Start Time (Local)</label>
 						</div>
-						<div class="input-field col s12 m6">
+<!--						<div class="input-field col s12 m6">
 							<div id="end_time">
 								<div class="date">{{formatHtmlDate(session.endTime)}}</div>
 								<div class="controls">
@@ -39,16 +39,12 @@
 							</div>
 							<label for="end_time" class="active">End Time (Local) </label>
 						</div>
-						<div class="input-field col s12 m6 milestone">
-							<select required disabled class="materialize-select">
-								<option disabled selected>{{session.milestone.name}}</option>
+				<div class="input-field col s12 m6 milestone">
+							<select required class="materialize-select">
+								<option selected>{{session.milestone.name}}</option>
 							</select>
 							<label>Milestone</label>
-						</div>
-						<div class="input-field col s12 m6 position">
-							<input id="position" type="text" required v-model="session.position">
-							<label for="position" class="active">Position</label>
-						</div>
+						</div>-->
 					</div>
 					<div class="row row_no_margin">
 						<div class="input-field col s12 submit_buttons">
@@ -72,20 +68,26 @@ export default {
 		return {
 			instructors: null,
 			controllers: null,
-			session: null,
+			session: {
+				startTime: new Date(),
+				endTime: new Date(Date.now() + 3600 * 1000),
+				studentCid: null,
+				instructor: { fname: '', lname: '' },
+				milestone: { name: '' },
+				position: '',
+			},
 			step: 1,
 			duration: 0
 		};
 	},
 	async mounted() {
 		await this.getControllers();
-		session.startTime = new Date();
-		session.endTime = new Date() + 3600;
-		M.FormSelect.init(document.querySelectorAll('select'), {});
-		M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
-			margin: 0
+		
+		this.$nextTick(() => { 
+			M.FormSelect.init(document.querySelectorAll('select'), {});
+			M.Tooltip.init(document.querySelectorAll('.tooltipped'), {	margin: 0});
+			M.CharacterCounter.init(document.querySelectorAll('textarea'), {});
 		});
-		M.CharacterCounter.init(document.querySelectorAll('textarea'), {});
 	},
 	methods: {
 		async getControllers() {
