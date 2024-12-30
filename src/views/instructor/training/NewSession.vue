@@ -11,18 +11,26 @@
 				<form>
 					<div class="row row_no_margin">
 						
-						<select v-model="session.studentCid" required class="materialize-select">
+						<div class="input-field col s4 m6">
+						  <select id="student" v-model="session.studentCid" required class="materialize-select">
 							<option value="">Select a Student</option>
-							<option v-for="controller in controllers" :value="controller.cid" :key="controller.cid">{{controller.fname}} {{controller.lname}}</option>
+							<option v-for="controller in controllers" :value="controller.cid" :key="controller.cid">
+							{{controller.fname}} {{controller.lname}}
+							</option>
 						</select>
-						<label>Student Name</label>
-						
-						<select v-model="session.instructorCid" required class="materialize-select">
-							<option value="">Select an instructor</option>
-							<option v-for="instructor in instructors" :value="instructor.cid" :key="instructor.cid">{{instructor.fname}} {{instructor.lname}}</option>
+						<label for="student">Student Name</label>
+						</div>
+
+						<div class="input-field col s4 m6">
+						  <select id="instructor" v-model="session.instructorCid" required class="materialize-select">
+							<option value="">Select an Instructor</option>
+							<option v-for="instructor in instructors" :value="instructor.cid" :key="instructor.cid">
+							{{instructor.fname}} {{instructor.lname}}
+							</option>
 						</select>
-						<label>Instructor Name</label>
-						
+						<label for="instructor">Instructor Name</label>
+						</div>
+			
 						<div class="input-field col s12">
 							<input id="start_date" type="text" ref="start_date" required>
 							<label for="start_date">Start Time (Local)<span class="red-text">*</span></label>
