@@ -69,7 +69,7 @@
 					</div>
 					<div class="row row_no_margin">
 						<div class="input-field col s12 submit_buttons">
-							<button type="button" v-if="step === 3" class="btn right" @click="submitForm">Create Session</button>
+							<button type="button" class="btn right" @click="submitForm">Create Session</button>
 						</div>
 					</div>
 				</form>
@@ -113,30 +113,31 @@ export default {
 			M.Tooltip.init(document.querySelectorAll('.tooltipped'), {	margin: 0});
 			M.CharacterCounter.init(document.querySelectorAll('textarea'), {});
 		});
-
 		flatpickr(this.$refs.start_date, {
-			enableTime: true,
-			utc:false,
-			time_24hr: true,
-			minDate: today,
-			disableMobile: true,
-			minuteIncrement: 15,
-			dateFormat: 'Y-m-d H:i',
-			altFormat: 'Y-m-d H:i',
-			altInput: true,
-		});
+				enableTime: true,
+				time_24hr: true,
+				minDate: today, // Prevent past dates
+				dateFormat: "Y-m-d H:i", // Adjust the format as needed
+				altInput: true,
+				altFormat: "F j, Y H:i",
+				onChange: (selectedDates) => {
+				this.session.startTime = selectedDates[0];
+				}
+			});
 
+		// Initialize Flatpickr for end date
 		flatpickr(this.$refs.end_date, {
 			enableTime: true,
-			uc:false,
 			time_24hr: true,
-			minDate: today,
-			disableMobile: true,
-			minuteIncrement: 15,
-			dateFormat: 'Y-m-d H:i',
-			altFormat: 'Y-m-d H:i',
+			minDate: today, // Prevent past dates
+			dateFormat: "Y-m-d H:i", // Adjust the format as needed
 			altInput: true,
+			altFormat: "F j, Y H:i",
+			onChange: (selectedDates) => {
+			this.session.endTime = selectedDates[0];
+			}
 		});
+		
 	},
 	methods: {
 		async getControllers() {
