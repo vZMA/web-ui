@@ -98,6 +98,7 @@ export default {
 	},
 	async mounted() {
 		await this.getControllers();
+		await this.getInstructors();
 		
 		this.$nextTick(() => { 
 			M.FormSelect.init(document.querySelectorAll('select'), {});
@@ -131,14 +132,15 @@ export default {
 	},
 	methods: {
 		async getControllers() {
-			const { data: contollerData } = await zabApi.get("/controller/controllers");
-			this.controllers = controllerData.data;
-			console.log(this.controllers);
-			
-			const { data: instructorData } = await zabApi.get("/controller/ins-and-mts");
-			this.instructors = instructorData.data;
-			console.log(this.instructors);
-
+			const { data } = await zabApi.get("/controller/controllers");
+			this.controllers = data.data;
+			this.$nextTick(() => {
+  				M.FormSelect.init(document.querySelectorAll('select'), {});
+});
+		},
+		async getInstructors() {	
+			const { data } = await zabApi.get("/controller/ins-and-mts");
+			this.instructors = data;
 			this.$nextTick(() => {
   				M.FormSelect.init(document.querySelectorAll('select'), {});
 });
