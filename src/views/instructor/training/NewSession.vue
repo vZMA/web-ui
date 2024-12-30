@@ -40,32 +40,25 @@
 							<label for="end_date">End Time (Local)<span class="red-text">*</span></label>
 						</div>
 
-						<!--<div class="input-field col s12 m6">
-							<div id="start_time">
-								<div class="date">{{formatHtmlDate(session.startTime)}}</div>
-								<div class="controls">
-									<div><i class="material-icons" @click="increaseTime('start')">arrow_drop_up</i></div>
-									<div><i class="material-icons" @click="decreaseTime('start')">arrow_drop_down</i></div>
-								</div>
-							</div>
-							<label for="start_time" class="active">Start Time (Local)</label>
-						</div>
-						<div class="input-field col s12 m6">
-							<div id="end_time">
-								<div class="date">{{formatHtmlDate(session.endTime)}}</div>
-								<div class="controls">
-									<div><i class="material-icons" @click="increaseTime('end')">arrow_drop_up</i></div>
-									<div><i class="material-icons" @click="decreaseTime('end')">arrow_drop_down</i></div>
-								</div>
-							</div>
-							<label for="end_time" class="active">End Time (Local) </label>
-						</div>
-					<div class="input-field col s12 m6 milestone">
-							<select required class="materialize-select">
-								<option selected>{{session.milestone.name}}</option>
+						<div class="input-field col s6 m6 milestone">
+							<select required v-model="session.milestone" class="materialize-select">
+								<option value="" disabled selected>Select an option</option>
+								<option value="T1">Tier 1</option>
+								<option value="T1CR">Tier 1 Checkride</option>
+								<option value="TRN-S1">S1 Qualification Program</option>
+								<option value="CR-S1">S1 Checkride</option>
+								<option value="TRN-S2">S2 Qualification Program</option>
+								<option value="CR-S2">S2 Checkride</option>
+								<option value="TRN-S3">S3 Qualification Program</option>
+								<option value="CR-S3">S3 Checkride</option>
+								<option value="TRN-C1">C1 Qualification Program</option>
+								<option value="CR-C1">C1 Checkride</option>
+								<option value="TRN-ZMO">Oceanic Qualification Program</option>
+								<option value="CR-ZMO">Oceanic Checkride</option>
 							</select>
-							<label>Milestone</label>
-						</div>-->
+							<label for="milestone">Milestron</label>
+						</div>
+
 					</div>
 					<div class="row row_no_margin">
 						<div class="input-field col s12 submit_buttons">
