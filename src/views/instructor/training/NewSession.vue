@@ -12,13 +12,13 @@
 					<div class="row row_no_margin">
 						
 						<select v-model="session.studentCid" required class="materialize-select">
-							<option value="" disabled selected>Select a Student</option>
+							<option value="" selected>Select a Student</option>
 							<option v-for="controller in controllers" :value="controller.cid" :key="controller.cid">{{controller.fname}} {{controller.lname}}</option>
 						</select>
 						<label>Student Name</label>
 						
 						<select v-model="session.instructorCid" required class="materialize-select">
-							<option value="" disabled selected>Select an instructor</option>
+							<option value="" selected>Select an instructor</option>
 							<option v-for="instructor in instructors" :value="instructor.cid" :key="instructor.cid">{{instructor.fname}} {{instructor.lname}}</option>
 						</select>
 						<label>Instructor Name</label>
@@ -87,6 +87,7 @@ export default {
 				startTime: new Date(),
 				endTime: new Date(Date.now() + 3600 * 1000),
 				studentCid: null,
+				instructorCid: null,
 				instructor: { fname: '', lname: '' },
 				milestone: { name: '' },
 				position: '',
@@ -130,11 +131,13 @@ export default {
 	},
 	methods: {
 		async getControllers() {
-			const { data } = await zabApi.get("/controller/controllers");
-			this.controllers = data.data;
-			const { data1 } = await zabApi.get("/controller/ins-and-mts");
-			this.instructors = data1.data;
-			},
+			const { data: contollerData } = await zabApi.get("/controller/controllers");
+			this.controllers = controllerData.data;
+			
+			const { data: instructorData } = await zabApi.get("/controller/ins-and-mts");
+			this.instructors = instructorData.data;
+			
+		},
 		async submitForm() {
 				// Calculate the hours string for the session length
 				const delta = Math.abs(new Date(this.session.endTime) - new Date(this.session.startTime)) / 1000;
