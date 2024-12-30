@@ -159,7 +159,7 @@ export default {
 					const {data} = await zabApi.post(`/training/session/new`, {
 						studentCid: this.session.studentCid,
 						instructorCid: this.session.instructorCid,
-						milestoneCode: this.session.milestoneCode.
+						milestoneCode: this.session.milestoneCode,
 						position: this.session.position,
 						movements: this.session.movements,
 						progress: this.session.progress,
