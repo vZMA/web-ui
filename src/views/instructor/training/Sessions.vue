@@ -5,7 +5,8 @@
 		</div>
 		
 		<!-- Add a new button in here to trigger the edit session page -->
-		
+		<div class="col s4"><router-link to="/ins/training/session/new"><span class="btn waves-effect waves-light right">Create Session</span></router-link></div>
+
 		<div v-if="sessions === null" class="loading_container">
 			<Spinner />
 		</div>
