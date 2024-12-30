@@ -23,7 +23,16 @@
 						</select>
 						<label>Instructor Name</label>
 						
-						<div class="input-field col s12 m6">
+						<div class="input-field col s12">
+							<input id="start_date" type="text" ref="start_date" required>
+							<label for="start_date">Start Time (Local)<span class="red-text">*</span></label>
+						</div>
+						<div class="input-field col s12">
+							<input id="end_date" type="text" ref="end_date" required>
+							<label for="end_date">End Time (Local)<span class="red-text">*</span></label>
+						</div>
+
+						<!--<div class="input-field col s12 m6">
 							<div id="start_time">
 								<div class="date">{{formatHtmlDate(session.startTime)}}</div>
 								<div class="controls">
@@ -43,7 +52,7 @@
 							</div>
 							<label for="end_time" class="active">End Time (Local) </label>
 						</div>
-<!--					<div class="input-field col s12 m6 milestone">
+					<div class="input-field col s12 m6 milestone">
 							<select required class="materialize-select">
 								<option selected>{{session.milestone.name}}</option>
 							</select>
@@ -64,6 +73,8 @@
 <script>
 import {zabApi, vatusaApi, vatusaApiAuth} from '@/helpers/axios.js';
 import dayjs from 'dayjs';
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css';
 
 export default {
 	name: 'CreateNewSession',
@@ -92,6 +103,30 @@ export default {
 			M.Tooltip.init(document.querySelectorAll('.tooltipped'), {	margin: 0});
 			M.CharacterCounter.init(document.querySelectorAll('textarea'), {});
 		});
+
+		flatpickr(this.$refs.start_date, {
+			enableTime: true,
+			utc:false,
+			time_24hr: true,
+			minDate: today,
+			disableMobile: true,
+			minuteIncrement: 15,
+			dateFormat: 'Y-m-dTH:i:00.000',
+			altFormat: 'Y-m-d H:i',
+			altInput: true,
+		});
+
+		flatpickr(this.$refs.end_date, {
+			enableTime: true,
+			uc:false,
+			time_24hr: true,
+			minDate: today,
+			disableMobile: true,
+			minuteIncrement: 15,
+			dateFormat: 'Y-m-dTH:i:00.000',
+			altFormat: 'Y-m-d H:i',
+			altInput: true,
+		});
 	},
 	methods: {
 		async getControllers() {
@@ -106,8 +141,10 @@ export default {
 				const hours = Math.floor(delta / 3600);
 				const minutes = Math.floor(delta / 60) % 60;
 				this.duration = `${('00' + hours).slice(-2)}:${('00' + minutes).slice(-2)}`;
-
-				// Force Save the data to the local database
+				const offset = new Date().getTimezoneOffset();
+				const start = new Date(this.$refs.start_date.value);
+				const end = new Date(this.$refs.end_date.value);
+			
 				try {
 					const {data} = await zabApi.put(`/training/session/new`, {
 						studentCid: this.session.studentCid,
@@ -117,8 +154,8 @@ export default {
 						progress: this.session.progress,
 						ots: this.session.ots,
 						location: this.session.location,
-						startTime: this.session.startTime,
-						endTime: this.session.endTime,
+						startTime: start,
+						endTime: end,
 						studentNotes: this.session.studentNotes,
 						insNotes: this.session.insNotes
 						});
