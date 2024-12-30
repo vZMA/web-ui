@@ -10,10 +10,11 @@
 			<div class="session_notes" v-else>
 				<form>
 					<div class="row row_no_margin" v-show="step === 1">
-						<div class="input-field col s12 m6">
-							<input id="student" type="text" :value="session.student.fname + ' ' + session.student.lname" required disabled>
-							<label for="student" class="active">Student Name</label>
-						</div>
+						<select v-model="session.studentCid" required class="materialize-select">
+							<option value="" disabled selected>Select a Student</option>
+							<option v-for="controller in controllers" :value="controller.cid" :key="controller.cid">{{controller.fname}} {{controller.lname}}</option>
+						</select>
+						<label>Student Name</label>
 						<div class="input-field col s12 m6">
 							<input id="instructor" type="text" :value="session.instructor.fname + ' ' + session.instructor.lname" required disabled>
 							<label for="instructor" class="active">Instructor Name</label>
@@ -65,8 +66,8 @@ import {zabApi, vatusaApi, vatusaApiAuth} from '@/helpers/axios.js';
 import dayjs from 'dayjs';
 
 export default {
-	name: 'EditSessionNotes',
-	title: 'Enter Session Notes',
+	name: 'CreateNewSession',
+	title: 'Create New Training Session',
 	data() {
 		return {
 			session: null,
@@ -75,7 +76,9 @@ export default {
 		};
 	},
 	async mounted() {
-		
+		session.instructorCid = 
+		session.startTime = new Date();
+		session.endTime = new Date() + 3600;
 		M.FormSelect.init(document.querySelectorAll('select'), {});
 		M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
 			margin: 0
@@ -83,6 +86,11 @@ export default {
 		M.CharacterCounter.init(document.querySelectorAll('textarea'), {});
 	},
 	methods: {
+		async getControllers() {
+			const { data } = await zabApi.get("/controller/controllers");
+			this.controllers = data.data;
+			
+			},
 		async submitForm() {
 				// Calculate the hours string for the session length
 				const delta = Math.abs(new Date(this.session.endTime) - new Date(this.session.startTime)) / 1000;
