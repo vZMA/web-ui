@@ -8,11 +8,11 @@
                   target="_blank"
                   rel="noopener noreferrer" class="btn">Training Information</a></span></div>
 				<div class="col s4"><span><a
-                  href="https://docs.google.com/document/d/1U717_AoxZC4Z2-la4DcCge7cnuHrrlK_X2Lnsar8msc/edit?pli=1"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSepMCaDsKmMNwez__TL8ZcbXpYHFR9xsFgle7I1--xPApxyjQ/viewform?usp=sf_linkhttps://docs.google.com/forms/d/e/1FAIpQLSepMCaDsKmMNwez__TL8ZcbXpYHFR9xsFgle7I1--xPApxyjQ/viewform?usp=sf_link"
                   target="_blank"
                   rel="noopener noreferrer" class="btn">Join Training Queue</a></span></div>
 				<div class="col s4"><span><a
-                  href="https://docs.google.com/document/d/1U717_AoxZC4Z2-la4DcCge7cnuHrrlK_X2Lnsar8msc/edit?pli=1"
+                  href="https://docs.google.com/spreadsheets/d/1Ibs035rON0f2djtOhQq4_3SCnd9Cx5eh2_FnowLFNbI/edit?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer" class="btn">Training Queue</a></span></div>
 				<!--<div class="col s4"><router-link to="/dash/training/new"><span class="btn new_event_button right">Request</span></router-link></div>-->
