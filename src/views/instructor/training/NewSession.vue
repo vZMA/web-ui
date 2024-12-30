@@ -76,7 +76,7 @@ export default {
 		};
 	},
 	async mounted() {
-		session.instructorCid = 
+		await this.getControllers();
 		session.startTime = new Date();
 		session.endTime = new Date() + 3600;
 		M.FormSelect.init(document.querySelectorAll('select'), {});
