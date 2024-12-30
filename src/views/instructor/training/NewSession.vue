@@ -15,10 +15,12 @@
 							<option v-for="controller in controllers" :value="controller.cid" :key="controller.cid">{{controller.fname}} {{controller.lname}}</option>
 						</select>
 						<label>Student Name</label>
-						<div class="input-field col s12 m6">
-							<input id="instructor" type="text" :value="session.instructor.fname + ' ' + session.instructor.lname" required disabled>
-							<label for="instructor" class="active">Instructor Name</label>
-						</div>
+						<select v-model="session.instructorCid" required class="materialize-select">
+							<option value="" disabled selected>Select an instructor</option>
+							<option v-for="instructor in instructors" :value="controller.cid" :key="controller.cid">{{controller.fname}} {{controller.lname}}</option>
+						</select>
+						<label>Instructor Name</label>
+						
 						<div class="input-field col s12 m6">
 							<div id="start_time">
 								<div class="date">{{formatHtmlDate(session.startTime)}}</div>
@@ -29,7 +31,7 @@
 							</div>
 							<label for="start_time" class="active">Start Time (Local)</label>
 						</div>
-<!--						<div class="input-field col s12 m6">
+						<div class="input-field col s12 m6">
 							<div id="end_time">
 								<div class="date">{{formatHtmlDate(session.endTime)}}</div>
 								<div class="controls">
@@ -39,7 +41,7 @@
 							</div>
 							<label for="end_time" class="active">End Time (Local) </label>
 						</div>
-				<div class="input-field col s12 m6 milestone">
+<!--					<div class="input-field col s12 m6 milestone">
 							<select required class="materialize-select">
 								<option selected>{{session.milestone.name}}</option>
 							</select>
@@ -93,7 +95,8 @@ export default {
 		async getControllers() {
 			const { data } = await zabApi.get("/controller/controllers");
 			this.controllers = data.data;
-			
+			const { data1 } = await zabApi.get("/controller/ins-and-mts");
+			this.instructors = data1.data;
 			},
 		async submitForm() {
 				// Calculate the hours string for the session length
