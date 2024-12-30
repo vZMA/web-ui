@@ -81,8 +81,8 @@ export default {
 	title: 'Create New Training Session',
 	data() {
 		return {
-			instructors: []],
-			controllers: []],
+			instructors: [],
+			controllers: [],
 			session: {
 				startTime: new Date(),
 				endTime: new Date(Date.now() + 3600 * 1000),
