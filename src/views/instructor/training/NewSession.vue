@@ -116,7 +116,6 @@ export default {
 		flatpickr(this.$refs.start_date, {
 				enableTime: true,
 				time_24hr: true,
-				minDate: today, // Prevent past dates
 				dateFormat: "Y-m-d H:i", // Adjust the format as needed
 				altInput: true,
 				altFormat: "F j, Y H:i",
@@ -129,7 +128,6 @@ export default {
 		flatpickr(this.$refs.end_date, {
 			enableTime: true,
 			time_24hr: true,
-			minDate: today, // Prevent past dates
 			dateFormat: "Y-m-d H:i", // Adjust the format as needed
 			altInput: true,
 			altFormat: "F j, Y H:i",
