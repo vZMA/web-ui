@@ -81,8 +81,8 @@ export default {
 	title: 'Create New Training Session',
 	data() {
 		return {
-			instructors: null,
-			controllers: null,
+			instructors: []],
+			controllers: []],
 			session: {
 				startTime: new Date(),
 				endTime: new Date(Date.now() + 3600 * 1000),
@@ -131,10 +131,10 @@ export default {
 	},
 	methods: {
 		async getControllers() {
-			const { contollerData } = await zabApi.get("/controller/controllers");
+			const { data: contollerData } = await zabApi.get("/controller/controllers");
 			this.controllers = controllerData.data;
 			
-			const { instructorData } = await zabApi.get("/controller/ins-and-mts");
+			const { data: instructorData } = await zabApi.get("/controller/ins-and-mts");
 			this.instructors = instructorData.data;
 			
 		},
