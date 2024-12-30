@@ -70,6 +70,8 @@ export default {
 	title: 'Create New Training Session',
 	data() {
 		return {
+			instructors: null,
+			controllers: null,
 			session: null,
 			step: 1,
 			duration: 0
