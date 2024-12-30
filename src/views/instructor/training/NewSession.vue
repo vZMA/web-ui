@@ -112,7 +112,7 @@ export default {
 			minDate: today,
 			disableMobile: true,
 			minuteIncrement: 15,
-			dateFormat: 'Y-m-dTH:i:00.000',
+			dateFormat: 'Y-m-d H:i',
 			altFormat: 'Y-m-d H:i',
 			altInput: true,
 		});
@@ -124,17 +124,17 @@ export default {
 			minDate: today,
 			disableMobile: true,
 			minuteIncrement: 15,
-			dateFormat: 'Y-m-dTH:i:00.000',
+			dateFormat: 'Y-m-d H:i',
 			altFormat: 'Y-m-d H:i',
 			altInput: true,
 		});
 	},
 	methods: {
 		async getControllers() {
-			const { data: contollerData } = await zabApi.get("/controller/controllers");
+			const { contollerData } = await zabApi.get("/controller/controllers");
 			this.controllers = controllerData.data;
 			
-			const { data: instructorData } = await zabApi.get("/controller/ins-and-mts");
+			const { instructorData } = await zabApi.get("/controller/ins-and-mts");
 			this.instructors = instructorData.data;
 			
 		},
