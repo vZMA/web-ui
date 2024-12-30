@@ -9,15 +9,17 @@
 			</div>
 			<div class="session_notes" v-else>
 				<form>
-					<div class="row row_no_margin" v-show="step === 1">
+					<div class="row row_no_margin">
+						
 						<select v-model="session.studentCid" required class="materialize-select">
 							<option value="" disabled selected>Select a Student</option>
 							<option v-for="controller in controllers" :value="controller.cid" :key="controller.cid">{{controller.fname}} {{controller.lname}}</option>
 						</select>
 						<label>Student Name</label>
+						
 						<select v-model="session.instructorCid" required class="materialize-select">
 							<option value="" disabled selected>Select an instructor</option>
-							<option v-for="instructor in instructors" :value="controller.cid" :key="controller.cid">{{controller.fname}} {{controller.lname}}</option>
+							<option v-for="instructor in instructors" :value="instructor.cid" :key="instructor.cid">{{instructor.fname}} {{instructor.lname}}</option>
 						</select>
 						<label>Instructor Name</label>
 						
