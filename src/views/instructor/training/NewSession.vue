@@ -13,7 +13,7 @@
 						
 						<div class="input-field col s4 m6">
 						  <select id="student" v-model="session.studentCid" required class="materialize-select">
-							<option value="">Select a Student</option>
+							<option value="" disabled selected>Select a Student</option>
 							<option v-for="controller in controllers" :value="controller.cid" :key="controller.cid">
 							{{controller.fname}} {{controller.lname}}
 							</option>
@@ -23,7 +23,7 @@
 
 						<div class="input-field col s4 m6">
 						  <select id="instructor" v-model="session.instructorCid" required class="materialize-select">
-							<option value="">Select an Instructor</option>
+							<option value="" disabled selected>Select an Instructor</option>
 							<option v-for="instructor in instructors" :value="instructor.cid" :key="instructor.cid">
 							{{instructor.fname}} {{instructor.lname}}
 							</option>
@@ -90,7 +90,7 @@ export default {
 				studentCid: null,
 				instructorCid: null,
 				instructor: { fname: '', lname: '' },
-				milestoneCode: { name: '' },
+				milestoneCode: null,
 				position: '',
 			},
 			step: 1,
