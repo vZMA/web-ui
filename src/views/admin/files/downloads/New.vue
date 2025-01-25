@@ -23,6 +23,10 @@
 						<textarea id="description" class="materialize-textarea" data-length="400" v-model="form.description"></textarea>
 						<label for="description">Description (optional)</label>
 					</div>
+					<div class="input-field col s12">
+						<textarea id="permalink" class="materialize-textarea" data-length="40" v-model="form.permalink"></textarea>
+						<label for="permalink">Permalink (optional)</label>
+					</div>
 					<div class="file-field input-field col s12">
 						<div class="btn waves-effect waves-light">
 							<span>FILE</span>
@@ -53,7 +57,8 @@ export default {
 			form: {
 				name: '',
 				category: '',
-				description: ''
+				description: '',
+				permalink: ''
 			}
 		};
 	},
@@ -69,6 +74,7 @@ export default {
 				formData.append('name', this.form.name);
 				formData.append('category', this.form.category);
 				formData.append('description', this.form.description);
+				formData.append('permalink', this.form.permalink);
 				formData.append('download', this.$refs.download.files[0]);
 				formData.append('author', this.user.data._id);
 
