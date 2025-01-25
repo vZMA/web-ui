@@ -29,11 +29,11 @@ export default {
 				console.log(this.$route.params.permalink);
 
 				console.log('Filename ');
-				console.log(fileData);
+				console.log(fileData.data.fileName);
 
 				// Redirect to the file's download URL
-				if (fileData?.fileName) {
-					window.location.href = `https://zma-web.nyc3.digitaloceanspaces.com/downloads/${fileData.fileName}`;
+				if (fileData?.data.fileName) {
+					window.location.href = `https://zma-web.nyc3.digitaloceanspaces.com/downloads/${fileData.data.fileName}`;
 				} else {
 					console.error('File name not found in the response');
 				}
