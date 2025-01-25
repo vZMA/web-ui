@@ -25,12 +25,14 @@ export default {
 			try {
 				// Fetch the file data using the permalink from the route
 				const { data: fileData } = await zabApi.get(`/file/downloads/permalink/${this.$route.params.permalink}`);
-				console.log('permalink',this.$route.params.permalink)
+				console.log('permalink');
+				console.log(this.$route.params.permalink);
 
 				// Set the file data to the component's state
 				this.file = fileData;
 
-				console.log('Filename ', this.file.fileName);
+				console.log('Filename ');
+				console.log(this.file.fileName);
 
 				// Redirect to the file's download URL
 				if (this.file?.fileName) {
