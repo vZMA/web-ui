@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<!-- Optional: Display a message while redirecting -->
-		<p v-if="!file">Redirecting to your download...</p>
+		<p v-if="!file">Redirecting to your download...{{ permalink }}</p>
 	</div>
 </template>
 
