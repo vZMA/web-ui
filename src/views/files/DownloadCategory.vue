@@ -5,7 +5,7 @@
 			<a :href="`https://zma-web.nyc3.digitaloceanspaces.com/downloads/${file.fileName}`" class="btn button"><i class="material-icons">file_download</i></a>
 			<div class="title">{{file.name}}</div>
 			<div class="desc">{{file.description}}</div>
-			<div class="info">Permalink: https://zmaartcc.net/files/downloads/permalink/{{ file.permalink }}</div>
+			<div v-if="files.permalink != ''"class="info">Permalink: https://zmaartcc.net/files/downloads/permalink/{{ file.permalink }}</div>
 			<div class="info">Updated at: {{dtRegionalUS(file.updatedAt)}}z</div>
 		</div>
 	</div>
