@@ -82,6 +82,7 @@ export default {
 		async submitForm() {
 			try {
 				const formData = new FormData();
+				this.form.permalink = this.form.permalink.replace(/[^a-zA-Z0-9_-]/g, '');
 				formData.append('name', this.form.name);
 				formData.append('category', this.form.category);
 				formData.append('description', this.form.description);

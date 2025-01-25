@@ -69,6 +69,8 @@ export default {
 	methods: {
 		async submitForm() {
 			try {
+				this.form.permalink = this.form.permalink.replace(/[^a-zA-Z0-9_-]/g, '');
+           
 				this.toastInfo('Uploading...');
 				const formData = new FormData();
 				formData.append('name', this.form.name);
