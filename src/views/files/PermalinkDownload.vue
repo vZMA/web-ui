@@ -28,15 +28,12 @@ export default {
 				console.log('permalink');
 				console.log(this.$route.params.permalink);
 
-				// Set the file data to the component's state
-				this.file = fileData;
-
 				console.log('Filename ');
-				console.log(this.file.fileName);
+				console.log(this.fileData.fileName);
 
 				// Redirect to the file's download URL
-				if (this.file?.fileName) {
-					window.location.href = `https://zma-web.nyc3.digitaloceanspaces.com/downloads/${this.file.fileName}`;
+				if (this.fileData?.fileName) {
+					window.location.href = `https://zma-web.nyc3.digitaloceanspaces.com/downloads/${this.fileData.fileName}`;
 				} else {
 					console.error('File name not found in the response');
 				}
