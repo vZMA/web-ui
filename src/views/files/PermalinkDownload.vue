@@ -29,7 +29,7 @@ export default {
 				console.log(this.$route.params.permalink);
 
 				console.log('Filename ');
-				console.log(fileData.fileName);
+				console.log(fileData);
 
 				// Redirect to the file's download URL
 				if (fileData?.fileName) {
