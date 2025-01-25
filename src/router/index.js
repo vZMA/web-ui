@@ -85,6 +85,10 @@ const routes = [
         component: () => import("../views/files/Downloads.vue"),
       },
       {
+        path: "/files/downloads/permalink",
+        component: () => import("../views/files/PermalinkDownload.vue"),
+      },
+      {
         path: "/files/documents",
         component: () => import("../views/files/Documents.vue"),
       },
