@@ -14,10 +14,10 @@
 						<button class="btn btn-waves login_button" @click="login">Login via VATSIM</button>
 					</div>
 				</div>
-		<div class="loading_container" v-else-if="downloads === null">
+		<div class="loading_container" v-else-if="user.isLoggedIn && downloads === null">
 			<Spinner />
 		</div>
-		<div class="no_downloads" v-else-if="downloads && downloads.length == 0">There are no downloads</div>
+		<div class="no_downloads" v-else-if="user.isLoggedIn && downloads && downloads.length == 0">There are no downloads</div>
 		<div class="table_wrapper" v-else>
 			<table class="controller_list striped">
 				<thead class="controller_list_head">
