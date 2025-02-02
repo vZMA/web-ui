@@ -4,7 +4,7 @@
 			<span class="card-title">Downloads</span>
 		</div>
 		<div v-if="!user.isLoggedIn">
-					<p>To access ZMA SOP's, LOAs and orther documents, all users need to log in via VATSIM.
+					<p style="text-align:center">To access ZMA SOP's, LOAs and orther documents, all users need to log in via VATSIM.
 					</p>
 					<br />
 					<div class="center-align">
