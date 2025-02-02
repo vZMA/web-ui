@@ -3,7 +3,15 @@
 		<div class="card-content">
 			<span class="card-title">Downloads</span>
 		</div>
-		<div class="row">
+		<div v-if="!user.isLoggedIn">
+					<p>To access ZMA SOP's, LOAs and orther documents, all users need to log in via VATSIM.
+					</p>
+					<br />
+					<div class="center-align">
+						<button class="btn btn-waves login_button" @click="login">Login via VATSIM</button>
+					</div>
+				</div>
+		<div class="row" v-else>
 			<div class="col s12">
 				<ul class="tabs">
 					<li class="tab col s6 l2"><a class="active" href="#sector">Facility Files</a></li>
@@ -18,10 +26,10 @@
 					<li class="tab col s6 l3"><a href="#misc">Miscellaneous</a></li>-->
 				</ul>
 			</div>
-			<div class="loading_container loading_files" v-if="downloads === null">
+			<div v-if = "downloads === null" class="loading_container loading_files">
 				<Spinner />
 			</div>
-			<div class="tabs_content" v-else>
+			<div v-else class="tabs_content">
 				<DownloadCategory v-for="(files, cat) in downloads" :key="cat" :cat="cat" :files="files" />
 			</div>
 		</div>
@@ -29,7 +37,9 @@
 </template>
 
 <script>
-import {zabApi} from '@/helpers/axios.js';
+import { mapState } from "vuex";
+import { zabApi } from "@/helpers/axios.js";
+import { vatsimAuthRedirectUrl } from "@/helpers/uriHelper.js";
 import DownloadCategory from './DownloadCategory.vue';
 
 export default {
@@ -48,7 +58,11 @@ export default {
 		M.Tabs.init(document.querySelectorAll('.tabs'));
 	},
 	methods: {
-		async getDownloads() {
+	async login() {
+      localStorage.setItem("redirect", this.$route.path);
+      window.location.href = vatsimAuthRedirectUrl;
+  	  },
+	async getDownloads() {
 			const {data: fileData} = await zabApi.get('/file/downloads');
 			this.downloads = {
 				sector: fileData.data.filter(file => file.category === 'sectorFiles'),
@@ -59,6 +73,9 @@ export default {
 			};
 		},
 	},
+	computed: {
+    ...mapState("user", ["user"]),
+  },
 };
 </script>
 
