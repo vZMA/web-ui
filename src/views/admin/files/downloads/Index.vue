@@ -1,4 +1,4 @@
-<template>
+	<template>
 	<div class="card">
 		<div class="card-content">
 			<div class="row row_no_margin">
@@ -55,7 +55,9 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import {zabApi} from '@/helpers/axios.js';
+import { vatsimAuthRedirectUrl } from "@/helpers/uriHelper.js";
 
 export default {
 	name: 'Downloads',
@@ -73,6 +75,10 @@ export default {
 		});
 	},
 	methods: {
+		async login() {
+    		localStorage.setItem("redirect", this.$route.path);
+      		window.location.href = vatsimAuthRedirectUrl;
+   		 },
 		async getDownloads() {
 			const {data} = await  zabApi.get('/file/downloads');
 			this.downloads = data.data;
@@ -100,6 +106,9 @@ export default {
 			else return "Miscellaneous";
 		}
 	},
+	computed: {
+    ...mapState("user", ["user"]),
+  }
 };
 </script>
 
