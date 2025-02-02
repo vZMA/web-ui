@@ -8,7 +8,7 @@
 					</p>
 					<br />
 					<div class="center-align">
-						<button class="btn btn-waves login_button" @click="login">Login via VATSIM</button>
+						<button class="btn btn-waves login_button" @click="login">Login via VATSIM</button><br>
 					</div>
 				</div>
 		<div class="row" v-else>
