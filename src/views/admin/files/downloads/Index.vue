@@ -6,7 +6,15 @@
 				<div class="col s4"><router-link to="/admin/files/downloads/new"><span class="btn waves-effect waves-light new_event_button right">New</span></router-link></div>
 			</div>
 		</div>
-		<div class="loading_container" v-if="downloads === null">
+		<div v-if="!user.isLoggedIn">
+					<p>To access ZMA SOP's, LOAs and orther documents, all users need to log in via VATSIM.
+					</p>
+					<br />
+					<div class="center-align">
+						<button class="btn btn-waves login_button" @click="login">Login via VATSIM</button>
+					</div>
+				</div>
+		<div class="loading_container" v-else-if="downloads === null">
 			<Spinner />
 		</div>
 		<div class="no_downloads" v-else-if="downloads && downloads.length == 0">There are no downloads</div>
