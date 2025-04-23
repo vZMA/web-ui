@@ -17,7 +17,6 @@
 							<option value="iloa">LOA (int)</option>
 							<option value="eloa">LOA (ext)</option>
 							<option value="training">Training</option>
-							<option value="misc">Miscellaneous</option>
 						</select>
 						<label>Category</label>
 					</div>
