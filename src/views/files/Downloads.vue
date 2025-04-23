@@ -14,13 +14,13 @@
 		<div class="row" v-else>
 			<div class="col s12">
 				<ul class="tabs">
-					<li class="tab col s6 l2"><a class="active" href="#sector">Facility Files</a></li>
-					<li class="tab col s6 l2"><a href="#references">References</a></li>
-					<li class="tab col s6 l2"><a href="#mfr">SOPs and LOAs</a></li>
+					<li class="tab col s6 l2"><a class="active" href="#sector">Facility</a></li>
+					<li class="tab col s6 l2"><a href="#references">Refs.</a></li>
+					<li class="tab col s6 l2"><a href="#mfr">SOPs</a></li>
 					<li class="tab col s6 l2"><a href="#iloa">LOAs (int)</a></li>
 					<li class="tab col s6 l2"><a href="#eloa">LOAs (ext)</a></li>
-					<li class="tab col s6 l2"><a href="#training">Training</a></li>
-					<li class="tab col s6 l2"><a href="#misc">Miscellaneous</a></li>
+					<li class="tab col s6 l2"><a href="#training">Trng.</a></li>
+					<li class="tab col s6 l2"><a href="#misc">Misc.</a></li>
 					<!--<li class="tab col s6 l3"><a class="active" href="#sector">Facility Files</a></li>
 					<li class="tab col s6 l2"><a href="#references">References</a></li>
 					<li class="tab col s7 l4"><a href="#mfr">SOPs and LOAs</a></li>
