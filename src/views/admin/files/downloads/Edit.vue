@@ -16,7 +16,9 @@
 							<option value="" disabled selected>Choose a category</option>
 							<option value="sectorFiles">Facility Files</option>
 							<option value="references">References</option>
-							<option value="mfr">SOPs and LOAs</option>
+							<option value="mfr">SOPs</option>
+							<option value="iloa">LOA (int)</option>
+							<option value="eloa">LOA (ext)</option>
 							<option value="training">Training</option>
 							<option value="misc">Miscellaneous</option>
 						</select>

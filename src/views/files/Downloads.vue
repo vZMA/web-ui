@@ -17,6 +17,8 @@
 					<li class="tab col s6 l2"><a class="active" href="#sector">Facility Files</a></li>
 					<li class="tab col s6 l2"><a href="#references">References</a></li>
 					<li class="tab col s6 l2"><a href="#mfr">SOPs and LOAs</a></li>
+					<li class="tab col s6 l2"><a href="#iloa">LOAs (int)</a></li>
+					<li class="tab col s6 l2"><a href="#eloa">LOAs (ext)</a></li>
 					<li class="tab col s6 l2"><a href="#training">Training</a></li>
 					<li class="tab col s6 l2"><a href="#misc">Miscellaneous</a></li>
 					<!--<li class="tab col s6 l3"><a class="active" href="#sector">Facility Files</a></li>
@@ -69,6 +71,8 @@ export default {
 				references: fileData.data.filter(file => file.category === 'references'), 
 				training: fileData.data.filter(file => file.category === 'training'), 
 				mfr: fileData.data.filter(file => file.category === 'mfr'),
+				iloa: fileData.data.filter(file => file.category === 'iloa'),
+				eloa: fileData.data.filter(file => file.category === 'eloa'),
 				misc: fileData.data.filter(file => file.category === 'misc'),
 			};
 		},

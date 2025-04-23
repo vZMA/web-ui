@@ -102,7 +102,9 @@ export default {
 			if(cat == "sectorFiles") return "Facility Files";
 			else if(cat == "references") return "References";
 			else if(cat == "training") return "Training";
-			else if(cat == "mfr") return "SOP/LOA";
+			else if(cat == "mfr") return "SOP";
+			else if(cat == "iloa") return "LOA (int)";
+			else if(cat == "eloa") return "LOA (ext)";
 			else return "Miscellaneous";
 		}
 	},
