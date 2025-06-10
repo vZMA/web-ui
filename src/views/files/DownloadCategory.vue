@@ -2,8 +2,8 @@
 	<div :id="cat" class="col s12">
 		<div v-if="files.length === 0" class="no_files">No files in this category found</div>
 		<div class="download" v-else v-for="file in files" :key="file.id">
-			<div v-if="file.permalink && file.permalink.trim() !== ''"><a :href="`https://zmaartcc.net/files/downloads/permalink/${file.permalink}`" class="btn button"><i class="material-icons">file_download</i></a></div>
-			<div v-else><a :href="`https://zma-web.nyc3.digitaloceanspaces.com/downloads/${file.fileName}`" class="btn button"><i class="material-icons">file_download</i></a></div>
+			<!--<div v-if="file.permalink && file.permalink.trim() !== ''"><a :href="`https://zmaartcc.net/files/downloads/permalink/${file.permalink}`" class="btn button"><i class="material-icons">file_download</i></a></div>
+			<div v-else--><div><a :href="`https://zma-web.nyc3.digitaloceanspaces.com/downloads/${file.fileName}`" class="btn button" :download="isJson(file.fileName) ? '' : null"><i class="material-icons">file_download</i></a></div>
 			<div class="title">{{file.name}}</div>
 			<div class="desc">{{file.description}}</div>
 			<div v-if="file.permalink && file.permalink.trim() !== ''" class="info">Permalink: https://zmaartcc.net/files/downloads/permalink/{{ file.permalink }}</div>
@@ -14,7 +14,12 @@
 
 <script>
 export default {
-	props: ['cat', 'files']
+	props: ['cat', 'files'],
+	 methods: {
+    isJson(fileName) {
+      return fileName && fileName.toLowerCase().endsWith('.json');
+    }
+  }
 };
 </script>
 
