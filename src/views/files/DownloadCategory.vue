@@ -14,7 +14,12 @@
 
 <script>
 export default {
-	props: ['cat', 'files']
+  props: ['cat', 'files'],
+  methods: {
+    isJson(fileName) {
+      return fileName && fileName.toLowerCase().endsWith('.json');
+    }
+  }
 };
 </script>
 
