@@ -38,11 +38,15 @@
 					</div>
 					<div class="input-field col s6">
 						<div class="toggle-container">
-							<label class="toggle-label">
-								<input type="checkbox" v-model="form.ableToRequestTraining" class="toggle-checkbox">
-								<span class="toggle-slider"></span>
-								Able to request training
-							</label>
+							<label class="toggle-label">Able to request training:</label>
+							<button 
+								type="button" 
+								@click="form.ableToRequestTraining = !form.ableToRequestTraining"
+								class="toggle-btn"
+								:class="{ 'active': form.ableToRequestTraining }"
+							>
+								{{ form.ableToRequestTraining ? 'ON' : 'OFF' }}
+							</button>
 						</div>
 					</div>
 					<div class="input-field col s12">
@@ -316,57 +320,37 @@ export default {
 
 .toggle-container {
 	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
 }
 
 .toggle-label {
-	display: flex;
-	align-items: center;
-	cursor: pointer;
 	font-size: 14px;
 	color: #333;
+	margin: 0;
 }
 
-.toggle-checkbox {
-	display: none;
-}
-
-.toggle-slider {
-	position: relative;
-	width: 50px;
-	height: 24px;
-	background-color: #ccc;
-	border-radius: 12px;
-	margin-right: 10px;
-	transition: background-color 0.3s ease;
-}
-
-.toggle-slider:before {
-	content: '';
-	position: absolute;
-	top: 2px;
-	left: 2px;
-	width: 20px;
-	height: 20px;
-	background-color: white;
-	border-radius: 50%;
-	transition: transform 0.3s ease;
-}
-
-.toggle-checkbox:checked + .toggle-slider {
-	background-color: #4CAF50;
-}
-
-.toggle-checkbox:checked + .toggle-slider:before {
-	transform: translateX(26px);
-}
-
-.toggle-checkbox:checked + .toggle-slider:after {
-	content: '✓';
-	position: absolute;
-	top: 2px;
-	right: 6px;
-	color: white;
+.toggle-btn {
+	padding: 8px 16px;
+	border: 2px solid #ccc;
+	background-color: #f5f5f5;
+	color: #666;
+	border-radius: 4px;
+	cursor: pointer;
 	font-size: 12px;
 	font-weight: bold;
+	transition: all 0.3s ease;
+	min-width: 60px;
+}
+
+.toggle-btn:hover {
+	background-color: #e0e0e0;
+}
+
+.toggle-btn.active {
+	background-color: #4CAF50;
+	color: white;
+	border-color: #4CAF50;
 }
 </style>
