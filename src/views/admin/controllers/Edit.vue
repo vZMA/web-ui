@@ -36,6 +36,15 @@
 							<i v-else class="material-icons red-text text-darken-1">remove_circle</i>
 						</div>
 					</div>
+					<div class="input-field col s6">
+						<div class="toggle-container">
+							<label class="toggle-label">
+								<input type="checkbox" v-model="form.ableToRequestTraining" class="toggle-checkbox">
+								<span class="toggle-slider"></span>
+								Able to request training
+							</label>
+						</div>
+					</div>
 					<div class="input-field col s12">
 						<div id="certs_container">
 							<label for="minor_certs_container" class="active">Tier 2 Certifications:</label>
@@ -128,6 +137,7 @@ export default {
                 email: "",
                 oi: "",
                 vis: false,
+                ableToRequestTraining: false,
                 certs: {
                     zmo: false,
                     zma: false,
@@ -177,6 +187,7 @@ export default {
                 email: this.controller.email,
                 oi: this.controller.oi,
                 vis: this.controller.vis,
+                ableToRequestTraining: this.controller.ableToRequestTraining || false,
             };
             this.controller.certifications.forEach(cert => {
     			if (!cert.code.endsWith('s')) {
@@ -301,5 +312,61 @@ export default {
 
 .cert_container {
 	margin-bottom: 1.5rem;
+}
+
+.toggle-container {
+	margin-top: 20px;
+}
+
+.toggle-label {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	font-size: 14px;
+	color: #333;
+}
+
+.toggle-checkbox {
+	display: none;
+}
+
+.toggle-slider {
+	position: relative;
+	width: 50px;
+	height: 24px;
+	background-color: #ccc;
+	border-radius: 12px;
+	margin-right: 10px;
+	transition: background-color 0.3s ease;
+}
+
+.toggle-slider:before {
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 20px;
+	height: 20px;
+	background-color: white;
+	border-radius: 50%;
+	transition: transform 0.3s ease;
+}
+
+.toggle-checkbox:checked + .toggle-slider {
+	background-color: #4CAF50;
+}
+
+.toggle-checkbox:checked + .toggle-slider:before {
+	transform: translateX(26px);
+}
+
+.toggle-checkbox:checked + .toggle-slider:after {
+	content: '✓';
+	position: absolute;
+	top: 2px;
+	right: 6px;
+	color: white;
+	font-size: 12px;
+	font-weight: bold;
 }
 </style>
