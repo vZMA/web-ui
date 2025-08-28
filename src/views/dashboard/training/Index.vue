@@ -8,13 +8,13 @@
                   target="_blank"
                   rel="noopener noreferrer" class="btn">Training Information</a></span></div>
 				<div class="col s4"><span><a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSepMCaDsKmMNwez__TL8ZcbXpYHFR9xsFgle7I1--xPApxyjQ/viewform?usp=sf_linkhttps://docs.google.com/forms/d/e/1FAIpQLSepMCaDsKmMNwez__TL8ZcbXpYHFR9xsFgle7I1--xPApxyjQ/viewform?usp=sf_link"
+                  href="https://forms.gle/nSWHvoU1i3hM2fw37"
                   target="_blank"
                   rel="noopener noreferrer" class="btn">Join Training Queue</a></span></div>
 				<div class="col s4"><span><a
-                  href="https://docs.google.com/spreadsheets/d/1Ibs035rON0f2djtOhQq4_3SCnd9Cx5eh2_FnowLFNbI/edit?usp=sharing"
+                  href="https://forms.gle/zqP9rsufiwqxW4TN9"
                   target="_blank"
-                  rel="noopener noreferrer" class="btn">Training Queue</a></span></div>
+                  rel="noopener noreferrer" class="btn">Currency Form</a></span></div>
 				<!--<div class="col s4"><router-link to="/dash/training/new"><span class="btn new_event_button right">Request</span></router-link></div>-->
 			</div>
 		</div>
