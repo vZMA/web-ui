@@ -39,7 +39,9 @@
               <li>
                 <router-link to="/controllers/solopublic">Active Solo Certifications</router-link>
               </li>
-
+              <li>
+                <router-link to="https://infotool.zmaartcc.net">ZMA Info Tool</router-link>
+              </li>
               <li>
                 <router-link to="/controllers/staff">ARTCC Staff</router-link>
               </li>
