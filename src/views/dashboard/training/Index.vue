@@ -15,13 +15,10 @@
                   href="https://forms.gle/zqP9rsufiwqxW4TN9"
                   target="_blank"
                   rel="noopener noreferrer" class="btn">Currency Form</a></span></div>
-				<div class="col s4">
-				<span>
-					<a href="/dash/training/new" class="btn" style="width: 100%;" >
-					Request Training
-					</a>
-				</span>
-				</div>
+				<div class="col s4"><span><a
+                  href="/dash/training/new"
+                  target="_blank"
+                  rel="noopener noreferrer" class="btn">Request Training</a></span></div>
 
 			</div>
 		</div>
