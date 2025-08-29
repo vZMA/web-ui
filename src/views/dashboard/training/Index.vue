@@ -15,7 +15,7 @@
                   href="https://forms.gle/zqP9rsufiwqxW4TN9"
                   target="_blank"
                   rel="noopener noreferrer" class="btn">Currency Form</a></span></div>
-				<!--<div class="col s4"><router-link to="/dash/training/new"><span class="btn new_event_button right">Request</span></router-link></div>-->
+				<div class="col s4"><router-link to="/dash/training/new"><span class="btn new_event_button right">Request</span></router-link></div>
 			</div>
 		</div>
 		<div class="loading_container" v-if="!upcomingSessions">
@@ -24,7 +24,7 @@
 
 		<!-- ADD Buttons for links to Google Training Pages -->
 
-		<!--
+		
 		<p class="no_sessions" v-else-if="upcomingSessions && upcomingSessions.length === 0">You have no upcoming training sessions.</p>
 		
 		<div class="session_wrapper">
@@ -64,7 +64,7 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>-->
+		</div>
 	</div>
 	<PastSessions />
 </template>
