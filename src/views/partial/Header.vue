@@ -40,7 +40,10 @@
                 <router-link to="/controllers/solopublic">Active Solo Certifications</router-link>
               </li>
               <li>
-                <router-link to="https://infotool.zmaartcc.net">ZMA Info Tool</router-link>
+                <a
+                  href="https://infotool.zmaartcc.net/"
+                  target="_blank"
+                  rel="noopener noreferrer">ZMA Charts and Info</a>
               </li>
               <li>
                 <router-link to="/controllers/staff">ARTCC Staff</router-link>
@@ -53,24 +56,8 @@
           <li>
             <router-link to="/news">NEWS</router-link>
           </li>
-          <li class="has_dropdown" data-state="hide">
-            <a class="dropdown-left" href="#!" data-target="files-dropdown"
-              >FILES</a
-            >
-            <ul id="files-dropdown" class="dropdown-content">
-              <li>
-                <a
-                  href="https://infotool.zmaartcc.net/"
-                  target="_blank"
-                  rel="noopener noreferrer">ZMA Charts and Info</a>
-              </li>
-              <!--<li>
-                <router-link to="/files/documents">Documents</router-link>
-              </li> -->
-              <li>
-                <router-link to="/files/downloads">Downloads</router-link>
-              </li>
-            </ul>
+          <li>
+            <router-link to="/files/downloads">FILES</router-link>
           </li>
           <li>
             <router-link to="/feedback">FEEDBACK</router-link>
@@ -172,7 +159,7 @@
         <router-link class="sidenav-close" to="/news">NEWS</router-link>
       </li>
       <li>
-        <router-link to="/files/downloads">DOWNLOADS</router-link>
+        <router-link class="sidenav-close" to="/files/downloads">FILES</router-link>
       </li>
       <li>
         <router-link class="sidenav-close" to="/feedback">FEEDBACK</router-link>
