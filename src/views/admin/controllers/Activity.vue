@@ -8,6 +8,7 @@
 			<table class="medium striped" v-if="report">
 				<thead>
 					<th>Active?</th>
+					<th>Enough Hours</th>
 					<th @click="sort('fname')">
 						Controller
 						<div class="right">
@@ -46,6 +47,10 @@
 					<tr v-for="controller of sortedArray" :class="[(controller.tooLow)?'too_low':'',(controller.protected)?'protected':'']" :key="controller.cid">
 						<td>
 							<i class="material-icons green-text" v-if="!controller.tooLow || controller.protected">check</i>
+							<i class="material-icons red-text text-darken-1" v-else>close</i>
+						</td>
+						<td>
+							<i class="material-icons green-text" v-if="controller.totalTime >= 10800">check</i>
 							<i class="material-icons red-text text-darken-1" v-else>close</i>
 						</td>
 						<td>
