@@ -8,7 +8,14 @@
 			<table class="medium striped" v-if="report">
 				<thead>
 					<th>Active?</th>
-					<th>Enough Hours</th>
+					<th @click="sort('totalTime')">
+						Enough Hours
+						<div class="right">
+							<i class="material-icons" v-if="sortBy !== 'totalTime'">unfold_more</i>
+							<i class="material-icons active" v-else-if="sortBy === 'totalTime' && descending">arrow_drop_down</i>
+							<i class="material-icons active" v-else-if="sortBy === 'totalTime' && !descending">arrow_drop_up</i>
+						</div>
+					</th>
 					<th @click="sort('fname')">
 						Controller
 						<div class="right">
