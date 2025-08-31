@@ -9,7 +9,7 @@
         </div>
         <router-link to="/"
           ><img
-            src="https://zma-web.nyc3.digitaloceanspaces.com/images/zma_logo.png"
+            src="@/assets/images/miami_logo.png"
             alt=""
             draggable="false"
             height="125"
@@ -240,7 +240,7 @@ export default {
   margin: 0 auto;
   position: relative;
   &::before {
-    background: rgba($primary-color, 0.6);
+    background: rgba($primary-color, 0.8);
     height: 100%;
     width: 100%;
     left: 0;
@@ -265,7 +265,7 @@ export default {
     background-image: url("@/assets/images/hero/cactus.jpg");
   }
   &.hero6 {
-    background-image: url("@/assets/images/hero/miami.jpg");
+    background-image: url("@/assets/images/hero/miami.png");
   }
   &.hero_aprilfools {
     background-image: url("@/assets/images/hero/bb.jpg");
@@ -274,7 +274,7 @@ export default {
     padding: 2em 1em;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     position: relative;
     a {
       display: block;
@@ -283,15 +283,16 @@ export default {
       }
     }
     h1 {
+      font-family: 'Rig Sans', sans-serif;
       font-weight: 600;
       margin: 0;
-      font-size: 3rem;
+      font-size: 102px;
       color: #fff;
       text-shadow: -2px -2px 3px $primary-color-light;
+      text-align: center;
       span {
-        display: block;
-        margin-left: 50%;
-        font-size: 1.8rem;
+        display: inline;
+        font-size: 102px;
         font-weight: 400;
       }
     }
@@ -350,10 +351,10 @@ nav {
       width: auto;
     }
     h1 {
-      font-size: 32px;
+      font-size: 48px;
       margin: 20px 0 0 0;
       span {
-        font-size: 24px;
+        font-size: 48px;
       }
     }
   }
