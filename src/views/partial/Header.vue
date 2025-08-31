@@ -239,6 +239,11 @@ export default {
   max-width: 3840px;
   margin: 0 auto;
   position: relative;
+  min-height: 400px; 
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+
   &::before {
     background: rgba($primary-color, 0.8);
     height: 100%;
@@ -248,6 +253,7 @@ export default {
     content: "";
     position: absolute;
   }
+
   &.hero1 {
     background-image: url("@/assets/images/hero/grand_canyon.jpg");
     background-position: top 20% center;
@@ -270,38 +276,43 @@ export default {
   &.hero_aprilfools {
     background-image: url("@/assets/images/hero/bb.jpg");
   }
+
   .wrapper {
-    padding: 2em 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 3em 1em; 
     position: relative;
+    text-align: center;
+
     a {
       display: block;
       img {
         height: 125px;
       }
     }
+
     h1 {
       font-family: 'Rig Sans', sans-serif;
       font-weight: 600;
       margin: 0;
       font-size: 102px;
       color: #fff;
-      text-shadow: -2px -2px 3px $primary-color-light;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 3px $primary-color-light;
       text-align: center;
+
       span {
         display: inline;
         font-size: 102px;
-        font-weight: 400;
+        font-weight: 600;
+        font-family: 'Rig Sans', sans-serif;
       }
     }
   }
 }
+
 nav {
   background-color: $primary-color;
-  margin-top: 20px;
+  margin-top: 0; 
 }
+
 .user_dropdown_arrow {
   display: inline-block;
   display: inline-flex;
@@ -310,17 +321,21 @@ nav {
   margin-top: 1px;
   margin-left: -1px;
 }
+
 .nav_notifications {
   padding: 1px 0 0 0;
   transition: 0.3s ease;
   position: relative;
+
   &:hover {
     background: transparent;
     color: rgb(220, 220, 220);
   }
+
   i {
     font-size: 20px;
   }
+
   .new_notification {
     height: 7px;
     width: 7px;
@@ -331,12 +346,14 @@ nav {
     left: 11px;
   }
 }
+
 #notifications-dropdown {
   color: $primary-color;
   line-height: 1.1em;
   padding: 1em 1em 0.5em 1em;
   overflow: hidden;
 }
+
 .user_name {
   transition: 0.3s ease;
   &:hover {
@@ -344,9 +361,14 @@ nav {
     color: rgb(220, 220, 220);
   }
 }
+
 @media screen and (max-width: 910px) {
+  #header_hero {
+    min-height: 250px;
+  }
+
   #header_hero .wrapper {
-    padding: 15px;
+    padding: 20px;
     a img {
       height: 80px;
       width: auto;
@@ -360,4 +382,4 @@ nav {
     }
   }
 }
-</style> 
+</style>
