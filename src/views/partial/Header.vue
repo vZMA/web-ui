@@ -239,13 +239,13 @@ export default {
   max-width: 3840px;
   margin: 0 auto;
   position: relative;
-  min-height: 400px; 
+  min-height: 300px; 
   display: flex;
   align-items: center; 
   justify-content: center;
 
   &::before {
-    background: rgba($primary-color, 0.8);
+    background: rgba($primary-color, 0.6);
     height: 100%;
     width: 100%;
     left: 0;
