@@ -9,7 +9,7 @@
         </div>
         <router-link to="/"
           ><img
-            src="@/assets/images/miami_logo.png"
+            src="@/assets/images/hero/miami_logo.png"
             alt=""
             draggable="false"
             height="125"
