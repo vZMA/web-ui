@@ -4,7 +4,7 @@
       <div class="wrapper">
         <div>
           <router-link to="/"
-            ><h1>MIAMI<span>ARTCC</span></h1></router-link
+            ><h1>MIAMI ARTCC</h1></router-link
           >
         </div>
         <router-link to="/"
@@ -300,6 +300,7 @@ export default {
 }
 nav {
   background-color: $primary-color;
+  margin-top: 20px;
 }
 .user_dropdown_arrow {
   display: inline-block;
