@@ -99,6 +99,22 @@
         </div>
       </div>
     </div>
+
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Community Links</span>
+      </div>
+      <div class="community-links">
+        <a href="https://discord.gg/tAkpqtmSZz" target="_blank" rel="noopener noreferrer" class="community-link">
+          <i class="material-icons">discord</i>
+          <span>Discord</span>
+        </a>
+        <a href="https://www.youtube.com/@vatsimzma" target="_blank" rel="noopener noreferrer" class="community-link">
+          <i class="material-icons">play_circle</i>
+          <span>YouTube</span>
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -234,5 +250,39 @@ export default {
 
 #discord_widget {
   min-height: 500px;
+}
+
+.community-links {
+  padding: 10px;
+}
+
+.community-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+  margin-bottom: 8px;
+
+  &:hover {
+    background-color: #eaeaea;
+    text-decoration: none;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  i {
+    margin-right: 12px;
+    font-size: 20px;
+    color: $primary-color;
+  }
+
+  span {
+    font-weight: 500;
+  }
 }
 </style>
