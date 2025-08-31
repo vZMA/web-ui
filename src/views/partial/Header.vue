@@ -280,12 +280,17 @@ export default {
   .wrapper {
     padding: 3em 1em; 
     position: relative;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
 
     a {
       display: block;
       img {
         height: 125px;
+        width: auto;
+        object-fit: contain;
       }
     }
 
@@ -369,13 +374,16 @@ nav {
 
   #header_hero .wrapper {
     padding: 20px;
+    gap: 1em;
+    flex-direction: column;
     a img {
       height: 80px;
       width: auto;
+      object-fit: contain;
     }
     h1 {
       font-size: 48px;
-      margin: 20px 0 0 0;
+      margin: 0;
       span {
         font-size: 48px;
       }
