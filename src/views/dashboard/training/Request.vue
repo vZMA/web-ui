@@ -127,11 +127,11 @@ export default {
 				const offset = new Date().getTimezoneOffset();
 				const start = new Date(this.$refs.start_date.value);
 				const end = new Date(this.$refs.end_date.value);
-				
+
 				if(!this.request.milestone) {
 					this.toastError('You must select a milestone');
 				} else 	{// Check if this is an OTS and fix the window to a minimum of two hours
-						if (this.request.milestone.startsWith('CR') && (end-start< 2*60*60*1000)) {
+						if ((this.request.milestone.startsWith('CR') || this.request.milestone=='T1CR') && (end-start< 2*60*60*1000)) {
 							this.toastError('You must select a window of two hours or more for an OTS');
 						} else {
 						
