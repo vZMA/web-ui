@@ -125,32 +125,31 @@ export default {
 			try {
 				if(!this.request.milestone) {
 					this.toastError('You must select a milestone');
-				} else {
-					// Apply the correction for UTC to the local dates collected
-					const offset = new Date().getTimezoneOffset();
-					const start = new Date(this.$refs.start_date.value);
-					//start.setUTCMinutes(start.getMinutes()+offset);
-					const end = new Date(this.$refs.end_date.value);
-					//end.setUTCMinutes(end.getMinutes()+offset);
+				} else 	{// Check if this is an OTS and fix the window to a minimum of two hours
+						if (this.request.milestone.startsWith('CR') && (end-start< 2*60*60*1000)) {
+							this.toastError('You must select a window of two hours or more for an OTS');
+						} else {
+						// Apply the correction for UTC to the local dates collected
+						const offset = new Date().getTimezoneOffset();
+						const start = new Date(this.$refs.start_date.value);
+						//start.setUTCMinutes(start.getMinutes()+offset);
+						const end = new Date(this.$refs.end_date.value);
+						//end.setUTCMinutes(end.getMinutes()+offset);
 
-					// Check if this is an OTS and fix the window to a minimum of two hours
-					if (this.request.milestone.startsWith('CR') && (end-start< 2*60*60*1000)) {
-						end.setTime(start.getTime() + 2 * 60 * 60 * 1000);
-					}
-
-					this.makingRequest = true;
-					const {data} = await zabApi.post('/training/request/new', {
-						...this.request,
-						startTime: start,
-						endTime: end
-					});
-					if(data.ret_det.code === 200) {
-						this.toastSuccess('Training session requested');
-						this.$router.push('/dash/training');
-						this.makingRequest = false;
-					} else {
-						this.toastError(data.ret_det.message);
-						this.makingRequest = false;
+						this.makingRequest = true;
+						const {data} = await zabApi.post('/training/request/new', {
+							...this.request,
+							startTime: start,
+							endTime: end
+						});
+						if(data.ret_det.code === 200) {
+							this.toastSuccess('Training session requested');
+							this.$router.push('/dash/training');
+							this.makingRequest = false;
+						} else {
+							this.toastError(data.ret_det.message);
+							this.makingRequest = false;
+						}
 					}
 				}
 			} catch(e) {
