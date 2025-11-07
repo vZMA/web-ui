@@ -10,7 +10,8 @@
                     <p>
                         <b class="red-text">IMPORTANT:</b> PLEASE READ THESE INSTRUCTIONS.<br/><br/>
                         When choosing your availability, please include the entire window of your availability, whether
-                        it's 30 minutes or 4 hours. The Trainer has the ability to modify the session times to a more
+                        it's 30 minutes or 4 hours (An OTS requires a minimum of two hours). 
+						The Trainer has the ability to modify the session times to a more
                         reasonable duration, if needed, when s/he picks up the training session.
                     </p>
                     <br>
@@ -131,7 +132,12 @@ export default {
 					//start.setUTCMinutes(start.getMinutes()+offset);
 					const end = new Date(this.$refs.end_date.value);
 					//end.setUTCMinutes(end.getMinutes()+offset);
-								
+
+					// Check if this is an OTS and fix the window to a minimum of two hours
+					if (this.request.milestone.startsWith('CR') && (end-start< 2*60*60*1000)) {
+						end.setTime(start.getTime() + 2 * 60 * 60 * 1000);
+					}
+
 					this.makingRequest = true;
 					const {data} = await zabApi.post('/training/request/new', {
 						...this.request,
