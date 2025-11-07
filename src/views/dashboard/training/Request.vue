@@ -123,17 +123,18 @@ export default {
 	methods: {
 		async submitRequest() {
 			try {
+				// Apply the correction for UTC to the local dates collected
+				const offset = new Date().getTimezoneOffset();
+				const start = new Date(this.$refs.start_date.value);
+				const end = new Date(this.$refs.end_date.value);
+				
 				if(!this.request.milestone) {
 					this.toastError('You must select a milestone');
 				} else 	{// Check if this is an OTS and fix the window to a minimum of two hours
 						if (this.request.milestone.startsWith('CR') && (end-start< 2*60*60*1000)) {
 							this.toastError('You must select a window of two hours or more for an OTS');
 						} else {
-						// Apply the correction for UTC to the local dates collected
-						const offset = new Date().getTimezoneOffset();
-						const start = new Date(this.$refs.start_date.value);
-						//start.setUTCMinutes(start.getMinutes()+offset);
-						const end = new Date(this.$refs.end_date.value);
+						
 						//end.setUTCMinutes(end.getMinutes()+offset);
 
 						this.makingRequest = true;
