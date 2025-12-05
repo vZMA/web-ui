@@ -178,7 +178,7 @@ const routes = [
       },
       {
         path: "training/trainingreport",
-        component: () => import("../views/instructor/training/ControllerTraingingReport.vue"),
+        component: () => import("../views/instructor/training/ControllerTrainingReport.vue"),
       }
     ],
   },
