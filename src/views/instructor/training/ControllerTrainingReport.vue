@@ -30,6 +30,7 @@
           <tr>
             <th>Date</th>
             <th>Type</th>
+            <th>End</th>
             <th>Student</th>
             <th>Instructor</th>
             <th>Milestone</th>
@@ -40,6 +41,7 @@
           <tr v-for="item in report" :key="item._id">
             <td>{{ dtLong(item.date) }}</td>
             <td>{{ item.type }}</td>
+            <td>{{ item.end ? dtLong(item.end) : '' }}</td>
             <td>{{ item.student }}</td>
             <td>{{ item.instructor }}</td>
             <td>{{ item.milestone }}</td>
@@ -70,7 +72,6 @@ export default {
   watch: {
     cid() {
       clearTimeout(this.debounceTimer);
-
       this.debounceTimer = setTimeout(() => {
         this.loadReport();
       }, 500);
@@ -102,19 +103,28 @@ export default {
           zabApi.get(`/training/session/bystudent/${this.cid}`)
         ]);
 
-        const requests = reqRes.data.data.map(r => ({
-          _id: r._id,
-          type: 'Request',
-          date: r.startTime,
-          student: `${r.student?.fname || ''} ${r.student?.lname || ''}`.trim(),
-          instructor: `${r.instructor?.fname || ''} ${r.instructor?.lname || ''}`.trim(),
-          milestone: r.milestoneCode
-        }));
+        // Requests: compute end time from duration
+        const requests = reqRes.data.data.map(r => {
+          const start = new Date(r.startTime);
+          const end = new Date(start.getTime() + (r.duration || 0) * 60000);
 
+          return {
+            _id: r._id,
+            type: 'Request',
+            date: r.startTime,
+            end: end,
+            student: `${r.student?.fname || ''} ${r.student?.lname || ''}`.trim(),
+            instructor: `${r.instructor?.fname || ''} ${r.instructor?.lname || ''}`.trim(),
+            milestone: r.milestoneCode
+          };
+        });
+
+        // Sessions: end time is stored
         const sessions = sesRes.data.data.map(s => ({
           _id: s._id,
           type: 'Session',
           date: s.startTime,
+          end: s.endTime,
           student: `${s.student?.fname || ''} ${s.student?.lname || ''}`.trim(),
           instructor: `${s.instructor?.fname || ''} ${s.instructor?.lname || ''}`.trim(),
           milestone: s.milestoneCode
