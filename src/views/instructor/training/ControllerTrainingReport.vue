@@ -29,8 +29,8 @@
         <thead>
           <tr>
             <th>Date</th>
-            <th>Type</th>
             <th>End</th>
+            <th>Type</th>
             <th>Student</th>
             <th>Instructor</th>
             <th>Milestone</th>
@@ -40,8 +40,8 @@
         <tbody>
           <tr v-for="item in report" :key="item._id">
             <td>{{ dtLong(item.date) }}</td>
-            <td>{{ item.type }}</td>
             <td>{{ item.end ? dtLong(item.end) : '' }}</td>
+            <td>{{ item.type }}</td>
             <td>{{ item.student }}</td>
             <td>{{ item.instructor }}</td>
             <td>{{ item.milestone }}</td>
