@@ -26,7 +26,7 @@
 				<div class="secondary-content"><i class="material-icons">search</i></div>
 			</router-link>
 			<router-link to="/ins/training/trainingreport" class="collection-item" >
-				All Training Sessions
+				Student Training Report
 				<div class="secondary-content"><i class="material-icons">search</i></div>
 			</router-link>
 		</div>
