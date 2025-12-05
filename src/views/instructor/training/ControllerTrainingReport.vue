@@ -28,12 +28,13 @@
       >
         <thead>
           <tr>
-            <th>Date</th>
+            <th>Start</th>
             <th>End</th>
             <th>Type</th>
             <th>Student</th>
             <th>Instructor</th>
             <th>Milestone</th>
+            <th>Requested</th>
           </tr>
         </thead>
 
@@ -45,6 +46,7 @@
             <td>{{ item.student }}</td>
             <td>{{ item.instructor }}</td>
             <td>{{ item.milestone }}</td>
+            <td>{{ item.requested ? dtLong(item.requested) : '' }}</td>
           </tr>
         </tbody>
       </table>
@@ -103,7 +105,6 @@ export default {
           zabApi.get(`/training/session/bystudent/${this.cid}`)
         ]);
 
-        // Requests: compute end time from duration
         const requests = reqRes.data.data.map(r => {
           const start = new Date(r.startTime);
           const end = new Date(start.getTime() + (r.duration || 0) * 60000);
@@ -111,6 +112,7 @@ export default {
           return {
             _id: r._id,
             type: 'Request',
+            requested: r.createdAt,
             date: r.startTime,
             end: end,
             student: `${r.student?.fname || ''} ${r.student?.lname || ''}`.trim(),
@@ -119,10 +121,10 @@ export default {
           };
         });
 
-        // Sessions: end time is stored
         const sessions = sesRes.data.data.map(s => ({
           _id: s._id,
           type: 'Session',
+          requested: s.createdAt,
           date: s.startTime,
           end: s.endTime,
           student: `${s.student?.fname || ''} ${s.student?.lname || ''}`.trim(),
