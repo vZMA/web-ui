@@ -176,6 +176,10 @@ const routes = [
         path: "training/session/:id",
         component: () => import("../views/instructor/training/ViewSession.vue"),
       },
+      {
+        path: "training/trainingreport",
+        component: () => import("../views/instructor/training/ControllerTraingingReport.vue"),
+      }
     ],
   },
   {
