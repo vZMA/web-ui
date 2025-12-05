@@ -7,25 +7,24 @@
 
         <div class="cid_input">
           <input
-            v-model="cid"
+            v-model="searchValue"
             type="text"
-            placeholder="Enter Student CID"
+            placeholder="CID, Name, or OI"
+            autocomplete="off"
           >
+          <span class="helper-text right">Search by CID, name, or operating initials</span>
         </div>
       </div>
 
-      <div class="loading_container" v-if="loading === true">
+      <div class="loading_container" v-if="loading">
         <Spinner />
       </div>
 
-      <div v-if="loading === false && report.length === 0">
+      <div v-if="!loading && report.length === 0">
         No training data found.
       </div>
 
-      <table
-        v-if="loading === false && report.length > 0"
-        class="striped"
-      >
+      <table v-if="!loading && report.length > 0" class="striped">
         <thead>
           <tr>
             <th>Start</th>
@@ -64,25 +63,36 @@ export default {
 
   data() {
     return {
-      cid: '',
+      searchValue: '',
+      controllers: [],
       report: [],
       loading: false,
       debounceTimer: null
     };
   },
 
+  async mounted() {
+    await this.loadControllers();
+  },
+
   watch: {
-    cid() {
+    searchValue() {
       clearTimeout(this.debounceTimer);
       this.debounceTimer = setTimeout(() => {
         this.loadReport();
-      }, 500);
+      }, 400);
     }
   },
 
   methods: {
-    dtLong(value) {
-      return new Date(value).toLocaleString('en-US', {
+    async loadControllers() {
+      const { data } = await zabApi.get('/controller');
+      const all = data.data.home.concat(data.data.visiting);
+      this.controllers = all.filter(c => c.member);
+    },
+
+    dtLong(v) {
+      return new Date(v).toLocaleString('en-US', {
         month: 'short',
         day: 'numeric',
         year: 'numeric',
@@ -91,8 +101,19 @@ export default {
       });
     },
 
+    filterMatchingControllers() {
+      const search = new RegExp(this.searchValue, 'ig');
+      return this.controllers.filter(c =>
+        c.fname.match(search) ||
+        c.lname.match(search) ||
+        c.oi.match(search) ||
+        c.cid.toString().match(search)
+      );
+    },
+
     async loadReport() {
-      if (!this.cid) {
+      const text = this.searchValue.trim();
+      if (!text) {
         this.report = [];
         return;
       }
@@ -100,45 +121,51 @@ export default {
       this.loading = true;
 
       try {
-        const [reqRes, sesRes] = await Promise.all([
-          zabApi.get(`/training/request/bystudent/${this.cid}`),
-          zabApi.get(`/training/session/bystudent/${this.cid}`)
-        ]);
+        // Use the SAME logic as the Controllers page
+        const matches = this.filterMatchingControllers();
+        const cids = matches.map(c => c.cid);
 
-        const requests = reqRes.data.data.map(r => {
-          const start = new Date(r.startTime);
-          const end = new Date(start.getTime() + (r.duration || 0) * 60000);
+        let results = [];
 
-          return {
-            _id: r._id,
-            type: 'Request',
-            requested: r.createdAt,
-            date: r.startTime,
-            end: end,
-            student: `${r.student?.fname || ''} ${r.student?.lname || ''}`.trim(),
-            instructor: `${r.instructor?.fname || ''} ${r.instructor?.lname || ''}`.trim(),
-            milestone: r.milestoneCode
-          };
-        });
+        for (const cid of cids) {
+          const [reqRes, sesRes] = await Promise.all([
+            zabApi.get(`/training/request/bystudent/${cid}`),
+            zabApi.get(`/training/session/bystudent/${cid}`)
+          ]);
 
-        const sessions = sesRes.data.data.map(s => ({
-          _id: s._id,
-          type: 'Session',
-          requested: s.createdAt,
-          date: s.startTime,
-          end: s.endTime,
-          student: `${s.student?.fname || ''} ${s.student?.lname || ''}`.trim(),
-          instructor: `${s.instructor?.fname || ''} ${s.instructor?.lname || ''}`.trim(),
-          milestone: s.milestoneCode
-        }));
+          const requests = reqRes.data.data.map(r => {
+            const start = new Date(r.startTime);
+            const end = new Date(start.getTime() + (r.duration || 0) * 60000);
+            return {
+              _id: r._id,
+              type: 'Request',
+              requested: r.createdAt,
+              date: r.startTime,
+              end: end,
+              student: `${r.student?.fname} ${r.student?.lname}`.trim(),
+              instructor: `${r.instructor?.fname || ''} ${r.instructor?.lname || ''}`.trim(),
+              milestone: r.milestoneCode
+            };
+          });
 
-        const merged = [...requests, ...sessions];
+          const sessions = sesRes.data.data.map(s => ({
+            _id: s._id,
+            type: 'Session',
+            requested: s.createdAt,
+            date: s.startTime,
+            end: s.endTime,
+            student: `${s.student?.fname} ${s.student?.lname}`.trim(),
+            instructor: `${s.instructor?.fname || ''} ${s.instructor?.lname || ''}`.trim(),
+            milestone: s.milestoneCode
+          }));
 
-        merged.sort((a, b) => new Date(b.date) - new Date(a.date));
+          results.push(...requests, ...sessions);
+        }
 
-        this.report = merged;
-      } catch (err) {
-        console.log(err);
+        results.sort((a, b) => new Date(b.date) - new Date(a.date));
+        this.report = results;
+      } catch (e) {
+        console.log(e);
       }
 
       this.loading = false;
@@ -155,7 +182,7 @@ export default {
 }
 
 .cid_input {
-  width: 150px;
+  width: 240px;
 }
 
 .cid_input input {
