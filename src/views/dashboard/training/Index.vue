@@ -3,14 +3,7 @@
 		<div class="card-content">
 			<div class="row row_no_margin">
 				<div class="card-title col s12"><span class="card-title">Training Information and Queues</span></div>
-				<div class="col s4"><span><a
-                  href="https://forms.gle/nSWHvoU1i3hM2fw37"
-                  target="_blank"
-                  rel="noopener noreferrer" class="btn">Join Training Queue</a></span></div>
-				<div class="col s4"><span><a
-                  href="https://forms.gle/zqP9rsufiwqxW4TN9"
-                  target="_blank"
-                  rel="noopener noreferrer" class="btn">Currency Form</a></span></div>
+				
 				<div class="col s4"><span><a
                   href="/dash/training/new"
                   target="_blank"
