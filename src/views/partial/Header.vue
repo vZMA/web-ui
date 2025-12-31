@@ -52,6 +52,7 @@
           </li>
           <li>
               <a
+                  v-show="user.isLoggedIn"
                   href="https://sites.google.com/view/miami-artcc-training-academy"
                   target="_blank"
                   rel="noopener noreferrer">TRAINING ACADEMY</a>
