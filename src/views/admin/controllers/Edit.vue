@@ -59,9 +59,9 @@
 									@click="toggleCert">TPA Tower</span>
 								<span id="app" :class="{active: form.certs.app}" class="cert cert_minor"
 									@click="toggleCert">TPA Approach</span>
-								<span id="gnd" :class="{active: form.certs.fllgnd}" class="cert cert_minor"
+								<span id="fllgnd" :class="{active: form.certs.fllgnd}" class="cert cert_minor"
 									@click="toggleCert">FLL Del. / Ground</span>
-								<span id="twr" :class="{active: form.certs.flltwr}" class="cert cert_minor"
+								<span id="flltwr" :class="{active: form.certs.flltwr}" class="cert cert_minor"
 									@click="toggleCert">FLL Tower</span>
 								<span id="zma" :class="{active: form.certs.zma}" class="cert cert_minor"
 									@click="toggleCert">Domestic Center</span>
