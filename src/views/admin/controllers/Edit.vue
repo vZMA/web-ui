@@ -69,26 +69,13 @@
 							<label for="miami_certs_container" class="active">Tier 1 Certifications:</label>
 							<div id="miami_certs_container" class="cert_container">
 								<span id="miagnd" :class="{active: form.certs.miagnd}" class="cert cert_major"
-									@click="toggleCert">Tier 1 Del. / Ground</span>
+									@click="toggleCert">MIA Del. / Ground</span>
 								<span id="miatwr" :class="{active: form.certs.miatwr}" class="cert cert_major"
-									@click="toggleCert">Tier 1 Tower</span>
+									@click="toggleCert">MIA Tower</span>
 								<span id="miaapp" :class="{active: form.certs.miaapp}" class="cert cert_major"
-									@click="toggleCert">Tier 1 Approach</span>
-								
-								<!-- <span id="zmo" :class="{active: form.certs.zmo}" class="cert cert_center"
-									@click="toggleCert">Oceanic Center</span> -->
+									@click="toggleCert">MIA Approach</span>
 							</div>
-							<!--<label for="solo_certs_container" class="active">Solo Certifications:</label>
-							<div id="solo_certs_container" class="cert_container">
-								<span id="twrs" :class="{active: form.certs.twrs}" class="cert cert_solo"
-									@click="toggleCert">Tower (Solo)</span>
-								<span id="apps" :class="{active: form.certs.apps}" class="cert cert_solo"
-									@click="toggleCert">Approach (Solo)</span>
-								<span id="miazmas" :class="{active: form.certs.miazmas}" class="cert cert_solo"
-									@click="toggleCert">Domestic Center (Solo)</span>
-								 <span id="miazmos" :class="{active: form.certs.miazmos}" class="cert cert_solom"
-									@click="toggleCert">Oceanic Center (Solo)</span>
-							</div>-->
+
 						</div>
 					</div>
 					<div class="input-field col s12">
@@ -158,16 +145,6 @@ export default {
                     gnd: false,
 					fllgnd: false,
 					flltwr: false
-                    //dels: false,
-                    //gnds: false,
-                    //twrs: false,
-                    //apps: false,
-                    //miadels: false,
-                    //miagnds: false,
-                    //miatwrs: false,
-                    //miaapps: false,
-                    //miazmas: false,
-                    //miazmos: false
                 },
                 roles: {
                     atm: false,
