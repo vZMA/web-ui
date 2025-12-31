@@ -51,6 +51,12 @@
              </ul>
           </li>
           <li>
+              <a
+                  href="https://sites.google.com/view/miami-artcc-training-academy"
+                  target="_blank"
+                  rel="noopener noreferrer">TRAINING ACADEMY</a>
+              </li>
+          <li>
             <router-link to="/events">EVENTS</router-link>
           </li>
           <li>
