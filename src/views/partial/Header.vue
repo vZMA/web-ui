@@ -160,6 +160,14 @@
         <router-link to="/controllers/staff">STAFF</router-link>
       </li>
       <li>
+              <a
+                  v-show="user.isLoggedIn"
+                  href="https://sites.google.com/view/miami-artcc-training-academy"
+                  target="_blank"
+                  rel="noopener noreferrer">TRAINING ACADEMY</a>
+              </li>
+          <li>
+      <li>
         <router-link class="sidenav-close" to="/events">EVENTS</router-link>
       </li>
       <li>
