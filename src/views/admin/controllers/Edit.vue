@@ -54,11 +54,17 @@
 							<label for="minor_certs_container" class="active">Tier 2 Certifications:</label>
 							<div id="minor_certs_container" class="cert_container">
 								<span id="gnd" :class="{active: form.certs.gnd}" class="cert cert_minor"
-									@click="toggleCert">Tier 2 Del. / Ground</span>
+									@click="toggleCert">TPA Del. / Ground</span>
 								<span id="twr" :class="{active: form.certs.twr}" class="cert cert_minor"
-									@click="toggleCert">Tier 2 Tower</span>
+									@click="toggleCert">TPA Tower</span>
 								<span id="app" :class="{active: form.certs.app}" class="cert cert_minor"
-									@click="toggleCert">Tier 2 Approach</span>
+									@click="toggleCert">TPA Approach</span>
+								<span id="gnd" :class="{active: form.certs.fllgnd}" class="cert cert_minor"
+									@click="toggleCert">FLL Del. / Ground</span>
+								<span id="twr" :class="{active: form.certs.flltwr}" class="cert cert_minor"
+									@click="toggleCert">FLL Tower</span>
+								<span id="zma" :class="{active: form.certs.zma}" class="cert cert_minor"
+									@click="toggleCert">Domestic Center</span>
 							</div>
 							<label for="miami_certs_container" class="active">Tier 1 Certifications:</label>
 							<div id="miami_certs_container" class="cert_container">
@@ -68,8 +74,7 @@
 									@click="toggleCert">Tier 1 Tower</span>
 								<span id="miaapp" :class="{active: form.certs.miaapp}" class="cert cert_major"
 									@click="toggleCert">Tier 1 Approach</span>
-								<span id="zma" :class="{active: form.certs.zma}" class="cert cert_center"
-									@click="toggleCert">Domestic Center</span>
+								
 								<!-- <span id="zmo" :class="{active: form.certs.zmo}" class="cert cert_center"
 									@click="toggleCert">Oceanic Center</span> -->
 							</div>
@@ -150,7 +155,9 @@ export default {
                     miagnd: false,
                     app: false,
                     twr: false,
-                    gnd: false
+                    gnd: false,
+					fllgnd: false,
+					flltwr: false
                     //dels: false,
                     //gnds: false,
                     //twrs: false,
