@@ -10,7 +10,7 @@
                     <p>
                         <b class="red-text">IMPORTANT:</b> PLEASE READ THESE INSTRUCTIONS.<br/><br/>
                         When submitting your availability, please include your entire availability window. You must provide a minimum of two consecutive hours.
-						<br/>
+						<br/><br/>
 						If a trainer accepts your training request, you will receive an email notification. This training request system may not be used for Rating Exams. 
 						Please note that your primary method of scheduling training is through direct coordination with your Primary Trainer via your 
 						dedicated training thread.
