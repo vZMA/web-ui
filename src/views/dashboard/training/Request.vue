@@ -9,19 +9,18 @@
 				<div class="col s12 l6 push-l6">
                     <p>
                         <b class="red-text">IMPORTANT:</b> PLEASE READ THESE INSTRUCTIONS.<br/><br/>
-                        When choosing your availability, please include the entire window of your availability, whether
-                        it's 30 minutes or 4 hours (An OTS requires a minimum of two hours). 
-						The Trainer has the ability to modify the session times to a more
-                        reasonable duration, if needed, when s/he picks up the training session.
+                        When submitting your availability, please include your entire availability window. You must provide a minimum of two consecutive hours.
+						<br/>
+						If a trainer accepts your training request, you will receive an email notification. This training request system may not be used for Rating Exams. 
+						Please note that your primary method of scheduling training is through direct coordination with your Primary Trainer via your 
+						dedicated training thread.
                     </p>
                     <br>
                     <b>By submitting this training request, you acknowledge:</b>
                     <ol>
-                        <li>This is a <em>request</em> and not a guarantee of training.</li>
-                        <li>You are required to keep your availability up-to-date.</li>
-                        <li>You have completed the pre-requisites as outlined in the applicable Training Program
-                            document.
-                        </li>
+                        <li>Submission of a request does not guarantee a training session.</li>
+                        <li>You are responsible for keeping your availability accurate and up to date.</li>
+                        <li>You will adhere to the T01 Training Policy at all times.</li>
                     </ol>
 				</div>
 				<div class="col s12 l6 pull-l6">
