@@ -114,13 +114,13 @@ export default {
       }
     },
     async submitApplication() {
+      const email = this.$refs.email.value;
+      if (!this.form.facility || !this.form.reason || !email) {
+        this.toastError("Please fill out all required fields");
+        return;
+      }
+      this.$refs.submitButton.classList.add("disabled");
       try {
-        const email = this.$refs.email.value;
-        if (!this.form.facility || !this.form.reason || !email) {
-          this.toastError("Please fill out all required fields");
-          return;
-        }
-        this.$refs.submitButton.classList.add("disabled");
         const { data } = await zabApi.post("/controller/visit", {
           ...this.form,
           email,
@@ -130,9 +130,12 @@ export default {
           this.$router.push("/");
         } else {
           this.toastError(data.ret_det.message);
+          this.$refs.submitButton.classList.remove("disabled");
         }
       } catch (e) {
         console.log(e);
+        this.toastError("Something went wrong, please try again");
+        this.$refs.submitButton.classList.remove("disabled");
       }
     },
   },
