@@ -115,10 +115,15 @@ export default {
     },
     async submitApplication() {
       try {
+        const email = this.$refs.email.value;
+        if (!this.form.facility || !this.form.reason || !email) {
+          this.toastError("Please fill out all required fields");
+          return;
+        }
         this.$refs.submitButton.classList.add("disabled");
         const { data } = await zabApi.post("/controller/visit", {
           ...this.form,
-          email: this.$refs.email.value,
+          email,
         });
         if (data.ret_det.code === 200) {
           this.toastSuccess("Visitor application submitted");
