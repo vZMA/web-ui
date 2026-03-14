@@ -208,15 +208,17 @@ export default {
 				// Error check the fields
 				if (!this.session.position)
 					this.toastError("Position is required on page 1");
-				if (!this.session.movements)
-					this.toastError("Movements is required on page 2");
-				if (!this.session.location)
+				if (this.session.movements == null || this.session.movements <= 0)
+					this.toastError("Movements must be greater than 0 on page 2");
+				if (this.session.location == null)
 					this.toastError("Location is required on page 2");
 				if (!this.session.studentNotes)
 					this.toastError("Student Notes are required on page 3");
 
-				if (this.session.location != null &&
-					this.session.studentNotes != null) {
+				if (this.session.position &&
+					this.session.movements > 0 &&
+					this.session.location != null &&
+					this.session.studentNotes) {
 					try {	// Hit the local database to Finalize the record
 				
 						const {data} = await zabApi.put(`/training/session/submit/${this.$route.params.id}`, this.session);
