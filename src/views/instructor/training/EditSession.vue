@@ -206,6 +206,10 @@ export default {
 
 
 				// Error check the fields
+				if (!this.session.position)
+					this.toastError("Position is required on page 1");
+				if (!this.session.movements)
+					this.toastError("Movements is required on page 2");
 				if (!this.session.location)
 					this.toastError("Location is required on page 2");
 				if (!this.session.studentNotes)
