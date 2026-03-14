@@ -162,7 +162,7 @@ export default {
 				console.log(e);
 			}
 		},
-		async saveForm() {
+		async saveForm(redirect = true) {
 			try {
 				const {data} = await zabApi.put(`/training/session/save/${this.$route.params.id}`, {
 					position: this.session.position,
@@ -176,13 +176,18 @@ export default {
 					insNotes: this.session.insNotes
 				});
 				if(data.ret_det.code === 200) {
-					this.toastSuccess('Session notes saved');
-					this.$router.push('/ins/training/sessions');
+					if(redirect) {
+						this.toastSuccess('Session notes saved');
+						this.$router.push('/ins/training/sessions');
+					}
+					return true;
 				} else {
 					this.toastError(data.ret_det.message);
+					return false;
 				}
 			} catch(e) {
 				console.log(e);
+				return false;
 			}
 		},
 		async submitForm() {
@@ -196,7 +201,8 @@ export default {
 				this.duration = `${('00' + hours).slice(-2)}:${('00' + minutes).slice(-2)}`;
 
 				// Force Save the data to the local database
-				await this.saveForm();
+				const saved = await this.saveForm(false);
+				if(!saved) return;
 
 
 				// Error check the fields
