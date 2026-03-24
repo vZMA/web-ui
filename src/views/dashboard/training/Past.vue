@@ -64,6 +64,11 @@ export default {
 			margin: 0
 		});
 	},
+	watch: {
+		page() {
+			this.getPastSessions();
+		}
+	},
 	methods: {
 		async getPastSessions() {
 			const {data} = await zabApi.get(`/training/sessions/past`, {
