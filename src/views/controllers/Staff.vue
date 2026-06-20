@@ -24,18 +24,20 @@
 						<div class="col s4 border_right hide-on-med-and-down"></div>
 					</div>
 					<div class="row">
-						<div class="col s12 l4 push-l4">
-							<StaffCard :staffItem="staff.datm" />
-						</div>
-						<div class="col s12 l4 pull-l4">
+						<div class="col s12 l4 pull-l4 col_gap">
 							<StaffCard :staffItem="staff.ta" />
+							<div class="connector hide-on-med-and-down"></div>
+							<StaffCard :staffItem="staff.ata" />
 						</div>
-						<div class="col s12 l4">
+						<div class="col s12 l4 push-l4 col_gap">
+							<StaffCard :staffItem="staff.datm" />
+							<div class="connector connector_trunk hide-on-med-and-down"></div>
+						</div>
+						<div class="col s12 l4 col_gap">
 							<StaffCard :staffItem="staff.wm" />
+							<div class="connector hide-on-med-and-down"></div>
+							<StaffCard :staffItem="staff.awm" />
 						</div>
-					</div>
-					<div class="row">
-						<div class="col s1 push-s5 border_right border_long hide-on-med-and-down"></div>
 					</div>
 					<div class="row">
 						<div class="col s6 push-s3 border_top hide-on-med-and-down"></div>
@@ -45,11 +47,15 @@
 						<div class="col s4 push-s4 border_right hide-on-med-and-down"></div>
 					</div>
 					<div class="row">
-						<div class="col s12 l6">
+						<div class="col s12 l6 col_gap">
 							<StaffCard :staffItem="staff.ec" />
+							<div class="connector hide-on-med-and-down"></div>
+							<StaffCard :staffItem="staff.aec" />
 						</div>
-						<div class="col s12 l6">
+						<div class="col s12 l6 col_gap">
 							<StaffCard :staffItem="staff.fe" />
+							<div class="connector hide-on-med-and-down"></div>
+							<StaffCard :staffItem="staff.afe" />
 						</div>
 					</div>
 				</div>
@@ -65,6 +71,14 @@
 					<div class="row">
 						<div class="col s12 l4 push-l4">
 							<StaffCard :staffItem="staff.ta" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s1 push-s5 border_right hide-on-med-and-down"></div>
+					</div>
+					<div class="row">
+						<div class="col s12 l4 push-l4">
+							<StaffCard :staffItem="staff.ata" />
 						</div>
 					</div>
 					<div class="row">
@@ -197,6 +211,17 @@ export default {
 
 .col_gap {
 	padding: 0 0.5em;
+}
+
+.connector {
+	width: 0;
+	height: 25px;
+	border-left: 3px solid $primary-color;
+	margin: -0.25rem auto 0.25rem;
+}
+
+.connector_trunk {
+	height: 110px;
 }
 
 @media only screen and (max-width: 992px) {
