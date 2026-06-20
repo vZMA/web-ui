@@ -23,7 +23,7 @@
 						<div class="col s5 border_right hide-on-med-and-down"></div>
 						<div class="col s4 border_right hide-on-med-and-down"></div>
 					</div>
-					<div class="row">
+					<div class="row tier_row">
 						<div class="col s12 l4 push-l4 col_gap">
 							<StaffCard :staffItem="staff.datm" />
 							<div class="connector connector_trunk hide-on-med-and-down"></div>
@@ -220,8 +220,25 @@ export default {
 	margin: -0.25rem auto 0.25rem;
 }
 
-.connector_trunk {
-	height: 110px;
+// On large screens the tier becomes a flex row so the centre (DATM) column
+// stretches to match the taller side columns, and the trunk grows to fill the
+// remaining height down to the EC/FE bus — no fixed pixel tuning required.
+@media only screen and (min-width: 993px) {
+	.tier_row {
+		display: flex;
+		align-items: stretch;
+	}
+
+	.tier_row > .col {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.connector_trunk {
+		flex: 1 0 0;
+		height: auto;
+		margin-bottom: 0;
+	}
 }
 
 @media only screen and (max-width: 992px) {
