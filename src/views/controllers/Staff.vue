@@ -71,14 +71,6 @@
 						<div class="col s1 push-s5 border_right hide-on-med-and-down"></div>
 					</div>
 					<div class="row">
-						<div class="col s12 l4 push-l4">
-							<StaffCard :staffItem="staff.ata" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="col s1 push-s5 border_right hide-on-med-and-down"></div>
-					</div>
-					<div class="row">
 						<div class="col s6 push-s3 border_top hide-on-med-and-down"></div>
 					</div>
 					<div class="row">
@@ -86,13 +78,13 @@
 						<div class="col s4 push-s4 border_right hide-on-med-and-down"></div>
 					</div>
 					<div class="row">
-						<div class="col s12 l6">
+						<div class="col s12 l6 col_gap">
 							<StaffCard :staffItem="staff.ins" />
 						</div>
-						<div class="col s12 l6">
+						<div class="col s12 l6 col_gap">
 							<StaffCard :staffItem="staff.mtr" />
 						</div>
-						<div class="col s12 l6">
+						<div class="col s12 l6 col_gap">
 							<div class="card">
 							<div class="card-content">
 								<h5 class="staff_heading">ZMO ACAs</h5>
@@ -201,6 +193,10 @@ export default {
 
 .card_margin {
 	margin: .5em 0 1em 0;
+}
+
+.col_gap {
+	padding: 0 0.5em;
 }
 
 @media only screen and (max-width: 992px) {
