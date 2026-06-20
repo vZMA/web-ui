@@ -87,7 +87,7 @@
 								@click="toggleRole">DATM</span>
 							<span id="ta" class="cert cert_senior" :class="{active: form.roles.ta}"
 								@click="toggleRole">TA</span>
-							<span id="ta" class="cert cert_senior" :class="{active: form.roles.ata}"
+							<span id="ata" class="cert cert_senior" :class="{active: form.roles.ata}"
 								@click="toggleRole">ATA</span>	
 							<span id="ec" class="cert cert_junior" :class="{active: form.roles.ec}"
 								@click="toggleRole">EC</span>
