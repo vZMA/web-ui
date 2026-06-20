@@ -87,12 +87,20 @@
 								@click="toggleRole">DATM</span>
 							<span id="ta" class="cert cert_senior" :class="{active: form.roles.ta}"
 								@click="toggleRole">TA</span>
+							<span id="ta" class="cert cert_senior" :class="{active: form.roles.ata}"
+								@click="toggleRole">ATA</span>	
 							<span id="ec" class="cert cert_junior" :class="{active: form.roles.ec}"
 								@click="toggleRole">EC</span>
+							<span id="ec" class="cert cert_junior" :class="{active: form.roles.aec}"
+								@click="toggleRole">AEC</span>
 							<span id="fe" class="cert cert_junior" :class="{active: form.roles.fe}"
 								@click="toggleRole">FE</span>
+							<span id="fe" class="cert cert_junior" :class="{active: form.roles.afe}"
+								@click="toggleRole">AFE</span>
 							<span id="wm" class="cert cert_junior" :class="{active: form.roles.wm}"
 								@click="toggleRole">WM</span>
+							<span id="wm" class="cert cert_junior" :class="{active: form.roles.awm}"
+								@click="toggleRole">AWM</span>
 							<span id="ins" class="cert cert_training" :class="{active: form.roles.ins}"
 								@click="toggleRole">INS</span>
 							<span id="mtr" class="cert cert_training" :class="{active: form.roles.mtr}"
