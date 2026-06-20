@@ -24,14 +24,14 @@
 						<div class="col s4 border_right hide-on-med-and-down"></div>
 					</div>
 					<div class="row">
+						<div class="col s12 l4 push-l4 col_gap">
+							<StaffCard :staffItem="staff.datm" />
+							<div class="connector connector_trunk hide-on-med-and-down"></div>
+						</div>
 						<div class="col s12 l4 pull-l4 col_gap">
 							<StaffCard :staffItem="staff.ta" />
 							<div class="connector hide-on-med-and-down"></div>
 							<StaffCard :staffItem="staff.ata" />
-						</div>
-						<div class="col s12 l4 push-l4 col_gap">
-							<StaffCard :staffItem="staff.datm" />
-							<div class="connector connector_trunk hide-on-med-and-down"></div>
 						</div>
 						<div class="col s12 l4 col_gap">
 							<StaffCard :staffItem="staff.wm" />
