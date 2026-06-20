@@ -71,6 +71,14 @@
 						<div class="col s1 push-s5 border_right hide-on-med-and-down"></div>
 					</div>
 					<div class="row">
+						<div class="col s12 l4 push-l4">
+							<StaffCard :staffItem="staff.ata" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s1 push-s5 border_right hide-on-med-and-down"></div>
+					</div>
+					<div class="row">
 						<div class="col s6 push-s3 border_top hide-on-med-and-down"></div>
 					</div>
 					<div class="row">
