@@ -24,7 +24,7 @@
 					<tr v-for="session in sessions" :key="session._id" :class="{ 'cancelled': session.milestoneCode === 'CAN' }">
 						<td :class="{ 'cancelled': session.milestoneCode === 'CAN' }">{{ session.student ? `${session.student.fname} ${session.student.lname}` : session.studentCid}}</td>
 						<td :class="{ 'cancelled': session.milestoneCode === 'CAN' }">{{dtLong(session.startTime)}}</td>
-						<td :class="{ 'cancelled': session.milestoneCode === 'CAN' }">{{session.milestone.name}}</td>
+						<td :class="{ 'cancelled': session.milestoneCode === 'CAN' }">{{session.milestone ? session.milestone.name : session.milestoneCode}}</td>
 						<td :class="{ 'cancelled': session.milestoneCode === 'CAN' }">{{session.instructor ? `${session.instructor.fname} ${session.instructor.lname}` : session.instructorCid}}</td>
 						<td class="options">
 							<router-link :to="`/ins/training/session/${session._id}`" data-position="top" data-tooltip="View Details" class="tooltipped">
