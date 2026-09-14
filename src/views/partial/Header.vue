@@ -46,12 +46,6 @@
                   rel="noopener noreferrer">ZMA Charts and Info</a>
               </li>
               <li>
-                <a
-                  href="https://airspace.zmaartcc.net/"
-                  target="_blank"
-                  rel="noopener noreferrer">ZMA Airspace Vizualizer</a>
-              </li>
-              <li>
                 <router-link to="/controllers/staff">ARTCC Staff</router-link>
               </li>
              </ul>
